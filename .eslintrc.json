@@ -3,7 +3,8 @@
     "next/core-web-vitals",
     "prettier",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -34,6 +35,7 @@
         ]
       }
     ],
+    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/naming-convention": [
       "error",
