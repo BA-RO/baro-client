@@ -75,3 +75,12 @@ export const positionCenter = style([
     transform: 'translate(-50%, -50%)',
   },
 ]);
+
+export const lineClamp = (line: number) => {
+  return style({
+    display: '-webkit-box',
+    WebkitLineClamp: `${line}`,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+  });
+};
