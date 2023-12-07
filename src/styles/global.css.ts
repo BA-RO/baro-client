@@ -10,12 +10,6 @@ globalStyle('html, body', {
   padding: 0,
 });
 
-globalStyle('html, body', {
-  margin: 0,
-  padding: 0,
-  height: '100%',
-});
-
 globalStyle('body', {
   lineHeight: 1,
   WebkitFontSmoothing: 'antialiased',
@@ -28,7 +22,7 @@ globalStyle(
     margin: 0,
     padding: 0,
     border: 0,
-    fontSize: '100%',
+    fontSize: '16px',
     verticalAlign: 'baseline',
     fontFamily: fontFamily.pretendard,
   },
