@@ -5,19 +5,8 @@ globalStyle('*, *:after, *:before', {
   boxSizing: 'border-box',
 });
 
-globalStyle('html, body', {
-  margin: 0,
-  padding: 0,
-});
-
-globalStyle('body', {
-  lineHeight: 1,
-  WebkitFontSmoothing: 'antialiased',
-  MozOsxFontSmoothing: 'grayscale',
-});
-
 globalStyle(
-  'html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, img, ins, kbd, q, s, samp, small, strike, strong, article, footer, header,main,nav, section',
+  'html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, img, ins, kbd, q, s, samp, small, strike, strong, article, footer, header, main, nav, section',
   {
     margin: 0,
     padding: 0,
@@ -27,6 +16,17 @@ globalStyle(
     fontFamily: fontFamily.pretendard,
   },
 );
+
+globalStyle('body', {
+  lineHeight: 1,
+  WebkitFontSmoothing: 'antialiased',
+  MozOsxFontSmoothing: 'grayscale',
+});
+
+globalStyle('h1, h2, h3, h4, h5, h6, p', {
+  wordBreak: 'keep-all',
+  whiteSpace: 'pre-wrap',
+});
 
 globalStyle(
   'article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section',
@@ -39,11 +39,6 @@ globalStyle('ol, ul', {
   margin: 0,
   padding: 0,
   listStyle: 'none',
-});
-
-globalStyle('h1, h2, h3, h4, h5, h6, p', {
-  wordBreak: 'keep-all',
-  whiteSpace: 'pre-wrap',
 });
 
 globalStyle('button, select, input, textarea', {
