@@ -24,17 +24,6 @@
     ],
     "unused-imports/no-unused-imports": "error",
     "no-else-return": ["error", { "allowElseIf": false }],
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": [
-          {
-            "group": [".*"],
-            "message": "Please use absolute path."
-          }
-        ]
-      }
-    ],
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/naming-convention": [
