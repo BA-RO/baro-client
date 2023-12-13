@@ -1,6 +1,7 @@
-import { type ClassValue, clsx } from 'clsx';
+import type { ClassValue } from 'clsx';
+import clsx from 'clsx';
 import type { HTMLAttributes, Ref } from 'react';
-import { createElement, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import type { FlexStyles } from '@/src/styles/sprinkles.css';
 import { flexStyles } from '@/src/styles/sprinkles.css';
@@ -25,14 +26,14 @@ const Flex = forwardRef(
       }
     }
 
-    return createElement(
-      'div',
-      {
-        className: clsx(flexStyles(flexStyleProps), className),
-        ref,
-        ...nativeProps,
-      },
-      children,
+    return (
+      <div
+        ref={ref}
+        className={clsx(flexStyles(flexStyleProps), className)}
+        {...nativeProps}
+      >
+        {children}
+      </div>
     );
   },
 );

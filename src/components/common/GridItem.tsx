@@ -1,7 +1,7 @@
 import type { ClassValue } from 'clsx';
 import clsx from 'clsx';
 import type { HTMLAttributes, Ref } from 'react';
-import { createElement, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import type { GridItemStyles } from '@/src/styles/sprinkles.css';
 import { gridItemStyles } from '@/src/styles/sprinkles.css';
@@ -29,14 +29,14 @@ const GridItem = forwardRef(
       }
     }
 
-    return createElement(
-      'div',
-      {
-        className: clsx(gridItemStyles(gridItemStyleProps), className),
-        ref,
-        ...nativeProps,
-      },
-      children,
+    return (
+      <div
+        ref={ref}
+        className={clsx(gridItemStyles(gridItemStyleProps), className)}
+        {...nativeProps}
+      >
+        {children}
+      </div>
     );
   },
 );
