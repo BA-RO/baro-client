@@ -8,10 +8,9 @@ import { gridStyles } from '@/src/styles/sprinkles.css';
 
 type HTMLProperties = Omit<HTMLAttributes<HTMLDivElement>, 'className'>;
 
-type GridProps = GridStyles &
-  HTMLProperties & {
-    className?: ClassValue;
-  };
+interface GridProps extends GridStyles, HTMLProperties {
+  className?: ClassValue;
+}
 
 const Grid = forwardRef(
   ({ children, className, ...props }: GridProps, ref: Ref<HTMLDivElement>) => {

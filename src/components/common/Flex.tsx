@@ -8,10 +8,9 @@ import { flexStyles } from '@/src/styles/sprinkles.css';
 
 type HTMLProperties = Omit<HTMLAttributes<HTMLDivElement>, 'className'>;
 
-type FlexProps = FlexStyles &
-  HTMLProperties & {
-    className?: ClassValue;
-  };
+interface FlexProps extends FlexStyles, HTMLProperties {
+  className?: ClassValue;
+}
 
 const Flex = forwardRef(
   ({ children, className, ...props }: FlexProps, ref: Ref<HTMLDivElement>) => {
