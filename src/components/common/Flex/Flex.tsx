@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { HTMLAttributes, Ref } from 'react';
 import { forwardRef } from 'react';
 
-import { seperateProps } from './utils';
+import { seperateProps } from '../utils';
 import type { FlexStyles } from '@/src/styles/sprinkles.css';
 import { flexStyles } from '@/src/styles/sprinkles.css';
 
