@@ -14,10 +14,10 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./*"],
       "@components/*": ["./src/components/*"],
       "@feature/*": ["./src/feature/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@pages": ["./pages/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"]
     }
