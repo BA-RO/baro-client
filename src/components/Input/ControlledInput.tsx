@@ -1,7 +1,7 @@
 import { UseInputReturn } from '@hooks/useInput';
 import { FocusEventHandler, ReactNode } from 'react';
 
-interface BaseInputProps {
+interface ControlledInputProps {
   inputProps: UseInputReturn;
 
   labelClassName?: string;
@@ -12,14 +12,14 @@ interface BaseInputProps {
   onBlur?: FocusEventHandler<HTMLInputElement>;
 }
 
-const BaseInput = ({
+const ControlledInput = ({
   inputProps,
   labelClassName,
   inputClassName,
   postfix,
   onFocus,
   onBlur,
-}: BaseInputProps) => {
+}: ControlledInputProps) => {
   return (
     <label htmlFor={inputProps.id} className={labelClassName}>
       <input
@@ -34,4 +34,4 @@ const BaseInput = ({
   );
 };
 
-export default BaseInput;
+export default ControlledInput;
