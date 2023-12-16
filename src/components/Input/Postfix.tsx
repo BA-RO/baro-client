@@ -1,5 +1,4 @@
 import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
-import { postfixWrapper } from './style.css';
 
 interface DefaultPostfixProps {
   valueLength: number;
@@ -7,10 +6,11 @@ interface DefaultPostfixProps {
 
 const DefaultPostfix = ({ valueLength }: DefaultPostfixProps) => {
   return (
-    <div className={postfixWrapper}>
+    <div>
       {valueLength > 0 && (
         <span>{`${valueLength} / ${MAIN_INPUT_MAX_LENGTH}자`}</span>
       )}
+      <button></button>
     </div>
   );
 };

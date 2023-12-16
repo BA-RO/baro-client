@@ -1,17 +1,14 @@
 import { UseInputReturn } from '@hooks/useInput';
 import { FocusEventHandler, ReactNode } from 'react';
-import { defaultInputStyle, defaultLabelStyle } from './style.css';
+import { noneValue } from './style.css';
 import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
 
 interface ControlledInputProps {
   inputProps: UseInputReturn;
-
+  postfix?: ReactNode;
   placeholder?: string;
   maxLength?: number;
-
-  inputClassName?: string;
-  postfix?: ReactNode;
-
+  inputStyle?: string;
   onFocus?: FocusEventHandler<HTMLTextAreaElement>;
   onBlur?: FocusEventHandler<HTMLTextAreaElement>;
 }
@@ -20,24 +17,24 @@ const ControlledInput = ({
   inputProps,
   placeholder,
   maxLength = MAIN_INPUT_MAX_LENGTH,
-  inputClassName = defaultInputStyle,
+  inputStyle = noneValue,
   postfix,
   onFocus,
   onBlur,
 }: ControlledInputProps) => (
   <label htmlFor={inputProps.id}>
-    <div className={defaultLabelStyle}>
+    <article>
       <textarea
         {...inputProps}
         name={inputProps.id}
         placeholder={placeholder}
         maxLength={maxLength}
-        className={inputClassName}
+        className={inputStyle}
         onFocus={onFocus}
         onBlur={onBlur}
       />
       {postfix}
-    </div>
+    </article>
   </label>
 );
 
