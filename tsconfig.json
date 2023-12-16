@@ -15,6 +15,7 @@
     "incremental": true,
     "paths": {
       "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
       "@feature/*": ["./src/feature/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@pages": ["./pages/*"],
