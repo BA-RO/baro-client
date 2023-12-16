@@ -1,0 +1,13 @@
+.idea
+.git
+.gitignore
+.github
+.dockerignore
+Dockerfile
+*.md
+*.sh
+scripts
+node_modules
+.storybook
+.next
+**/*.stories.*
