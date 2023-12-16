@@ -9,7 +9,7 @@ const meta: Meta<typeof Grid> = {
 
 export default meta;
 
-export function Default() {
+export const Default = () => {
   return (
     <Grid
       templateColumns="repeat(3, 1fr)"
@@ -46,4 +46,4 @@ export function Default() {
       </GridItem>
     </Grid>
   );
-}
+};

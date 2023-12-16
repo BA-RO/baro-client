@@ -8,7 +8,7 @@ const meta: Meta<typeof Flex> = {
 
 export default meta;
 
-export function Default() {
+export const Default = () => {
   return (
     <Flex
       align="center"
@@ -22,4 +22,4 @@ export function Default() {
       <div>3번</div>
     </Flex>
   );
-}
+};
