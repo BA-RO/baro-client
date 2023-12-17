@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 const placeholder = {
   lineHeight: '27px',
-  transform: 'translateY(10px)',
+  transform: 'translate(24px, 13.5px)',
 } as const;
 
 const defaultInputStyle = {
@@ -18,8 +18,9 @@ const defaultInputStyle = {
   },
 } as const;
 
-export const noneValue = style({
+export const noneValueInputStyle = style({
   ...defaultInputStyle,
   backgroundColor: '#EFF5FF',
   height: 'auto',
+  caretColor: 'transparent',
 });

@@ -1,6 +1,6 @@
 import { UseInputReturn } from '@hooks/useInput';
 import { FocusEventHandler, ReactNode } from 'react';
-import { noneValue } from './style.css';
+import { noneValueInputStyle } from './style.css';
 import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
 
 interface ControlledInputProps {
@@ -17,7 +17,7 @@ const ControlledInput = ({
   inputProps,
   placeholder,
   maxLength = MAIN_INPUT_MAX_LENGTH,
-  inputStyle = noneValue,
+  inputStyle = noneValueInputStyle,
   postfix,
   onFocus,
   onBlur,
