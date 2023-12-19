@@ -1,5 +1,5 @@
 import { createStore } from 'zustand';
-import { useStore } from 'zustand';
+import { useStoreWithEqualityFn as useStore } from 'zustand/traditional';
 
 const initialModalData = {
   title: '',
