@@ -7,7 +7,7 @@ import TanstackQueryProvider from '@/src/components/Providers/TanstackQueryProvi
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </TanstackQueryProvider>
   );
 };
