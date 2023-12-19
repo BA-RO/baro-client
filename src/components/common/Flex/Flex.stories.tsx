@@ -14,8 +14,9 @@ export const Default = () => {
       align="center"
       justify="center"
       gap="10px"
-      marginX="80px"
+      marginX="50px"
       paddingX="10px"
+      paddingY="10px"
     >
       <div>1번</div>
       <div>2번</div>
