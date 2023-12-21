@@ -91,6 +91,9 @@ devDependencies:
   '@vanilla-extract/webpack-plugin':
     specifier: ^2.3.1
     version: 2.3.1(@types/node@20.10.4)(webpack@5.89.0)
+  chromatic:
+    specifier: ^10.1.0
+    version: 10.1.0
   eslint:
     specifier: ^8
     version: 8.55.0
@@ -5502,6 +5505,11 @@ packages:
   /chownr@2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
+    dev: true
+
+  /chromatic@10.1.0:
+    resolution: {integrity: sha512-S+ztO8f1k/LckuzJKCqaTs6AfUQ0eLNT9kEoyCUwX7gkJnveQo5JStCfY55v30zogjRkHJpwqzEfSXl6AwO2tQ==}
+    hasBin: true
     dev: true
 
   /chrome-trace-event@1.0.3:
