@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 
-const placeholder = {
-  lineHeight: '27px',
-  transform: 'translate(24px, 13.5px)',
-} as const;
+export const inputContainerStyle = style({
+  width: '100%',
+  padding: '22px 12px 22px 24px',
+});
 
 const defaultInputStyle = {
   borderRadius: '16px',
@@ -13,14 +13,18 @@ const defaultInputStyle = {
   fontSize: '17px',
   fontWeight: '400',
   lineHeight: '27px',
-  selectors: {
-    '&::placeholder': placeholder,
-  },
 } as const;
 
 export const noneValueInputStyle = style({
   ...defaultInputStyle,
   backgroundColor: '#EFF5FF',
-  height: 'auto',
   caretColor: 'transparent',
+  height: '72px',
+});
+
+export const activeInputStyle = style({
+  ...defaultInputStyle,
+  backgroundColor: 'white',
+  border: '1px solid #4C94FF',
+  height: 'auto',
 });
