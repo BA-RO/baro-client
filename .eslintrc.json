@@ -49,7 +49,9 @@
           {
             "groups": [
               // Library imports (related with next is first)
-              ["next", "^\\w"],
+              ["^next", "^react", "^@\\w", "^\\w"],
+              ["@/"],
+              ["^\\."],
               // Side effect imports
               ["^\\u0000"]
             ]

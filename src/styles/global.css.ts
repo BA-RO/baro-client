@@ -1,5 +1,6 @@
-import { fontFamily } from './variants.css';
 import { globalStyle } from '@vanilla-extract/css';
+
+import { theme } from './theme.css';
 
 globalStyle('*, *:after, *:before', {
   boxSizing: 'border-box',
