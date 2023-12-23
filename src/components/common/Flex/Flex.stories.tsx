@@ -1,5 +1,7 @@
-import Flex from './Flex';
 import { type Meta } from '@storybook/react';
+
+import Flex from './Flex';
+import { flex } from './style.css';
 
 const meta: Meta<typeof Flex> = {
   title: 'Flex',
@@ -10,14 +12,7 @@ export default meta;
 
 export const Default = () => {
   return (
-    <Flex
-      align="center"
-      justify="center"
-      gap="10px"
-      marginX="50px"
-      paddingX="10px"
-      paddingY="10px"
-    >
+    <Flex className={flex}>
       <div>1번</div>
       <div>2번</div>
       <div>3번</div>
