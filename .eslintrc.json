@@ -48,12 +48,10 @@
           "warn",
           {
             "groups": [
-              // Library imports (related with next is first)
               ["^next", "^react", "^@\\w", "^\\w"],
-              ["@/"],
-              ["^\\."],
-              // Side effect imports
-              ["^\\u0000"]
+              ["^\\u0000"],
+              ["^@/"],
+              ["^\\."]
             ]
           }
         ]
