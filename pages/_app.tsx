@@ -1,8 +1,14 @@
 import type { AppProps } from 'next/app';
 import '@styles/global.css';
 
+import TanstackQueryProvider from '@/src/components/Providers/TanstackQueryProvider';
+
 const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  return (
+    <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
+      <Component {...pageProps} />
+    </TanstackQueryProvider>
+  );
 };
 
 export default App;
