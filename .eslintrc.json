@@ -23,6 +23,7 @@
         "noUselessIndex": true
       }
     ],
+    "react-hooks/exhaustive-deps": "off",
     "unused-imports/no-unused-imports": "error",
     "no-else-return": ["error", { "allowElseIf": false }],
     "@typescript-eslint/consistent-type-imports": "error",
