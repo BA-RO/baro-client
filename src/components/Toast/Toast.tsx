@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import clsx from 'clsx';
 
 import { useToast } from '@/src/stores/toastStore';
 
-import { open, toast } from './style.css';
+import { toast } from './style.css';
 
 const TOAST_DURATION = 2500;
 
@@ -23,7 +22,7 @@ const Toast = () => {
   }, [isToastVisible]);
 
   return (
-    <div className={clsx(toast, isToastVisible && open)} role="alert">
+    <div className={toast({ isActive: isToastVisible })} role="alert">
       <span>{message}</span>
     </div>
   );
