@@ -19,7 +19,13 @@ export const Default: Story = {
 
     useEffect(() => {
       showToast({ message: '나나나나나나' });
-      setInterval(() => showToast({ message: '나나나나나나' }), 4000);
+
+      const interval = setInterval(
+        () => showToast({ message: '나나나나나나' }),
+        4000,
+      );
+
+      return () => clearInterval(interval);
     }, []);
 
     return <Toast />;
