@@ -1,4 +1,6 @@
-import { createStore, useStore } from 'zustand';
+import { createStore } from 'zustand';
+import { shallow } from 'zustand/shallow';
+import { useStoreWithEqualityFn as useStore } from 'zustand/traditional';
 
 interface ToastData {
   message: string;
@@ -30,7 +32,17 @@ export const toastStore = createStore<State & Action>((set, get) => ({
   },
 }));
 
-export const useToastStore = <T>(
+const useToastStore = <T>(
   selector: (state: State & Action) => T,
   equals?: (a: T, b: T) => boolean,
 ) => useStore(toastStore, selector, equals);
+
+export const useToast = () =>
+  useToastStore(
+    (state) => ({
+      toastData: state.toastData,
+      showToast: state.showToast,
+      hideToast: state.hideToast,
+    }),
+    shallow,
+  );

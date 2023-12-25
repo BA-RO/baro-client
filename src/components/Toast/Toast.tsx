@@ -1,21 +1,14 @@
 import { useEffect } from 'react';
 import clsx from 'clsx';
-import { shallow } from 'zustand/shallow';
 
-import { useToastStore } from '@/src/stores/toastStore';
+import { useToast } from '@/src/stores/toastStore';
 
 import { open, toast } from './style.css';
 
 const TOAST_DURATION = 2500;
 
 const Toast = () => {
-  const { toastData, hideToast } = useToastStore(
-    (state) => ({
-      toastData: state.toastData,
-      hideToast: state.hideToast,
-    }),
-    shallow,
-  );
+  const { toastData, hideToast } = useToast();
 
   const { message, isToastVisible } = toastData;
 
