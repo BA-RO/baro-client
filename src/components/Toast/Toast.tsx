@@ -19,7 +19,7 @@ const Toast = () => {
     }
 
     return () => clearTimeout(timer);
-  }, [isToastVisible]);
+  }, [isToastVisible, hideToast]);
 
   return (
     <div className={toast({ isActive: isToastVisible })} role="alert">
