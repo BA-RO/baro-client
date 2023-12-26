@@ -18,10 +18,10 @@ export const Default: Story = {
     const { showToast } = useToast();
 
     useEffect(() => {
-      showToast({ message: '나나나나나나' });
+      showToast({ message: '테스트' });
 
       const interval = setInterval(
-        () => showToast({ message: '나나나나나나' }),
+        () => showToast({ message: '테스트' }),
         4000,
       );
 
