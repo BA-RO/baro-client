@@ -9,6 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "prepare": "husky install",
+    "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -26,6 +28,8 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
     "@storybook/addon-essentials": "^7.6.4",
     "@storybook/addon-interactions": "^7.6.4",
     "@storybook/addon-links": "^7.6.4",
@@ -53,6 +57,8 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.0",
     "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.1.0",
     "storybook": "^7.6.4",
