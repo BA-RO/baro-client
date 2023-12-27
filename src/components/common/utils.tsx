@@ -2,7 +2,7 @@ import type {
   FlexStyles,
   GridItemStyles,
   GridStyles,
-} from '@/src/styles/sprinkles.css';
+} from '@styles/sprinkles.css';
 
 export const seperateProps = <
   T extends FlexStyles | GridStyles | GridItemStyles,

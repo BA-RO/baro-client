@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app';
 import '@styles/global.css';
-
-import TanstackQueryProvider from '@/src/components/Providers/TanstackQueryProvider';
+import TanstackQueryProvider from '@components/Providers/TanstackQueryProvider';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
