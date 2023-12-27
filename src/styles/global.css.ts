@@ -1,5 +1,6 @@
-import { fontFamily } from './variants.css';
 import { globalStyle } from '@vanilla-extract/css';
+
+import { theme } from './theme.css';
 
 globalStyle('*, *:after, *:before', {
   boxSizing: 'border-box',
@@ -13,7 +14,7 @@ globalStyle(
     border: 0,
     fontSize: '16px',
     verticalAlign: 'baseline',
-    fontFamily: fontFamily.pretendard,
+    fontFamily: theme.font.pretendard,
   },
 );
 
@@ -45,7 +46,7 @@ globalStyle('button, select, input, textarea', {
   border: 0,
   outline: 0,
   backgroundColor: 'transparent',
-  fontFamily: fontFamily.pretendard,
+  fontFamily: theme.font.pretendard,
 });
 
 globalStyle('a, button', {
