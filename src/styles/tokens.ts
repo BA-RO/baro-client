@@ -41,7 +41,7 @@ export const FONT = {
     '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif',
 };
 
-export const FONT_SIZE = {
+export const TYPOGRAPHY = {
   '40/Title/Bold': {
     fontSize: '40px',
     fontWeight: FONT_WEIGHT.bold,

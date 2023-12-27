@@ -1,10 +1,10 @@
 import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
 
-import { COLORS, FONT_SIZE } from './tokens';
+import { COLORS, TYPOGRAPHY } from './tokens';
 
 const fontProperties = defineProperties({
   properties: {
-    fontSize: FONT_SIZE,
+    fontSize: TYPOGRAPHY,
   },
 });
 
