@@ -5,37 +5,6 @@ const FONT_WEIGHT = {
   bold: 700,
 };
 
-export const FLEX_CONTENT_ALIGNMENT = {
-  stretch: 'stretch',
-  start: 'flex-start',
-  center: 'center',
-  end: 'flex-end',
-  around: 'space-around',
-  between: 'space-between',
-  evenly: 'space-evenly',
-};
-
-export const FLEX_ITEMS_ALIGNMENT = {
-  stretch: 'stretch',
-  start: 'flex-start',
-  center: 'center',
-  end: 'flex-end',
-};
-
-export const GRID_CONTENT_ALIGNMENT = {
-  stretch: 'stretch',
-  start: 'start',
-  center: 'center',
-  end: 'end',
-  around: 'space-around',
-  between: 'space-between',
-  evenly: 'space-evenly',
-};
-
-export const GRID_ITEMS_ALIGNMENT = ['stretch', 'start', 'center', 'end'];
-
-export const GRID_CELL = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
 export const FONT = {
   pretendard:
     '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif',
