@@ -101,12 +101,6 @@ export const TYPOGRAPHY = {
     lineHeight: '24px',
     letterSpacing: '-0.2px',
   },
-  '14/Title/Semibold': {
-    fontSize: '14px',
-    fontWeight: FONT_WEIGHT.semiBold,
-    lineHeight: '18px',
-    letterSpacing: '-0.5px',
-  },
   '14/Body/Regular': {
     fontSize: '14px',
     fontWeight: FONT_WEIGHT.regular,
@@ -124,6 +118,12 @@ export const TYPOGRAPHY = {
     fontWeight: FONT_WEIGHT.regular,
     lineHeight: '18px',
     letterSpacing: '0px',
+  },
+  '13/Title/Semibold': {
+    fontSize: '13px',
+    fontWeight: FONT_WEIGHT.semiBold,
+    lineHeight: '17px',
+    letterSpacing: '-0.5px',
   },
   '13/Body/Regular': {
     fontSize: '13px',
@@ -161,6 +161,9 @@ export const COLORS = {
   'Blue/Dark': '#327ceb',
   'Blue/Gradient': '#4C94FF',
   Green: '#33d486',
-  Yellow: '#ffc839',
-  Red: '#f7463b',
+  Yellow: '#ffc633',
+  Red: '#f9594f',
+  Orange: '#fd7c32',
+  LightRed: '#fd6666',
+  Purple: '#7c62ea',
 };
