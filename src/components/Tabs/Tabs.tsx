@@ -1,5 +1,9 @@
 import { createContext, type PropsWithChildren, useState } from 'react';
 
+import TabsContent from './TabsContent';
+import TabsList from './TabsList';
+import TabsTrigger from './TabsTrigger';
+
 interface TabsContextProps {
   selectedTab: string;
   onSelectTab: (selectedTab: string) => void;
@@ -28,4 +32,10 @@ const TabsRoot = ({
   );
 };
 
-export default TabsRoot;
+const Tabs = Object.assign(TabsRoot, {
+  List: TabsList,
+  Trigger: TabsTrigger,
+  Content: TabsContent,
+});
+
+export default Tabs;

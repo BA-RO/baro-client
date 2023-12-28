@@ -1,4 +1,4 @@
-import Tabs from '.';
+import Tabs from './Tabs';
 import type { StoryObj } from '@storybook/react';
 import { type Meta } from '@storybook/react';
 
