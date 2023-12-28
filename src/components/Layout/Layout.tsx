@@ -1,14 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
-import Navigation from '../Navigation/Navigation';
-
 const Layout = ({ children }: PropsWithChildren) => {
-  return (
-    <>
-      <Navigation />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default Layout;
