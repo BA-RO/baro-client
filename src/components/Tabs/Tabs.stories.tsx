@@ -46,8 +46,12 @@ export const Basic: Story = {
         <Tabs.Trigger value="끄적이는">끄적이는</Tabs.Trigger>
         <Tabs.Trigger value="참고하는">참고하는</Tabs.Trigger>
       </Tabs.List>
-      <Tabs.Content value="끄적이는">끄적이는 내용</Tabs.Content>
-      <Tabs.Content value="참고하는">참고하는 내용</Tabs.Content>
+      <Tabs.Content value="끄적이는">
+        <div>끄적이는 내용</div>
+      </Tabs.Content>
+      <Tabs.Content value="참고하는">
+        <div>참고하는 내용</div>
+      </Tabs.Content>
     </Tabs>
   ),
 };

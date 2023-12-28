@@ -12,7 +12,7 @@ const TabsContent = ({
 }: PropsWithChildren<TabsContentProps>) => {
   const { selectedTab } = useTabsContext();
 
-  return <div>{selectedTab === value ? children : null}</div>;
+  return <>{selectedTab === value ? children : null}</>;
 };
 
 export default TabsContent;
