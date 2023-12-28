@@ -4,22 +4,20 @@ import { useToast } from '@/src/stores/toastStore';
 
 import { toast } from './style.css';
 
-const TOAST_DURATION = 2500;
-
 const Toast = () => {
   const { toastData, hideToast } = useToast();
 
-  const { message, isToastVisible } = toastData;
+  const { message, type, isToastVisible } = toastData;
 
   useEffect(() => {
     let timer;
 
     if (isToastVisible) {
-      timer = setTimeout(() => hideToast(), TOAST_DURATION);
+      timer = setTimeout(() => hideToast(), type);
     }
 
     return () => clearTimeout(timer);
-  }, [isToastVisible, hideToast]);
+  }, [hideToast, isToastVisible, type]);
 
   return (
     <div className={toast({ isActive: isToastVisible })} role="alert">

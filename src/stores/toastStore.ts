@@ -2,8 +2,14 @@ import { createStore } from 'zustand';
 import { shallow } from 'zustand/shallow';
 import { useStoreWithEqualityFn as useStore } from 'zustand/traditional';
 
+import {
+  TOAST_DURATION_TIME,
+  type ToastDurationTime,
+} from '../models/toastModel';
+
 interface ToastData {
   message: string;
+  type: ToastDurationTime;
 }
 
 interface ToastState {
@@ -21,6 +27,7 @@ interface Action {
 
 const INITIAL_TOAST_DATA = {
   message: '',
+  type: TOAST_DURATION_TIME.SHOW,
   isToastVisible: false,
 };
 
