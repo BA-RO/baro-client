@@ -9,8 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
-    "postinstall": "husky install",
+    "prepare": "if [ -z \"$PNPM_HOME\" ]; then husky install ; fi",
+    "postinstall": "if [ -z \"$PNPM_HOME\" ]; then husky install ; fi",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
