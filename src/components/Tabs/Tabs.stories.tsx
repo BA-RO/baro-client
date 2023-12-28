@@ -1,5 +1,4 @@
 import Tabs from '.';
-import type { TabsRootProps } from './TabsRoot';
 import type { StoryObj } from '@storybook/react';
 import { type Meta } from '@storybook/react';
 
@@ -16,14 +15,11 @@ const meta: Meta<typeof Tabs> = {
   tags: ['autodocs'],
   argTypes: {
     defaultValue: {
-      defaultValue: '끄적이는',
-      description: 'Tabs 컴포넌트의 선택된 탭을 정의합니다.',
-      options: ['끄적이는', '참고하는'],
-      control: 'inline-radio',
+      description: 'Tabs 컴포넌트의 초기에 활성화될 탭의 기본값',
     },
   },
   parameters: {
-    componentSubtitle: '한 번에 하나씩 표시될 컨텐츠들의 집합입니다.',
+    componentSubtitle: '여러 내용을 한 화면에서 전환하며 볼 수 있는 컴포넌트',
     docs: {
       description: {
         component: COMPONENT_DESCRIPTION,
@@ -37,11 +33,8 @@ export default meta;
 type Story = StoryObj<typeof Tabs>;
 
 export const Basic: Story = {
-  args: {
-    defaultValue: '끄적이는',
-  },
-  render: (args: TabsRootProps) => (
-    <Tabs {...args}>
+  render: () => (
+    <Tabs defaultValue="끄적이는">
       <Tabs.List>
         <Tabs.Trigger value="끄적이는">끄적이는</Tabs.Trigger>
         <Tabs.Trigger value="참고하는">참고하는</Tabs.Trigger>
