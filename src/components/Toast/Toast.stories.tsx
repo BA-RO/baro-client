@@ -9,12 +9,19 @@ import Toast from './Toast';
 const meta: Meta<typeof Toast> = {
   title: 'Toast',
   component: Toast,
+  decorators: [
+    (Story) => (
+      <div style={{ height: '500px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof Toast>;
 
-export const 단순확인: Story = {
+export const Basic: Story = {
   render: function Render() {
     const { showToast } = useToast();
 
@@ -33,7 +40,7 @@ export const 단순확인: Story = {
   },
 };
 
-export const 액션유도: Story = {
+export const WithAction: Story = {
   render: function Render() {
     const { showToast } = useToast();
 
