@@ -1,0 +1,37 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
+import {{pascalCase name}} from './{{pascalCase name}}';
+
+const meta: Meta<typeof {{pascalCase name}}> = {
+  title: 'Components/{{pascalCase name}}',
+  component: {{pascalCase name}},
+  tags: ['autodocs'],
+  parameters: {
+    componentSubtitle: '컴포넌트에 대한 설명을 간단히 적어주세요.',
+    // docs: 컴포넌트의 부가적인 설명을 제공할 수 있습니다. (* 필요 없는 경우 제거해주세요)
+    docs: {
+      description: {
+        component: '컴포넌트에 대한 부가적인 설명이 있다면 적어주세요.',
+      },
+    },
+  },
+  argTypes: {
+    props1: {
+      defaultValue: '기본값',
+      description: 'props1 속성에 대한 설명을 적어주세요.',
+      control: 'inline-radio',
+      options: ['option1', 'option2'],
+    },
+  },
+  // decorators: 스토리에 임의의 wrapper를 제공할 수 있습니다. (* 필요 없는 경우 제거해주세요)
+  decorators: [(story) => <div>{story()}</div>],
+};
+
+export default meta;
+
+type Story = StoryObj<typeof {{pascalCase name}}>;
+
+export const Basic: Story = {
+  args: {}, // 정의할 args가 없다면 제거해주세요.
+  render: (args: ArgsType) => <{{pascalCase name}} {...args} />,
+};
