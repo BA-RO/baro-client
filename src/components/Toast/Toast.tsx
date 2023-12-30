@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useToast } from '@/src/stores/toastStore';
 
-import { toast } from './style.css';
+import * as styles from './style.css';
 
 const Toast = () => {
   const { toastData, hideToast } = useToast();
@@ -20,7 +20,7 @@ const Toast = () => {
   }, [hideToast, isToastVisible, type]);
 
   return (
-    <div className={toast({ isActive: isToastVisible })} role="alert">
+    <div className={styles.toast({ isActive: isToastVisible })} role="alert">
       <span>{message}</span>
     </div>
   );

@@ -8,7 +8,7 @@ export const toast = recipe({
   base: [
     modalLayer,
     sprinkles({
-      fontSize: '14/Body/Regular',
+      typography: '14/Body/Regular',
     }),
     {
       backgroundColor: theme.colors['Dim/70'],
