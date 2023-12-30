@@ -10,7 +10,10 @@ const DefaultPostfix = ({ valueLength }: DefaultPostfixProps) => {
       {valueLength > 0 && (
         <span>{`${valueLength} / ${MAIN_INPUT_MAX_LENGTH}자`}</span>
       )}
-      <button></button>
+
+      <button>
+        <img src="" alt="" />
+      </button>
     </div>
   );
 };
