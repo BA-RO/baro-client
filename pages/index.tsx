@@ -1,7 +1,5 @@
-import type { NextPage } from 'next';
-
-const HomePage: NextPage = () => {
-  return <>바로</>;
+const HomePage = () => {
+  return <div>바로</div>;
 };
 
 export default HomePage;
