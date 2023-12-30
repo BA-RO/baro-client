@@ -13,7 +13,7 @@
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "generate-template": "plop"
+    "template": "plop"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.8.4",
