@@ -12,7 +12,8 @@
     "prepare": "husky install",
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "template": "plop"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.8.4",
@@ -60,6 +61,7 @@
     "husky": "^8.0.0",
     "lint-staged": "^15.2.0",
     "mini-css-extract-plugin": "^2.7.6",
+    "plop": "^4.0.1",
     "prettier": "^3.1.0",
     "storybook": "^7.6.4",
     "typescript": "^5"
