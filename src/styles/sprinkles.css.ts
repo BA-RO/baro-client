@@ -4,7 +4,7 @@ import { COLORS, TYPOGRAPHY } from './tokens';
 
 const fontProperties = defineProperties({
   properties: {
-    fontSize: TYPOGRAPHY,
+    typography: TYPOGRAPHY,
   },
 });
 
