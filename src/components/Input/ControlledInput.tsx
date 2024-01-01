@@ -1,18 +1,11 @@
-import { UseInputReturn } from '@hooks/useInput';
-import {
-  type FocusEvent,
-  type FocusEventHandler,
-  type ReactNode,
-  useCallback,
-  useState,
-  HTMLAttributes,
-  useRef,
-  useEffect,
-} from 'react';
-import * as style from './style.css';
-import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
-
+import type { HTMLAttributes } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+
+import { MAIN_INPUT_MAX_LENGTH } from '@/src/constants/config';
+import type { UseInputReturn } from '@/src/hooks/useInput';
+
+import * as style from './style.css';
 import { inputHeight } from './style.css';
 
 type InputType = 'primary' | 'create';
@@ -22,7 +15,6 @@ interface ControlledInputProps extends HTMLAttributes<HTMLTextAreaElement> {
   inputProps: UseInputReturn;
   placeholder?: string;
   maxLength?: number;
-  showCount?: boolean;
 }
 
 const ControlledInput = ({
@@ -30,7 +22,6 @@ const ControlledInput = ({
   inputProps,
   placeholder,
   maxLength = MAIN_INPUT_MAX_LENGTH,
-  showCount = false,
 }: ControlledInputProps) => {
   const { id, value } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -46,7 +37,7 @@ const ControlledInput = ({
 
       setHeight(inputRef.current.scrollHeight);
     }
-  }, [value]);
+  }, [height, value]);
 
   return (
     <label htmlFor={id}>

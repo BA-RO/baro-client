@@ -1,6 +1,7 @@
-import ControlledInput from '@components/Input/ControlledInput';
-import { useInput } from '@hooks/useInput';
 import type { NextPage } from 'next';
+
+import ControlledInput from '@/src/components/Input/ControlledInput';
+import { useInput } from '@/src/hooks/useInput';
 
 const HomePage: NextPage = () => {
   const testInputProps = useInput({

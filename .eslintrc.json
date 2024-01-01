@@ -17,9 +17,6 @@
   "rules": {
     "import/first": "error",
     "import/newline-after-import": "error",
-    "plugin:jsx-a11y/recommended": {
-      "some": ["nesting", "id"]
-    },
     "import/no-useless-path-segments": [
       "error",
       {
