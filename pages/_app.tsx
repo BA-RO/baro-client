@@ -2,15 +2,21 @@ import type { AppProps } from 'next/app';
 
 import '@/src/styles/global.css';
 
+import Layout from '@/src/components/Layout/Layout';
 import TanstackQueryProvider from '@/src/components/Providers/TanstackQueryProvider';
 import Toast from '@/src/components/Toast/Toast';
+import { pretendard } from '@/src/styles/font';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
-      <Component {...pageProps} />
-      <Toast />
-    </TanstackQueryProvider>
+    <main className={pretendard.className}>
+      <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
+        <Layout>
+          <Component {...pageProps} />
+          <Toast />
+        </Layout>
+      </TanstackQueryProvider>
+    </main>
   );
 };
 
