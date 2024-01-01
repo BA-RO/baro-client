@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import { useTabsContext } from './hooks/useTabsContext';
+import { useTabsContext } from '../../hooks/useTabsContext';
 import * as styles from './style.css';
 
 interface TabsTriggerProps {
