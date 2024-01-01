@@ -5,18 +5,24 @@ import {
   type ReactNode,
   useCallback,
   useState,
+  HTMLAttributes,
+  useRef,
+  useEffect,
 } from 'react';
 import * as style from './style.css';
 import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
 
-interface ControlledInputProps {
-  type: '1' | '2';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
+import { inputHeight } from './style.css';
+
+type InputType = 'primary' | 'create';
+
+interface ControlledInputProps extends HTMLAttributes<HTMLTextAreaElement> {
+  type: InputType;
   inputProps: UseInputReturn;
-  postfix?: ReactNode;
   placeholder?: string;
   maxLength?: number;
-  onFocus?: FocusEventHandler<HTMLTextAreaElement>;
-  onBlur?: FocusEventHandler<HTMLTextAreaElement>;
+  showCount?: boolean;
 }
 
 const ControlledInput = ({
@@ -24,45 +30,34 @@ const ControlledInput = ({
   inputProps,
   placeholder,
   maxLength = MAIN_INPUT_MAX_LENGTH,
-  postfix,
-  onFocus,
-  onBlur,
+  showCount = false,
 }: ControlledInputProps) => {
-  const { id, value, onChange } = inputProps;
-  const [isFocus, setIsFocus] = useState(false);
+  const { id, value } = inputProps;
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const [height, setHeight] = useState(0);
 
-  const handleFocus = useCallback(
-    (e: FocusEvent<HTMLTextAreaElement, Element>) => {
-      setIsFocus(true);
-      onFocus?.(e);
-    },
-    [onFocus],
-  );
+  useEffect(() => {
+    if (inputRef.current) {
+      console.log(
+        height,
+        inputRef.current.scrollHeight,
+        inputRef.current.style.height,
+      );
 
-  const handleBlur = useCallback(
-    (e: FocusEvent<HTMLTextAreaElement, Element>) => {
-      setIsFocus(false);
-      onBlur?.(e);
-    },
-    [onBlur],
-  );
+      setHeight(inputRef.current.scrollHeight);
+    }
+  }, [value]);
 
   return (
     <label htmlFor={id}>
-      <article>
-        <textarea
-          {...inputProps}
-          className={style.input({ type, focus: isFocus })}
-          rows={value.length === 0 ? 1 : Math.ceil(value.length / 190)}
-          name={id}
-          placeholder={placeholder}
-          maxLength={maxLength}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={onChange}
-        />
-        {postfix}
-      </article>
+      <textarea
+        {...inputProps}
+        ref={inputRef}
+        style={assignInlineVars({ [inputHeight]: `${height}px` })}
+        className={style.input({ type })}
+        placeholder={placeholder}
+        maxLength={maxLength}
+      />
     </label>
   );
 };
