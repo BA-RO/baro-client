@@ -7,7 +7,7 @@ import { useToast } from '@/src/stores/toastStore';
 import Toast from './Toast';
 
 const meta: Meta<typeof Toast> = {
-  title: 'Toast',
+  title: 'Modals/Toast',
   component: Toast,
   decorators: [
     (Story) => (

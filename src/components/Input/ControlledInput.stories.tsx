@@ -7,6 +7,14 @@ import ControlledInput from './ControlledInput';
 const meta: Meta<typeof ControlledInput> = {
   title: 'Input/ControlledInput',
   component: ControlledInput,
+  parameters: {
+    componentSubtitle: '프로젝트 기본 Input',
+    docs: {
+      description: {
+        component: '제어 컴포넌트로 제작',
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <div style={{ height: '500px' }}>
