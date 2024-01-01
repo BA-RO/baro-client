@@ -1,9 +1,5 @@
 import { style } from '@vanilla-extract/css';
 
-export const cursorPointer = style({
-  cursor: 'pointer',
-});
-
 export const fullScreen = style({
   width: '100vw',
   height: '100vh',
@@ -33,7 +29,7 @@ export const middleLayer = style({ zIndex: 50 });
 export const topLayer = style({ zIndex: 100 });
 export const modalLayer = style({ zIndex: 1000 });
 
-export const flex = style({
+const flex = style({
   display: 'flex',
 });
 
@@ -67,26 +63,12 @@ export const flexColumnCenter = style([
   },
 ]);
 
-export const positionAbsolute = style({
+export const positionCenter = style({
   position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
 });
-
-export const positionRelative = style({
-  position: 'relative',
-});
-
-export const positionFixed = style({
-  position: 'fixed',
-});
-
-export const positionCenter = style([
-  positionAbsolute,
-  {
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-]);
 
 export const lineClamp = (line: number) => {
   return style({

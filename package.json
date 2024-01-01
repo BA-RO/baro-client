@@ -5,12 +5,15 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "open http://localhost:3000 && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "prepare": "if [ -z \"$PNPM_HOME\" ]; then husky install ; fi",
+    "postinstall": "if [ -z \"$PNPM_HOME\" ]; then husky install ; fi",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "template": "plop"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.8.4",
@@ -26,6 +29,8 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
     "@storybook/addon-essentials": "^7.6.4",
     "@storybook/addon-interactions": "^7.6.4",
     "@storybook/addon-links": "^7.6.4",
@@ -53,7 +58,10 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.0",
     "mini-css-extract-plugin": "^2.7.6",
+    "plop": "^4.0.1",
     "prettier": "^3.1.0",
     "storybook": "^7.6.4",
     "typescript": "^5"
