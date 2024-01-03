@@ -39,13 +39,9 @@ export const toastStore = createStore<State & Action>((set, get) => ({
   },
 }));
 
-const useToastStore = <T>(
-  selector: (state: State & Action) => T,
-  equals?: (a: T, b: T) => boolean,
-) => useStore(toastStore, selector, equals);
-
-export const useToast = () =>
-  useToastStore(
+export const useToastStore = () =>
+  useStore(
+    toastStore,
     (state) => ({
       toastData: state.toastData,
       showToast: state.showToast,

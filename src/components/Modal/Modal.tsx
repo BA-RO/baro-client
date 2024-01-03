@@ -1,9 +1,9 @@
-import { useModal } from '@/src/stores/modalStore';
+import { useModalStore } from '@/src/stores/modalStore';
 
 import DeleteArticle from './components/DeleteArticle';
 
 const Modal = () => {
-  const { type } = useModal();
+  const { type } = useModalStore();
 
   if (type === 'deleteArticle') return <DeleteArticle />;
 

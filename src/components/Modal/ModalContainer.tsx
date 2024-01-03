@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
-import { useModal } from '@/src/stores/modalStore';
+import { useModalStore } from '@/src/stores/modalStore';
 import { COLORS } from '@/src/styles/tokens';
 
 import * as styles from './style.css';
@@ -25,7 +25,7 @@ const ModalContainer = ({
   firstButtonProps,
   secondButtonProps,
 }: PropsWithChildren<ModalContainerProps>) => {
-  const { closeModal } = useModal();
+  const { closeModal } = useModalStore();
 
   const {
     text: firstButtonText = '취소',

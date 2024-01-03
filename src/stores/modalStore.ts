@@ -19,13 +19,9 @@ export const modalStore = createStore<State & Action>((set) => ({
   closeModal: () => set({ type: 'no' }),
 }));
 
-const useModalStore = <T>(
-  selector: (state: State & Action) => T,
-  equals?: (a: T, b: T) => boolean,
-) => useStore(modalStore, selector, equals);
-
-export const useModal = () =>
-  useModalStore(
+export const useModalStore = () =>
+  useStore(
+    modalStore,
     (state) => ({
       type: state.type,
       openModal: state.openModal,
