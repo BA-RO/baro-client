@@ -31,6 +31,14 @@ export const Basic: Story = {
   render: function Render() {
     const inputProps = useInput({ id: 'story' });
 
-    return <ControlledInput type={'primary'} inputProps={inputProps} />;
+    return (
+      <ControlledInput
+        type={'primary'}
+        inputProps={inputProps}
+        placeholder="메모를 끄적여보세요"
+        alertType="error"
+        alertMsg="에러 메시지"
+      />
+    );
   },
 };
