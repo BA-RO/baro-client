@@ -10,7 +10,7 @@ const Toast = () => {
   const { message, type, isToastVisible } = toastData;
 
   useEffect(() => {
-    let timer;
+    let timer: ReturnType<typeof setTimeout>;
 
     if (isToastVisible) {
       timer = setTimeout(() => hideToast(), type);
