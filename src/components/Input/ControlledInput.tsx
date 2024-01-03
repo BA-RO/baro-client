@@ -19,6 +19,7 @@ interface ControlledInputProps extends HTMLAttributes<HTMLTextAreaElement> {
   maxLength?: number;
   alertType?: AlertType;
   alertMsg?: string;
+  showPostFix?: boolean;
 }
 
 const ControlledInput = ({
@@ -28,6 +29,7 @@ const ControlledInput = ({
   maxLength = MAIN_INPUT_MAX_LENGTH,
   alertType,
   alertMsg,
+  showPostFix = false,
 }: ControlledInputProps) => {
   const { id, value } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
@@ -44,6 +46,13 @@ const ControlledInput = ({
     [],
   );
 
+  const submitButton = useMemo(() => {
+    if (value.length > 0) {
+      return '/icons/submit-active.svg';
+    }
+    return '/icons/submit.svg';
+  }, [value.length]);
+
   useEffect(() => {
     if (inputRef.current) {
       setHeight(inputRef.current.scrollHeight);
@@ -51,16 +60,33 @@ const ControlledInput = ({
   }, [height, value]);
 
   return (
-    <label htmlFor={id}>
-      <textarea
-        {...inputProps}
-        ref={inputRef}
-        style={assignInlineVars({ [inputHeight]: `${height}px` })}
-        className={style.input({ type, error: alertType === 'error' })}
-        placeholder={placeholder}
-        maxLength={maxLength}
-      />
-
+    <div>
+      <div className={style.label({ type, error: alertType === 'error' })}>
+        <label htmlFor={id}>
+          <textarea
+            {...inputProps}
+            ref={inputRef}
+            style={assignInlineVars({ [inputHeight]: `${height}px` })}
+            className={style.input()}
+            placeholder={placeholder}
+            maxLength={maxLength}
+          />
+        </label>
+        {showPostFix && (
+          <div className={style.submit()}>
+            <span>{'0 / 1,000자'}</span>
+            <button disabled={value.length < 1}>
+              {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
+              <Image
+                src={submitButton}
+                alt={'제출 버튼'}
+                width={27}
+                height={27}
+              />
+            </button>
+          </div>
+        )}
+      </div>
       {alertMsg && (
         <div className={style.alert()}>
           {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
@@ -75,7 +101,7 @@ const ControlledInput = ({
           <p className={style.alertMsg()}>{alertMsg}</p>
         </div>
       )}
-    </label>
+    </div>
   );
 };
 

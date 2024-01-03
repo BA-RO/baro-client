@@ -5,21 +5,15 @@ import { COLORS } from '@/src/styles/tokens';
 
 export const inputHeight = createVar();
 
-export const input = recipe({
+export const label = recipe({
   base: [
     {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
       borderRadius: '8px',
-      resize: 'none',
       width: '100%',
-      minHeight: '54px',
       padding: '12px 16px',
-      height: inputHeight,
-      color: COLORS['Grey/900'],
-      fontSize: '17px',
-      lineHeight: '27px',
-      '::placeholder': {
-        color: COLORS['Grey/250'],
-      },
     },
   ],
   variants: {
@@ -35,6 +29,23 @@ export const input = recipe({
       },
     },
   },
+});
+
+export const input = recipe({
+  base: [
+    {
+      width: 'auto',
+      minHeight: '54px',
+      height: inputHeight,
+      resize: 'none',
+      color: COLORS['Grey/900'],
+      fontSize: '17px',
+      lineHeight: '27px',
+      '::placeholder': {
+        color: COLORS['Grey/250'],
+      },
+    },
+  ],
 });
 
 export const alert = recipe({
@@ -55,6 +66,16 @@ export const alertMsg = recipe({
       fontSize: '13px',
       fontWeight: '600',
       lineHeight: '17px',
+    },
+  ],
+});
+
+export const submit = recipe({
+  base: [
+    {
+      display: 'flex',
+      alignItems: 'center',
+      paddingLeft: '20px',
     },
   ],
 });

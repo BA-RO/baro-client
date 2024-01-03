@@ -16,6 +16,7 @@ const HomePage: NextPage = () => {
       placeholder="메모를 끄적여보세요"
       alertType={'error'}
       alertMsg="에러 메시지"
+      showPostFix
     />
   );
 };
