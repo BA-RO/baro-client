@@ -137,6 +137,12 @@ export const TYPOGRAPHY = {
     lineHeight: '14px',
     letterSpacing: '0px',
   },
+  '11/Caption/Regular': {
+    fontSize: '11px',
+    fontWeight: FONT_WEIGHT.regular,
+    lineHeight: '14px',
+    letterSpacing: '-0.3px',
+  },
 };
 
 export const COLORS = {
