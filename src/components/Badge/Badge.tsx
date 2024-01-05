@@ -1,7 +1,8 @@
+import type { PropsWithChildren } from 'react';
+
 import * as styles from './style.css';
 
 interface BadgeProps {
-  text: string;
   color:
     | 'blue'
     | 'green'
@@ -13,8 +14,8 @@ interface BadgeProps {
     | 'black';
 }
 
-const Badge = ({ text, color }: BadgeProps) => {
-  return <span className={styles.badge({ color })}>{text}</span>;
+const Badge = ({ children, color }: PropsWithChildren<BadgeProps>) => {
+  return <span className={styles.badge({ color })}>{children}</span>;
 };
 
 export default Badge;
