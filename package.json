@@ -16,6 +16,7 @@
     "template": "plop"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.8.4",
     "@vanilla-extract/css": "^1.14.0",
     "@vanilla-extract/dynamic": "^2.1.0",
