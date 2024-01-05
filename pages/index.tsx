@@ -1,7 +1,7 @@
-import SvgIcon from '@/src/components/SvgIcon';
+import Icon from '@/src/components/SvgIcon';
 
 const HomePage = () => {
-  return <SvgIcon icon={'profile'} width={24} height={24} />;
+  return <Icon icon={'profile'} width={24} height={24} />;
 };
 
 export default HomePage;

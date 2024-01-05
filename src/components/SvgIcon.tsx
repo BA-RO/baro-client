@@ -1,27 +1,25 @@
 import type { FC, SVGProps } from 'react';
 
-import { Icon } from '../constants/icon';
+import { Icon as icon } from '../constants/icon';
 
-interface SvgIconProps {
-  icon: keyof typeof Icon;
+interface IconProps {
+  icon: keyof typeof icon;
   fill?: string;
   stroke?: string;
   width?: number;
   height?: number;
 }
 
-const SvgIcon = ({
+const Icon = ({
   icon: iconKey,
   fill,
   stroke,
   width = 24,
   height = 24,
-}: SvgIconProps) => {
-  const SelectedIcon = Icon[iconKey] as FC<SVGProps<SVGSVGElement>>;
+}: IconProps) => {
+  const SvgIcon = icon[iconKey] as FC<SVGProps<SVGSVGElement>>;
 
-  return (
-    <SelectedIcon fill={fill} stroke={stroke} width={width} height={height} />
-  );
+  return <SvgIcon fill={fill} stroke={stroke} width={width} height={height} />;
 };
 
-export default SvgIcon;
+export default Icon;
