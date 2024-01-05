@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { HTMLAttributes } from 'react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import { MAIN_INPUT_MAX_LENGTH } from '@/src/constants/config';
@@ -60,33 +60,44 @@ const ControlledInput = ({
   }, [height, value]);
 
   return (
-    <div>
-      <div className={style.label({ type, error: alertType === 'error' })}>
-        <label htmlFor={id}>
-          <textarea
-            {...inputProps}
-            ref={inputRef}
-            style={assignInlineVars({ [inputHeight]: `${height}px` })}
-            className={style.input()}
-            placeholder={placeholder}
-            maxLength={maxLength}
-          />
-        </label>
-        {showPostFix && (
-          <div className={style.submit()}>
-            <span>{'0 / 1,000자'}</span>
-            <button disabled={value.length < 1}>
-              {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
-              <Image
-                src={submitButton}
-                alt={'제출 버튼'}
-                width={27}
-                height={27}
-              />
-            </button>
-          </div>
-        )}
+    <Fragment>
+      <div className={style.conatiner({ type, error: alertType === 'error' })}>
+        <div
+          className={style.contentWrapper}
+          style={assignInlineVars({ [inputHeight]: `${height}px` })}
+        >
+          <label htmlFor={id} className={style.label}>
+            <textarea
+              {...inputProps}
+              ref={inputRef}
+              style={assignInlineVars({ [inputHeight]: `${height}px` })}
+              className={style.input()}
+              placeholder={placeholder}
+              maxLength={maxLength}
+            />
+          </label>
+
+          {showPostFix && (
+            <div className={style.submitWrapper}>
+              <div className={style.submit}>
+                <span className={style.textCount}>
+                  <span className={style.currentTextCount}>500</span> / 500자
+                </span>
+                <button disabled={value.length < 1}>
+                  {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
+                  <Image
+                    src={submitButton}
+                    alt={'제출 버튼'}
+                    width={48}
+                    height={48}
+                  />
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
+
       {alertMsg && (
         <div className={style.alert()}>
           {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
@@ -101,7 +112,7 @@ const ControlledInput = ({
           <p className={style.alertMsg()}>{alertMsg}</p>
         </div>
       )}
-    </div>
+    </Fragment>
   );
 };
 

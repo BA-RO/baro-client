@@ -1,19 +1,18 @@
-import { createVar } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { COLORS } from '@/src/styles/tokens';
 
 export const inputHeight = createVar();
 
-export const label = recipe({
+export const conatiner = recipe({
   base: [
     {
-      position: 'relative',
       display: 'flex',
-      alignItems: 'center',
-      borderRadius: '8px',
+      justifyContent: 'space-between',
+      borderRadius: '16px',
       width: '100%',
-      padding: '12px 16px',
+      padding: '22px 12px 22px 24px',
     },
   ],
   variants: {
@@ -31,11 +30,21 @@ export const label = recipe({
   },
 });
 
+export const contentWrapper = style({
+  display: 'flex',
+  alignItems: 'center',
+  width: '100%',
+  height: inputHeight,
+});
+
+export const label = style({
+  width: '100%',
+});
+
 export const input = recipe({
   base: [
     {
-      width: 'auto',
-      minHeight: '54px',
+      width: '100%',
       height: inputHeight,
       resize: 'none',
       color: COLORS['Grey/900'],
@@ -70,12 +79,29 @@ export const alertMsg = recipe({
   ],
 });
 
-export const submit = recipe({
-  base: [
-    {
-      display: 'flex',
-      alignItems: 'center',
-      paddingLeft: '20px',
-    },
-  ],
+export const submitWrapper = style({
+  display: 'flex',
+  alignItems: 'flex-end',
+  paddingLeft: '20px',
+  height: '100%',
+});
+
+export const submit = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '16px',
+  height: '48px',
+});
+
+export const textCount = style({
+  color: COLORS['Grey/400'],
+  fontSize: '14px',
+  fontWeight: '400',
+  whiteSpace: 'nowrap',
+});
+
+export const currentTextCount = style({
+  color: COLORS['Blue/Default'],
+  fontSize: '14px',
+  fontWeight: '700',
 });
