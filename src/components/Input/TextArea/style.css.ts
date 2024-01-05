@@ -3,8 +3,6 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { COLORS } from '@/src/styles/tokens';
 
-export const inputHeight = createVar();
-
 export const conatiner = recipe({
   base: [
     {
@@ -18,9 +16,6 @@ export const conatiner = recipe({
   variants: {
     type: {
       primary: { border: `2px solid ${COLORS['Blue/Gradient']}` },
-      secondary: {
-        backgroundColor: COLORS['Grey/100'],
-      },
     },
     error: {
       true: {
@@ -30,60 +25,48 @@ export const conatiner = recipe({
   },
 });
 
+export const inputHeight = createVar();
 export const contentWrapper = style({
   display: 'flex',
   alignItems: 'center',
   width: '100%',
   height: inputHeight,
+  maxHeight: '260px',
 });
 
 export const label = style({
   width: '100%',
 });
 
-export const input = recipe({
-  base: [
-    {
-      width: '100%',
-      height: inputHeight,
-      resize: 'none',
-      color: COLORS['Grey/900'],
-      fontSize: '17px',
-      lineHeight: '27px',
-      '::placeholder': {
-        color: COLORS['Grey/250'],
-      },
-    },
-  ],
+export const input = style({
+  padding: '0',
+  width: '100%',
+  height: inputHeight,
+  maxHeight: '216px',
+  resize: 'none',
+  color: COLORS['Grey/900'],
+  fontSize: '17px',
+  lineHeight: '27px',
+  '::placeholder': {
+    color: COLORS['Grey/250'],
+  },
 });
 
-export const alert = recipe({
+export const submitWrapper = recipe({
   base: [
     {
       display: 'flex',
-      alignItems: 'center',
-      marginTop: '12px',
+      alignItems: 'flex-end',
+      paddingLeft: '20px',
     },
   ],
-});
-
-export const alertMsg = recipe({
-  base: [
-    {
-      marginLeft: '6px',
-      color: COLORS['Grey/600'],
-      fontSize: '13px',
-      fontWeight: '600',
-      lineHeight: '17px',
+  variants: {
+    hasValue: {
+      true: {
+        height: '100%',
+      },
     },
-  ],
-});
-
-export const submitWrapper = style({
-  display: 'flex',
-  alignItems: 'flex-end',
-  paddingLeft: '20px',
-  height: '100%',
+  },
 });
 
 export const submit = style({
@@ -104,4 +87,18 @@ export const currentTextCount = style({
   color: COLORS['Blue/Default'],
   fontSize: '14px',
   fontWeight: '700',
+});
+
+export const alert = style({
+  display: 'flex',
+  alignItems: 'center',
+  marginTop: '12px',
+});
+
+export const alertMsg = style({
+  marginLeft: '6px',
+  color: COLORS['Grey/600'],
+  fontSize: '13px',
+  fontWeight: '600',
+  lineHeight: '17px',
 });

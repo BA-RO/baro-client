@@ -9,11 +9,9 @@ import type { UseInputReturn } from '@/src/hooks/useInput';
 import * as style from './style.css';
 import { inputHeight } from './style.css';
 
-type InputType = 'primary' | 'secondary';
 type AlertType = 'error' | 'warn';
 
-interface ControlledInputProps extends HTMLAttributes<HTMLTextAreaElement> {
-  type: InputType;
+interface TextAreaProps extends HTMLAttributes<HTMLTextAreaElement> {
   inputProps: UseInputReturn;
   placeholder?: string;
   maxLength?: number;
@@ -22,18 +20,17 @@ interface ControlledInputProps extends HTMLAttributes<HTMLTextAreaElement> {
   showPostFix?: boolean;
 }
 
-const ControlledInput = ({
-  type,
+const TextArea = ({
   inputProps,
   placeholder,
   maxLength = MAIN_INPUT_MAX_LENGTH,
   alertType,
   alertMsg,
   showPostFix = false,
-}: ControlledInputProps) => {
+}: TextAreaProps) => {
   const { id, value } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState(27);
 
   const alertIconUrl = useMemo(
     () => (type: AlertType) => {
@@ -57,11 +54,16 @@ const ControlledInput = ({
     if (inputRef.current) {
       setHeight(inputRef.current.scrollHeight);
     }
+
+    // TODO: scroll height로 높이를 줄이기 때문에 이미 스크롤된 값에 대해 인지하는 방법을 확인해야 함. @원진
+    if (value.length === 0) {
+      setHeight(27);
+    }
   }, [height, value]);
 
   return (
     <Fragment>
-      <div className={style.conatiner({ type, error: alertType === 'error' })}>
+      <div className={style.conatiner({ error: alertType === 'error' })}>
         <div
           className={style.contentWrapper}
           style={assignInlineVars({ [inputHeight]: `${height}px` })}
@@ -71,17 +73,18 @@ const ControlledInput = ({
               {...inputProps}
               ref={inputRef}
               style={assignInlineVars({ [inputHeight]: `${height}px` })}
-              className={style.input()}
+              className={style.input}
               placeholder={placeholder}
               maxLength={maxLength}
             />
           </label>
 
           {showPostFix && (
-            <div className={style.submitWrapper}>
+            <div className={style.submitWrapper({ hasValue: height > 27 })}>
               <div className={style.submit}>
                 <span className={style.textCount}>
-                  <span className={style.currentTextCount}>500</span> / 500자
+                  <span className={style.currentTextCount}>{value.length}</span>
+                  &nbsp;/&nbsp;500자
                 </span>
                 <button disabled={value.length < 1}>
                   {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
@@ -99,7 +102,7 @@ const ControlledInput = ({
       </div>
 
       {alertMsg && (
-        <div className={style.alert()}>
+        <div className={style.alert}>
           {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
           {alertType && (
             <Image
@@ -109,11 +112,11 @@ const ControlledInput = ({
               height={20}
             />
           )}
-          <p className={style.alertMsg()}>{alertMsg}</p>
+          <p className={style.alertMsg}>{alertMsg}</p>
         </div>
       )}
     </Fragment>
   );
 };
 
-export default ControlledInput;
+export default TextArea;

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 
-import ControlledInput from '@/src/components/Input/ControlledInput';
+import TextArea from '@/src/components/Input/TextArea/TextArea';
 import { useInput } from '@/src/hooks/useInput';
 
 const HomePage: NextPage = () => {
@@ -10,8 +10,7 @@ const HomePage: NextPage = () => {
   });
 
   return (
-    <ControlledInput
-      type={'primary'}
+    <TextArea
       inputProps={testInputProps}
       placeholder="메모를 끄적여보세요"
       alertType={'error'}
