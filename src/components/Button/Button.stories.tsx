@@ -18,6 +18,13 @@ export const MiddleDefault: Story = {
     state: 'default',
     onClick: () => {},
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'M size, Default state Button',
+      },
+    },
+  },
 };
 
 export const MiddleDisabled: Story = {
@@ -26,6 +33,13 @@ export const MiddleDisabled: Story = {
     size: 'M',
     state: 'disabled',
     onClick: () => {},
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'M size, Disabled state Button',
+      },
+    },
   },
 };
 
@@ -36,6 +50,13 @@ export const MiddleEnabled: Story = {
     state: 'enabled',
     onClick: () => {},
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'M size, Enabled state Button',
+      },
+    },
+  },
 };
 
 export const LargeDefault: Story = {
@@ -44,6 +65,13 @@ export const LargeDefault: Story = {
     size: 'L',
     state: 'default',
     onClick: () => {},
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'L size, Default state Button',
+      },
+    },
   },
 };
 
@@ -54,6 +82,13 @@ export const LargeDisabled: Story = {
     state: 'disabled',
     onClick: () => {},
   },
+  parameters: {
+    docs: {
+      description: {
+        story: 'L size, Disabled state Button',
+      },
+    },
+  },
 };
 
 export const LargeEnabled: Story = {
@@ -62,5 +97,12 @@ export const LargeEnabled: Story = {
     size: 'L',
     state: 'enabled',
     onClick: () => {},
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'L size, Enabled state Button',
+      },
+    },
   },
 };
