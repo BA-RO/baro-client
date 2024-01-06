@@ -3,26 +3,13 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { COLORS } from '@/src/styles/tokens';
 
-export const conatiner = recipe({
-  base: [
-    {
-      display: 'flex',
-      justifyContent: 'space-between',
-      borderRadius: '16px',
-      width: '100%',
-      padding: '22px 12px 22px 24px',
-    },
-  ],
-  variants: {
-    type: {
-      primary: { border: `2px solid ${COLORS['Blue/Gradient']}` },
-    },
-    error: {
-      true: {
-        border: `1.5px solid ${COLORS['Red']}`,
-      },
-    },
-  },
+export const conatiner = style({
+  display: 'flex',
+  justifyContent: 'space-between',
+  borderRadius: '16px',
+  width: '100%',
+  padding: '22px 12px 22px 24px',
+  border: `2px solid ${COLORS['Blue/Gradient']}`,
 });
 
 export const inputHeight = createVar();

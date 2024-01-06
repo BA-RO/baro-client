@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 
-import TextArea from '@/src/components/Input/TextArea/TextArea';
+import WriteInput from '@/src/components/Input/WriteInput';
 import { useInput } from '@/src/hooks/useInput';
 
 const HomePage: NextPage = () => {
@@ -10,13 +10,7 @@ const HomePage: NextPage = () => {
   });
 
   return (
-    <TextArea
-      inputProps={testInputProps}
-      placeholder="메모를 끄적여보세요"
-      alertType={'error'}
-      alertMsg="에러 메시지"
-      showPostFix
-    />
+    <WriteInput inputProps={testInputProps} placeholder="메모를 끄적여보세요" />
   );
 };
 
