@@ -8,7 +8,6 @@ import { COLORS } from '@/src/styles/tokens';
 
 import Icon from '../../SvgIcon';
 import * as style from './style.css';
-import { inputHeight } from './style.css';
 
 interface WriteInputProps extends HTMLAttributes<HTMLTextAreaElement> {
   inputProps: UseInputReturn;
@@ -69,7 +68,7 @@ const WriteInput = ({
       <div
         className={style.contentWrapper}
         style={assignInlineVars({
-          [inputHeight]: `${textareaHeight.row * 27}px`,
+          [style.inputHeight]: `${textareaHeight.row * 27}px`,
         })}
       >
         <label htmlFor={id} className={style.label}>
