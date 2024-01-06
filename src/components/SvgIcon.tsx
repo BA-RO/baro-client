@@ -1,23 +1,17 @@
-import { Icon as icon } from '../constants/icon';
+import type { Icons } from '../constants/icon';
+import { iconFactory } from '../constants/icon';
 
 interface IconProps {
-  icon: keyof typeof icon;
+  icon: Icons;
   fill?: string;
-  stroke?: string;
   width?: number;
   height?: number;
 }
 
-const Icon = ({
-  icon: iconKey,
-  fill,
-  stroke,
-  width = 24,
-  height = 24,
-}: IconProps) => {
-  const SvgIcon = icon[iconKey];
+const Icon = ({ icon, fill, width = 24, height = 24 }: IconProps) => {
+  const SvgIcon = iconFactory[icon];
 
-  return <SvgIcon fill={fill} stroke={stroke} width={width} height={height} />;
+  return <SvgIcon fill={fill} width={width} height={height} />;
 };
 
 export default Icon;

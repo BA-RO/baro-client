@@ -1,11 +1,12 @@
-import Image from 'next/image';
 import type { HTMLAttributes } from 'react';
 import { useMemo, useRef, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import { MAIN_INPUT_MAX_LENGTH } from '@/src/constants/config';
 import type { UseInputReturn } from '@/src/hooks/useInput';
+import { COLORS } from '@/src/styles/tokens';
 
+import Icon from '../../SvgIcon';
 import * as style from './style.css';
 import { inputHeight } from './style.css';
 
@@ -63,12 +64,7 @@ const WriteInput = ({
     }
   };
 
-  const submitButton = useMemo(() => {
-    if (value.length > 0) {
-      return '/icons/submit-active.svg';
-    }
-    return '/icons/submit.svg';
-  }, [value.length]);
+  const isValid = useMemo(() => value.length > 0, [value.length]);
 
   return (
     <div className={style.conatiner}>
@@ -104,12 +100,12 @@ const WriteInput = ({
                 &nbsp;/&nbsp;500자
               </span>
             )}
-            <button disabled={value.length < 1}>
-              <Image
-                src={submitButton}
-                alt={'제출 버튼'}
+            <button disabled={!isValid}>
+              <Icon
+                icon={'submit'}
                 width={48}
                 height={48}
+                fill={isValid ? COLORS['Blue/Default'] : undefined}
               />
             </button>
           </div>
