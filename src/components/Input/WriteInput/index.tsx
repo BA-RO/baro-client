@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { ChangeEvent, HTMLAttributes, KeyboardEvent } from 'react';
 import { useMemo, useRef, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
@@ -28,7 +28,7 @@ const WriteInput = ({
     lineBreak: {},
   });
 
-  const handleResize = (e) => {
+  const handleResize = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { scrollHeight, clientHeight, value } = e.target;
 
     if (value.length === 0) {
@@ -38,7 +38,6 @@ const WriteInput = ({
       }));
     }
 
-    // 줄바꿈이 일어날 때
     if (scrollHeight > clientHeight) {
       setTextareaHeight((prev) => ({
         row: prev.row + 1,
@@ -46,7 +45,6 @@ const WriteInput = ({
       }));
     }
 
-    // 텍스트 지워서 줄바꿈 지점에 도달했을 때
     if (textareaHeight.lineBreak[value.length]) {
       setTextareaHeight((prev) => ({
         row: prev.row - 1,
@@ -55,11 +53,11 @@ const WriteInput = ({
     }
   };
 
-  const onKeyEnter = (e) => {
+  const onKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.code === 'Enter') {
       setTextareaHeight((prev) => ({
         row: prev.row + 1,
-        lineBreak: { ...prev.lineBreak, [e.target.value.length]: true },
+        lineBreak: { ...prev.lineBreak, [value.length]: true },
       }));
     }
   };
@@ -84,7 +82,7 @@ const WriteInput = ({
             placeholder={placeholder}
             maxLength={maxLength}
             onInput={handleResize}
-            onKeyDown={onKeyEnter}
+            onKeyDown={onKeydownEnter}
           />
         </label>
 
@@ -102,10 +100,10 @@ const WriteInput = ({
             )}
             <button disabled={!isValid}>
               <Icon
-                icon={'submit'}
+                icon="submit"
                 width={48}
                 height={48}
-                fill={isValid ? COLORS['Blue/Default'] : undefined}
+                color={isValid ? COLORS['Blue/Default'] : undefined}
               />
             </button>
           </div>
