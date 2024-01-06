@@ -31,6 +31,7 @@ export const contentWrapper = style({
   alignItems: 'center',
   width: '100%',
   height: inputHeight,
+  minHeight: '27px',
   maxHeight: '260px',
 });
 
@@ -41,12 +42,12 @@ export const label = style({
 export const input = style({
   padding: '0',
   width: '100%',
-  height: inputHeight,
   maxHeight: '216px',
   resize: 'none',
   color: COLORS['Grey/900'],
   fontSize: '17px',
   lineHeight: '27px',
+  overflowWrap: 'break-word',
   '::placeholder': {
     color: COLORS['Grey/250'],
   },
@@ -61,7 +62,7 @@ export const submitWrapper = recipe({
     },
   ],
   variants: {
-    hasValue: {
+    multirow: {
       true: {
         height: '100%',
       },

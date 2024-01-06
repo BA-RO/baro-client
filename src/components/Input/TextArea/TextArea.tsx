@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { HTMLAttributes } from 'react';
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useMemo, useRef, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import { MAIN_INPUT_MAX_LENGTH } from '@/src/constants/config';
@@ -30,7 +30,46 @@ const TextArea = ({
 }: TextAreaProps) => {
   const { id, value } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
-  const [height, setHeight] = useState(27);
+  const [textareaHeight, setTextareaHeight] = useState({
+    row: 1,
+    lineBreak: {},
+  });
+
+  const resizeTextarea = (e) => {
+    const { scrollHeight, clientHeight, value } = e.target;
+
+    if (value.length === 0) {
+      setTextareaHeight((prev) => ({
+        row: 1,
+        lineBreak: { ...prev.lineBreak, [e.target.value.length]: false },
+      }));
+    }
+
+    // 줄바꿈이 일어날 때
+    if (scrollHeight > clientHeight) {
+      setTextareaHeight((prev) => ({
+        row: prev.row + 1,
+        lineBreak: { ...prev.lineBreak, [value.length - 1]: true },
+      }));
+    }
+
+    // 텍스트 지워서 줄바꿈 지점에 도달했을 때
+    if (textareaHeight.lineBreak[value.length]) {
+      setTextareaHeight((prev) => ({
+        row: prev.row - 1,
+        lineBreak: { ...prev.lineBreak, [value.length]: false },
+      }));
+    }
+  };
+
+  const onKeyEnter = (e) => {
+    if (e.code === 'Enter') {
+      setTextareaHeight((prev) => ({
+        row: prev.row + 1,
+        lineBreak: { ...prev.lineBreak, [e.target.value.length]: true },
+      }));
+    }
+  };
 
   const alertIconUrl = useMemo(
     () => (type: AlertType) => {
@@ -50,44 +89,41 @@ const TextArea = ({
     return '/icons/submit.svg';
   }, [value.length]);
 
-  useEffect(() => {
-    if (inputRef.current) {
-      setHeight(inputRef.current.scrollHeight);
-    }
-
-    // TODO: scroll height로 높이를 줄이기 때문에 이미 스크롤된 값에 대해 인지하는 방법을 확인해야 함. @원진
-    if (value.length === 0) {
-      setHeight(27);
-    }
-  }, [height, value]);
-
   return (
     <Fragment>
       <div className={style.conatiner({ error: alertType === 'error' })}>
         <div
           className={style.contentWrapper}
-          style={assignInlineVars({ [inputHeight]: `${height}px` })}
+          style={assignInlineVars({
+            [inputHeight]: `${textareaHeight.row * 27}px`,
+          })}
         >
           <label htmlFor={id} className={style.label}>
             <textarea
               {...inputProps}
               ref={inputRef}
-              style={assignInlineVars({ [inputHeight]: `${height}px` })}
+              autoComplete="off"
+              rows={textareaHeight.row}
               className={style.input}
               placeholder={placeholder}
               maxLength={maxLength}
+              onInput={resizeTextarea}
+              onKeyDown={onKeyEnter}
             />
           </label>
 
           {showPostFix && (
-            <div className={style.submitWrapper({ hasValue: height > 27 })}>
+            <div
+              className={style.submitWrapper({
+                multirow: textareaHeight.row > 1,
+              })}
+            >
               <div className={style.submit}>
                 <span className={style.textCount}>
                   <span className={style.currentTextCount}>{value.length}</span>
                   &nbsp;/&nbsp;500자
                 </span>
                 <button disabled={value.length < 1}>
-                  {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
                   <Image
                     src={submitButton}
                     alt={'제출 버튼'}
@@ -103,7 +139,6 @@ const TextArea = ({
 
       {alertMsg && (
         <div className={style.alert}>
-          {/* TODO: Svg 공용 아이콘 제작 후 변경 @원진 */}
           {alertType && (
             <Image
               src={alertIconUrl(alertType)}
