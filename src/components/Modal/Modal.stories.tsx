@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ModalContainer from './ModalContainer';
+import { useModalStore } from '@/src/stores/modalStore';
 
-const meta: Meta<typeof ModalContainer> = {
+import Modal from '.';
+
+const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
-  component: ModalContainer,
+  component: Modal,
   decorators: [
     (Story) => (
       <div style={{ height: '500px' }}>
@@ -16,8 +18,14 @@ const meta: Meta<typeof ModalContainer> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ModalContainer>;
+type Story = StoryObj<typeof Modal>;
 
-export const Second: Story = {
-  args: { title: '제목', children: '설명' },
+export const DeleteArticle: Story = {
+  render: function Render() {
+    const { openModal } = useModalStore();
+
+    openModal('deleteArticle');
+
+    return <Modal />;
+  },
 };
