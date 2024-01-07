@@ -5,6 +5,9 @@ import Button from '.';
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+  parameters: {
+    componentSubtitle: 'Action이나 Event를 Trigger하는 컴포넌트',
+  },
 };
 
 export default meta;
