@@ -2,10 +2,10 @@ import { createStore } from 'zustand';
 import { shallow } from 'zustand/shallow';
 import { useStoreWithEqualityFn as useStore } from 'zustand/traditional';
 
-type ModalType = 'no' | 'deleteArticle';
+type ModalType = 'deleteArticle';
 
 interface State {
-  type: ModalType;
+  type: ModalType | null;
 }
 
 interface Action {
@@ -14,18 +14,10 @@ interface Action {
 }
 
 export const modalStore = createStore<State & Action>((set) => ({
-  type: 'no',
+  type: null,
   openModal: (type) => set({ type }),
-  closeModal: () => set({ type: 'no' }),
+  closeModal: () => set({ type: null }),
 }));
 
 export const useModalStore = () =>
-  useStore(
-    modalStore,
-    (state) => ({
-      type: state.type,
-      openModal: state.openModal,
-      closeModal: state.closeModal,
-    }),
-    shallow,
-  );
+  useStore(modalStore, (state) => state, shallow);

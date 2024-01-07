@@ -40,12 +40,4 @@ export const toastStore = createStore<State & Action>((set, get) => ({
 }));
 
 export const useToastStore = () =>
-  useStore(
-    toastStore,
-    (state) => ({
-      toastData: state.toastData,
-      showToast: state.showToast,
-      hideToast: state.hideToast,
-    }),
-    shallow,
-  );
+  useStore(toastStore, (state) => state, shallow);
