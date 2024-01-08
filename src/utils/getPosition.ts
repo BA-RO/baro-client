@@ -1,17 +1,24 @@
-import type { Placement } from '../components/Tooltip/Tooltip';
+import type { TooltipShape } from '../components/Tooltip/Tooltip';
+
+const TOOLTIP_MARGIN = {
+  MINIMAL: 8,
+  HIGHLIGHT: 32,
+};
 
 export const getPosition = (
   triggerElement: HTMLDivElement,
-  placement: Placement,
+  hasArrow: TooltipShape['hasArrow'],
+  placement: TooltipShape['placement'],
 ) => {
   const { x, y, width, height } = triggerElement.getBoundingClientRect();
   const { scrollX, scrollY } = window;
 
+  const margin = hasArrow ? TOOLTIP_MARGIN.HIGHLIGHT : TOOLTIP_MARGIN.MINIMAL;
   const left = x + scrollX + width / 2;
 
   switch (placement) {
     case 'top':
-      return { top: y + scrollY - height, left };
+      return { top: y + scrollY - height - margin, left };
     case 'bottom':
       return { top: y + scrollY + height, left };
     default:

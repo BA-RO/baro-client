@@ -35,7 +35,6 @@ export const content = recipe({
         padding: '8px 12px',
       },
       true: {
-        marginTop: '6px',
         padding: '16px',
 
         '::before': {
@@ -43,13 +42,29 @@ export const content = recipe({
           width: 0,
           height: 0,
           position: 'absolute',
-          top: '-12px',
           left: '50%',
           transform: 'translateX(-50%)',
           border: `6px solid ${COLORS['Grey/White']}`,
-          borderBottomColor: COLORS['Dim/70'],
         },
       },
     },
+  },
+});
+
+export const topArrow = style({
+  marginTop: '6px',
+
+  '::before': {
+    top: '-12px',
+    borderBottomColor: COLORS['Dim/70'],
+  },
+});
+
+export const bottomArrow = style({
+  marginBottom: '6px',
+
+  '::before': {
+    bottom: '-12px',
+    borderTopColor: COLORS['Dim/70'],
   },
 });

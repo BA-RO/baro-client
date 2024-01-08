@@ -7,22 +7,21 @@ import TooltipContent from './TooltipContent';
 import TooltipTrigger from './TooltipTrigger';
 
 const INIT_POSITION = { top: 0, left: 0 };
-const MINIMAL_TOOLTIP_PADDING = 8;
 
-export type Placement = 'top' | 'bottom';
+export interface TooltipShape {
+  hasArrow?: boolean;
+  placement?: 'top' | 'bottom';
+}
 
-interface TooltipContextProps {
+interface TooltipContextProps extends TooltipShape {
   tooltipRef: Ref<HTMLDivElement>;
   isVisible: boolean;
-  hasArrow?: boolean;
-  placement?: Placement;
   position: typeof INIT_POSITION;
   onOpenTooltip: () => void;
   onCloseTooltip: () => void;
 }
 
-interface TooltipProps
-  extends Pick<TooltipContextProps, 'hasArrow' | 'placement'> {}
+interface TooltipProps extends TooltipShape {}
 
 export const TooltipContext = createContext<TooltipContextProps | null>(null);
 
@@ -41,16 +40,9 @@ const TooltipRoot = ({
       return;
     }
 
-    const { top, left } = getPosition(tooltipRef.current, placement);
+    const { top, left } = getPosition(tooltipRef.current, hasArrow, placement);
 
-    if (!hasArrow && placement === 'top') {
-      setPosition({
-        top: top - MINIMAL_TOOLTIP_PADDING,
-        left,
-      });
-    } else {
-      setPosition({ top, left });
-    }
+    setPosition({ top, left });
   }, [isVisible, hasArrow, placement]);
 
   const handleTooltipOpen = () => {
@@ -67,6 +59,7 @@ const TooltipRoot = ({
         tooltipRef,
         isVisible,
         hasArrow,
+        placement,
         position,
         onOpenTooltip: handleTooltipOpen,
         onCloseTooltip: handleTooltipClose,

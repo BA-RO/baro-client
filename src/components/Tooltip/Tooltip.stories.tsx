@@ -70,13 +70,11 @@ export const Minimal: Story = {
   },
   args: {
     children: 'Minimal',
+    hasArrow: false,
     placement: 'bottom',
   },
-  argTypes: {
-    hasArrow: { control: false },
-  },
   render: (args) => (
-    <Tooltip placement={args.placement}>
+    <Tooltip hasArrow={args.hasArrow} placement={args.placement}>
       <Tooltip.Trigger>
         <div>{args.children}</div>
       </Tooltip.Trigger>
@@ -96,12 +94,10 @@ export const Highlight: Story = {
   args: {
     children: 'Highlight',
     hasArrow: true,
-  },
-  argTypes: {
-    placement: { control: false },
+    placement: 'bottom',
   },
   render: (args) => (
-    <Tooltip hasArrow={args.hasArrow}>
+    <Tooltip hasArrow={args.hasArrow} placement={args.placement}>
       <Tooltip.Trigger>
         <div>{args.children}</div>
       </Tooltip.Trigger>
