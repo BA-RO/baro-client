@@ -26,8 +26,9 @@ const meta: Meta<typeof Tooltip> = {
         style={{
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           gap: '200px',
-          padding: '60px 0',
+          height: '550px',
         }}
       >
         <Story />
@@ -60,12 +61,22 @@ export const Basic: Story = {
 };
 
 export const Minimal: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Hover시 Trigger 요소의 상위와 하위에 노출됩니다.',
+      },
+    },
+  },
   args: {
     children: 'Minimal',
-    hasArrow: false,
+    placement: 'bottom',
+  },
+  argTypes: {
+    hasArrow: { control: false },
   },
   render: (args) => (
-    <Tooltip hasArrow={args.hasArrow}>
+    <Tooltip hasArrow={false} placement={args.placement}>
       <Tooltip.Trigger>
         <div>{args.children}</div>
       </Tooltip.Trigger>
@@ -75,12 +86,22 @@ export const Minimal: Story = {
 };
 
 export const Highlight: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Hover시 Trigger 요소의 하위에 노출됩니다.',
+      },
+    },
+  },
   args: {
     children: 'Highlight',
     hasArrow: true,
   },
+  argTypes: {
+    placement: { control: false },
+  },
   render: (args) => (
-    <Tooltip hasArrow={args.hasArrow}>
+    <Tooltip hasArrow={args.hasArrow} placement="bottom">
       <Tooltip.Trigger>
         <div>{args.children}</div>
       </Tooltip.Trigger>
