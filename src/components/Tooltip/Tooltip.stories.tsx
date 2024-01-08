@@ -76,7 +76,7 @@ export const Minimal: Story = {
     hasArrow: { control: false },
   },
   render: (args) => (
-    <Tooltip hasArrow={false} placement={args.placement}>
+    <Tooltip placement={args.placement}>
       <Tooltip.Trigger>
         <div>{args.children}</div>
       </Tooltip.Trigger>
@@ -101,7 +101,7 @@ export const Highlight: Story = {
     placement: { control: false },
   },
   render: (args) => (
-    <Tooltip hasArrow={args.hasArrow} placement="bottom">
+    <Tooltip hasArrow={args.hasArrow}>
       <Tooltip.Trigger>
         <div>{args.children}</div>
       </Tooltip.Trigger>
