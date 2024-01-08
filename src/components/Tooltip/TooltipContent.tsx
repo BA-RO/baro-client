@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from 'react';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import { useTooltipContext } from '@/src/hooks/useTooltipContext';
 
@@ -14,7 +15,10 @@ const TooltipContent = ({ children }: PropsWithChildren) => {
         <TooltipPortal>
           <div
             className={styles.content({ hasArrow })}
-            style={{ top: position.top, left: position.left }}
+            style={assignInlineVars({
+              [styles.top]: `${position.top}px`,
+              [styles.left]: `${position.left}px`,
+            })}
           >
             {children}
           </div>

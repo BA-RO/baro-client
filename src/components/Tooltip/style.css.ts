@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@/src/styles/sprinkles.css';
@@ -6,17 +6,25 @@ import { COLORS, Z_INDEX } from '@/src/styles/tokens';
 
 export const trigger = style({
   width: 'fit-content',
+  height: 'fit-content',
+  padding: '4px',
 });
+
+export const top = createVar();
+export const left = createVar();
 
 export const content = recipe({
   base: [
     sprinkles({ typography: '13/Body/Regular' }),
     {
       position: 'absolute',
+      top,
+      left,
       width: 'fit-content',
       color: COLORS['Grey/White'],
       backgroundColor: COLORS['Dim/70'],
       borderRadius: '8px',
+      whiteSpace: 'nowrap',
       transform: 'translateX(-50%)',
       zIndex: Z_INDEX['tooltip'],
     },
