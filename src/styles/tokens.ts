@@ -173,3 +173,8 @@ export const COLORS = {
   LightRed: '#fd6666',
   Purple: '#7c62ea',
 };
+
+export const Z_INDEX = {
+  modal: 100,
+  tooltip: 50,
+};
