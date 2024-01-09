@@ -1,7 +1,7 @@
 import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@/src/styles/sprinkles.css';
-import { theme } from '@/src/styles/theme.css';
+import { COLORS } from '@/src/styles/tokens';
 import { modalLayer } from '@/src/styles/utils.css';
 
 export const toast = recipe({
@@ -11,9 +11,9 @@ export const toast = recipe({
       typography: '14/Body/Regular',
     }),
     {
-      backgroundColor: theme.colors['Dim/70'],
+      backgroundColor: COLORS['Dim/70'],
       position: 'fixed',
-      color: theme.colors['Grey/White'],
+      color: COLORS['Grey/White'],
       bottom: 0,
       left: '50%',
       transform: 'translateX(-50%) translateY(30px)',
