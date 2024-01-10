@@ -1,7 +1,6 @@
 import type { PropsWithChildren, Ref } from 'react';
 import { createContext, useEffect, useRef, useState } from 'react';
-
-import { getPosition } from '@/src/utils/getPosition';
+import { getPosition } from '@utils/getPosition';
 
 import TooltipContent from './TooltipContent';
 import TooltipTrigger from './TooltipTrigger';

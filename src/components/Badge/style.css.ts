@@ -1,7 +1,6 @@
+import { sprinkles } from '@styles/sprinkles.css';
+import { COLORS } from '@styles/tokens';
 import { recipe } from '@vanilla-extract/recipes';
-
-import { sprinkles } from '@/src/styles/sprinkles.css';
-import { COLORS } from '@/src/styles/tokens';
 
 export const badge = recipe({
   base: [

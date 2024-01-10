@@ -1,8 +1,7 @@
+import { sprinkles } from '@styles/sprinkles.css';
+import { COLORS, Z_INDEX } from '@styles/tokens';
 import { createVar, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-
-import { sprinkles } from '@/src/styles/sprinkles.css';
-import { COLORS, Z_INDEX } from '@/src/styles/tokens';
 
 export const trigger = style({
   width: 'fit-content',

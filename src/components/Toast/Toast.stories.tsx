@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
+import { TOAST_DURATION_TIME } from '@models/toastModel';
+import { useToastStore } from '@stores/toastStore';
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { TOAST_DURATION_TIME } from '@/src/models/toastModel';
-import { useToast } from '@/src/stores/toastStore';
 
 import Toast from './Toast';
 
@@ -23,7 +22,7 @@ type Story = StoryObj<typeof Toast>;
 
 export const Basic: Story = {
   render: function Render() {
-    const { showToast } = useToast();
+    const { showToast } = useToastStore();
 
     useEffect(() => {
       showToast({ message: '테스트', type: TOAST_DURATION_TIME.SHOW });
@@ -42,7 +41,7 @@ export const Basic: Story = {
 
 export const WithAction: Story = {
   render: function Render() {
-    const { showToast } = useToast();
+    const { showToast } = useToastStore();
 
     useEffect(() => {
       showToast({ message: '테스트', type: TOAST_DURATION_TIME.ACTION });
