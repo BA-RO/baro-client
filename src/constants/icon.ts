@@ -1,11 +1,9 @@
-import type { FC, SVGProps } from 'react';
-
 import Profle from '@/src/assets/icons/profile.svg';
+import Submit from '@/src/assets/icons/submit.svg';
 
-export type IconFactory = {
-  [key: string]: FC<SVGProps<SVGSVGElement>>;
-};
-
-export const Icon: IconFactory = {
+export const iconFactory = {
   profile: Profle,
+  submit: Submit,
 };
+
+export type Icons = keyof typeof iconFactory;
