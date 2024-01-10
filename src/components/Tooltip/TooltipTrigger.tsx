@@ -1,6 +1,5 @@
 import { type PropsWithChildren } from 'react';
-
-import { useTooltipContext } from '@/src/hooks/useTooltipContext';
+import { useTooltipContext } from '@hooks/useTooltipContext';
 
 import * as styles from './style.css';
 

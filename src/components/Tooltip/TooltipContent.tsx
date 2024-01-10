@@ -1,8 +1,7 @@
 import type { PropsWithChildren } from 'react';
+import { useTooltipContext } from '@hooks/useTooltipContext';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
-
-import { useTooltipContext } from '@/src/hooks/useTooltipContext';
 
 import * as styles from './style.css';
 import TooltipPortal from './TooltipPortal';

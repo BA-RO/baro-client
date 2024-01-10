@@ -1,8 +1,7 @@
+import { sprinkles } from '@styles/sprinkles.css';
+import { COLORS } from '@styles/tokens';
+import { middleLayer, positionCenter, topLayer } from '@styles/utils.css';
 import { createVar, style } from '@vanilla-extract/css';
-
-import { sprinkles } from '@/src/styles/sprinkles.css';
-import { COLORS } from '@/src/styles/tokens';
-import { middleLayer, positionCenter, topLayer } from '@/src/styles/utils.css';
 
 export const modalStyle = style([
   positionCenter,

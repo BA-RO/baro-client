@@ -1,4 +1,4 @@
-import { useModalStore } from '@/src/stores/modalStore';
+import { useModalStore } from '@stores/modalStore';
 
 import DeleteArticle from './components/DeleteArticle';
 

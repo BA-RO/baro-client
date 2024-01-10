@@ -1,6 +1,5 @@
+import { useModalStore } from '@stores/modalStore';
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { useModalStore } from '@/src/stores/modalStore';
 
 import Modal from '.';
 

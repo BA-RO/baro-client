@@ -1,10 +1,9 @@
 import type { ChangeEvent, HTMLAttributes, KeyboardEvent } from 'react';
 import { useMemo, useRef, useState } from 'react';
+import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
+import type { UseInputReturn } from '@hooks/useInput';
+import { COLORS } from '@styles/tokens';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-
-import { MAIN_INPUT_MAX_LENGTH } from '@/src/constants/config';
-import type { UseInputReturn } from '@/src/hooks/useInput';
-import { COLORS } from '@/src/styles/tokens';
 
 import Icon from '../../SvgIcon';
 import * as style from './style.css';

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-
-import { useToastStore } from '@/src/stores/toastStore';
+import { useToastStore } from '@stores/toastStore';
 
 import * as styles from './style.css';
 

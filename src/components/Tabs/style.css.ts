@@ -1,8 +1,7 @@
+import { COLORS } from '@styles/tokens';
+import * as utils from '@styles/utils.css';
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-
-import { COLORS } from '@/src/styles/tokens';
-import * as utils from '@/src/styles/utils.css';
 
 export const tabsList = style([
   utils.flexCenter,

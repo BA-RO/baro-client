@@ -1,7 +1,6 @@
+import { useModalStore } from '@stores/modalStore';
+import { COLORS } from '@styles/tokens';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-
-import { useModalStore } from '@/src/stores/modalStore';
-import { COLORS } from '@/src/styles/tokens';
 
 import ModalContainer from '../ModalContainer';
 import * as styles from '../style.css';

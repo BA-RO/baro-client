@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
+import { TOAST_DURATION_TIME } from '@models/toastModel';
+import { useToastStore } from '@stores/toastStore';
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { TOAST_DURATION_TIME } from '@/src/models/toastModel';
-import { useToastStore } from '@/src/stores/toastStore';
 
 import Toast from './Toast';
 
