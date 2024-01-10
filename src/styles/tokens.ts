@@ -137,6 +137,12 @@ export const TYPOGRAPHY = {
     lineHeight: '14px',
     letterSpacing: '0px',
   },
+  '11/Caption/Regular': {
+    fontSize: '11px',
+    fontWeight: FONT_WEIGHT.regular,
+    lineHeight: '14px',
+    letterSpacing: '-0.3px',
+  },
 };
 
 export const COLORS = {
@@ -166,4 +172,9 @@ export const COLORS = {
   Orange: '#fd7c32',
   LightRed: '#fd6666',
   Purple: '#7c62ea',
+};
+
+export const Z_INDEX = {
+  modal: 100,
+  tooltip: 50,
 };

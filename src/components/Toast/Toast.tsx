@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 
-import { useToast } from '@/src/stores/toastStore';
+import { useToastStore } from '@/src/stores/toastStore';
 
 import * as styles from './style.css';
 
 const Toast = () => {
-  const { toastData, hideToast } = useToast();
+  const { toastData, hideToast } = useToastStore();
 
   const { message, type, isToastVisible } = toastData;
 
   useEffect(() => {
-    let timer;
+    let timer: ReturnType<typeof setTimeout>;
 
     if (isToastVisible) {
       timer = setTimeout(() => hideToast(), type);
