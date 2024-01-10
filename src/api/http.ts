@@ -6,10 +6,10 @@ const instance = axios.create({
   headers: { 'content-type': 'application/json' },
 });
 
-type BaroError = {
+interface BaroErrorType {
   status?: number;
   message?: string;
-};
+}
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
@@ -18,7 +18,7 @@ instance.interceptors.response.use(
   (error: AxiosError<Error>) => {
     // Network Error 발생 캐치
     if (!error.response) {
-      return Promise.reject<BaroError>({
+      return Promise.reject<BaroErrorType>({
         status: 408,
         message: '현재 네트워크 상태가 불안정합니다. 잠시후 다시 시도해주세요',
       });
@@ -26,10 +26,13 @@ instance.interceptors.response.use(
 
     // 서버 에러 캐치
     if (error.status > 500) {
-      return Promise.reject<BaroError>({ status: error.status, message: '' });
+      return Promise.reject<BaroErrorType>({
+        status: error.status,
+        message: '',
+      });
     }
 
-    return Promise.reject<BaroError>(error);
+    return Promise.reject<BaroErrorType>(error);
   },
 );
 
