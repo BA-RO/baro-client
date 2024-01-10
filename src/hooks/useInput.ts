@@ -7,7 +7,7 @@ interface UseInputArgs {
 }
 
 export const useInput = ({ id, defaultValue = '' }: UseInputArgs) => {
-  const [value, setValue] = useState<string>(defaultValue);
+  const [value, setValue] = useState(defaultValue);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValue(e.currentTarget.value);

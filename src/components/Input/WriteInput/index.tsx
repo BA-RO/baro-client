@@ -44,6 +44,7 @@ const WriteInput = ({
       }));
     }
 
+    //@ts-ignore 올바르지 않은 타입 에러 발생하여 추가 (24.01.10)
     if (textareaHeight.lineBreak[value.length]) {
       setTextareaHeight((prev) => ({
         row: prev.row - 1,
@@ -52,7 +53,7 @@ const WriteInput = ({
     }
   };
 
-  const onKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.code === 'Enter') {
       setTextareaHeight((prev) => ({
         row: prev.row + 1,
@@ -81,7 +82,7 @@ const WriteInput = ({
             placeholder={placeholder}
             maxLength={maxLength}
             onInput={handleResize}
-            onKeyDown={onKeydownEnter}
+            onKeyDown={handleKeydownEnter}
           />
         </label>
 

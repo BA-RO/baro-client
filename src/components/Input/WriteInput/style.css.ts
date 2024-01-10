@@ -41,13 +41,11 @@ export const input = style({
 });
 
 export const submitWrapper = recipe({
-  base: [
-    {
-      display: 'flex',
-      alignItems: 'flex-end',
-      paddingLeft: '20px',
-    },
-  ],
+  base: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    paddingLeft: '20px',
+  },
   variants: {
     multirow: {
       true: {
