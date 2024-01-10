@@ -1,10 +1,11 @@
 import type { PropsWithChildren } from 'react';
+import { PORTAL_ID } from '@constants/portalId';
 import { useTooltipContext } from '@hooks/useTooltipContext';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
 
+import Portal from '../Portal';
 import * as styles from './style.css';
-import TooltipPortal from './TooltipPortal';
 
 const ARROW_STYLE = {
   top: styles.bottomArrow,
@@ -17,7 +18,7 @@ const TooltipContent = ({ children }: PropsWithChildren) => {
   return (
     <>
       {isVisible && (
-        <TooltipPortal>
+        <Portal id={PORTAL_ID['TOOLTIP']}>
           <div
             className={clsx(
               styles.content({ hasArrow }),
@@ -30,7 +31,7 @@ const TooltipContent = ({ children }: PropsWithChildren) => {
           >
             {children}
           </div>
-        </TooltipPortal>
+        </Portal>
       )}
     </>
   );

@@ -1,29 +1,14 @@
-import type { PropsWithChildren } from 'react';
-import { useEffect } from 'react';
+import type { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
+import type { PORTAL_ID } from '@constants/portalId';
 
 interface PortalProps {
-  id: 'modal-root';
-  tag?: keyof HTMLElementTagNameMap;
+  children: ReactNode;
+  id: (typeof PORTAL_ID)[keyof typeof PORTAL_ID];
 }
 
-const Portal = ({
-  children,
-  id,
-  tag = 'div',
-}: PropsWithChildren<PortalProps>) => {
-  const root = document.createElement(tag);
-  root.id = id;
-
-  useEffect(() => {
-    if (root) {
-      document.body.appendChild(root);
-    }
-
-    return () => {
-      document.body.removeChild(root);
-    };
-  }, [root]);
+const Portal = ({ children, id }: PortalProps) => {
+  const root = document.getElementById(id);
 
   return ReactDOM.createPortal(children, root);
 };

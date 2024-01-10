@@ -1,5 +1,5 @@
-import Profle from '@/src/assets/icons/profile.svg';
-import Submit from '@/src/assets/icons/submit.svg';
+import Profle from '@assets/icons/profile.svg';
+import Submit from '@assets/icons/submit.svg';
 
 export const iconFactory = {
   profile: Profle,
