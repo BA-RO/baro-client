@@ -3,6 +3,11 @@ name: 'Chromatic Deployment'
 on:
   pull_request:
     branches: main
+    types: [opened, reopened]
+    paths:
+      - '**.stories.tsx'
+  push:
+    branches: main
     paths:
       - '**.stories.tsx'
 
