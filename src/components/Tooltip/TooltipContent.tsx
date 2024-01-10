@@ -4,7 +4,7 @@ import { useTooltipContext } from '@hooks/useTooltipContext';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
 
-import Portal from '../Portal/Portal';
+import Portal from '../Portal';
 import * as styles from './style.css';
 
 const ARROW_STYLE = {
