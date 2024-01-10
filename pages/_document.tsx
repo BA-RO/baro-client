@@ -7,8 +7,9 @@ const Document = () => {
       <Head />
       <body>
         <Main />
-        <div id={PORTAL_ID['TOOLTIP']} />
-        <div id={PORTAL_ID['MODAL']} />
+        {Object.values(PORTAL_ID).map((value, index) => (
+          <div key={index} id={value} />
+        ))}
         <NextScript />
       </body>
     </Html>
