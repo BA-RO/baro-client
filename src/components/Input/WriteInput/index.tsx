@@ -21,7 +21,10 @@ const WriteInput = ({
 }: WriteInputProps) => {
   const { id, value } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
-  const [textareaHeight, setTextareaHeight] = useState({
+  const [textareaHeight, setTextareaHeight] = useState<{
+    row: number;
+    lineBreak: Record<number, boolean>;
+  }>({
     row: 1,
     lineBreak: {},
   });

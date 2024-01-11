@@ -25,14 +25,12 @@ instance.interceptors.response.use(
     }
 
     // 서버 에러 캐치
-    if (error.status > 500) {
+    if (error.status && error.status > 500) {
       return Promise.reject<BaroErrorType>({
         status: error.status,
         message: '',
       });
     }
-
-    return Promise.reject<BaroErrorType>(error);
   },
 );
 
@@ -55,8 +53,6 @@ export const http = {
     param?: ParamType,
     options?: AxiosRequestConfig,
   ): Promise<AxiosResponse<ResponseType>> => instance.put(url, param, options),
-  delete: <ParamType, ResponseType>(
-    url: string,
-    param?: ParamType,
-  ): Promise<AxiosResponse<ResponseType>> => instance.delete(url, param),
+  delete: <ResponseType>(url: string): Promise<AxiosResponse<ResponseType>> =>
+    instance.delete(url),
 };

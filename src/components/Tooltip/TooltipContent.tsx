@@ -22,7 +22,7 @@ const TooltipContent = ({ children }: PropsWithChildren) => {
           <div
             className={clsx(
               styles.content({ hasArrow }),
-              hasArrow && ARROW_STYLE[placement],
+              hasArrow && placement && ARROW_STYLE[placement],
             )}
             style={assignInlineVars({
               [styles.top]: `${position.top}px`,

@@ -4,11 +4,8 @@ import clsx from 'clsx';
 
 import * as styles from './style.css';
 
-interface ButtonProps
-  extends RecipeVariants<typeof styles.button>,
-    PropsWithChildren<ComponentPropsWithoutRef<'button'>> {
-  onClick: () => void;
-}
+type ButtonProps = RecipeVariants<typeof styles.button> &
+  PropsWithChildren<ComponentPropsWithoutRef<'button'>>;
 
 const Button = ({
   children,
