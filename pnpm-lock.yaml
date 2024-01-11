@@ -9,8 +9,8 @@ dependencies:
     specifier: ^8.1.0
     version: 8.1.0(typescript@5.3.3)
   '@tanstack/react-query':
-    specifier: ^5.8.4
-    version: 5.13.4(react@18.2.0)
+    specifier: ^5.17.9
+    version: 5.17.9(react@18.2.0)
   '@vanilla-extract/css':
     specifier: ^1.14.0
     version: 1.14.0
@@ -78,7 +78,7 @@ devDependencies:
     version: 5.12.1(eslint@8.55.0)(typescript@5.3.3)
   '@tanstack/react-query-devtools':
     specifier: ^5.14.1
-    version: 5.14.1(@tanstack/react-query@5.13.4)(react@18.2.0)
+    version: 5.14.1(@tanstack/react-query@5.17.9)(react@18.2.0)
   '@types/node':
     specifier: ^20
     version: 20.10.4
@@ -4147,30 +4147,30 @@ packages:
       - typescript
     dev: true
 
-  /@tanstack/query-core@5.13.4:
-    resolution: {integrity: sha512-8+rJucXvC/xlr4OrxHhEIob/cTlbT4fgmz1VsvB0D12FRStKaXeLORNGcOhSAynRd2NL74SV/Qq0IIb4DedLcA==}
+  /@tanstack/query-core@5.17.9:
+    resolution: {integrity: sha512-8xcvpWIPaRMDNLMvG9ugcUJMgFK316ZsqkPPbsI+TMZsb10N9jk0B6XgPk4/kgWC2ziHyWR7n7wUhxmD0pChQw==}
 
   /@tanstack/query-devtools@5.13.5:
     resolution: {integrity: sha512-effSYz9AWcZ6sNd+c8LCBYFIuDZApoCTXEpRlEYChBZpMz9QUUVMLToThwCyUY49+T5pANL3XxgZf3HV7hwJlg==}
     dev: true
 
-  /@tanstack/react-query-devtools@5.14.1(@tanstack/react-query@5.13.4)(react@18.2.0):
+  /@tanstack/react-query-devtools@5.14.1(@tanstack/react-query@5.17.9)(react@18.2.0):
     resolution: {integrity: sha512-8fuQs0AMQk8D66JUYqdYA33fOObevuWwm1atOnPbtV8PvIscaU0i/cNTqCl1Y10rgbR/QsqxQSJGBZ5TxxBrlA==}
     peerDependencies:
       '@tanstack/react-query': ^5.14.1
       react: ^18.0.0
     dependencies:
       '@tanstack/query-devtools': 5.13.5
-      '@tanstack/react-query': 5.13.4(react@18.2.0)
+      '@tanstack/react-query': 5.17.9(react@18.2.0)
       react: 18.2.0
     dev: true
 
-  /@tanstack/react-query@5.13.4(react@18.2.0):
-    resolution: {integrity: sha512-3HjvkFFriEQwffUXtKHPiwkfFXUGbs46YATTzzyK1+Pw6Ekd3kwzS50e45qdamWuEXmXxyo5S1zp534LdFG0Rw==}
+  /@tanstack/react-query@5.17.9(react@18.2.0):
+    resolution: {integrity: sha512-M5E9gwUq1Stby/pdlYjBlL24euIVuGbWKIFCbtnQxSdXI4PgzjTSdXdV3QE6fc+itF+TUvX/JPTKIwq8yuBXcg==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.13.4
+      '@tanstack/query-core': 5.17.9
       react: 18.2.0
 
   /@testing-library/dom@9.3.3:
