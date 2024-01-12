@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Tooltip from './Tooltip';
+import Tooltip from '.';
 
 const COMPONENT_DESCRIPTION = `
   - \`<Tooltip />\`: 모든 컴포넌트에 대한 컨텍스트와 상태를 제공합니다.

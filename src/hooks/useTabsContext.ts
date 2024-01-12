@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { TabsContext } from '../components/Tabs/Tabs';
+import { TabsContext } from '../components/Tabs';
 
 export const useTabsContext = () => {
   const ctx = useContext(TabsContext);

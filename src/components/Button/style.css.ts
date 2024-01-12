@@ -1,6 +1,7 @@
+import { recipe } from '@vanilla-extract/recipes';
+
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
-import { recipe } from '@vanilla-extract/recipes';
 
 export const button = recipe({
   variants: {

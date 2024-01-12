@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import type { PORTAL_ID } from '@constants/portalId';
+
+import type { PORTAL_ID } from '@constants/portal';
 
 interface PortalProps {
   children: ReactNode;

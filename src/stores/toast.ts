@@ -2,10 +2,9 @@ import { createStore } from 'zustand';
 import { shallow } from 'zustand/shallow';
 import { useStoreWithEqualityFn as useStore } from 'zustand/traditional';
 
-import {
-  TOAST_DURATION_TIME,
-  type ToastDurationTime,
-} from '../models/toastModel';
+import { TOAST_DURATION_TIME } from '@constants/toast';
+
+import { type ToastDurationTime } from '../models/toast';
 
 interface ToastData {
   message: string;

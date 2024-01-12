@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { TOAST_DURATION_TIME } from '@models/toastModel';
-import { useToastStore } from '@stores/toastStore';
+
+import { TOAST_DURATION_TIME } from '@constants/toast';
+import { useToastStore } from '@stores/toast';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Toast from './Toast';
+import Toast from '.';
 
 const meta: Meta<typeof Toast> = {
   title: 'Toast',

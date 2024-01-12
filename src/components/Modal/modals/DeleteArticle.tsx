@@ -1,8 +1,9 @@
-import { useModalStore } from '@stores/modalStore';
-import { COLORS } from '@styles/tokens';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
-import ModalContainer from '../ModalContainer';
+import { useModalStore } from '@stores/modal';
+import { COLORS } from '@styles/tokens';
+
+import ModalContainer from '../components/ModalContainer';
 import * as styles from '../style.css';
 
 const DeleteArticle = () => {
