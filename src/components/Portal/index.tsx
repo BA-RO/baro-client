@@ -8,7 +8,7 @@ interface PortalProps {
 }
 
 const Portal = ({ children, id }: PortalProps) => {
-  const root = document.getElementById(id);
+  const root = document.getElementById(id) as HTMLDivElement;
 
   return ReactDOM.createPortal(children, root);
 };
