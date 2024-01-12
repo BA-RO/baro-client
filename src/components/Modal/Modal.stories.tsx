@@ -6,13 +6,6 @@ import Modal from '.';
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
   component: Modal,
-  decorators: [
-    (Story) => (
-      <div style={{ height: '500px' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
