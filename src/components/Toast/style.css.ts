@@ -1,7 +1,8 @@
+import { recipe } from '@vanilla-extract/recipes';
+
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 import { modalLayer } from '@styles/utils.css';
-import { recipe } from '@vanilla-extract/recipes';
 
 export const toast = recipe({
   base: [

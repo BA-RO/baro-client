@@ -1,5 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
-import { PORTAL_ID } from '@constants/portalId';
+
+import { PORTAL_ID } from '@constants/portal';
 
 const Document = () => {
   return (

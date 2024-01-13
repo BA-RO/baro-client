@@ -1,7 +1,8 @@
 import { type PropsWithChildren } from 'react';
+
 import { useTooltipContext } from '@hooks/useTooltipContext';
 
-import * as styles from './style.css';
+import * as styles from '../style.css';
 
 const TooltipTrigger = ({ children }: PropsWithChildren) => {
   const { tooltipRef, onOpenTooltip, onCloseTooltip } = useTooltipContext();

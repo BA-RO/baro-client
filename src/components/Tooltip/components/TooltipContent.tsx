@@ -1,11 +1,12 @@
 import type { PropsWithChildren } from 'react';
-import { PORTAL_ID } from '@constants/portalId';
-import { useTooltipContext } from '@hooks/useTooltipContext';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
 
-import Portal from '../Portal';
-import * as styles from './style.css';
+import { PORTAL_ID } from '@constants/portal';
+import { useTooltipContext } from '@hooks/useTooltipContext';
+
+import Portal from '../../Portal';
+import * as styles from '../style.css';
 
 const ARROW_STYLE = {
   top: styles.bottomArrow,

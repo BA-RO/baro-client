@@ -1,4 +1,4 @@
-import type { TooltipShape } from '../components/Tooltip/Tooltip';
+import type { TooltipShape } from '../components/Tooltip';
 
 const TOOLTIP_MARGIN = {
   MINIMAL: 8,

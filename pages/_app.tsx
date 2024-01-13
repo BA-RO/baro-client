@@ -1,11 +1,12 @@
 import type { AppProps } from 'next/app';
-import Layout from '@components/Layout/Layout';
-import Modal from '@components/Modal';
-import TanstackQueryProvider from '@components/Providers/TanstackQueryProvider';
-import Toast from '@components/Toast/Toast';
-import { pretendard } from '@styles/font';
 
 import '@styles/global.css';
+
+import Layout from '@components/Layout';
+import Modal from '@components/Modal';
+import TanstackQueryProvider from '@components/Providers/TanstackQueryProvider';
+import Toast from '@components/Toast';
+import { pretendard } from '@styles/font';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

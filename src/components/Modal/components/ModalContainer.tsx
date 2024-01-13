@@ -1,8 +1,9 @@
 import type { PropsWithChildren } from 'react';
-import { PORTAL_ID } from '@constants/portalId';
 
-import Portal from '../Portal';
-import * as styles from './style.css';
+import { PORTAL_ID } from '@constants/portal';
+
+import Portal from '../../Portal';
+import * as styles from '../style.css';
 
 const ModalContainer = ({ children }: PropsWithChildren<unknown>) => {
   return (

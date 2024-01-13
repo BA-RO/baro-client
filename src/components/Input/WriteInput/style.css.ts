@@ -1,6 +1,7 @@
-import { COLORS } from '@styles/tokens';
 import { createVar, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+
+import { COLORS } from '@styles/tokens';
 
 export const conatiner = style({
   display: 'flex',

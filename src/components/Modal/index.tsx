@@ -1,6 +1,6 @@
-import { useModalStore } from '@stores/modalStore';
+import { useModalStore } from '@stores/modal';
 
-import DeleteArticle from './components/DeleteArticle';
+import DeleteArticle from './modals/DeleteArticle';
 
 const Modal = () => {
   const { type } = useModalStore();

@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/react';
 import { type Meta } from '@storybook/react';
 
-import Tabs from './Tabs';
+import Tabs from '.';
 
 const COMPONENT_DESCRIPTION = `
   - \`<Tabs />\`: 모든 컴포넌트에 대한 컨텍스트와 상태를 제공합니다.

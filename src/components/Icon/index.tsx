@@ -1,4 +1,4 @@
-import { iconFactory, type Icons } from '../constants/icon';
+import { iconFactory, type Icons } from '../../constants/icon';
 
 interface IconProps {
   icon: Icons;

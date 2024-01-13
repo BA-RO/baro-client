@@ -1,9 +1,10 @@
 import type { PropsWithChildren, Ref } from 'react';
 import { createContext, useEffect, useRef, useState } from 'react';
+
 import { getPosition } from '@utils/getPosition';
 
-import TooltipContent from './TooltipContent';
-import TooltipTrigger from './TooltipTrigger';
+import TooltipContent from './components/TooltipContent';
+import TooltipTrigger from './components/TooltipTrigger';
 
 const INIT_POSITION = { top: 0, left: 0 };
 

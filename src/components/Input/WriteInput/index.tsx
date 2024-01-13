@@ -1,11 +1,12 @@
 import type { ChangeEvent, HTMLAttributes, KeyboardEvent } from 'react';
 import { useMemo, useRef, useState } from 'react';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
+
+import Icon from '@components/Icon';
 import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
 import type { UseInputReturn } from '@hooks/useInput';
 import { COLORS } from '@styles/tokens';
-import { assignInlineVars } from '@vanilla-extract/dynamic';
 
-import Icon from '../../SvgIcon';
 import * as style from './style.css';
 
 interface WriteInputProps extends HTMLAttributes<HTMLTextAreaElement> {

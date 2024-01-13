@@ -1,8 +1,8 @@
 import { createContext, type PropsWithChildren, useState } from 'react';
 
-import TabsContent from './TabsContent';
-import TabsList from './TabsList';
-import TabsTrigger from './TabsTrigger';
+import TabsContent from './components/TabsContent';
+import TabsList from './components/TabsList';
+import TabsTrigger from './components/TabsTrigger';
 
 interface TabsContextProps {
   selectedTab: string;
