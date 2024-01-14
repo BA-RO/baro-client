@@ -23,6 +23,7 @@ globalStyle('body', {
   WebkitFontSmoothing: 'antialiased',
   MozOsxFontSmoothing: 'grayscale',
   maxWidth: '1680px',
+  padding: '0 120px',
   margin: '0 auto',
 });
 
