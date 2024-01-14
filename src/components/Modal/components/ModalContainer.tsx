@@ -12,15 +12,15 @@ const ModalContainer = ({ children }: PropsWithChildren<unknown>) => {
   const dimmedRef = useRef<HTMLDivElement>(null);
   const { closeModal } = useModalStore();
 
-  const onClickDimmed = useCallback(
+  const handleDimmedClick = useCallback(
     (e: MouseEvent) => {
       const isDimmedClick = dimmedRef.current && e.target === dimmedRef.current;
       isDimmedClick && closeModal();
     },
-    [dimmedRef, closeModal],
+    [closeModal],
   );
 
-  const handleEsc = useCallback(
+  const handleEscKeydown = useCallback(
     (event: KeyboardEvent) => {
       event.key === 'Escape' && closeModal();
     },
@@ -28,14 +28,16 @@ const ModalContainer = ({ children }: PropsWithChildren<unknown>) => {
   );
 
   useEffect(() => {
-    document.addEventListener('click', onClickDimmed);
-    document.addEventListener('keydown', handleEsc);
+    const dimmedRefCurr = dimmedRef.current;
+
+    dimmedRefCurr?.addEventListener('click', handleDimmedClick);
+    dimmedRefCurr?.addEventListener('keydown', handleEscKeydown);
 
     return () => {
-      document.removeEventListener('click', onClickDimmed);
-      document.removeEventListener('keydown', handleEsc);
+      dimmedRefCurr?.removeEventListener('click', handleDimmedClick);
+      dimmedRefCurr?.removeEventListener('keydown', handleEscKeydown);
     };
-  }, [onClickDimmed, handleEsc]);
+  }, [handleDimmedClick, handleEscKeydown]);
 
   return (
     <Portal id={PORTAL_ID.MODAL}>
