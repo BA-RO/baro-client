@@ -27,6 +27,15 @@ export const dimmed = style([
   },
 ]);
 
+export const closeButton = style({
+  position: 'absolute',
+  padding: '12px',
+  top: 0,
+  right: 0,
+  width: '48px',
+  height: '48px',
+});
+
 export const title = style([
   sprinkles({
     typography: '20/Title/Semibold',
