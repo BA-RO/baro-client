@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default function (plop) {
   const getComponentName = {
     type: 'input',
@@ -21,7 +22,7 @@ export default function (plop) {
 
   const createComponentFile = {
     type: 'add',
-    path: 'src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
+    path: 'src/components/{{pascalCase name}}/index.tsx',
     templateFile: 'templates/component.tsx.hbs',
   };
 
