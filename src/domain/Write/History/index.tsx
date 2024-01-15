@@ -16,7 +16,7 @@ const WriteHistory = ({ data }: WriteHistoryProps) => {
   return (
     <section className={style.container}>
       {data.map((history) => (
-        <ol key={history.date}>
+        <section key={history.date}>
           <div className={style.dateLabelWrapper}>
             <div className={style.dateLabel}>
               <Icon icon={'clock'} width={20} height={20} />
@@ -26,14 +26,16 @@ const WriteHistory = ({ data }: WriteHistoryProps) => {
             </div>
           </div>
 
-          {history.histroy.map((history) => (
-            <WriteHistoryCard
-              key={history.id}
-              createAt={history.createAt}
-              value={history.value}
-            />
-          ))}
-        </ol>
+          <ol className={style.contentWrapper}>
+            {history.histroy.map((history) => (
+              <WriteHistoryCard
+                key={history.id}
+                createAt={history.createAt}
+                value={history.value}
+              />
+            ))}
+          </ol>
+        </section>
       ))}
     </section>
   );

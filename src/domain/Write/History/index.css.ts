@@ -4,12 +4,23 @@ import { COLORS } from '@styles/tokens';
 
 export const container = style({
   marginBottom: '48px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '64px',
+});
+
+export const contentWrapper = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 1fr',
+  gap: '16px',
 });
 
 export const dateLabelWrapper = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  marginTop: '12px',
+  marginBottom: '24px',
 });
 
 export const dateLabel = style({
