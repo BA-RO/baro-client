@@ -27,7 +27,10 @@ export const CardContext = createContext<CardContextProps>({
   isVisibleMenu: false,
 });
 
-const Card = ({ children, color = 'white' }: PropsWithChildren<CardProps>) => {
+const CardRoot = ({
+  children,
+  color = 'white',
+}: PropsWithChildren<CardProps>) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleMenuShow = () => {
@@ -40,13 +43,13 @@ const Card = ({ children, color = 'white' }: PropsWithChildren<CardProps>) => {
 
   return (
     <CardContext.Provider value={{ isVisibleMenu: isVisible }}>
-      <div
+      <li
         className={styles.wrapper({ color })}
         onMouseEnter={handleMenuShow}
         onMouseLeave={handleMenuHide}
       >
         {children}
-      </div>
+      </li>
     </CardContext.Provider>
   );
 };
@@ -69,9 +72,11 @@ const CardFooter = ({ children }: PropsWithChildren) => {
   return <div className={styles.footer}>{children}</div>;
 };
 
-Card.Menu = CardMenu;
-Card.Header = CardHeader;
-Card.Body = CardBody;
-Card.Footer = CardFooter;
+const Card = Object.assign(CardRoot, {
+  Menu: CardMenu,
+  Header: CardHeader,
+  Body: CardBody,
+  Footer: CardFooter,
+});
 
 export default Card;
