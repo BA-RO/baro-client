@@ -15,6 +15,12 @@ const CARD_CONTENT = `
   권한을 받고자 하는데 시간 괜찮으실 때 권한 추가해주실 수 있을까요?
 `;
 
+const CARD_COUNT_STYLE = {
+  fontWeight: 500,
+  fontSize: '14px',
+  color: COLORS['Grey/500'],
+};
+
 const COMPONENT_DESCRIPTION = `
   - \`<Card />\`: 컴포넌트 내 모든 요소들의 레이아웃을 제공합니다.
   - \`<Card.Header />\`: Card 컴포넌트 내 상위 내용을 표시합니다.
@@ -79,26 +85,8 @@ export const TemplateCard: Story = {
         </Card.Header>
         <Card.Body>{CARD_CONTENT}</Card.Body>
         <Card.Footer>
-          복사{' '}
-          <span
-            style={{
-              fontWeight: 500,
-              fontSize: '14px',
-              color: COLORS['Grey/500'],
-            }}
-          >
-            1.2k
-          </span>{' '}
-          • 저장{' '}
-          <span
-            style={{
-              fontWeight: 500,
-              fontSize: '14px',
-              color: COLORS['Grey/500'],
-            }}
-          >
-            200
-          </span>
+          복사 <span style={CARD_COUNT_STYLE}>1.2k</span> • 저장{' '}
+          <span style={CARD_COUNT_STYLE}>200</span>
         </Card.Footer>
       </Card>
     );
@@ -134,26 +122,8 @@ export const ArchivedTemplateCard: Story = {
         </Card.Header>
         <Card.Body>{CARD_CONTENT}</Card.Body>
         <Card.Footer>
-          복사{' '}
-          <span
-            style={{
-              fontWeight: 500,
-              fontSize: '14px',
-              color: COLORS['Grey/500'],
-            }}
-          >
-            1.2k
-          </span>{' '}
-          • 저장{' '}
-          <span
-            style={{
-              fontWeight: 500,
-              fontSize: '14px',
-              color: COLORS['Grey/500'],
-            }}
-          >
-            200
-          </span>
+          복사 <span style={CARD_COUNT_STYLE}>1.2k</span> • 저장{' '}
+          <span style={CARD_COUNT_STYLE}>200</span>
         </Card.Footer>
       </Card>
     );
