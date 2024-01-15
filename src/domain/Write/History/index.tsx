@@ -1,3 +1,7 @@
+import dayjs from 'dayjs';
+
+import 'dayjs/locale/ko';
+
 import Icon from '@components/Icon';
 
 import { type WriteHisotry } from '../types';
@@ -16,7 +20,9 @@ const WriteHistory = ({ data }: WriteHistoryProps) => {
           <div className={style.dateLabelWrapper}>
             <div className={style.dateLabel}>
               <Icon icon={'clock'} width={20} height={20} />
-              <span className={style.dateLabelText}>{history.date}</span>
+              <span className={style.dateLabelText}>
+                {dayjs(history.date).locale('ko').format('YYYY.MM.DD (dd)')}
+              </span>
             </div>
           </div>
 
