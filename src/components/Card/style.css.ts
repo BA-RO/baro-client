@@ -6,6 +6,7 @@ import { COLORS } from '@styles/tokens';
 
 export const wrapper = recipe({
   base: {
+    height: 'fit-content',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
