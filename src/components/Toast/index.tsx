@@ -24,7 +24,7 @@ const Toast = () => {
 
   return (
     <Portal id="toast-root">
-      <div className={styles.toast({ isActive: isToastVisible })} role="alert">
+      <div className={styles.toast({ isVisible: isToastVisible })} role="alert">
         <span className={styles.toastText}>{message}</span>
       </div>
     </Portal>
