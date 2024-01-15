@@ -1,3 +1,5 @@
+import Icon from '@components/Icon';
+
 import { type WriteHisotry } from '../types';
 import WriteHistoryCard from './components/Card';
 import * as style from './index.css';
@@ -11,7 +13,12 @@ const WriteHistory = ({ data }: WriteHistoryProps) => {
     <section className={style.container}>
       {data.map((history) => (
         <ol key={history.date}>
-          <p>{history.date}</p>
+          <div className={style.dateLabelWrapper}>
+            <div className={style.dateLabel}>
+              <Icon icon={'clock'} width={20} height={20} />
+              <span className={style.dateLabelText}>{history.date}</span>
+            </div>
+          </div>
 
           {history.histroy.map((history) => (
             <WriteHistoryCard
