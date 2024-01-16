@@ -24,7 +24,9 @@ export const dialogRoot = recipe({
 });
 
 export const dialogTitle = style({
+  position: 'relative',
   padding: '6px 12px 10px',
+  lineHeight: '40px',
 });
 
 export const line = style({
@@ -71,4 +73,72 @@ export const dialogButton = recipe({
       },
     },
   },
+});
+
+export const badge = style([
+  sprinkles({
+    typography: '11/Caption/Medium',
+  }),
+  {
+    marginLeft: '4px',
+    backgroundColor: COLORS['Blue/Light'],
+    color: COLORS['Blue/Default'],
+    width: '32px',
+    height: '20px',
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    marginTop: '-2px',
+    padding: '3px 6px',
+    borderRadius: '100px',
+  },
+]);
+
+export const iconTitleText = style([
+  sprinkles({
+    typography: '16/Title/Medium',
+  }),
+  {
+    color: COLORS['Grey/900'],
+    marginLeft: '48px',
+  },
+]);
+
+export const iconMediumText = style([
+  sprinkles({
+    typography: '15/Body/Medium',
+  }),
+  {
+    color: COLORS['Grey/400'],
+    marginLeft: '28px',
+  },
+]);
+
+export const iconRegularText = style([
+  sprinkles({
+    typography: '15/Body/Regular',
+  }),
+  {
+    color: COLORS['Grey/800'],
+    marginLeft: '28px',
+  },
+]);
+
+export const addIcon = style({
+  position: 'absolute',
+});
+
+export const circle = style({
+  width: '40px',
+  height: '40px',
+  backgroundColor: COLORS['Grey/100'],
+  position: 'absolute',
+  top: '6px',
+  borderRadius: '50%',
+  zIndex: -1,
+});
+
+export const profileIcon = style({
+  position: 'absolute',
+  top: '13px',
+  left: '20px',
 });
