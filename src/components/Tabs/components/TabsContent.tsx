@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react';
 
 import { useTabsContext } from '../../../hooks/useTabsContext';
 
-interface TabsContentProps {
+export interface TabsContentProps {
   value: string;
 }
 
