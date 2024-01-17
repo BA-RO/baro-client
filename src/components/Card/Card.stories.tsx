@@ -59,8 +59,11 @@ export const Basic: Story = {
 };
 
 export const WriteCard: Story = {
-  render: () => (
-    <Card color="grey">
+  args: {
+    color: 'grey',
+  },
+  render: (args) => (
+    <Card color={args.color}>
       <Card.Header>오후 8:23</Card.Header>
       <Card.Body>{CARD_CONTENT}</Card.Body>
     </Card>
@@ -68,9 +71,12 @@ export const WriteCard: Story = {
 };
 
 export const TemplateCard: Story = {
-  render: () => {
+  args: {
+    color: 'white',
+  },
+  render: (args) => {
     return (
-      <Card>
+      <Card color={args.color}>
         <Card.Menu>
           <Button>
             <Icon icon="copy" />
@@ -94,8 +100,11 @@ export const TemplateCard: Story = {
 };
 
 export const ArchivedWriteCard: Story = {
-  render: () => (
-    <Card color="grey">
+  args: {
+    color: 'grey',
+  },
+  render: (args) => (
+    <Card color={args.color}>
       <Card.Header>
         <Badge color="black">끄적이는</Badge>
       </Card.Header>
@@ -105,9 +114,12 @@ export const ArchivedWriteCard: Story = {
 };
 
 export const ArchivedTemplateCard: Story = {
-  render: () => {
+  args: {
+    color: CATEGORY_COLOR['부탁하기'],
+  },
+  render: (args) => {
     return (
-      <Card color={CATEGORY_COLOR['부탁하기']}>
+      <Card color={args.color}>
         <Card.Menu>
           <Button>
             <Icon icon="copy" />
