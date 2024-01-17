@@ -38,12 +38,12 @@ const TabsTrigger = ({
         {isActive && icon && <Icon icon={icon?.active} />}
         {children}
       </button>
-      {isActiveFilterTab ? (
+      {isActiveFilterTab && (
         <motion.div className={styles.underline} layoutId="underline" />
-      ) : null}
-      {isActiveSwitcherTab ? (
+      )}
+      {isActiveSwitcherTab && (
         <motion.div className={styles.handle} layoutId="handle" />
-      ) : null}
+      )}
     </li>
   );
 };
