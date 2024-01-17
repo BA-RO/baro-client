@@ -114,7 +114,51 @@ export const Filter: Story = {
   ),
 };
 
+export const FilterWithIcon: Story = {
+  render: () => (
+    <Tabs type="filter" defaultValue="끄적이는">
+      <Tabs.List>
+        <Tabs.Trigger
+          value="끄적이는"
+          icon={{ default: 'pencilDefault', active: 'pencilActive' }}
+        >
+          끄적이는
+        </Tabs.Trigger>
+        <Tabs.Trigger
+          value="참고하는"
+          icon={{ default: 'templateDefault', active: 'templateActive' }}
+        >
+          참고하는
+        </Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="끄적이는">
+        <div>끄적이는 내용</div>
+      </Tabs.Content>
+      <Tabs.Content value="참고하는">
+        <div>참고하는 내용</div>
+      </Tabs.Content>
+    </Tabs>
+  ),
+};
+
 export const Switcher: Story = {
+  render: () => (
+    <Tabs type="switcher" defaultValue="끄적이는">
+      <Tabs.List>
+        <Tabs.Trigger value="끄적이는">끄적이는</Tabs.Trigger>
+        <Tabs.Trigger value="참고하는">참고하는</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="끄적이는">
+        <div>끄적이는 내용</div>
+      </Tabs.Content>
+      <Tabs.Content value="참고하는">
+        <div>참고하는 내용</div>
+      </Tabs.Content>
+    </Tabs>
+  ),
+};
+
+export const SwitcherWithIcon: Story = {
   render: () => (
     <Tabs type="switcher" defaultValue="끄적이는">
       <Tabs.List>

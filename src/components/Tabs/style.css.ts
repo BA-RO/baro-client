@@ -31,31 +31,32 @@ export const tabItem = style({
 });
 
 export const tabsTrigger = recipe({
-  base: {
-    whiteSpace: 'nowrap',
-    transition: 'all 150ms ease-in-out',
+  base: [
+    utils.flexCenter,
+    {
+      gap: '5px',
+      whiteSpace: 'nowrap',
+      transition: 'all 150ms ease-in-out',
 
-    ':hover': {
-      fontWeight: 700,
+      ':hover': {
+        fontWeight: 700,
+      },
     },
-  },
+  ],
   variants: {
     type: {
-      switcher: [
-        utils.flexCenter,
-        {
-          position: 'relative',
-          width: '183px',
-          padding: '8px 0',
-          gap: '5px',
-          fontSize: '16px',
-          fontWeight: 500,
-          lineHeight: '19px',
-          letterSpacing: '-0.5px',
-          color: COLORS['Grey/500'],
-          zIndex: 20,
-        },
-      ],
+      switcher: {
+        position: 'relative',
+        width: '183px',
+        height: '42px',
+        padding: '8px 0',
+        fontSize: '16px',
+        fontWeight: 500,
+        lineHeight: '19px',
+        letterSpacing: '-0.5px',
+        color: COLORS['Grey/500'],
+        zIndex: 20,
+      },
       filter: [
         {
           fontSize: '15px',
