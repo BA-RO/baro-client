@@ -7,7 +7,7 @@ import TabsTrigger from './components/TabsTrigger';
 type TabsType = 'filter' | 'switcher';
 
 interface TabsContextProps {
-  type: TabsType;
+  type?: TabsType;
   selectedTab: string;
   onSelectTab: (selectedTab: string) => void;
 }
