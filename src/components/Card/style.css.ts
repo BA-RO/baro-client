@@ -17,28 +17,28 @@ export const wrapper = recipe({
   variants: {
     color: {
       blue: {
-        backgroundColor: `${COLORS['Blue/Default']}20`,
+        backgroundColor: COLORS['Blue/Light'],
       },
       green: {
-        backgroundColor: `${COLORS['Green']}20`,
+        backgroundColor: COLORS['Green/Light'],
       },
       yellow: {
-        backgroundColor: `${COLORS['Yellow']}20`,
+        backgroundColor: COLORS['Yellow/Light'],
       },
       red: {
-        backgroundColor: `${COLORS['LightRed']}20`,
+        backgroundColor: COLORS['Red/Light'],
       },
       orange: {
-        backgroundColor: `${COLORS['Orange']}20`,
+        backgroundColor: COLORS['Orange/Light'],
       },
       purple: {
-        backgroundColor: `${COLORS['Purple']}20`,
+        backgroundColor: COLORS['Purple/Light'],
       },
       grey: {
-        backgroundColor: `${COLORS['Grey/600']}10`,
+        backgroundColor: COLORS['Grey/100'],
       },
       white: {
-        backgroundColor: `${COLORS['Grey/White']}20`,
+        backgroundColor: `${COLORS['Grey/White']}`,
       },
     },
   },
