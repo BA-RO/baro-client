@@ -123,8 +123,9 @@ export const iconRegularText = style([
   },
 ]);
 
-export const addIcon = style({
+export const icon = style({
   position: 'absolute',
+  marginTop: '2px',
 });
 
 export const circle = style({

@@ -37,7 +37,9 @@ export const MediumFolder: Story = {
         <Dialog.Button onClick={() => {}}>폴더 이름1</Dialog.Button>
         <Dialog.Button onClick={() => {}}>폴더 이름2</Dialog.Button>
         <Dialog.Button onClick={() => {}}>
-          <Icon className={styles.addIcon} icon="add" />
+          <div className={styles.icon}>
+            <Icon icon="add" width={20} height={20} />
+          </div>
           <span className={styles.iconMediumText}>새 폴더 만들기</span>
         </Dialog.Button>
       </Dialog>
@@ -50,16 +52,22 @@ export const MediumProfile: Story = {
     <>
       <Dialog type="medium">
         <Dialog.Title>
-          <Icon className={styles.profileIcon} icon="profileDialog" />
+          <div className={styles.profileIcon}>
+            <Icon icon="profileDialog" />
+          </div>
           <div className={styles.circle} />
           <span className={styles.iconTitleText}>바로가나다라마바님</span>
         </Dialog.Title>
         <Dialog.Button onClick={() => {}}>
-          <Icon className={styles.addIcon} icon="setting" />
+          <div className={styles.icon}>
+            <Icon icon="setting" width={20} height={20} />
+          </div>
           <span className={styles.iconRegularText}>계정 설정</span>
         </Dialog.Button>
         <Dialog.Button onClick={() => {}}>
-          <Icon className={styles.addIcon} icon="logout" />
+          <div className={styles.icon}>
+            <Icon icon="logout" width={20} height={20} />
+          </div>
           <span className={styles.iconRegularText}>로그아웃</span>
         </Dialog.Button>
       </Dialog>

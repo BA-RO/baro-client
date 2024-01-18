@@ -1,16 +1,16 @@
 import { createContext, type PropsWithChildren } from 'react';
-import { type RecipeVariants } from '@vanilla-extract/recipes';
 
 import DialogButton from '@components/Dialog/components/DialogButton';
 import DialogTitle from '@components/Dialog/components/DialogTitle';
 import * as styles from '@components/Dialog/style.css';
 
 interface DialogContextProps {
-  type?: 'small' | 'medium';
+  type: 'small' | 'medium';
 }
 
-type DialogRootProps = RecipeVariants<typeof styles.dialogRoot> &
-  PropsWithChildren<unknown>;
+interface DialogRootProps extends PropsWithChildren {
+  type: 'small' | 'medium';
+}
 
 export const DialogContext = createContext<DialogContextProps | null>(null);
 
