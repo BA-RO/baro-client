@@ -7,6 +7,7 @@ export const container = style({
   backgroundColor: COLORS['Grey/100'],
   borderRadius: '16px',
   padding: '28px 32px',
+  height: 'fit-content',
 });
 
 export const date = style({

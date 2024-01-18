@@ -10,7 +10,12 @@ const MOCK: WriteHisotry[] = [
     histroy: [
       { createAt: '2024-01-03T01:01', id: '1', value: 'test 1' },
       { createAt: '2024-01-03T11:01', id: '2', value: 'test 2' },
-      { createAt: '2024-01-03T21:01', id: '11', value: 'test 11' },
+      {
+        createAt: '2024-01-03T21:01',
+        id: '11',
+        value:
+          'test 11test 11test 11test 11test 11test 11test 11test 11test 11test 11test 11test 11',
+      },
       { createAt: '2024-01-03T11:01', id: '21', value: 'test 21' },
       { createAt: '2024-01-03T21:01', id: '12', value: 'test 12' },
       { createAt: '2024-01-03T19:01', id: '22', value: 'test 22' },
