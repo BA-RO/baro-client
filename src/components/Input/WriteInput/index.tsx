@@ -30,6 +30,8 @@ const WriteInput = ({
     lineBreak: {},
   });
 
+  const isValid = useMemo(() => value.length > 0, [value.length]);
+
   const handleResize = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { scrollHeight, clientHeight, value } = e.target;
 
@@ -63,8 +65,6 @@ const WriteInput = ({
       }));
     }
   };
-
-  const isValid = useMemo(() => value.length > 0, [value.length]);
 
   return (
     <div className={style.conatiner}>

@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
+import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
 export const container = style({
@@ -15,11 +16,14 @@ export const date = style({
   fontWeight: '500',
 });
 
-export const value = style({
-  marginBottom: '16px',
-  color: COLORS['Grey/900'],
-  fontSize: '15px',
-  fontWeight: '400',
-  lineHeight: '24px',
-  letterSpacing: '-0.2px',
-});
+export const value = style([
+  sprinkles({ typography: '15/Body/Regular' }),
+  {
+    marginBottom: '16px',
+    color: COLORS['Grey/900'],
+    fontSize: '15px',
+    fontWeight: '400',
+    lineHeight: '24px',
+    letterSpacing: '-0.2px',
+  },
+]);

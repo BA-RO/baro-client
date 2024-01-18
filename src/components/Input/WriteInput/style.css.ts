@@ -9,7 +9,7 @@ export const conatiner = style({
   borderRadius: '16px',
   width: '100%',
   padding: '22px 12px 22px 24px',
-  border: `2px solid ${COLORS['Blue/Gradient']}`,
+  border: `2px solid ${COLORS['Blue/Default']}`,
 });
 
 export const inputHeight = createVar();
