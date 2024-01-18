@@ -8,9 +8,7 @@ interface DialogContextProps {
   type: 'small' | 'medium';
 }
 
-interface DialogRootProps extends PropsWithChildren {
-  type: 'small' | 'medium';
-}
+type DialogRootProps = DialogContextProps & PropsWithChildren;
 
 export const DialogContext = createContext<DialogContextProps | null>(null);
 
