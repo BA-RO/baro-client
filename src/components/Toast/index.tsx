@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import Portal from '@components/Portal';
 import { useToastStore } from '@stores/toast';
 
 import * as styles from './style.css';
@@ -19,10 +20,14 @@ const Toast = () => {
     return () => clearTimeout(timer);
   }, [hideToast, isToastVisible, type]);
 
+  if (!message) return null;
+
   return (
-    <div className={styles.toast({ isActive: isToastVisible })} role="alert">
-      <span>{message}</span>
-    </div>
+    <Portal id="toast-root">
+      <div className={styles.toast({ isVisible: isToastVisible })} role="alert">
+        <span className={styles.toastText}>{message}</span>
+      </div>
+    </Portal>
   );
 };
 
