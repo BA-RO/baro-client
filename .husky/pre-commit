@@ -8,4 +8,4 @@ if [ "$branch" = "main" ]; then
   exit 1
 fi
 
-pnpm lint-staged --no-stash
+pnpm lint-staged

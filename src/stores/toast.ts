@@ -2,13 +2,16 @@ import { createStore } from 'zustand';
 import { shallow } from 'zustand/shallow';
 import { useStoreWithEqualityFn as useStore } from 'zustand/traditional';
 
-import { TOAST_DURATION_TIME } from '@constants/toast';
+import {
+  TOAST_DURATION_TIME,
+  TOAST_TRANSITION_DURATION,
+} from '@constants/toast';
 
 import { type ToastDurationTime } from '../models/toast';
 
 interface ToastData {
   message: string;
-  type: ToastDurationTime;
+  type?: ToastDurationTime;
 }
 
 interface ToastState {
@@ -32,9 +35,14 @@ const INITIAL_TOAST_DATA = {
 
 export const toastStore = createStore<State & Action>((set, get) => ({
   toastData: INITIAL_TOAST_DATA,
-  showToast: (data) => set({ toastData: { ...data, isToastVisible: true } }),
+  showToast: ({ message, type = TOAST_DURATION_TIME.SHOW }) =>
+    set({ toastData: { message, type, isToastVisible: true } }),
   hideToast: () => {
     set({ toastData: { ...get().toastData, isToastVisible: false } });
+    setTimeout(
+      () => set({ toastData: { ...get().toastData, message: '' } }),
+      TOAST_TRANSITION_DURATION,
+    );
   },
 }));
 
