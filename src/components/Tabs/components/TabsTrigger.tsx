@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
@@ -34,8 +34,12 @@ const TabsTrigger = ({
         )}
         onClick={() => onSelectTab(value)}
       >
-        {!isActive && icon && <Icon icon={icon?.default} />}
-        {isActive && icon && <Icon icon={icon?.active} />}
+        {icon &&
+          (!isActive ? (
+            <Icon icon={icon?.default} />
+          ) : (
+            <Icon icon={icon?.active} />
+          ))}
         {children}
       </button>
       {isActiveFilterTab && (
