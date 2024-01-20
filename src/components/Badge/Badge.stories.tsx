@@ -1,4 +1,4 @@
-import { BADGE_TYPE } from '@constants/badge';
+import { CATEGORY_COLOR } from '@constants/config';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Badge from '.';
@@ -26,13 +26,13 @@ export const Basic: Story = {
 export const AllBadges: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '8px' }}>
-      <Badge color={BADGE_TYPE['부탁하기']}>부탁하기</Badge>
-      <Badge color={BADGE_TYPE['보고하기']}>보고하기</Badge>
-      <Badge color={BADGE_TYPE['축하하기']}>축하하기</Badge>
-      <Badge color={BADGE_TYPE['위로하기']}>위로하기</Badge>
-      <Badge color={BADGE_TYPE['감사 전하기']}>감사 전하기</Badge>
-      <Badge color={BADGE_TYPE['안부 전하기']}>안부 전하기</Badge>
-      <Badge color={BADGE_TYPE['기타']}>기타</Badge>
+      <Badge color={CATEGORY_COLOR['부탁하기']}>부탁하기</Badge>
+      <Badge color={CATEGORY_COLOR['보고하기']}>보고하기</Badge>
+      <Badge color={CATEGORY_COLOR['축하하기']}>축하하기</Badge>
+      <Badge color={CATEGORY_COLOR['위로하기']}>위로하기</Badge>
+      <Badge color={CATEGORY_COLOR['감사 전하기']}>감사 전하기</Badge>
+      <Badge color={CATEGORY_COLOR['안부 전하기']}>안부 전하기</Badge>
+      <Badge color={CATEGORY_COLOR['기타']}>기타</Badge>
     </div>
   ),
 };
