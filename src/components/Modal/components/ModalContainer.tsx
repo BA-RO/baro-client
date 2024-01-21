@@ -8,7 +8,14 @@ import { useModalStore } from '@stores/modal';
 import Portal from '../../Portal';
 import * as styles from '../style.css';
 
-const ModalContainer = ({ children }: PropsWithChildren<unknown>) => {
+interface ModalContainerProps {
+  type?: 'login' | 'common';
+}
+
+const ModalContainer = ({
+  children,
+  type = 'common',
+}: PropsWithChildren<ModalContainerProps>) => {
   const dimmedRef = useRef<HTMLDivElement>(null);
   const { closeModal } = useModalStore();
 
@@ -39,12 +46,14 @@ const ModalContainer = ({ children }: PropsWithChildren<unknown>) => {
     };
   }, [handleDimmedClick, handleEscKeydown]);
 
+  const closeIconSize = type === 'login' ? 32 : 24;
+
   return (
     <Portal id={PORTAL_ID.MODAL}>
       <div className={styles.dimmed} ref={dimmedRef} />
-      <div className={styles.modalStyle}>
+      <div className={styles.modalStyle({ type })}>
         <Button className={styles.closeButton} onClick={closeModal}>
-          <Icon icon="close" />
+          <Icon icon="close" width={closeIconSize} height={closeIconSize} />
         </Button>
         {children}
       </div>
