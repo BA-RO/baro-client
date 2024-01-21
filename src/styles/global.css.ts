@@ -12,8 +12,6 @@ globalStyle(
     margin: 0,
     padding: 0,
     border: 0,
-    fontSize: '16px',
-    verticalAlign: 'baseline',
     fontFamily: theme.font.pretendard,
   },
 );
