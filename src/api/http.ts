@@ -1,9 +1,11 @@
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
 
+import { HTTP_BASE_URL, HTTP_HEADERS } from '@constants/http';
+
 const instance = axios.create({
-  baseURL: 'https://dev.api.ba-ro.co.kr/',
-  headers: { 'content-type': 'application/json' },
+  baseURL: HTTP_BASE_URL,
+  headers: HTTP_HEADERS,
 });
 
 interface BaroErrorType {
@@ -13,7 +15,7 @@ interface BaroErrorType {
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response;
+    return response.data.data;
   },
   (error: AxiosError<Error>) => {
     // Network Error 발생 캐치
@@ -31,6 +33,8 @@ instance.interceptors.response.use(
         message: '',
       });
     }
+
+    return Promise.reject(error);
   },
 );
 
