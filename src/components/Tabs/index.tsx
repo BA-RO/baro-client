@@ -4,12 +4,16 @@ import TabsContent from './components/TabsContent';
 import TabsList from './components/TabsList';
 import TabsTrigger from './components/TabsTrigger';
 
+type TabsType = 'filter' | 'switcher';
+
 interface TabsContextProps {
+  type?: TabsType;
   selectedTab: string;
   onSelectTab: (selectedTab: string) => void;
 }
 
 export interface TabsRootProps {
+  type?: TabsType;
   defaultValue: string;
 }
 
@@ -17,6 +21,7 @@ export const TabsContext = createContext<TabsContextProps | null>(null);
 
 const TabsRoot = ({
   children,
+  type = 'filter',
   defaultValue,
 }: PropsWithChildren<TabsRootProps>) => {
   const [selectedTab, setSelectedTab] = useState(defaultValue);
@@ -26,7 +31,9 @@ const TabsRoot = ({
   };
 
   return (
-    <TabsContext.Provider value={{ selectedTab, onSelectTab: handleTabSelect }}>
+    <TabsContext.Provider
+      value={{ type, selectedTab, onSelectTab: handleTabSelect }}
+    >
       {children}
     </TabsContext.Provider>
   );
