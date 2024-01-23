@@ -7,7 +7,7 @@ import { useInput } from '@hooks/useInput';
 const MOCK: WriteHisotry[] = [
   {
     date: '2024-01-03',
-    histroy: [
+    history: [
       { createAt: '2024-01-03T01:01', id: '1', value: 'test 1' },
       { createAt: '2024-01-03T11:01', id: '2', value: 'test 2' },
       {
@@ -24,7 +24,7 @@ const MOCK: WriteHisotry[] = [
   },
   {
     date: '2024-01-04',
-    histroy: [
+    history: [
       { createAt: '2024-01-04T01:01', id: '3', value: 'test 3' },
       { createAt: '2024-01-04T01:01', id: '4', value: 'test 4' },
       { createAt: '2024-01-04T11:01', id: '7', value: 'test 7' },
@@ -32,7 +32,7 @@ const MOCK: WriteHisotry[] = [
   },
   {
     date: '2024-01-05',
-    histroy: [
+    history: [
       { createAt: '2024-01-05T11:01', id: '5', value: 'test 5' },
       { createAt: '2024-01-05T19:01', id: '6', value: 'test 6' },
     ],

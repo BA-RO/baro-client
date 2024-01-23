@@ -6,5 +6,5 @@ export interface Write {
 
 export interface WriteHisotry {
   date: string;
-  histroy: Write[];
+  history: Write[];
 }

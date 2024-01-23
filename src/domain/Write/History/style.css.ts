@@ -9,12 +9,6 @@ export const container = style({
   gap: '64px',
 });
 
-export const contentWrapper = style({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
-  gap: '16px',
-});
-
 export const dateLabelWrapper = style({
   display: 'flex',
   justifyContent: 'center',
@@ -39,4 +33,9 @@ export const dateLabelText = style({
   fontWeight: 500,
   lineHeight: '24px',
   letterSpacing: '-0.2px',
+});
+
+export const contentWrapper = style({
+  display: 'flex',
+  gap: '16px',
 });
