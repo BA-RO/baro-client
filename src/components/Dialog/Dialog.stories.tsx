@@ -1,4 +1,5 @@
 import Icon from '@components/Icon';
+import ProfileDialog from '@components/Layout/components/ProfileDialog';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Dialog from '.';
@@ -19,7 +20,7 @@ type Story = StoryObj<typeof Dialog>;
 export const Small: Story = {
   render: () => (
     <>
-      <Dialog type="small">
+      <Dialog type="small" closeDialog={() => {}}>
         <Dialog.Button onClick={() => {}}>수정하기</Dialog.Button>
         <Dialog.Button onClick={() => {}}>삭제하기</Dialog.Button>
       </Dialog>
@@ -30,7 +31,7 @@ export const Small: Story = {
 export const MediumFolder: Story = {
   render: () => (
     <>
-      <Dialog type="medium">
+      <Dialog type="medium" closeDialog={() => {}}>
         <Dialog.Button onClick={() => {}}>
           OOO님의 폴더<span className={styles.badge}>기본</span>
         </Dialog.Button>
@@ -48,29 +49,12 @@ export const MediumFolder: Story = {
 };
 
 export const MediumProfile: Story = {
-  render: () => (
-    <>
-      <Dialog type="medium">
-        <Dialog.Title>
-          <div className={styles.profileIcon}>
-            <Icon icon="profileDialog" />
-          </div>
-          <div className={styles.circle} />
-          <span className={styles.iconTitleText}>바로가나다라마바님</span>
-        </Dialog.Title>
-        <Dialog.Button onClick={() => {}}>
-          <div className={styles.icon}>
-            <Icon icon="setting" width={20} height={20} />
-          </div>
-          <span className={styles.iconRegularText}>계정 설정</span>
-        </Dialog.Button>
-        <Dialog.Button onClick={() => {}}>
-          <div className={styles.icon}>
-            <Icon icon="logout" width={20} height={20} />
-          </div>
-          <span className={styles.iconRegularText}>로그아웃</span>
-        </Dialog.Button>
-      </Dialog>
-    </>
-  ),
+  render: () => <ProfileDialog closeDialog={() => {}} />,
+  decorators: [
+    (Story) => (
+      <div style={{ height: '300px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
