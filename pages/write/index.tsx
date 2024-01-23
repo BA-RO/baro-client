@@ -1,5 +1,6 @@
 import WriteInput from '@components/Input/WriteInput';
 import WriteGuide from '@domain/Write/components/Guide';
+import WritePageTab from '@domain/Write/components/WritePageTab';
 import WriteHistory from '@domain/Write/History';
 import { type WriteHisotry } from '@domain/Write/types';
 import { useInput } from '@hooks/useInput';
@@ -43,11 +44,16 @@ const WritePage = () => {
   const writeInput = useInput({ id: 'write-input' });
 
   return (
-    <>
-      <WriteGuide />
-      <WriteHistory data={MOCK} />
-      <WriteInput inputProps={writeInput} />
-    </>
+    <WritePageTab
+      write={
+        <>
+          <WriteGuide />
+          <WriteHistory data={MOCK} />
+          <WriteInput inputProps={writeInput} />
+        </>
+      }
+      template={null}
+    />
   );
 };
 

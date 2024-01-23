@@ -7,6 +7,8 @@ export const container = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '64px',
+  maxHeight: '420px',
+  overflow: 'scroll',
 });
 
 export const dateLabelWrapper = style({
