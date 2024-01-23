@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
-import Hello from '@assets/images/Hello.png';
+import Hello from '@assets/images/Hello.svg';
 import Button from '@components/Button';
 import Icon from '@components/Icon';
 
@@ -12,7 +11,7 @@ const Login = () => {
   return (
     <ModalContainer type="login">
       <div className={styles.helloImage}>
-        <Image src={Hello} alt="안녕하세요" />
+        <Hello />
       </div>
       <div className={styles.loginTitleWrapper}>
         <span className={styles.loginTitle}>
@@ -43,11 +42,11 @@ const Login = () => {
         </Button>
       </div>
       <div className={styles.agreeDescription}>
-        로그인은{' '}
+        로그인은&nbsp;
         <Link className={styles.agreeLink} href="/">
           개인정보처리방침
         </Link>
-        과{' '}
+        과&nbsp;
         <Link className={styles.agreeLink} href="/">
           이용약관
         </Link>
