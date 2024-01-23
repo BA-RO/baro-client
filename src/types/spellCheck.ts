@@ -26,6 +26,6 @@ interface SpellCheckErrorResponse {
   status: 'error';
 }
 
-export interface SpellCheckResponse {
-  data: SpellCheckSuccessResponse | SpellCheckErrorResponse;
-}
+export type SpellCheckResponse =
+  | SpellCheckSuccessResponse
+  | SpellCheckErrorResponse;

@@ -32,9 +32,7 @@ export default function handler(
   const error = (error: Error) => {
     console.error(error);
 
-    res.status(500).json({
-      data: { status: 'error' },
-    });
+    res.status(500).json({ status: 'error' });
   };
 
   const spellCheckByDAUM = (results: SpellCheckResult[]) => {
@@ -46,9 +44,7 @@ export default function handler(
       correct: result.suggestions[0],
     }));
 
-    res.status(200).json({
-      data: { status: 'success', result: spellCheckResult },
-    });
+    res.status(200).json({ status: 'success', result: spellCheckResult });
   };
 
   hanspell.spellCheckByDAUM(

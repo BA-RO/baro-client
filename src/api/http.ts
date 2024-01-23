@@ -15,7 +15,7 @@ interface BaroErrorType {
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response.data.data;
+    return response.data;
   },
   (error: AxiosError<Error>) => {
     // Network Error 발생 캐치
