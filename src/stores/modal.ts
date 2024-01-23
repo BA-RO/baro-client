@@ -2,7 +2,7 @@ import { createStore } from 'zustand';
 import { shallow } from 'zustand/shallow';
 import { useStoreWithEqualityFn as useStore } from 'zustand/traditional';
 
-type ModalType = 'deleteArticle' | 'login';
+type ModalType = 'none' | 'deleteArticle' | 'login';
 
 interface State {
   type: ModalType | null;
