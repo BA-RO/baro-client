@@ -8,8 +8,10 @@ import { useModalStore } from '@stores/modal';
 import Portal from '../../Portal';
 import * as styles from '../style.css';
 
+type ModalSizeType = 'login' | 'common';
+
 interface ModalContainerProps {
-  type?: 'login' | 'common';
+  type?: ModalSizeType;
 }
 
 const ModalContainer = ({
