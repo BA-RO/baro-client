@@ -1,11 +1,18 @@
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
 
-import { HTTP_BASE_URL, HTTP_HEADERS } from '@constants/http';
+export const HTTP_TIMEOUT = 6000;
+
+export const HTTP_BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://api.ba-ro.co.kr'
+    : 'https://dev.api.ba-ro.co.kr';
 
 const instance = axios.create({
   baseURL: HTTP_BASE_URL,
-  headers: HTTP_HEADERS,
+  headers: {
+    'content-type': 'application/json',
+  },
 });
 
 interface BaroErrorType {
