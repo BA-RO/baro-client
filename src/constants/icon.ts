@@ -1,5 +1,6 @@
 import Add from '@assets/icons/add.svg';
 import Archive from '@assets/icons/archive.svg';
+import Clock from '@assets/icons/clock.svg';
 import Close from '@assets/icons/close.svg';
 import Copy from '@assets/icons/copy.svg';
 import Logout from '@assets/icons/logout.svg';
@@ -16,6 +17,7 @@ import TemplateDefault from '@assets/icons/template-default.svg';
 export const iconFactory = {
   add: Add,
   archive: Archive,
+  clock: Clock,
   close: Close,
   copy: Copy,
   logout: Logout,
