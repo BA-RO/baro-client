@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import hanspell from 'hanspell';
 
 import { HTTP_TIMEOUT } from '@constants/http';
 
 import { type SpellCheckResponse } from '../../src/types/spellCheck';
-
-const hanspell = require('hanspell');
 
 interface SpellCheckResult {
   /* 맞춤법 오류 종류 */
