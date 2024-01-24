@@ -1,10 +1,13 @@
 import Add from '@assets/icons/add.svg';
 import Archive from '@assets/icons/archive.svg';
+import BookmarkHeader from '@assets/icons/bookmarkHeader.svg';
 import Clock from '@assets/icons/clock.svg';
 import Close from '@assets/icons/close.svg';
 import Copy from '@assets/icons/copy.svg';
 import Google from '@assets/icons/google.svg';
+import Instagram from '@assets/icons/instagram.svg';
 import Kakao from '@assets/icons/kakao.svg';
+import Logo32 from '@assets/icons/logo32.svg';
 import Logout from '@assets/icons/logout.svg';
 import Menu from '@assets/icons/menu.svg';
 import Naver from '@assets/icons/naver.svg';
@@ -12,6 +15,7 @@ import PencilActive from '@assets/icons/pencil-active.svg';
 import PencilDefault from '@assets/icons/pencil-default.svg';
 import Profle from '@assets/icons/profile.svg';
 import ProfileDialog from '@assets/icons/profileDialog.svg';
+import ProfileHeader from '@assets/icons/profileHeader.svg';
 import Setting from '@assets/icons/setting.svg';
 import Submit from '@assets/icons/submit.svg';
 import TemplateActive from '@assets/icons/template-active.svg';
@@ -25,6 +29,9 @@ export const iconFactory = {
   copy: Copy,
   google: Google,
   kakao: Kakao,
+  bookmarkHeader: BookmarkHeader,
+  instagram: Instagram,
+  logo32: Logo32,
   logout: Logout,
   menu: Menu,
   naver: Naver,
@@ -32,6 +39,7 @@ export const iconFactory = {
   pencilDefault: PencilDefault,
   profile: Profle,
   profileDialog: ProfileDialog,
+  profileHeader: ProfileHeader,
   setting: Setting,
   submit: Submit,
   templateActive: TemplateActive,

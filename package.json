@@ -16,6 +16,7 @@
     "template": "plop"
   },
   "dependencies": {
+    "@storybook/addon-actions": "^7.6.10",
     "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.17.9",
     "@vanilla-extract/css": "^1.14.0",
