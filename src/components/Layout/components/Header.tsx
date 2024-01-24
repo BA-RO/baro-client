@@ -11,7 +11,7 @@ import ProfileDialog from './ProfileDialog';
 const Header = () => {
   const [showProfileDialog, setShowProfileDialog] = useState(false);
 
-  const handleClickProfile = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleProfileClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setShowProfileDialog(!showProfileDialog);
   };
@@ -28,7 +28,7 @@ const Header = () => {
           <Link href="/" className={styles.bookmark}>
             <Icon icon="bookmarkHeader" />
           </Link>
-          <Button className={styles.profile} onClick={handleClickProfile}>
+          <Button className={styles.profile} onClick={handleProfileClick}>
             <div className={styles.circle28}>
               <Icon icon="profileHeader" width={16} height={16} />
             </div>
