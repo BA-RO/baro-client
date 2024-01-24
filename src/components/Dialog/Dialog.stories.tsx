@@ -1,5 +1,6 @@
 import Icon from '@components/Icon';
 import ProfileDialog from '@components/Layout/components/ProfileDialog';
+import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Dialog from '.';
@@ -20,9 +21,13 @@ type Story = StoryObj<typeof Dialog>;
 export const Small: Story = {
   render: () => (
     <>
-      <Dialog type="small" closeDialog={() => {}}>
-        <Dialog.Button onClick={() => {}}>수정하기</Dialog.Button>
-        <Dialog.Button onClick={() => {}}>삭제하기</Dialog.Button>
+      <Dialog type="small" closeDialog={action('Dialog 외부 클릭')}>
+        <Dialog.Button onClick={action('수정하기 클릭')}>
+          수정하기
+        </Dialog.Button>
+        <Dialog.Button onClick={action('삭제하기 클릭')}>
+          삭제하기
+        </Dialog.Button>
       </Dialog>
     </>
   ),
@@ -31,13 +36,17 @@ export const Small: Story = {
 export const MediumFolder: Story = {
   render: () => (
     <>
-      <Dialog type="medium" closeDialog={() => {}}>
-        <Dialog.Button onClick={() => {}}>
+      <Dialog type="medium" closeDialog={action('Dialog 외부 클릭')}>
+        <Dialog.Button onClick={action('기본 폴더 클릭')}>
           OOO님의 폴더<span className={styles.badge}>기본</span>
         </Dialog.Button>
-        <Dialog.Button onClick={() => {}}>폴더 이름1</Dialog.Button>
-        <Dialog.Button onClick={() => {}}>폴더 이름2</Dialog.Button>
-        <Dialog.Button onClick={() => {}}>
+        <Dialog.Button onClick={action('폴더 이름1 클릭')}>
+          폴더 이름1
+        </Dialog.Button>
+        <Dialog.Button onClick={action('폴더 이름2 클릭')}>
+          폴더 이름2
+        </Dialog.Button>
+        <Dialog.Button onClick={action('새 폴더 만들기 클릭')}>
           <div className={styles.icon}>
             <Icon icon="add" width={20} height={20} />
           </div>
@@ -49,7 +58,7 @@ export const MediumFolder: Story = {
 };
 
 export const MediumProfile: Story = {
-  render: () => <ProfileDialog closeDialog={() => {}} />,
+  render: () => <ProfileDialog closeDialog={action('Dialog 외부 클릭')} />,
   decorators: [
     (Story) => (
       <div style={{ height: '300px' }}>
