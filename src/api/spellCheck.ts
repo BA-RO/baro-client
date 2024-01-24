@@ -1,8 +1,8 @@
 import {
   type SpellCheckParams,
   type SpellCheckResponse,
-} from '../../types/spellCheck';
-import { http } from '../http';
+} from '../types/spellCheck';
+import { http } from './http';
 
 const API_URL = '/api/spell-check';
 
