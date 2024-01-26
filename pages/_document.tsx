@@ -8,8 +8,8 @@ const Document = () => {
       <Head />
       <body>
         <Main />
-        {Object.values(PORTAL_ID).map((value, index) => (
-          <div key={index} id={value} />
+        {Object.values(PORTAL_ID).map((value) => (
+          <div key={value} id={value} />
         ))}
         <NextScript />
       </body>
