@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import hanspell from 'hanspell';
 
-import { type SpellCheckResponse } from '../../src/types/spellCheck';
+import { type SpellCheckResponse } from '../../src/api/spell/types';
 
 const HTTP_TIMEOUT = 6000;
 
