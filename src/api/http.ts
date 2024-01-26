@@ -1,9 +1,18 @@
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
 
+export const HTTP_TIMEOUT = 6000;
+
+export const HTTP_BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://api.ba-ro.co.kr'
+    : 'https://dev.api.ba-ro.co.kr';
+
 const instance = axios.create({
-  baseURL: 'https://dev.api.ba-ro.co.kr/',
-  headers: { 'content-type': 'application/json' },
+  baseURL: HTTP_BASE_URL,
+  headers: {
+    'content-type': 'application/json',
+  },
 });
 
 interface BaroErrorType {
@@ -13,7 +22,7 @@ interface BaroErrorType {
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response;
+    return response.data;
   },
   (error: AxiosError<Error>) => {
     // Network Error 발생 캐치
@@ -31,6 +40,8 @@ instance.interceptors.response.use(
         message: '',
       });
     }
+
+    return Promise.reject(error);
   },
 );
 
