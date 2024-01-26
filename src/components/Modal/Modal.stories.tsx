@@ -40,3 +40,18 @@ export const DeleteArticle: Story = {
     );
   },
 };
+
+export const Login: Story = {
+  render: function Render() {
+    const { openModal } = useModalStore();
+
+    return (
+      <>
+        <Button state="enabled" size="M" onClick={() => openModal('login')}>
+          로그인 모달 노출
+        </Button>
+        <Modal />
+      </>
+    );
+  },
+};
