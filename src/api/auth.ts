@@ -12,7 +12,7 @@ export const getToken = async (authType: OAuthType, code: string) => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Origin: 'http://localhost:3000',
+          Origin: process.env.NEXT_PUBLIC_ORIGIN as string,
         },
       },
     );
