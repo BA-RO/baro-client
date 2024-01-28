@@ -1,7 +1,7 @@
 import type { StorybookConfig } from '@storybook/nextjs';
 import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import path from 'path';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 const config: StorybookConfig = {
   stories: ['../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -18,21 +18,7 @@ const config: StorybookConfig = {
     autodocs: true,
   },
   webpackFinal(config) {
-    config.resolve!.alias = {
-      ...config.resolve!.alias,
-      '~pages': path.resolve(__dirname, '../pages/'),
-      '~templates': path.resolve(__dirname, '../templates/'),
-      '~types': path.resolve(__dirname, '../types/'),
-      '@assets': path.resolve(__dirname, '../src/assets/'),
-      '@components': path.resolve(__dirname, '../src/components/'),
-      '@constants': path.resolve(__dirname, '../src/constants/'),
-      '@feature': path.resolve(__dirname, '../src/feature/'),
-      '@hooks': path.resolve(__dirname, '../src/hooks/'),
-      '@models': path.resolve(__dirname, '../src/models/'),
-      '@stores': path.resolve(__dirname, '../src/stores/'),
-      '@styles': path.resolve(__dirname, '../src/styles/'),
-      '@utils': path.resolve(__dirname, '../src/utils/'),
-    };
+    config.resolve!.plugins = [new TsconfigPathsPlugin()];
 
     config.plugins?.push(
       new VanillaExtractPlugin(),
