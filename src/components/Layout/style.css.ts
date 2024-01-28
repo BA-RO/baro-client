@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
@@ -46,10 +47,34 @@ export const logo = style({
   display: 'inline-block',
   padding: '18px 0',
 });
-
-export const iconsWrapper = style({
-  float: 'right',
-  margin: '8px 0',
+export const submitWrapper = recipe({
+  base: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    paddingLeft: '20px',
+  },
+  variants: {
+    multirow: {
+      true: {
+        height: '100%',
+      },
+    },
+  },
+});
+export const buttonsWrapper = recipe({
+  base: {
+    float: 'right',
+  },
+  variants: {
+    type: {
+      normal: {
+        margin: '8px 0',
+      },
+      intro: {
+        margin: '12px 0',
+      },
+    },
+  },
 });
 
 export const bookmark = style({
@@ -107,6 +132,10 @@ export const buttonText = style([
 ]);
 
 export const footerWrapper = style({
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  right: 0,
   padding: '40px 200px',
   backgroundColor: COLORS['Grey/700'],
   display: 'flex',
@@ -173,5 +202,18 @@ export const copyright = style([
   }),
   {
     color: COLORS['Grey/400'],
+  },
+]);
+
+export const startButton = style([
+  sprinkles({
+    typography: '15/Title/Medium',
+  }),
+  {
+    borderRadius: '100px',
+    backgroundColor: COLORS['Blue/Dark'],
+    padding: '11px 18px',
+    textAlign: 'center',
+    color: COLORS['Grey/White'],
   },
 ]);
