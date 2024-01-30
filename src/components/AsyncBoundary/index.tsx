@@ -1,6 +1,5 @@
 import { type PropsWithChildren, type ReactNode, Suspense } from 'react';
 
-import LoadingView from '../Loading';
 import ErrorBoundary from './components/ErrorBoundary';
 
 interface AsyncBoundaryProps {
@@ -9,7 +8,7 @@ interface AsyncBoundaryProps {
 
 const AsyncBoundary = ({
   children,
-  loadingFallback = <LoadingView />,
+  loadingFallback = <div>로딩중</div>,
 }: PropsWithChildren<AsyncBoundaryProps>) => {
   return (
     <ErrorBoundary>
