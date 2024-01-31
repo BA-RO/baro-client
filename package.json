@@ -69,7 +69,6 @@
     "plop": "^4.0.1",
     "prettier": "^3.1.0",
     "storybook": "^7.6.4",
-    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5"
   }
 }
