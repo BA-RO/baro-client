@@ -7,7 +7,7 @@ export const getLoginURL = (authType: OAuthType) =>
 export const getToken = async (authType: OAuthType, code: string) => {
   try {
     const res = await fetch(
-      `https://dev.api.ba-ro.co.kr/auth/oauth/sign-in/${authType}?authCode=${code}`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/oauth/sign-in/${authType}?authCode=${code}`,
       {
         method: 'GET',
         headers: {
