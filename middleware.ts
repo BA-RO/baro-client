@@ -2,6 +2,7 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 import { getToken } from '@api/auth';
+import { ROUTES } from '@constants/routes';
 import { type OAuthType } from '@customTypes/auth';
 import { tokenStore } from '@stores/token';
 
@@ -26,7 +27,9 @@ export const middleware = async (request: NextRequest) => {
     const { accessToken, refreshToken } =
       (await getToken(authType, code)) || {};
     setAccessToken(accessToken);
-    const response = NextResponse.redirect(new URL('/write', request.url));
+    const response = NextResponse.redirect(
+      new URL(ROUTES.끄적이는, request.url),
+    );
     response.cookies.set('refreshToken', refreshToken);
     return response;
   }
