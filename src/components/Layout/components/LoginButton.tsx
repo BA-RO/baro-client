@@ -3,7 +3,7 @@ import { useModalStore } from '@stores/modal';
 
 import * as styles from '../style.css';
 
-const IntroHeaderButton = () => {
+const LoginButton = () => {
   const { openModal } = useModalStore();
 
   const onClick바로시작하기 = () => openModal('login');
@@ -15,4 +15,4 @@ const IntroHeaderButton = () => {
   );
 };
 
-export default IntroHeaderButton;
+export default LoginButton;

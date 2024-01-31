@@ -10,9 +10,7 @@ interface NormalHeaderButtonProps {
   handleProfileClick: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const NormalHeaderButton = ({
-  handleProfileClick,
-}: NormalHeaderButtonProps) => {
+const ProfileButton = ({ handleProfileClick }: NormalHeaderButtonProps) => {
   return (
     <>
       <Link href="/" className={styles.bookmark}>
@@ -27,4 +25,4 @@ const NormalHeaderButton = ({
   );
 };
 
-export default NormalHeaderButton;
+export default ProfileButton;

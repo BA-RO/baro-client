@@ -5,8 +5,8 @@ import Logo from '@assets/images/logo.svg';
 import { type HeaderType } from '@models/layout';
 
 import * as styles from '../style.css';
-import IntroHeaderButton from './IntroHeaderButton';
-import NormalHeaderButton from './NormalHeaderButton';
+import LoginButton from './LoginButton';
+import ProfileButton from './ProfileButton';
 import ProfileDialog from './ProfileDialog';
 
 interface HeaderProps {
@@ -23,9 +23,9 @@ const Header = ({ type }: HeaderProps) => {
 
   const HeaderButton = () =>
     type === 'intro' ? (
-      <IntroHeaderButton />
+      <LoginButton />
     ) : (
-      <NormalHeaderButton handleProfileClick={handleProfileClick} />
+      <ProfileButton handleProfileClick={handleProfileClick} />
     );
 
   return (
