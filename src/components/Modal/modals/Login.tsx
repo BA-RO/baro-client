@@ -12,7 +12,7 @@ import * as styles from '../style.css';
 const Login = () => {
   const { mutateAsync } = useLogin();
 
-  const onClickSocialLogin = (type: OAuthType) => async () => {
+  const handleSocialLoginClick = (type: OAuthType) => async () => {
     const data = await mutateAsync(type);
 
     if (!data.url) return;
@@ -35,7 +35,7 @@ const Login = () => {
       <div className={styles.loginButtonsWrapper}>
         <Button
           className={styles.googleLogin}
-          onClick={onClickSocialLogin('google')}
+          onClick={handleSocialLoginClick('google')}
         >
           <div className={styles.googleIcon}>
             <Icon icon="google" width={18} height={18} />
@@ -44,7 +44,7 @@ const Login = () => {
         </Button>
         <Button
           className={styles.naverLogin}
-          onClick={onClickSocialLogin('naver')}
+          onClick={handleSocialLoginClick('naver')}
         >
           <div className={styles.naverIcon}>
             <Icon icon="naver" width={15} height={14} />
@@ -53,7 +53,7 @@ const Login = () => {
         </Button>
         <Button
           className={styles.kakaoLogin}
-          onClick={onClickSocialLogin('kakao')}
+          onClick={handleSocialLoginClick('kakao')}
         >
           <div className={styles.kakaoIcon}>
             <Icon icon="kakao" width={19} height={18} />
