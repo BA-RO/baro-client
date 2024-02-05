@@ -4,15 +4,26 @@ import Tabs from '@components/Tabs';
 
 import * as styles from './style.css';
 
-interface WritePageTabProps {
+interface MainPageTabProps {
   write: ReactNode;
-  template: ReactNode;
+  refer: ReactNode;
+  selectedTab: string;
+  handleTabSelect: (selectedTab: string) => void;
 }
 
-const WritePageTab = ({ write }: WritePageTabProps) => {
+const MainPageTab = ({
+  write,
+  refer,
+  selectedTab,
+  handleTabSelect,
+}: MainPageTabProps) => {
   return (
-    <>
-      <Tabs type="switcher" defaultValue="끄적이는">
+    <div className={styles.MainPageTabWrapper}>
+      <Tabs
+        type="switcher"
+        selectedTab={selectedTab}
+        handleTabSelect={handleTabSelect}
+      >
         <div className={styles.header}>
           <Tabs.List>
             <Tabs.Trigger
@@ -32,10 +43,11 @@ const WritePageTab = ({ write }: WritePageTabProps) => {
 
         <section>
           <Tabs.Content value="끄적이는">{write}</Tabs.Content>
+          <Tabs.Content value="참고하는">{refer}</Tabs.Content>
         </section>
       </Tabs>
-    </>
+    </div>
   );
 };
 
-export default WritePageTab;
+export default MainPageTab;

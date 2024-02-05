@@ -1,9 +1,14 @@
+import { useState } from 'react';
+
 import WriteInput from '@components/Input/WriteInput';
+import Layout from '@components/Layout';
+import MainPageTab from '@components/Layout/MainPageTab';
+import ReferTab from '@domain/Refer/components/ReferTab';
 import WriteGuide from '@domain/Write/components/Guide';
-import WritePageTab from '@domain/Write/components/WritePageTab';
 import WriteHistory from '@domain/Write/History';
 import { type WriteHisotry } from '@domain/Write/types';
 import { useInput } from '@hooks/useInput';
+import { COLORS } from '@styles/tokens';
 
 const MOCK: WriteHisotry[] = [
   {
@@ -40,21 +45,34 @@ const MOCK: WriteHisotry[] = [
   },
 ];
 
-const WritePage = () => {
+const MainPage = () => {
   const writeInput = useInput({ id: 'write-input' });
 
+  const [selectedTab, setSelectedTab] = useState('끄적이는');
+
+  const handleTabSelect = (selectedTab: string) => {
+    setSelectedTab(selectedTab);
+  };
+
+  const backgroundColor =
+    selectedTab === '참고하는' ? COLORS['Grey/100'] : undefined;
+
   return (
-    <WritePageTab
-      write={
-        <>
-          <WriteGuide />
-          <WriteHistory data={MOCK} />
-          <WriteInput inputProps={writeInput} />
-        </>
-      }
-      template={null}
-    />
+    <Layout backgroundColor={backgroundColor}>
+      <MainPageTab
+        write={
+          <>
+            <WriteGuide />
+            <WriteHistory data={MOCK} />
+            <WriteInput inputProps={writeInput} />
+          </>
+        }
+        refer={<ReferTab />}
+        selectedTab={selectedTab}
+        handleTabSelect={handleTabSelect}
+      />
+    </Layout>
   );
 };
 
-export default WritePage;
+export default MainPage;
