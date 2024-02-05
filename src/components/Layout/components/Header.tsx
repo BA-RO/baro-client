@@ -30,7 +30,7 @@ const Header = ({ type }: HeaderProps) => {
 
   return (
     <>
-      <div className={styles.headerWrapper}>
+      <header className={styles.headerWrapper}>
         <div className={styles.logo}>
           <Link href="/">
             <Logo />
@@ -39,7 +39,7 @@ const Header = ({ type }: HeaderProps) => {
         <div className={styles.buttonsWrapper({ type })}>
           <HeaderButton />
         </div>
-      </div>
+      </header>
       {showProfileDialog && (
         <ProfileDialog closeDialog={() => setShowProfileDialog(false)} />
       )}

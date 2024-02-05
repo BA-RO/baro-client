@@ -7,7 +7,7 @@ import * as styles from '../style.css';
 
 const Footer = () => {
   return (
-    <div className={styles.footerWrapper}>
+    <footer className={styles.footerWrapper}>
       <div>
         <div>
           <Button className={styles.footerButton}>서비스메일</Button>
@@ -33,7 +33,7 @@ const Footer = () => {
           &copy; 2023. Baro. All rights reserved.
         </span>
       </div>
-    </div>
+    </footer>
   );
 };
 

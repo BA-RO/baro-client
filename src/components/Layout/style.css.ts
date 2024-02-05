@@ -1,14 +1,19 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
+
+export const MainPageTabWrapper = style({
+  paddingTop: '84px',
+});
 
 export const headerWrapper = style({
   padding: '0 24px',
   position: 'fixed',
   left: 0,
   right: 0,
+  zIndex: 100,
   backgroundColor: COLORS['Grey/900'],
   '::after': {
     content: '',
@@ -220,3 +225,13 @@ export const startButton = style([
     color: COLORS['Grey/White'],
   },
 ]);
+export const backgroundColorMain = createVar();
+
+export const mainWrapper = style({
+  backgroundColor: backgroundColorMain,
+});
+
+export const header = style({
+  display: 'flex',
+  justifyContent: 'center',
+});
