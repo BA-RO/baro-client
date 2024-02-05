@@ -41,6 +41,20 @@ export const wrapper = recipe({
         backgroundColor: `${COLORS['Grey/White']}`,
       },
     },
+    type: {
+      refer: [
+        sprinkles({
+          width: {
+            small: 336,
+            middle: 322,
+            large: 389,
+          },
+        }),
+        {
+          padding: '28px 32px 20px',
+        },
+      ],
+    },
   },
 });
 

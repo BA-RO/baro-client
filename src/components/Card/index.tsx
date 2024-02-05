@@ -17,6 +17,7 @@ interface CardProps {
     | 'purple'
     | 'grey'
     | 'white';
+  type?: 'refer';
 }
 
 interface CardContextProps {
@@ -30,6 +31,7 @@ export const CardContext = createContext<CardContextProps>({
 const CardRoot = ({
   children,
   color = 'white',
+  type,
 }: PropsWithChildren<CardProps>) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -44,7 +46,7 @@ const CardRoot = ({
   return (
     <CardContext.Provider value={{ isVisibleMenu: isVisible }}>
       <li
-        className={styles.wrapper({ color })}
+        className={styles.wrapper({ color, type })}
         onMouseEnter={handleMenuShow}
         onMouseLeave={handleMenuHide}
       >
