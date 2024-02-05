@@ -20,9 +20,6 @@ globalStyle('body', {
   lineHeight: 1,
   WebkitFontSmoothing: 'antialiased',
   MozOsxFontSmoothing: 'grayscale',
-  maxWidth: '1680px',
-  padding: '0 120px',
-  margin: '0 auto',
 });
 
 globalStyle('h1, h2, h3, h4, h5, h6, p', {
