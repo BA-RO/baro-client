@@ -1,4 +1,4 @@
-import { createContext, type PropsWithChildren, useState } from 'react';
+import { createContext, type PropsWithChildren } from 'react';
 
 import TabsContent from './components/TabsContent';
 import TabsList from './components/TabsList';
@@ -14,7 +14,8 @@ interface TabsContextProps {
 
 export interface TabsRootProps {
   type?: TabsType;
-  defaultValue: string;
+  selectedTab: string;
+  handleTabSelect: (selectedTab: string) => void;
 }
 
 export const TabsContext = createContext<TabsContextProps | null>(null);
@@ -22,14 +23,9 @@ export const TabsContext = createContext<TabsContextProps | null>(null);
 const TabsRoot = ({
   children,
   type = 'filter',
-  defaultValue,
+  selectedTab,
+  handleTabSelect,
 }: PropsWithChildren<TabsRootProps>) => {
-  const [selectedTab, setSelectedTab] = useState(defaultValue);
-
-  const handleTabSelect = (selectedTab: string) => {
-    setSelectedTab(selectedTab);
-  };
-
   return (
     <TabsContext.Provider
       value={{ type, selectedTab, onSelectTab: handleTabSelect }}
