@@ -1,9 +1,9 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import { getToken } from '@api/auth';
+import { getToken } from '@api/auth/auth';
+import { type OAuthType } from '@api/auth/types';
 import { ROUTES } from '@constants/routes';
-import { type OAuthType } from '@customTypes/auth';
 import { tokenStore } from '@stores/token';
 
 const isAuthType = (authType?: string): authType is OAuthType => {

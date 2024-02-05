@@ -21,7 +21,6 @@
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
-      "@customTypes/*": ["./src/customTypes/*"],
       "@domain/*": ["./src/domain/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@models/*": ["./src/models/*"],

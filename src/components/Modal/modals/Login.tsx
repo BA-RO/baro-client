@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
+import { type OAuthType } from '@api/auth/types';
 import Hello from '@assets/images/Hello.svg';
 import Button from '@components/Button';
 import Icon from '@components/Icon';
 import ModalContainer from '@components/Modal/components/ModalContainer';
-import { type OAuthType } from '@customTypes/auth';
 import { useLogin } from '@queries/auth';
 
 import * as styles from '../style.css';

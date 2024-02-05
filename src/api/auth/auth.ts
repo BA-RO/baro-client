@@ -1,5 +1,5 @@
+import { type OAuthType } from '@api/auth/types';
 import { http } from '@api/http';
-import { type OAuthType } from '@customTypes/auth';
 
 export const getLoginURL = (authType: OAuthType) =>
   http.get<{ url: string }>(`/auth/oauth/${authType}`);
