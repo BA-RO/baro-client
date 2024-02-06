@@ -2,8 +2,10 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
+import * as utils from '@styles/utils.css';
 
 export const button = recipe({
+  base: [utils.flexAlignCenter],
   variants: {
     state: {
       default: {
