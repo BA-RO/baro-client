@@ -5,7 +5,7 @@ import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
 export const MainPageTabWrapper = style({
-  paddingTop: '84px',
+  paddingTop: '192px',
 });
 
 export const headerWrapper = style({
@@ -232,6 +232,9 @@ export const mainWrapper = style({
 });
 
 export const header = style({
-  display: 'flex',
-  justifyContent: 'center',
+  position: 'fixed',
+  top: '84px',
+  left: '50%',
+  transform: 'translate(-50%, 0)',
+  zIndex: 50,
 });
