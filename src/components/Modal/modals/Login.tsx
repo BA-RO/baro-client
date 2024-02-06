@@ -1,13 +1,24 @@
 import Link from 'next/link';
 
+import { type OAuthType } from '@api/auth/types';
 import Hello from '@assets/images/Hello.svg';
 import Button from '@components/Button';
 import Icon from '@components/Icon';
+import ModalContainer from '@components/Modal/components/ModalContainer';
+import { useLogin } from '@queries/auth';
 
-import ModalContainer from '../components/ModalContainer';
 import * as styles from '../style.css';
 
 const Login = () => {
+  const { mutateAsync } = useLogin();
+
+  const handleSocialLoginClick = (type: OAuthType) => async () => {
+    const data = await mutateAsync(type);
+
+    if (!data.url) return;
+    window.location.href = data.url;
+  };
+
   return (
     <ModalContainer type="login">
       <div className={styles.helloImage}>
@@ -22,19 +33,28 @@ const Login = () => {
         </span>
       </div>
       <div className={styles.loginButtonsWrapper}>
-        <Button className={styles.googleLogin}>
+        <Button
+          className={styles.googleLogin}
+          onClick={handleSocialLoginClick('google')}
+        >
           <div className={styles.googleIcon}>
             <Icon icon="google" width={18} height={18} />
           </div>
           구글로 로그인하기
         </Button>
-        <Button className={styles.naverLogin}>
+        <Button
+          className={styles.naverLogin}
+          onClick={handleSocialLoginClick('naver')}
+        >
           <div className={styles.naverIcon}>
             <Icon icon="naver" width={15} height={14} />
           </div>
           네이버로 로그인하기
         </Button>
-        <Button className={styles.kakaoLogin}>
+        <Button
+          className={styles.kakaoLogin}
+          onClick={handleSocialLoginClick('kakao')}
+        >
           <div className={styles.kakaoIcon}>
             <Icon icon="kakao" width={19} height={18} />
           </div>
