@@ -1,15 +1,34 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import hanspell from 'hanspell';
 
-import { type SpellCheckResponse } from '../../src/api/spell/types';
+import {
+  type SpellCheckResponse,
+  type Suggestion,
+} from '../../src/api/spell/types';
 
 const HTTP_TIMEOUT = 6000;
+
+/**
+ * 주어진 문장에 대해 맞춤법 검사 내용을 적용합니다.
+ * @param sentence 맞춤법 검사를 진행한 글
+ * @param suggestions 맞춤법 수정 사항
+ * @returns correction 맞춤법 검사 내용을 적용한 글
+ */
+
+const getCorrection = (sentence: string, suggestions: Suggestion[]) => {
+  let correction = sentence;
+
+  suggestions.forEach(({ errorToken, correct }) => {
+    const regex = new RegExp(`${errorToken}`, 'g');
+    correction = correction.replace(regex, correct);
+  });
+
+  return correction;
+};
 
 interface SpellCheckResult {
   /* 맞춤법 오류 종류 */
   type: 'space' | 'spell' | 'space_spell' | 'doubt';
-  /* 맞춤법 검사한 문장 */
-  context: string;
   /* 맞춤법 오류 어절 */
   token: string;
   /* 맞춤법 정정 어절 */
@@ -31,19 +50,24 @@ export default function handler(
   const error = (error: Error) => {
     console.error(error);
 
-    res.status(500).json({ status: 'error' });
+    res
+      .status(500)
+      .json({ status: 'error', result: { suggestions: [], correction: '' } });
   };
 
   const spellCheckByDAUM = (results: SpellCheckResult[]) => {
-    const spellCheckResult = results.map((result, index) => ({
-      id: `[${index}] ${result.token}`,
+    const suggestions = results.map((result) => ({
       type: result.type !== 'space_spell' ? result.type : 'spell',
-      errorContext: result.context,
       errorToken: result.token,
       correct: result.suggestions[0],
     }));
 
-    res.status(200).json({ status: 'success', result: spellCheckResult });
+    const correction = getCorrection(sentence, suggestions);
+
+    res.status(200).json({
+      status: 'success',
+      result: { suggestions, correction },
+    });
   };
 
   hanspell.spellCheckByDAUM(

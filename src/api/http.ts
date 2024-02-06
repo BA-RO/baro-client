@@ -52,7 +52,7 @@ export const http = {
     url: string,
     param?: ParamType,
     options?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<ResponseType>> => instance.post(url, param, options),
+  ): Promise<ResponseType> => instance.post(url, param, options),
   patch: <ParamType, ResponseType>(
     url: string,
     param?: ParamType,

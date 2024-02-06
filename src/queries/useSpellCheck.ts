@@ -1,5 +1,5 @@
 import { useMutation, type UseMutationOptions } from '@tanstack/react-query';
-import { type AxiosError, type AxiosResponse } from 'axios';
+import { type AxiosError } from 'axios';
 
 import { SPELLCHECK_STATE_MESSAGE } from '@constants/spellCheck';
 import { useToastStore } from '@stores/toast';
@@ -10,9 +10,9 @@ import {
   type SpellCheckResponse,
 } from '../api/spell/types';
 
-export const useSpellCheck = (
+export const usePostSpellCheck = (
   options?: UseMutationOptions<
-    AxiosResponse<SpellCheckResponse>,
+    SpellCheckResponse,
     AxiosError,
     SpellCheckParams
   >,
