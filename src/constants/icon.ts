@@ -3,6 +3,7 @@ import Archive from '@assets/icons/archive.svg';
 import BookmarkHeader from '@assets/icons/bookmarkHeader.svg';
 import Clock from '@assets/icons/clock.svg';
 import Close from '@assets/icons/close.svg';
+import Complete from '@assets/icons/complete.svg';
 import Copy from '@assets/icons/copy.svg';
 import Google from '@assets/icons/google.svg';
 import Instagram from '@assets/icons/instagram.svg';
@@ -24,12 +25,13 @@ import TemplateDefault from '@assets/icons/template-default.svg';
 export const iconFactory = {
   add: Add,
   archive: Archive,
+  bookmarkHeader: BookmarkHeader,
   clock: Clock,
   close: Close,
+  complete: Complete,
   copy: Copy,
   google: Google,
   kakao: Kakao,
-  bookmarkHeader: BookmarkHeader,
   instagram: Instagram,
   logo32: Logo32,
   logout: Logout,
