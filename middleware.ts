@@ -27,9 +27,7 @@ export const middleware = async (request: NextRequest) => {
     const { accessToken, refreshToken } =
       (await getToken(authType, code)) || {};
     setAccessToken(accessToken);
-    const response = NextResponse.redirect(
-      new URL(ROUTES.끄적이는, request.url),
-    );
+    const response = NextResponse.redirect(new URL(ROUTES.MAIN, request.url));
     response.cookies.set('refreshToken', refreshToken);
     return response;
   }

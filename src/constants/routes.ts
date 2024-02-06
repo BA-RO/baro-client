@@ -1,3 +1,3 @@
 export const ROUTES = {
-  끄적이는: '/write',
+  MAIN: '/main',
 } as const;
