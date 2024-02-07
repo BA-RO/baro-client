@@ -16,15 +16,12 @@ const HTTP_TIMEOUT = 6000;
  */
 
 const getCorrection = (sentence: string, suggestions: Suggestion[]) => {
-  let correction = sentence;
-
-  suggestions.forEach(({ errorToken, correct }) => {
-    const regex = new RegExp(`${errorToken}`, 'g');
-    correction = correction.replace(regex, correct);
-  });
-
-  return correction;
+  return suggestions.reduce((correction, suggestion) => {
+    const regex = new RegExp(`${suggestion.errorToken}`, 'g');
+    return correction.replace(regex, suggestion.correct);
+  }, sentence);
 };
+``;
 
 interface SpellCheckResult {
   /* 맞춤법 오류 종류 */
