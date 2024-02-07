@@ -18,19 +18,19 @@ export const doubt = style({
 });
 
 export const card = style({
+  marginTop: '16px',
+});
+
+export const suggestion = style({
   display: 'flex',
-  marginTop: '18px',
+  marginTop: '12px',
+  padding: '18px',
+  borderRadius: '12px',
+  backgroundColor: COLORS['Grey/White'],
 });
 
 export const spellCheckBox = style({
   marginRight: '16px',
-});
-
-export const suggestion = style({
-  marginTop: '14px',
-  padding: '12px',
-  borderRadius: '12px',
-  backgroundColor: COLORS['Grey/White'],
 });
 
 export const buttonGroup = style({

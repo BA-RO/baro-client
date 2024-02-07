@@ -56,25 +56,25 @@ const SpellCheckCard = ({ spellCheckResult }: SpellCheckCardProps) => {
     <>
       {spellCheckResult.suggestions.length > 0 ? (
         <div className={styles.card}>
-          <div className={styles.spellCheckBox}>
-            <SpellCheckNotice>
-              {spellCheckResult.suggestions.length}가지 수정이 필요해요!
-            </SpellCheckNotice>
-            <div className={styles.suggestion}>
-              {getStyledSuggestion(spellCheckResult)}
+          <SpellCheckNotice>
+            {spellCheckResult.suggestions.length}가지 수정이 필요해요!
+          </SpellCheckNotice>
+          <div className={styles.suggestion}>
+            <div className={styles.spellCheckBox}>
+              <div>{getStyledSuggestion(spellCheckResult)}</div>
+              <SpellTypeBox />
             </div>
-            <SpellTypeBox />
-          </div>
-          <div className={styles.buttonGroup}>
-            <Button>
-              <Icon icon="copy" className={styles.icon} />
-            </Button>
-            <Button>
-              <Icon icon="bookmark" className={styles.icon} />
-            </Button>
-            <Button>
-              <Icon icon="menu" className={styles.icon} />
-            </Button>
+            <div className={styles.buttonGroup}>
+              <Button>
+                <Icon icon="copy" className={styles.icon} />
+              </Button>
+              <Button>
+                <Icon icon="bookmark" className={styles.icon} />
+              </Button>
+              <Button>
+                <Icon icon="menu" className={styles.icon} />
+              </Button>
+            </div>
           </div>
         </div>
       ) : (
