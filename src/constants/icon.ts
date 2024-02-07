@@ -1,5 +1,6 @@
 import Add from '@assets/icons/add.svg';
 import Archive from '@assets/icons/archive.svg';
+import Bookmark from '@assets/icons/bookmark.svg';
 import BookmarkHeader from '@assets/icons/bookmarkHeader.svg';
 import Clock from '@assets/icons/clock.svg';
 import Close from '@assets/icons/close.svg';
@@ -18,6 +19,7 @@ import Profle from '@assets/icons/profile.svg';
 import ProfileDialog from '@assets/icons/profileDialog.svg';
 import ProfileHeader from '@assets/icons/profileHeader.svg';
 import Setting from '@assets/icons/setting.svg';
+import Spelling from '@assets/icons/spelling.svg';
 import Submit from '@assets/icons/submit.svg';
 import TemplateActive from '@assets/icons/template-active.svg';
 import TemplateDefault from '@assets/icons/template-default.svg';
@@ -25,6 +27,7 @@ import TemplateDefault from '@assets/icons/template-default.svg';
 export const iconFactory = {
   add: Add,
   archive: Archive,
+  bookmark: Bookmark,
   bookmarkHeader: BookmarkHeader,
   clock: Clock,
   close: Close,
@@ -43,6 +46,7 @@ export const iconFactory = {
   profileDialog: ProfileDialog,
   profileHeader: ProfileHeader,
   setting: Setting,
+  spelling: Spelling,
   submit: Submit,
   templateActive: TemplateActive,
   templateDefault: TemplateDefault,

@@ -1,7 +1,7 @@
 import { type PropsWithChildren } from 'react';
 
-import { IconBookmark, IconCopy, IconMenu } from '@assets/icons';
 import Button from '@components/Button';
+import Icon from '@components/Icon';
 import { type SPELLCHECK_TYPE } from '@constants/spellCheck';
 
 import { type SpellCheckResult } from '../../../../../api/spell/types';
@@ -67,13 +67,13 @@ const SpellCheckCard = ({ spellCheckResult }: SpellCheckCardProps) => {
           </div>
           <div className={styles.buttonGroup}>
             <Button>
-              <IconCopy className={styles.icon} />
+              <Icon icon="copy" className={styles.icon} />
             </Button>
             <Button>
-              <IconBookmark className={styles.icon} />
+              <Icon icon="bookmark" className={styles.icon} />
             </Button>
             <Button>
-              <IconMenu className={styles.icon} />
+              <Icon icon="menu" className={styles.icon} />
             </Button>
           </div>
         </div>

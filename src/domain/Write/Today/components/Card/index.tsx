@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { IconBookmark, IconCopy, IconMenu, IconSpelling } from '@assets/icons';
 import Button from '@components/Button';
 import Card from '@components/Card';
+import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 
 import { type SpellCheckResponse } from '../../../../../api/spell/types';
@@ -34,16 +34,16 @@ const WriteTodayCard = () => {
       {!isSuccessSpellCheck && (
         <Card.Menu>
           <Button onClick={handleSpellCheck}>
-            <IconSpelling className={styles.icon} />
+            <Icon icon="spelling" className={styles.icon} />
           </Button>
           <Button>
-            <IconCopy className={styles.icon} />
+            <Icon icon="copy" className={styles.icon} />
           </Button>
           <Button>
-            <IconBookmark className={styles.icon} />
+            <Icon icon="bookmark" className={styles.icon} />
           </Button>
           <Button>
-            <IconMenu className={styles.icon} />
+            <Icon icon="menu" className={styles.icon} />
           </Button>
         </Card.Menu>
       )}
