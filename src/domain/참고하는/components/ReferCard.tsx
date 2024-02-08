@@ -3,8 +3,9 @@ import Button from '@components/Button';
 import Card from '@components/Card';
 import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
+import { CATEGORY } from '@domain/참고하는/models';
+import { type Refer } from '@domain/참고하는/types';
 
-import { Category, type Refer } from '../models';
 import { getNumToK } from '../utils';
 import * as styles from './ReferCard.css';
 
@@ -15,7 +16,7 @@ interface ReferCardProps {
 const ReferCard = ({ data }: ReferCardProps) => {
   const { category, subCategory, content, copiedCount, savedCount } = data;
 
-  const categoryNameKr = Category[category];
+  const categoryNameKr = CATEGORY[category];
 
   return (
     <Card className={styles.wrapper}>

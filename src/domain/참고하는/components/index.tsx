@@ -1,10 +1,9 @@
 import Button from '@components/Button';
 import Icon from '@components/Icon';
-
-import { type Refer } from '../models';
-import FilterHeader from './FilterHeader';
-import ReferCard from './ReferCard';
-import * as styles from './ReferTab.css';
+import FilterHeader from '@domain/참고하는/components/FilterHeader';
+import ReferCard from '@domain/참고하는/components/ReferCard';
+import * as styles from '@domain/참고하는/components/ReferTab.css';
+import { type Refer } from '@domain/참고하는/types';
 
 // - `ASK`  (부탁하기)
 // - `REPORT`  (보고하기)
