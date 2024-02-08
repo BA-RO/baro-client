@@ -7,13 +7,13 @@ import { CATEGORY } from '@domain/참고하는/models';
 import { type Refer } from '@domain/참고하는/types';
 
 import { getNumToK } from '../utils';
-import * as styles from './ReferCard.css';
+import * as styles from './참고하는TemplateCard.css';
 
-interface ReferCardProps {
+interface 참고하는TemplateCardProps {
   data: Refer;
 }
 
-const ReferCard = ({ data }: ReferCardProps) => {
+const 참고하는TemplateCard = ({ data }: 참고하는TemplateCardProps) => {
   const { category, subCategory, content, copiedCount, savedCount } = data;
 
   const categoryNameKr = CATEGORY[category];
@@ -41,4 +41,4 @@ const ReferCard = ({ data }: ReferCardProps) => {
   );
 };
 
-export default ReferCard;
+export default 참고하는TemplateCard;

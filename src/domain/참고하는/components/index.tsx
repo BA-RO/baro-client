@@ -1,8 +1,8 @@
 import Button from '@components/Button';
 import Icon from '@components/Icon';
 import FilterHeader from '@domain/참고하는/components/FilterHeader';
-import ReferCard from '@domain/참고하는/components/ReferCard';
 import * as styles from '@domain/참고하는/components/ReferTab.css';
+import 참고하는TemplateCard from '@domain/참고하는/components/참고하는TemplateCard';
 import { type Refer } from '@domain/참고하는/types';
 
 // - `ASK`  (부탁하기)
@@ -135,7 +135,7 @@ const 참고하는TabContent = () => {
       </Button>
       <ul className={styles.referCardsWrapper}>
         {datas.map((data) => (
-          <ReferCard key={data.templateId} data={data} />
+          <참고하는TemplateCard key={data.templateId} data={data} />
         ))}
       </ul>
     </div>
