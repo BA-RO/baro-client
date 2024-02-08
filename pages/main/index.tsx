@@ -3,10 +3,10 @@ import { useState } from 'react';
 import WriteInput from '@components/Input/WriteInput';
 import Layout from '@components/Layout';
 import MainPageTab from '@components/Layout/MainPageTab';
-import ReferTab from '@domain/Refer/components/ReferTab';
 import WriteGuide from '@domain/Write/components/Guide';
 import WriteHistory from '@domain/Write/History';
 import { type WriteHisotry } from '@domain/Write/types';
+import 참고하는TabContent from '@domain/참고하는/components';
 import { useInput } from '@hooks/useInput';
 import { COLORS } from '@styles/tokens';
 
@@ -67,7 +67,7 @@ const MainPage = () => {
             <WriteInput inputProps={writeInput} />
           </>
         }
-        refer={<ReferTab />}
+        refer={<참고하는TabContent />}
         selectedTab={selectedTab}
         handleTabSelect={handleTabSelect}
       />

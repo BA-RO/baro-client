@@ -124,7 +124,7 @@ const datas: Refer[] = [
   },
 ];
 
-const ReferTab = () => {
+const 참고하는TabContent = () => {
   return (
     <div className={styles.referPageTabWrapper}>
       <FilterHeader />
@@ -143,4 +143,4 @@ const ReferTab = () => {
   );
 };
 
-export default ReferTab;
+export default 참고하는TabContent;
