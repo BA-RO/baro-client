@@ -1,4 +1,4 @@
 export const getNumToK = (num: number) => {
-  if (num < 1000) return num;
-  return `${num / 1000}k`;
+  const formatter = new Intl.NumberFormat('en', { notation: 'compact' });
+  return formatter.format(num);
 };
