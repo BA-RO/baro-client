@@ -41,20 +41,6 @@ export const wrapper = recipe({
         backgroundColor: `${COLORS['Grey/White']}`,
       },
     },
-    type: {
-      refer: [
-        sprinkles({
-          width: {
-            small: 336,
-            middle: 322,
-            large: 389,
-          },
-        }),
-        {
-          padding: '28px 32px 20px',
-        },
-      ],
-    },
   },
 });
 
@@ -87,7 +73,6 @@ export const body = style([
 export const footer = style([
   sprinkles({ typography: '14/Body/Regular' }),
   {
-    marginBottom: '-8px',
     paddingTop: '16px',
     borderTop: `1px solid ${COLORS['Dim/6']}`,
     color: COLORS['Grey/400'],

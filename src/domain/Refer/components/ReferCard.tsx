@@ -18,7 +18,7 @@ const ReferCard = ({ data }: ReferCardProps) => {
   const categoryNameKr = Category[category];
 
   return (
-    <Card type="refer">
+    <Card className={styles.wrapper}>
       <Card.Menu>
         <Button>
           <Icon icon="copy" className={styles.hover} />
