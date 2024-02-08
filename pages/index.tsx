@@ -1,7 +1,7 @@
-import type { NextPage } from 'next';
+import Layout from '@components/Layout';
 
-const HomePage: NextPage = () => {
-  return <div>바로</div>;
+const Intro = () => {
+  return <Layout headerType="intro" isFooter></Layout>;
 };
 
-export default HomePage;
+export default Intro;
