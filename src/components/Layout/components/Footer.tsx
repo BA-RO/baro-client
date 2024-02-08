@@ -30,7 +30,7 @@ const Footer = () => {
           <Icon icon="logo32" width={32} height={36} />
         </div>
         <span className={styles.copyright}>
-          &copy; 2023. Baro. All rights reserved.
+          &copy;2024. Baro All Rights Reserved.
         </span>
       </div>
     </footer>
