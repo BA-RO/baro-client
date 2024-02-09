@@ -48,6 +48,7 @@ export const logo = style({
 });
 
 export const iconsWrapper = style({
+  display: 'flex',
   float: 'right',
   margin: '8px 0',
 });
