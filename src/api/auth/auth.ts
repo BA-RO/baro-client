@@ -11,5 +11,5 @@ export const getToken = (authType: OAuthType, code: string) =>
 
 export const getRenewToken = (refreshToken: string) =>
   http.get<{ accessToken: string; refreshToken: string }>(
-    `/auth/reissue?refreshToken=${refreshToken}`,
+    `/auth/reissue?refreshToken=Bearer ${refreshToken}`,
   );
