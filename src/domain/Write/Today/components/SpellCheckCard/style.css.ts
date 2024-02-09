@@ -40,7 +40,7 @@ export const buttonGroup = style({
 });
 
 export const icon = style({
-  transition: 'all 100ms ease-in-out',
+  transition: 'fill 100ms ease-in-out',
   fill: COLORS['Grey/300'],
 
   ':hover': {
