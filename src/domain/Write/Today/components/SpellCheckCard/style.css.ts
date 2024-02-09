@@ -23,6 +23,7 @@ export const card = style({
 
 export const suggestion = style({
   display: 'flex',
+  justifyContent: 'space-between',
   marginTop: '12px',
   padding: '18px',
   borderRadius: '12px',
