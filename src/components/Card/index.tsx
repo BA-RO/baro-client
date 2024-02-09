@@ -4,6 +4,7 @@ import {
   useContext,
   useState,
 } from 'react';
+import clsx from 'clsx';
 
 import * as styles from './style.css';
 
@@ -17,6 +18,7 @@ interface CardProps {
     | 'purple'
     | 'grey'
     | 'white';
+  className?: string;
 }
 
 interface CardContextProps {
@@ -29,6 +31,7 @@ export const CardContext = createContext<CardContextProps>({
 
 const CardRoot = ({
   children,
+  className,
   color = 'white',
 }: PropsWithChildren<CardProps>) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,7 +47,7 @@ const CardRoot = ({
   return (
     <CardContext.Provider value={{ isVisibleMenu: isVisible }}>
       <li
-        className={styles.wrapper({ color })}
+        className={clsx(styles.wrapper({ color }), className)}
         onMouseEnter={handleMenuShow}
         onMouseLeave={handleMenuHide}
       >

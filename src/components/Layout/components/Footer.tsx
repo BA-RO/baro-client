@@ -7,7 +7,7 @@ import * as styles from '../style.css';
 
 const Footer = () => {
   return (
-    <div className={styles.footerWrapper}>
+    <footer className={styles.footerWrapper}>
       <div>
         <div>
           <Button className={styles.footerButton}>서비스메일</Button>
@@ -30,10 +30,10 @@ const Footer = () => {
           <Icon icon="logo32" width={32} height={36} />
         </div>
         <span className={styles.copyright}>
-          &copy; 2023. Baro. All rights reserved.
+          &copy;2024. Baro All Rights Reserved.
         </span>
       </div>
-    </div>
+    </footer>
   );
 };
 

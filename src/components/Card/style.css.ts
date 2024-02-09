@@ -73,7 +73,6 @@ export const body = style([
 export const footer = style([
   sprinkles({ typography: '14/Body/Regular' }),
   {
-    marginBottom: '-8px',
     paddingTop: '16px',
     borderTop: `1px solid ${COLORS['Dim/6']}`,
     color: COLORS['Grey/400'],

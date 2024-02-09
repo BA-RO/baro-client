@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@styles/sprinkles.css';
@@ -7,8 +7,10 @@ import { COLORS } from '@styles/tokens';
 export const headerWrapper = style({
   padding: '0 24px',
   position: 'fixed',
+  top: 0,
   left: 0,
   right: 0,
+  zIndex: 100,
   backgroundColor: COLORS['Grey/900'],
   '::after': {
     content: '',
@@ -65,7 +67,6 @@ export const submitWrapper = recipe({
 
 export const buttonsWrapper = recipe({
   base: {
-    display: 'flex',
     float: 'right',
   },
   variants: {
@@ -220,3 +221,17 @@ export const startButton = style([
     color: COLORS['Grey/White'],
   },
 ]);
+export const backgroundColorMain = createVar();
+
+export const mainWrapper = style({
+  backgroundColor: backgroundColorMain,
+  marginTop: '64px',
+});
+
+export const header = style({
+  position: 'fixed',
+  top: '84px',
+  left: '50%',
+  transform: 'translate(-50%, 0)',
+  zIndex: 50,
+});
