@@ -17,6 +17,7 @@
       "~pages/*": ["./pages/*"],
       "~templates/*": ["./templates/*"],
       "~types/*": ["./types/*"],
+      "@api/*": ["./src/api/*"],
       "@assets/*": ["./src/assets/*"],
       "@api/*": ["./src/api/*"],
       "@components/*": ["./src/components/*"],

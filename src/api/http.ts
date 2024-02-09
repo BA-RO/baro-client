@@ -1,15 +1,10 @@
-import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { AxiosError, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-export const HTTP_TIMEOUT = 6000;
-
-export const HTTP_BASE_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://api.ba-ro.co.kr'
-    : 'https://dev.api.ba-ro.co.kr';
+import { tokenStore } from '@stores/token';
 
 const instance = axios.create({
-  baseURL: HTTP_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
   headers: {
     'content-type': 'application/json',
   },
@@ -20,8 +15,14 @@ interface BaroErrorType {
   message?: string;
 }
 
+instance.interceptors.request.use((config) => {
+  const { accessToken } = tokenStore.getState();
+  config.headers.Authorization = `Bearer ${accessToken}}`;
+  return config;
+});
+
 instance.interceptors.response.use(
-  (response: AxiosResponse) => {
+  (response) => {
     return response.data;
   },
   (error: AxiosError<Error>) => {
@@ -46,8 +47,7 @@ instance.interceptors.response.use(
 );
 
 export const http = {
-  get: <ResponseType>(url: string): Promise<AxiosResponse<ResponseType>> =>
-    instance.get(url),
+  get: <ResponseType>(url: string): Promise<ResponseType> => instance.get(url),
   post: <ParamType, ResponseType>(
     url: string,
     param?: ParamType,
@@ -57,13 +57,12 @@ export const http = {
     url: string,
     param?: ParamType,
     options?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<ResponseType>> =>
-    instance.patch(url, param, options),
+  ): Promise<ResponseType> => instance.patch(url, param, options),
   put: <ParamType, ResponseType>(
     url: string,
     param?: ParamType,
     options?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<ResponseType>> => instance.put(url, param, options),
-  delete: <ResponseType>(url: string): Promise<AxiosResponse<ResponseType>> =>
+  ): Promise<ResponseType> => instance.put(url, param, options),
+  delete: <ResponseType>(url: string): Promise<ResponseType> =>
     instance.delete(url),
 };
