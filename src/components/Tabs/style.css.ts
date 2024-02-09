@@ -5,13 +5,7 @@ import { COLORS } from '@styles/tokens';
 import * as utils from '@styles/utils.css';
 
 export const tabsList = recipe({
-  base: [
-    utils.flexCenter,
-    {
-      width: 'fit-content',
-      margin: '16px 0 12px',
-    },
-  ],
+  base: [utils.flexCenter],
   variants: {
     type: {
       switcher: {

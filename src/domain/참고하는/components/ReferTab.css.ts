@@ -7,7 +7,7 @@ export const referPageTabWrapper = style([
   sprinkles({ width: { small: 688, middle: 1000, large: 1200 } }),
   {
     minHeight: '100vh',
-    padding: '41px 0 64px',
+    padding: '128px 0 64px',
     margin: '0 auto',
   },
 ]);
