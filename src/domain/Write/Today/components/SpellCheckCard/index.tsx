@@ -1,10 +1,10 @@
 import { type PropsWithChildren } from 'react';
 
+import { type SpellCheckResult } from '@api/spell/types';
 import Button from '@components/Button';
 import Icon from '@components/Icon';
 import { type SPELLCHECK_TYPE } from '@constants/spellCheck';
 
-import { type SpellCheckResult } from '../../../../../api/spell/types';
 import SpellCheckNotice from '../SpellCheckNotice';
 import SpellTypeBox from '../SpellTypeBox';
 import * as styles from './style.css';

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
+import { type SpellCheckResponse } from '@api/spell/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
+import { usePostSpellCheck } from '@queries/useSpellCheck';
 
-import { type SpellCheckResponse } from '../../../../../api/spell/types';
-import { usePostSpellCheck } from '../../../../../queries/useSpellCheck';
 import SpellCheckCard from '../SpellCheckCard';
 import * as styles from './style.css';
 
@@ -26,6 +26,7 @@ const WriteTodayCard = () => {
     const spellCheckResult = await spellCheck({
       sentence: WRITE_INPUT_EXAMPLE,
     });
+
     setSpellCheckResult(spellCheckResult);
   };
 
@@ -51,7 +52,12 @@ const WriteTodayCard = () => {
       <Card.Body>
         <p>{WRITE_INPUT_EXAMPLE}</p>
         {isPendingSpellCheck && (
-          <SkeletonContent style={{ marginTop: '18px' }} />
+          <div className={styles.skeletonCard}>
+            <SkeletonContent ratios={[16]} />
+            <div className={styles.skeletonSuggestion}>
+              <SkeletonContent />
+            </div>
+          </div>
         )}
         {spellCheckResult && (
           <SpellCheckCard spellCheckResult={spellCheckResult.result} />
