@@ -1,29 +1,31 @@
 import { type SPELLCHECK_TYPE } from '@constants/spellCheck';
 
-export interface SpellCheckResult {
-  /* 고유 아이디 */
-  id: string;
+export interface Suggestion {
   /* 맞춤법 오류 종류 */
   type: keyof typeof SPELLCHECK_TYPE;
-  /* 맞춤법 검사한 문장 */
-  errorContext: string;
   /* 맞춤법 오류 어절 */
   errorToken: string;
   /* 맞춤법 정정 어절 */
   correct: string;
 }
 
+export interface SpellCheckResult {
+  suggestions: Suggestion[];
+  correction: string;
+}
+
 export interface SpellCheckParams {
   sentence: string;
 }
 
-interface SpellCheckSuccessResponse {
+export interface SpellCheckSuccessResponse {
   status: 'success';
-  result: SpellCheckResult[];
+  result: SpellCheckResult;
 }
 
-interface SpellCheckErrorResponse {
+export interface SpellCheckErrorResponse {
   status: 'error';
+  result: SpellCheckResult;
 }
 
 export type SpellCheckResponse =

@@ -47,7 +47,7 @@ export const wrapper = recipe({
 export const menu = style({
   position: 'absolute',
   display: 'flex',
-  gap: '14px',
+  gap: '16px',
   top: '16px',
   right: '16px',
   padding: '8px',

@@ -10,7 +10,7 @@ import {
   type SpellCheckResponse,
 } from '../api/spell/types';
 
-export const useSpellCheck = (
+export const usePostSpellCheck = (
   options?: UseMutationOptions<
     SpellCheckResponse,
     AxiosError,

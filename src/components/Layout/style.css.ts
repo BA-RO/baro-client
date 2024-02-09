@@ -47,6 +47,7 @@ export const logo = style({
   display: 'inline-block',
   padding: '18px 0',
 });
+
 export const submitWrapper = recipe({
   base: {
     display: 'flex',
@@ -61,8 +62,10 @@ export const submitWrapper = recipe({
     },
   },
 });
+
 export const buttonsWrapper = recipe({
   base: {
+    display: 'flex',
     float: 'right',
   },
   variants: {
