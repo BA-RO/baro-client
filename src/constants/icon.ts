@@ -17,6 +17,7 @@ import Menu from '@assets/icons/menu.svg';
 import Naver from '@assets/icons/naver.svg';
 import PencilActive from '@assets/icons/pencil-active.svg';
 import PencilDefault from '@assets/icons/pencil-default.svg';
+import Picture from '@assets/icons/picture.svg';
 import Profle from '@assets/icons/profile.svg';
 import ProfileDialog from '@assets/icons/profileDialog.svg';
 import ProfileHeader from '@assets/icons/profileHeader.svg';
@@ -54,6 +55,7 @@ export const iconFactory = {
   submit: Submit,
   templateActive: TemplateActive,
   templateDefault: TemplateDefault,
+  picture: Picture,
 };
 
 export type Icons = keyof typeof iconFactory;

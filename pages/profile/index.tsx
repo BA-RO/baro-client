@@ -1,3 +1,4 @@
+import Icon from '@components/Icon';
 import Layout from '@components/Layout';
 import ProfileForm from '@domain/계정설정/Form';
 import * as styles from '@domain/계정설정/index.css';
@@ -6,6 +7,16 @@ const ProfilePage = () => {
   return (
     <Layout isShowFooter>
       <div className={styles.container}>
+        <div className={styles.profileWrapper}>
+          <Icon
+            icon={'profile'}
+            width={96}
+            height={96}
+            wrapperClassName={styles.profileImageWrapper}
+            postfix={<Icon icon={'picture'} width={32} height={32} />}
+            postfixClassName={styles.profileImagePostfix}
+          />
+        </div>
         <ProfileForm />
         <div className={styles.textButtonWrapper}>
           <button className={styles.textButton}>로그아웃</button>

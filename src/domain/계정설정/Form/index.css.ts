@@ -6,6 +6,8 @@ export const container = style({
   display: ' flex',
   flexDirection: 'column',
   padding: '40px 64px',
+  marginTop: '32px',
+  marginBottom: '16px',
   gap: '32px',
   borderRadius: '16px',
   backgroundColor: COLORS['Grey/100'],
