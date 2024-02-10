@@ -16,6 +16,18 @@ export const profileWrapper = style({
   justifyContent: 'center',
 });
 
+export const profileDim = style({
+  width: '96px',
+  height: '96px',
+  borderRadius: '50%',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+});
+
 export const profileImageWrapper = style({
   position: 'relative',
   cursor: 'pointer',
@@ -28,6 +40,7 @@ export const profileImagePostfix = style({
   bottom: '0',
   right: 'calc(50% - 54px)',
   cursor: 'pointer',
+  zIndex: 90,
 });
 
 export const textButtonWrapper = style({

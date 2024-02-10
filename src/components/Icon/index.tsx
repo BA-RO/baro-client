@@ -11,6 +11,7 @@ interface IconProps {
   width?: number;
   height?: number;
   postfix?: ReactNode;
+  onHover?: VoidFunction;
 }
 
 const Icon = ({
@@ -22,11 +23,12 @@ const Icon = ({
   width = 24,
   height = 24,
   postfix,
+  onHover,
 }: IconProps) => {
   const SvgIcon = iconFactory[icon];
 
   return (
-    <div className={wrapperClassName}>
+    <div className={wrapperClassName} onMouseEnter={onHover}>
       <SvgIcon
         className={className}
         color={color}
