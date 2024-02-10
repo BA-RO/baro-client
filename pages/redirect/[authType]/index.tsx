@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import Cookies from 'js-cookie';
 
-import { getRenewToken, getToken } from '@api/auth/auth';
+import { getToken } from '@api/auth/auth';
 import { type OAuthType } from '@api/auth/types';
+import { ROUTES } from '@constants/routes';
+import { saveToken } from '@utils/token';
 
 const Bridge = () => {
   const router = useRouter();
@@ -17,19 +18,21 @@ const Bridge = () => {
 
       if (!authType || !code) return;
 
-      const data = await getToken(authType, code);
+      const { accessToken, refreshToken } =
+        (await getToken(authType, code)) || {};
 
-      localStorage.setItem('accessToken', data.accessToken);
-      Cookies.set('refreshToken', data.refreshToken);
+      if (!accessToken || !refreshToken) {
+        router.push(ROUTES.INTRO);
+        return;
+      }
 
-      setTimeout(async () => {
-        await getRenewToken(data.refreshToken);
-      }, 2000);
-      // router.events.on('routeChangeStart', (url) => {
-      //   window.location.href = url;
-      // });
+      saveToken({ accessToken, refreshToken });
 
-      // router.replace(ROUTES.끄적이는);
+      router.events.on('routeChangeStart', (url) => {
+        window.location.href = url;
+      });
+
+      router.replace(ROUTES.MAIN);
     })();
   }, [router.query, router]);
 

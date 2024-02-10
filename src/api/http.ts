@@ -2,6 +2,9 @@ import Router from 'next/router';
 import axios, { type AxiosRequestConfig } from 'axios';
 import Cookies from 'js-cookie';
 
+import { ROUTES } from '@constants/routes';
+import { saveToken } from '@utils/token';
+
 import { getRenewToken } from './auth/auth';
 
 const instance = axios.create({
@@ -36,17 +39,26 @@ instance.interceptors.response.use(
     }
 
     if (error.config.url.startsWith('/auth/reissue')) {
-      Router.push('/intro');
+      Router.push(ROUTES.INTRO);
       return;
     }
 
     const tokenRefreshCondition = ['JW01', 'JW02'];
 
     if (tokenRefreshCondition.includes(error.response.data.errorCode)) {
-      const refreshToken = Cookies.get('refreshToken') as string;
-      const data = await getRenewToken(refreshToken);
-      if (!data) return;
-      error.config.headers.Authorization = `Bearer ${data.accessToken}`;
+      const prevRefreshToken = Cookies.get('refreshToken') as string;
+
+      const { accessToken, refreshToken } =
+        (await getRenewToken(prevRefreshToken)) || {};
+
+      if (!accessToken || !refreshToken) {
+        Router.push(ROUTES.INTRO);
+        return;
+      }
+
+      saveToken({ accessToken, refreshToken });
+      error.config.headers.Authorization = `Bearer ${accessToken}`;
+
       return instance.request(error.config);
     }
 

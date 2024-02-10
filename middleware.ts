@@ -6,10 +6,10 @@ export const middleware = async (request: NextRequest) => {
 
   if (
     !refreshToken &&
-    !request.nextUrl.pathname.startsWith('/intro') &&
+    request.nextUrl.pathname !== '/' &&
     !request.nextUrl.pathname.startsWith('/redirect')
   ) {
-    return NextResponse.redirect(new URL('/intro', request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 };
 
