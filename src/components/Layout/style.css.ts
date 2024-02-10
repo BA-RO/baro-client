@@ -225,7 +225,7 @@ export const backgroundColorMain = createVar();
 
 export const mainWrapper = style({
   backgroundColor: backgroundColorMain,
-  marginTop: '64px',
+  paddingTop: '64px',
   maxWidth: '1200px',
   margin: '0 auto',
 });

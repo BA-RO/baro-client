@@ -9,22 +9,22 @@ import Header from './components/Header';
 import * as styles from './style.css';
 
 interface LayoutProps {
-  isHeader?: boolean;
+  isShowHeader?: boolean;
   headerType?: HeaderType;
-  isFooter?: boolean;
+  isShowFooter?: boolean;
   backgroundColor?: string;
 }
 
 const Layout = ({
   children,
-  isHeader = true,
+  isShowHeader = true,
   headerType = 'normal',
-  isFooter = false,
+  isShowFooter = false,
   backgroundColor = COLORS['Grey/White'],
 }: PropsWithChildren<LayoutProps>) => {
   return (
     <>
-      {isHeader && <Header type={headerType} />}
+      {isShowHeader && <Header type={headerType} />}
       <main
         className={styles.mainWrapper}
         style={assignInlineVars({
@@ -33,7 +33,7 @@ const Layout = ({
       >
         {children}
       </main>
-      {isFooter && <Footer />}
+      {isShowFooter && <Footer />}
     </>
   );
 };
