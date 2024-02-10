@@ -3,9 +3,11 @@ import { useState } from 'react';
 import WriteInput from '@components/Input/WriteInput';
 import Layout from '@components/Layout';
 import MainPageTab from '@components/Layout/MainPageTab';
-import WriteGuide from '@domain/Write/components/Guide';
-import WriteHistory from '@domain/Write/History';
-import { type WriteHisotry } from '@domain/Write/types';
+import WriteGuide from '@domain/끄적이는/components/Guide';
+import TemporalMemoHistoryTable from '@domain/끄적이는/History/components/Table';
+import useGetWriteHistory from '@domain/끄적이는/queries/useGetHistory';
+import * as styles from '@domain/끄적이는/style.css';
+import { type WriteHisotry } from '@domain/끄적이는/types';
 import 참고하는TabContent from '@domain/참고하는/components';
 import { useInput } from '@hooks/useInput';
 import { COLORS } from '@styles/tokens';
@@ -57,15 +59,21 @@ const MainPage = () => {
   const backgroundColor =
     selectedTab === '참고하는' ? COLORS['Grey/100'] : undefined;
 
+  const b = useGetWriteHistory();
+
+  console.log(b);
+
   return (
     <Layout backgroundColor={backgroundColor}>
       <MainPageTab
         write={
-          <>
-            <WriteGuide />
-            <WriteHistory data={MOCK} />
-            <WriteInput inputProps={writeInput} />
-          </>
+          <div className={styles.container}>
+            <div className={styles.content}>
+              <WriteGuide />
+              <TemporalMemoHistoryTable data={MOCK} />
+              <WriteInput inputProps={writeInput} />
+            </div>
+          </div>
         }
         refer={<참고하는TabContent />}
         selectedTab={selectedTab}

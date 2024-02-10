@@ -1,4 +1,4 @@
-import { type Write } from '@domain/Write/types';
+import { type Write } from '@domain/끄적이는/types';
 
 import WriteHistoryCard from '../Card';
 import * as styles from './style.css';

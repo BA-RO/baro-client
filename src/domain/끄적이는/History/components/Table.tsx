@@ -4,15 +4,15 @@ import 'dayjs/locale/ko';
 
 import Icon from '@components/Icon';
 
-import { type Write, type WriteHisotry } from '../types';
-import Column from './components/Column';
-import * as styles from './style.css';
+import { type Write, type WriteHisotry } from '../../types';
+import Column from './Column';
+import * as styles from './Table.css';
 
-interface WriteHistoryProps {
+interface TemporalMemoHistoryTableProps {
   data: WriteHisotry[];
 }
 
-const WriteHistory = ({ data }: WriteHistoryProps) => {
+const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
   const parser = (arr: Write[]): Write[][] => {
     let queue1: Write[] = [];
     let queue2: Write[] = [];
@@ -60,4 +60,4 @@ const WriteHistory = ({ data }: WriteHistoryProps) => {
   );
 };
 
-export default WriteHistory;
+export default TemporalMemoHistoryTable;
