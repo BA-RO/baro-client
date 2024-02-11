@@ -1,6 +1,7 @@
 import { globalStyle } from '@vanilla-extract/css';
 
 import { theme } from './theme.css';
+import { COLORS } from './tokens';
 
 globalStyle('*, *:after, *:before', {
   boxSizing: 'border-box',
@@ -58,4 +59,13 @@ globalStyle('a', {
 
 globalStyle('button', {
   padding: 0,
+});
+
+globalStyle('svg', {
+  pointerEvents: 'none',
+});
+
+globalStyle('button:hover svg', {
+  transition: 'fill 100ms ease-in-out',
+  fill: COLORS['Grey/600'],
 });
