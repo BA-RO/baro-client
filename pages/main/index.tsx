@@ -5,6 +5,7 @@ import Layout from '@components/Layout';
 import MainPageTab from '@components/Layout/MainPageTab';
 import WriteGuide from '@domain/끄적이는/components/Guide';
 import TemporalMemoHistoryTable from '@domain/끄적이는/History/components/Table';
+import useCreateTemporalMemo from '@domain/끄적이는/mutations/useCreateTemporalMemo';
 import useGetWriteHistory from '@domain/끄적이는/queries/useGetHistory';
 import * as styles from '@domain/끄적이는/style.css';
 import { type WriteHisotry } from '@domain/끄적이는/types';
@@ -48,8 +49,12 @@ const MOCK: WriteHisotry[] = [
 ];
 
 const MainPage = () => {
-  const writeInput = useInput({ id: 'write-input' });
+  const history = useGetWriteHistory();
+  const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
 
+  console.log(history);
+
+  const writeInput = useInput({ id: 'write-input' });
   const [selectedTab, setSelectedTab] = useState('끄적이는');
 
   const handleTabSelect = (selectedTab: string) => {
@@ -58,10 +63,6 @@ const MainPage = () => {
 
   const backgroundColor =
     selectedTab === '참고하는' ? COLORS['Grey/100'] : undefined;
-
-  const b = useGetWriteHistory();
-
-  console.log(b);
 
   return (
     <Layout backgroundColor={backgroundColor}>
@@ -72,7 +73,10 @@ const MainPage = () => {
               <WriteGuide />
               <TemporalMemoHistoryTable data={MOCK} />
               <div className={styles.inputWrapper}>
-                <WriteInput inputProps={writeInput} />
+                <WriteInput
+                  inputProps={writeInput}
+                  onSubmit={() => submitTemporalMemo(writeInput.value)}
+                />
               </div>
             </div>
           </div>
