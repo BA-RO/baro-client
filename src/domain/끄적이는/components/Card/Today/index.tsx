@@ -8,7 +8,7 @@ import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import { usePostSpellCheck } from '@queries/useSpellCheck';
 
-import SpellCheckCard from '../SpellCheckCard';
+import SpellCheckCard from '../../Today/components/SpellCheckCard';
 import * as styles from './style.css';
 
 interface WriteTodayCardProps {

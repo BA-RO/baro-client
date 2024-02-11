@@ -1,6 +1,6 @@
 import { type TemporalMemo } from '@domain/끄적이는/types';
 
-import WriteHistoryCard from '../Card';
+import WriteHistoryCard from '../../Card/History';
 import * as styles from './style.css';
 
 interface ColumnProps {

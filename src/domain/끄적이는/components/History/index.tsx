@@ -5,7 +5,7 @@ import 'dayjs/locale/ko';
 import Icon from '@components/Icon';
 
 import { type TemporalMemo, type TemporalMemoHistory } from '../../types';
-import Column from './components/Column';
+import Column from './Column';
 import * as styles from './index.css';
 
 interface TemporalMemoHistoryTableProps {

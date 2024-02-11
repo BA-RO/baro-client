@@ -1,7 +1,7 @@
 import Icon from '@components/Icon';
 
 import { type TemporalMemo } from '../../types';
-import WriteTodayCard from './components/Card';
+import WriteTodayCard from '../Card/Today';
 import * as styles from './index.css';
 
 interface TodayTemoralMemosProps {
