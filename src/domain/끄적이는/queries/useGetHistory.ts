@@ -34,15 +34,15 @@ export const getWriteHistory = async ({
 };
 
 const useGetWriteHistory = () => {
-  const endDate = dayjs().startOf('d').format('YYYY-MM-DDT23:59:59');
-  const startDate = dayjs(endDate)
-    .subtract(7, 'd')
-    .format('YYYY-MM-DDT00:00:00');
+  const endDate = dayjs().startOf('d').format('YYYY-MM-DD');
+  const startDate = dayjs(endDate).subtract(7, 'd').format('YYYY-MM-DD');
 
   const { data } = useQuery({
     queryKey: TemporalMemoQueryKeys.getHistory(startDate, endDate),
     queryFn: () => getWriteHistory({ startDate, endDate }),
   });
+
+  if (!data) return [];
 
   return data;
 };
