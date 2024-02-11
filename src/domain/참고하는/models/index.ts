@@ -7,3 +7,9 @@ export const CATEGORY = {
   regard: '안부 전하기',
   etc: '기타',
 } as const;
+
+export const FILTER_BUTTONS = {
+  NEW: '최신순',
+  COPY: '복사순',
+  SAVE: '저장순',
+} as const;
