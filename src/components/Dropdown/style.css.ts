@@ -4,7 +4,7 @@ import { recipe } from '@vanilla-extract/recipes';
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
-export const dialogRoot = recipe({
+export const dropdownRoot = recipe({
   base: {
     borderRadius: '12px',
     boxShadow: '0px 8px 15px 0px rgba(28, 28, 28, 0.08)',
@@ -24,7 +24,7 @@ export const dialogRoot = recipe({
   },
 });
 
-export const dialogTitle = style({
+export const dropdownTitle = style({
   padding: '10px 12px',
   textAlign: 'center',
 });
@@ -36,7 +36,7 @@ export const line = style({
   margin: '4px 0',
 });
 
-export const dialogButton = recipe({
+export const dropdownButton = recipe({
   base: [
     sprinkles({
       typography: '15/Body/Regular',
