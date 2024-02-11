@@ -1,10 +1,13 @@
-export interface Write {
-  id: string;
-  createAt: string;
-  value: string;
+export interface TemporalMemo {
+  id: number;
+  content: string;
+  correctionContent: string | null;
+  isCorrected: boolean;
+  isArchived: boolean;
+  createdAt: string;
 }
 
-export interface WriteHisotry {
-  date: string;
-  history: Write[];
+export interface TemporalMemoHistory {
+  createAt: string;
+  temporalMemos: TemporalMemo[];
 }

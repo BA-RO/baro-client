@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
-  height: `calc(100vh - 131px)`,
+  height: `calc(100vh - 266px)`,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',

@@ -4,20 +4,7 @@ import dayjs from 'dayjs';
 import { http } from '@api/http';
 
 import { TemporalMemoQueryKeys } from '../constants/queryKeys';
-
-interface TemporalMemo {
-  id: number;
-  content: string;
-  correctionContent: string | null;
-  isCorrected: boolean;
-  isArchived: boolean;
-  createdAt: string;
-}
-
-interface WriteHistory {
-  createdAt: string;
-  temporalMemos: TemporalMemo[];
-}
+import { type TemporalMemoHistory } from '../types';
 
 export const getWriteHistory = async ({
   startDate,
@@ -26,7 +13,7 @@ export const getWriteHistory = async ({
   startDate: string;
   endDate: string;
 }) => {
-  const data = await http.get<WriteHistory[]>(
+  const data = await http.get<TemporalMemoHistory[]>(
     `/temporal-memos?startDate=${startDate}&endDate=${endDate}`,
   );
 

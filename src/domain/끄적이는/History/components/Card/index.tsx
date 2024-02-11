@@ -1,16 +1,16 @@
 import dayjs from 'dayjs';
 
 import Icon from '@components/Icon';
-import { type Write } from '@domain/끄적이는/types';
+import { type TemporalMemo } from '@domain/끄적이는/types';
 import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
 import * as styles from './style.css';
 
-const WriteHistoryCard = ({ createAt, value }: Omit<Write, 'id'>) => {
+const WriteHistoryCard = ({ createdAt, content }: Omit<TemporalMemo, 'id'>) => {
   const { showToast } = useToastStore();
   const handleCopyClick = () => {
-    navigator.clipboard.writeText(value);
+    navigator.clipboard.writeText(content);
     showToast({
       message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
     });
@@ -20,7 +20,7 @@ const WriteHistoryCard = ({ createAt, value }: Omit<Write, 'id'>) => {
     <li className={styles.container}>
       <div className={styles.header}>
         <p className={styles.date}>
-          {dayjs(createAt).locale('ko').format('a h:mm')}
+          {dayjs(createdAt).locale('ko').format('a h:mm')}
         </p>
         <div className={styles.ctaWrapper}>
           <button onClick={handleCopyClick}>
@@ -49,7 +49,7 @@ const WriteHistoryCard = ({ createAt, value }: Omit<Write, 'id'>) => {
         </div>
       </div>
 
-      <p className={styles.value}>{value}</p>
+      <p className={styles.value}>{content}</p>
     </li>
   );
 };

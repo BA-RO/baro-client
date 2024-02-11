@@ -4,19 +4,19 @@ import 'dayjs/locale/ko';
 
 import Icon from '@components/Icon';
 
-import { type Write, type WriteHisotry } from '../../types';
+import { type TemporalMemo, type TemporalMemoHistory } from '../../types';
 import Column from './Column';
 import * as styles from './Table.css';
 
 interface TemporalMemoHistoryTableProps {
-  data: WriteHisotry[];
+  data: TemporalMemoHistory[];
 }
 
 const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
-  const parser = (arr: Write[]): Write[][] => {
-    let queue1: Write[] = [];
-    let queue2: Write[] = [];
-    let queue3: Write[] = [];
+  const parser = (arr: TemporalMemo[]): TemporalMemo[][] => {
+    let queue1: TemporalMemo[] = [];
+    let queue2: TemporalMemo[] = [];
+    let queue3: TemporalMemo[] = [];
 
     arr.forEach((history, i) => {
       const extra = i % 3;
@@ -34,22 +34,22 @@ const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
 
   return (
     <article className={styles.container}>
-      {data.map((writeHistory) => {
-        const { date, history } = writeHistory;
+      {data.map((hisotry) => {
+        const { createAt, temporalMemos } = hisotry;
 
         return (
-          <section key={date}>
+          <section key={createAt}>
             <div className={styles.dateLabelWrapper}>
               <div className={styles.dateLabel}>
                 <Icon icon={'clock'} width={20} height={20} />
                 <span className={styles.dateLabelText}>
-                  {dayjs(date).locale('ko').format('YYYY.MM.DD (dd)')}
+                  {dayjs(createAt).locale('ko').format('YYYY.MM.DD (dd)')}
                 </span>
               </div>
             </div>
 
             <section className={styles.contentWrapper}>
-              {parser(history).map((list, i) => {
+              {parser(temporalMemos).map((list, i) => {
                 return <Column key={i} list={list} />;
               })}
             </section>
