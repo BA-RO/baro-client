@@ -12,33 +12,33 @@ interface TemporalMemoHistoryTableProps {
   data: TemporalMemoHistory[];
 }
 
+const parser = (arr: TemporalMemo[]): TemporalMemo[][] => {
+  let queue1: TemporalMemo[] = [];
+  let queue2: TemporalMemo[] = [];
+  let queue3: TemporalMemo[] = [];
+
+  arr.forEach((history, i) => {
+    const extra = i % 3;
+    if (extra === 0) {
+      queue1.push(history);
+    } else if (extra === 1) {
+      queue2.push(history);
+    } else {
+      queue3.push(history);
+    }
+  });
+
+  return [queue1, queue2, queue3];
+};
+
 const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
-  const parser = (arr: TemporalMemo[]): TemporalMemo[][] => {
-    let queue1: TemporalMemo[] = [];
-    let queue2: TemporalMemo[] = [];
-    let queue3: TemporalMemo[] = [];
-
-    arr.forEach((history, i) => {
-      const extra = i % 3;
-      if (extra === 0) {
-        queue1.push(history);
-      } else if (extra === 1) {
-        queue2.push(history);
-      } else {
-        queue3.push(history);
-      }
-    });
-
-    return [queue1, queue2, queue3];
-  };
-
   return (
     <article className={styles.container}>
-      {data.map((hisotry) => {
+      {data.map((hisotry, i) => {
         const { createAt, temporalMemos } = hisotry;
 
         return (
-          <section key={createAt}>
+          <section key={`${createAt}-${i}`}>
             <div className={styles.dateLabelWrapper}>
               <div className={styles.dateLabel}>
                 <Icon icon={'clock'} width={20} height={20} />

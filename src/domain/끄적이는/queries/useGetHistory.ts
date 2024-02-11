@@ -27,9 +27,23 @@ const useGetWriteHistory = () => {
   const { data } = useQuery({
     queryKey: TemporalMemoQueryKeys.getHistory(startDate, endDate),
     queryFn: () => getWriteHistory({ startDate, endDate }),
+    select: (data) => {
+      return {
+        todayMemos: data.filter(
+          (history) =>
+            dayjs(history.createAt).format('YYYY-MM-DD') ===
+            dayjs().format('YYYY-MM-DD'),
+        ),
+        history: data.filter(
+          (history) =>
+            dayjs(history.createAt).format('YYYY-MM-DD') !==
+            dayjs().format('YYYY-MM-DD'),
+        ),
+      };
+    },
   });
 
-  if (!data) return [];
+  if (!data) return { todayMemos: [], history: [] };
 
   return data;
 };
