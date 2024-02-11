@@ -18,7 +18,6 @@ export const wrapper = style([
 
 export const hover = style({
   transition: 'fill 100ms ease-in-out',
-  fill: COLORS['Grey/300'],
   ':hover': {
     fill: COLORS['Grey/600'],
   },

@@ -3,11 +3,11 @@ import Button from '@components/Button';
 import Card from '@components/Card';
 import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
+import * as styles from '@domain/참고하는/components/참고하는TemplateCard.css';
 import { CATEGORY } from '@domain/참고하는/models';
 import { type Refer } from '@domain/참고하는/types';
-
-import { getNumToK } from '../utils';
-import * as styles from './참고하는TemplateCard.css';
+import { getNumToK } from '@domain/참고하는/utils';
+import { COLORS } from '@styles/tokens';
 
 interface 참고하는TemplateCardProps {
   data: Refer;
@@ -22,10 +22,18 @@ const 참고하는TemplateCard = ({ data }: 참고하는TemplateCardProps) => {
     <Card className={styles.wrapper}>
       <Card.Menu>
         <Button>
-          <Icon icon="copy" className={styles.hover} />
+          <Icon
+            icon="copy"
+            className={styles.hover}
+            color={COLORS['Grey/300']}
+          />
         </Button>
         <Button>
-          <Icon icon="bookmarkRefer" className={styles.hover} />
+          <Icon
+            icon="bookmarkRefer"
+            className={styles.hover}
+            color={COLORS['Grey/300']}
+          />
         </Button>
       </Card.Menu>
       <Card.Header>
