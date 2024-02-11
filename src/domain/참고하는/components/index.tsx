@@ -1,9 +1,14 @@
-import Button from '@components/Button';
-import Icon from '@components/Icon';
+import { useState } from 'react';
+
+import FilterButtons from '@domain/참고하는/components/FilterButtons';
 import FilterHeader from '@domain/참고하는/components/FilterHeader';
 import * as styles from '@domain/참고하는/components/ReferTab.css';
 import 참고하는TemplateCard from '@domain/참고하는/components/참고하는TemplateCard';
-import { type Refer } from '@domain/참고하는/types';
+import {
+  type Category,
+  type FilterButton,
+  type Refer,
+} from '@domain/참고하는/types';
 
 // - `ASK`  (부탁하기)
 // - `REPORT`  (보고하기)
@@ -124,15 +129,27 @@ const datas: Refer[] = [
 ];
 
 const 참고하는TabContent = () => {
+  const [selectedFilterHeader, setSelectedFilterHeader] =
+    useState<Category>('ask');
+  const [selectedFilterButton, setSelectedFilterButton] =
+    useState<FilterButton>('NEW');
+
+  const handleFilterHeaderSelect = (type: Category) => () =>
+    setSelectedFilterHeader(type);
+
+  const handleFilterButtonSelect = (type: FilterButton) => () =>
+    setSelectedFilterButton(type);
+
   return (
     <div className={styles.referPageTabWrapper}>
-      <FilterHeader />
-      <Button className={styles.filterButton}>
-        최신순
-        <div className={styles.filterButtonIcon}>
-          <Icon icon="arrowDown" width={18} height={18} />
-        </div>
-      </Button>
+      <FilterHeader
+        selectedFilterHeader={selectedFilterHeader}
+        handleFilterHeaderSelect={handleFilterHeaderSelect}
+      />
+      <FilterButtons
+        selectedFilterButton={selectedFilterButton}
+        handleFilterButtonSelect={handleFilterButtonSelect}
+      />
       <ul className={styles.referCardsWrapper}>
         {datas.map((data) => (
           <참고하는TemplateCard key={data.templateId} data={data} />
