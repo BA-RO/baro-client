@@ -1,5 +1,7 @@
 import { globalStyle } from '@vanilla-extract/css';
 
+import { activeFilterButton } from '@domain/참고하는/components/FilterButtons.css';
+
 import { theme } from './theme.css';
 import { COLORS } from './tokens';
 
@@ -65,7 +67,7 @@ globalStyle('svg', {
   pointerEvents: 'none',
 });
 
-globalStyle('button:hover svg', {
+globalStyle(`${activeFilterButton}:hover svg`, {
   transition: 'fill 100ms ease-in-out',
   fill: COLORS['Grey/600'],
 });
