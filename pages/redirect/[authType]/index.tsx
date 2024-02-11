@@ -28,10 +28,6 @@ const Bridge = () => {
 
       saveToken({ accessToken, refreshToken });
 
-      router.events.on('routeChangeStart', (url) => {
-        window.location.href = url;
-      });
-
       router.replace(ROUTES.MAIN);
     })();
   }, [router.query, router]);
