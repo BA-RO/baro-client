@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^6.13.2
     version: 6.13.2(eslint@8.55.0)(typescript@5.3.3)
   '@vanilla-extract/next-plugin':
-    specifier: ^2.3.2
-    version: 2.3.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0)
+    specifier: ^2.1.2
+    version: 2.1.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0)
   '@vanilla-extract/webpack-plugin':
     specifier: ^2.3.1
     version: 2.3.1(@types/node@20.10.4)(webpack@5.89.0)
@@ -4823,12 +4823,13 @@ packages:
       - terser
     dev: true
 
-  /@vanilla-extract/next-plugin@2.3.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0):
-    resolution: {integrity: sha512-wBulJAhmr8guYo5YxrfsA1T/TQ3tbMJjNtE6QrVZvs1NTnT9/WAmf4IVrbUvQbH+LBj5LXO8dRzueGPAvepSng==}
+  /@vanilla-extract/next-plugin@2.1.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0):
+    resolution: {integrity: sha512-k8P2opwu9uGIhWNu1GaTBKdvKRK412/Z9ov0DC82am4JKCqTLo6aWH6UnCodnfI3KqTLKgdqdG3ekrFUpDlR9g==}
     peerDependencies:
-      next: '>=12.1.7'
+      next: '>=12.0.5'
     dependencies:
       '@vanilla-extract/webpack-plugin': 2.3.1(@types/node@20.10.4)(webpack@5.89.0)
+      browserslist: 4.22.2
       next: 14.0.3(@babel/core@7.23.5)(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/node'
