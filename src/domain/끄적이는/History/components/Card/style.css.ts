@@ -30,7 +30,7 @@ export const ctaWrapper = style({
   alignItems: 'center',
   gap: '8px',
   position: 'absolute',
-  top: '16px',
+  top: '20px',
   right: '16px',
 });
 

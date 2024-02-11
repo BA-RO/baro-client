@@ -10,4 +10,7 @@ export const container = style({
 
 export const content = style({
   overflow: 'scroll',
+  '::-webkit-scrollbar': {
+    display: 'none',
+  },
 });
