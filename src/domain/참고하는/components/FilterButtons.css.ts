@@ -35,6 +35,7 @@ export const activeFilterButton = style([
 ]);
 
 export const filterButtonIcon = style({
+  pointerEvents: 'none',
   display: 'inline-block',
   verticalAlign: 'top',
   marginLeft: '4px',

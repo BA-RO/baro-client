@@ -63,10 +63,6 @@ globalStyle('button', {
   padding: 0,
 });
 
-globalStyle('svg', {
-  pointerEvents: 'none',
-});
-
 globalStyle(`${activeFilterButton}:hover svg`, {
   transition: 'fill 100ms ease-in-out',
   fill: COLORS['Grey/600'],
