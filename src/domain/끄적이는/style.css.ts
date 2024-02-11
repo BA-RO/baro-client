@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
-  height: `calc(100vh - 266px)`,
+  height: `calc(100vh - 131px)`,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',
@@ -13,6 +13,7 @@ export const content = style({
   '::-webkit-scrollbar': {
     display: 'none',
   },
+  paddingBottom: '48px',
 });
 
 export const inputWrapper = style({
