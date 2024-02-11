@@ -14,6 +14,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.17.9
     version: 5.17.9(react@18.2.0)
+  '@types/js-cookie':
+    specifier: ^3.0.6
+    version: 3.0.6
   '@vanilla-extract/css':
     specifier: ^1.14.0
     version: 1.14.0
@@ -41,6 +44,9 @@ dependencies:
   hanspell:
     specifier: ^0.9.7
     version: 0.9.7
+  js-cookie:
+    specifier: ^3.0.5
+    version: 3.0.5
   ko:
     specifier: link:dayjs/locale/ko
     version: link:dayjs/locale/ko
@@ -107,8 +113,8 @@ devDependencies:
     specifier: ^6.13.2
     version: 6.13.2(eslint@8.55.0)(typescript@5.3.3)
   '@vanilla-extract/next-plugin':
-    specifier: ^2.3.2
-    version: 2.3.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0)
+    specifier: ^2.1.2
+    version: 2.1.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0)
   '@vanilla-extract/webpack-plugin':
     specifier: ^2.3.1
     version: 2.3.1(@types/node@20.10.4)(webpack@5.89.0)
@@ -4421,6 +4427,10 @@ packages:
       '@types/istanbul-lib-report': 3.0.3
     dev: true
 
+  /@types/js-cookie@3.0.6:
+    resolution: {integrity: sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==}
+    dev: false
+
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
@@ -4823,12 +4833,13 @@ packages:
       - terser
     dev: true
 
-  /@vanilla-extract/next-plugin@2.3.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0):
-    resolution: {integrity: sha512-wBulJAhmr8guYo5YxrfsA1T/TQ3tbMJjNtE6QrVZvs1NTnT9/WAmf4IVrbUvQbH+LBj5LXO8dRzueGPAvepSng==}
+  /@vanilla-extract/next-plugin@2.1.2(@types/node@20.10.4)(next@14.0.3)(webpack@5.89.0):
+    resolution: {integrity: sha512-k8P2opwu9uGIhWNu1GaTBKdvKRK412/Z9ov0DC82am4JKCqTLo6aWH6UnCodnfI3KqTLKgdqdG3ekrFUpDlR9g==}
     peerDependencies:
-      next: '>=12.1.7'
+      next: '>=12.0.5'
     dependencies:
       '@vanilla-extract/webpack-plugin': 2.3.1(@types/node@20.10.4)(webpack@5.89.0)
+      browserslist: 4.22.2
       next: 14.0.3(@babel/core@7.23.5)(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/node'
@@ -9137,6 +9148,11 @@ packages:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
     dev: true
+
+  /js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
+    dev: false
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
