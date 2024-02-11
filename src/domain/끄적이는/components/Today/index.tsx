@@ -25,6 +25,7 @@ const TodayTemoralMemos = ({ memos }: TodayTemoralMemosProps) => {
         {memos.map((memo) => (
           <WriteTodayCard
             key={memo.id}
+            id={memo.id}
             createAt={memo.createdAt}
             content={memo.content}
           />

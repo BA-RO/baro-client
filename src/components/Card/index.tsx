@@ -19,6 +19,7 @@ interface CardProps {
     | 'grey'
     | 'white';
   className?: string;
+  onBlur?: VoidFunction;
 }
 
 interface CardContextProps {
@@ -33,6 +34,7 @@ const CardRoot = ({
   children,
   className,
   color = 'white',
+  onBlur,
 }: PropsWithChildren<CardProps>) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -42,6 +44,7 @@ const CardRoot = ({
 
   const handleMenuHide = () => {
     setIsVisible(false);
+    onBlur?.();
   };
 
   return (

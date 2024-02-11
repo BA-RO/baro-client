@@ -6,17 +6,30 @@ import Button from '@components/Button';
 import Card from '@components/Card';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
+import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
+import useModal from '@hooks/useModal';
 import { usePostSpellCheck } from '@queries/useSpellCheck';
+import { useToastStore } from '@stores/toast';
 
 import SpellCheckCard from '../../Today/components/SpellCheckCard';
+import SettingDialog from '../components/SettingDialog';
 import * as styles from './style.css';
 
 interface WriteTodayCardProps {
+  id: number;
   createAt: string;
   content: string;
 }
 
-const WriteTodayCard = ({ createAt, content }: WriteTodayCardProps) => {
+const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
+  const { showToast } = useToastStore();
+  const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
+  const {
+    isOpen: settingModalOpen,
+    handleOpen: showSettingModal,
+    handleClose: hideSettingModal,
+  } = useModal();
+
   const [spellCheckResult, setSpellCheckResult] =
     useState<SpellCheckResponse>();
   const {
@@ -33,20 +46,29 @@ const WriteTodayCard = ({ createAt, content }: WriteTodayCardProps) => {
     setSpellCheckResult(spellCheckResult);
   };
 
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(content);
+    showToast({
+      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
+    });
+  };
+
   return (
-    <Card color="blue">
+    <Card color="blue" onBlur={hideSettingModal}>
       {!isSuccessSpellCheck && (
         <Card.Menu>
           <Button onClick={handleSpellCheck}>
             <Icon icon="spelling" className={styles.icon} />
           </Button>
-          <Button>
+          <Button onClick={handleCopyClick}>
             <Icon icon="copy" className={styles.icon} />
           </Button>
           <Button>
             <Icon icon="bookmark" className={styles.icon} />
           </Button>
-          <Button>
+          <Button
+            onClick={settingModalOpen ? hideSettingModal : showSettingModal}
+          >
             <Icon icon="menu" className={styles.icon} />
           </Button>
         </Card.Menu>
@@ -66,6 +88,13 @@ const WriteTodayCard = ({ createAt, content }: WriteTodayCardProps) => {
           <SpellCheckCard spellCheckResult={spellCheckResult.result} />
         )}
       </Card.Body>
+
+      {settingModalOpen && (
+        <SettingDialog
+          onEditClick={() => {}}
+          onDeleteClick={() => deleteTemporalMemo(id)}
+        />
+      )}
     </Card>
   );
 };

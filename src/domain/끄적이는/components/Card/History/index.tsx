@@ -9,6 +9,7 @@ import * as styles from './style.css';
 
 const WriteHistoryCard = ({ createdAt, content }: Omit<TemporalMemo, 'id'>) => {
   const { showToast } = useToastStore();
+
   const handleCopyClick = () => {
     navigator.clipboard.writeText(content);
     showToast({
