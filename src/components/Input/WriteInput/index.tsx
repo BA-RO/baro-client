@@ -24,6 +24,7 @@ const WriteInput = ({
 }: WriteInputProps) => {
   const { id, value } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
+
   const [textareaHeight, setTextareaHeight] = useState<{
     row: number;
     lineBreak: Record<number, boolean>;
@@ -65,11 +66,12 @@ const WriteInput = ({
         row: prev.row + 1,
         lineBreak: { ...prev.lineBreak, [value.length]: true },
       }));
+      return;
     }
   };
 
   return (
-    <div className={style.conatiner}>
+    <form className={style.conatiner}>
       <div
         className={style.contentWrapper}
         style={assignInlineVars({
@@ -113,7 +115,7 @@ const WriteInput = ({
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

@@ -1,6 +1,9 @@
+const temporalMemoRootKey = 'TemporalMemo';
+
 export const TemporalMemoQueryKeys = {
+  all: [temporalMemoRootKey],
   getHistory: (start: string, end: string) => [
-    'TemporalMemo',
+    temporalMemoRootKey,
     'history',
     start,
     end,
