@@ -31,12 +31,12 @@ const useGetWriteHistory = () => {
       return {
         todayMemos: data.filter(
           (history) =>
-            dayjs(history.createAt).format('YYYY-MM-DD') ===
+            dayjs(history.createdAt).format('YYYY-MM-DD') ===
             dayjs().format('YYYY-MM-DD'),
         ),
         history: data.filter(
           (history) =>
-            dayjs(history.createAt).format('YYYY-MM-DD') !==
+            dayjs(history.createdAt).format('YYYY-MM-DD') !==
             dayjs().format('YYYY-MM-DD'),
         ),
       };

@@ -1,8 +1,8 @@
 import Icon from '@components/Icon';
 
-import WriteTodayCard from '../Today/components/Card';
-import { type TemporalMemo } from '../types';
-import * as styles from './TodayTemoralMemos.css';
+import { type TemporalMemo } from '../../types';
+import WriteTodayCard from './components/Card';
+import * as styles from './index.css';
 
 interface TodayTemoralMemosProps {
   memos: TemporalMemo[];

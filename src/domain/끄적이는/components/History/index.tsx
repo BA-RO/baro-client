@@ -5,8 +5,8 @@ import 'dayjs/locale/ko';
 import Icon from '@components/Icon';
 
 import { type TemporalMemo, type TemporalMemoHistory } from '../../types';
-import Column from './Column';
-import * as styles from './Table.css';
+import Column from './components/Column';
+import * as styles from './index.css';
 
 interface TemporalMemoHistoryTableProps {
   data: TemporalMemoHistory[];
@@ -35,7 +35,7 @@ const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
   return (
     <article className={styles.container}>
       {data.map((hisotry, i) => {
-        const { createAt, temporalMemos } = hisotry;
+        const { createdAt: createAt, temporalMemos } = hisotry;
 
         return (
           <section key={`${createAt}-${i}`}>

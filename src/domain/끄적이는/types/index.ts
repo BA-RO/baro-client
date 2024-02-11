@@ -8,6 +8,6 @@ export interface TemporalMemo {
 }
 
 export interface TemporalMemoHistory {
-  createAt: string;
+  createdAt: string;
   temporalMemos: TemporalMemo[];
 }
