@@ -44,3 +44,12 @@ export const value = style([
     letterSpacing: '-0.2px',
   },
 ]);
+
+export const icon = style({
+  transition: 'fill 100ms ease-in-out',
+  fill: COLORS['Grey/300'],
+
+  ':hover': {
+    fill: COLORS['Grey/900'],
+  },
+});

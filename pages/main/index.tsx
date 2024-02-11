@@ -71,7 +71,9 @@ const MainPage = () => {
             <div className={styles.content}>
               <WriteGuide />
               <TemporalMemoHistoryTable data={MOCK} />
-              <WriteInput inputProps={writeInput} />
+              <div className={styles.inputWrapper}>
+                <WriteInput inputProps={writeInput} />
+              </div>
             </div>
           </div>
         }

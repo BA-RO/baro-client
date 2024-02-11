@@ -29,13 +29,22 @@ const WriteHistoryCard = ({ createAt, value }: Omit<Write, 'id'>) => {
               width={24}
               height={24}
               color={COLORS['Grey/300']}
+              className={styles.icon}
             />
           </button>
           <button>
-            <Icon icon="bookmark" color={COLORS['Grey/300']} />
+            <Icon
+              icon="bookmark"
+              color={COLORS['Grey/300']}
+              className={styles.icon}
+            />
           </button>
           <button>
-            <Icon icon="menu" color={COLORS['Grey/300']} />
+            <Icon
+              icon="menu"
+              color={COLORS['Grey/300']}
+              className={styles.icon}
+            />
           </button>
         </div>
       </div>
