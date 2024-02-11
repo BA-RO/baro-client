@@ -14,12 +14,20 @@ const Button = ({
   state,
   onClick,
   type = 'button',
+  onFocus,
+  onBlur,
+  onMouseOver,
+  onMouseOut,
 }: ButtonProps) => {
   return (
     <button
       className={clsx(styles.button({ state, size }), className)}
       type={type}
       onClick={onClick}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
     >
       {children}
     </button>
