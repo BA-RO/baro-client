@@ -1,5 +1,4 @@
 import Icon from '@components/Icon';
-import ProfileDialog from '@components/Layout/components/ProfileDialog';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -12,6 +11,13 @@ const meta: Meta<typeof Dropdown> = {
   parameters: {
     componentSubtitle: '다양한 액션을 제공하는 컴포넌트',
   },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -19,51 +25,92 @@ export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
 export const Small: Story = {
-  render: () => (
-    <>
-      <Dropdown type="small" onClose={action('Dropdown 외부 클릭')}>
-        <Dropdown.Button onClick={action('수정하기 클릭')}>
+  args: {
+    size: 'small',
+    placement: 'bottom-left',
+  },
+  render: (args) => (
+    <Dropdown {...args}>
+      <Dropdown.Trigger>버튼</Dropdown.Trigger>
+      <Dropdown.List>
+        <Dropdown.Item onClick={action('수정하기 클릭')}>
           수정하기
-        </Dropdown.Button>
-        <Dropdown.Button onClick={action('삭제하기 클릭')}>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={action('삭제하기 클릭')}>
           삭제하기
-        </Dropdown.Button>
-      </Dropdown>
-    </>
+        </Dropdown.Item>
+      </Dropdown.List>
+    </Dropdown>
   ),
 };
 
-export const MediumFolder: Story = {
+export const Medium: Story = {
+  args: {
+    size: 'medium',
+    placement: 'bottom-left',
+  },
+  render: (args) => (
+    <Dropdown {...args}>
+      <Dropdown.Trigger>버튼</Dropdown.Trigger>
+      <Dropdown.List>
+        <Dropdown.Item onClick={action('수정하기 클릭')}>
+          수정하기
+        </Dropdown.Item>
+        <Dropdown.Item onClick={action('삭제하기 클릭')}>
+          삭제하기
+        </Dropdown.Item>
+      </Dropdown.List>
+    </Dropdown>
+  ),
+};
+
+export const FolderDropdown: Story = {
   render: () => (
-    <>
-      <Dropdown type="medium" onClose={action('Dropdown 외부 클릭')}>
-        <Dropdown.Button onClick={action('기본 폴더 클릭')}>
+    <Dropdown size="medium" placement="bottom-center">
+      <Dropdown.Trigger>버튼</Dropdown.Trigger>
+      <Dropdown.List>
+        <Dropdown.Item onClick={action('기본 폴더 클릭')}>
           바로님의 폴더<span className={styles.badge}>기본</span>
-        </Dropdown.Button>
-        <Dropdown.Button onClick={action('폴더 이름1 클릭')}>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={action('폴더 이름1 클릭')}>
           폴더 이름1
-        </Dropdown.Button>
-        <Dropdown.Button onClick={action('폴더 이름2 클릭')}>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={action('폴더 이름2 클릭')}>
           폴더 이름2
-        </Dropdown.Button>
-        <Dropdown.Button onClick={action('새 폴더 만들기 클릭')}>
-          <div className={styles.icon}>
-            <Icon icon="add" width={20} height={20} />
-          </div>
-          <span className={styles.iconMediumText}>새 폴더 만들기</span>
-        </Dropdown.Button>
-      </Dropdown>
-    </>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={action('새 폴더 만들기 클릭')}>
+          <Icon icon="add" width={20} height={20} />
+          <span className={styles.newFolderText}>새 폴더 만들기</span>
+        </Dropdown.Item>
+      </Dropdown.List>
+    </Dropdown>
   ),
 };
 
-export const MediumProfile: Story = {
-  render: () => <ProfileDialog closeDialog={action('Dropdown 외부 클릭')} />,
-  decorators: [
-    (Story) => (
-      <div style={{ height: '300px' }}>
-        <Story />
-      </div>
-    ),
-  ],
+export const UserProfileDropdown: Story = {
+  render: () => (
+    <Dropdown
+      className={styles.dialogWrapper}
+      size="medium"
+      placement="bottom-right"
+    >
+      <Dropdown.Trigger className={styles.profile}>
+        <Icon icon="profileHeader" width={28} height={28} />
+      </Dropdown.Trigger>
+      <Dropdown.List>
+        <Dropdown.Title>
+          <Icon icon="profileDialog" width={40} height={40} />
+          <span className={styles.profileName}>바로님</span>
+        </Dropdown.Title>
+        <Dropdown.Item onClick={action('계정 설정 클릭')}>
+          <Icon icon="setting" width={20} height={20} />
+          <span className={styles.buttonText}>계정 설정</span>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={action('로그아웃 클릭')}>
+          <Icon icon="logout" width={20} height={20} />
+          <span className={styles.buttonText}>로그아웃</span>
+        </Dropdown.Item>
+      </Dropdown.List>
+    </Dropdown>
+  ),
 };
