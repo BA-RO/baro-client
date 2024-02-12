@@ -12,6 +12,7 @@ export const wrapper = style([
     },
   }),
   {
+    position: 'relative',
     padding: '28px 32px 20px',
   },
 ]);
