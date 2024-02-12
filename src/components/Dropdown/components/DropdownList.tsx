@@ -7,7 +7,7 @@ import { PORTAL_ID } from '@constants/portal';
 import { useDropdownContext } from '..';
 import * as styles from '../style.css';
 
-const DropdownMenuList = ({ children }: PropsWithChildren) => {
+const DropdownList = ({ children }: PropsWithChildren) => {
   const { size, targetRef, position, fixed, isOpen } = useDropdownContext();
 
   return (
@@ -31,4 +31,4 @@ const DropdownMenuList = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default DropdownMenuList;
+export default DropdownList;

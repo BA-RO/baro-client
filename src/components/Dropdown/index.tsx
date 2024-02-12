@@ -11,8 +11,8 @@ import useClickAway from '@hooks/useClickAway';
 import useDisclosure from '@hooks/useDisclosure';
 import usePosition from '@hooks/usePosition';
 
-import DropdownMenuItem from './components/DropdownMenuItem';
-import DropdownMenuList from './components/DropdownMenuList';
+import DropdownItem from './components/DropdownItem';
+import DropdownList from './components/DropdownList';
 import DropdownTitle from './components/DropdownTitle';
 import DropdownTrigger from './components/DropdownTrigger';
 import * as styles from './style.css';
@@ -102,8 +102,8 @@ export const useDropdownContext = () => {
 const Dropdown = Object.assign(DropdownRoot, {
   Trigger: DropdownTrigger,
   Title: DropdownTitle,
-  List: DropdownMenuList,
-  Item: DropdownMenuItem,
+  List: DropdownList,
+  Item: DropdownItem,
 });
 
 export default Dropdown;

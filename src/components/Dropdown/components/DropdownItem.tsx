@@ -6,14 +6,13 @@ import * as styles from '@components/Dropdown/style.css';
 
 import { useDropdownContext } from '..';
 
-interface DropdownMenuItemProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {}
+interface DropdownItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const DropdownMenuItem = ({
+const DropdownItem = ({
   children,
   className,
   ...props
-}: PropsWithChildren<DropdownMenuItemProps>) => {
+}: PropsWithChildren<DropdownItemProps>) => {
   const { size } = useDropdownContext();
 
   return (
@@ -25,4 +24,4 @@ const DropdownMenuItem = ({
   );
 };
 
-export default DropdownMenuItem;
+export default DropdownItem;
