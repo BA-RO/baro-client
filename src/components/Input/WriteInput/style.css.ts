@@ -10,6 +10,7 @@ export const conatiner = style({
   width: '100%',
   padding: '22px 12px 22px 24px',
   border: `2px solid ${COLORS['Blue/Default']}`,
+  backgroundColor: 'white',
 });
 
 export const inputHeight = createVar();

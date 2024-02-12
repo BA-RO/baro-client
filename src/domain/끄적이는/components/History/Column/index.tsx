@@ -1,10 +1,10 @@
-import { type Write } from '@domain/끄적이는/types';
+import { type TemporalMemo } from '@domain/끄적이는/types';
 
-import WriteHistoryCard from '../Card';
+import WriteHistoryCard from '../../Card/History';
 import * as styles from './style.css';
 
 interface ColumnProps {
-  list: Write[] | undefined;
+  list: TemporalMemo[] | undefined;
 }
 
 const Column = ({ list }: ColumnProps) => {
