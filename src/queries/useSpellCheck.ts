@@ -4,7 +4,7 @@ import { type AxiosError } from 'axios';
 import { SPELLCHECK_STATE_MESSAGE } from '@constants/spellCheck';
 import { useToastStore } from '@stores/toast';
 
-import spellCheckApi from '../api/spell/spellCheck';
+import spellCheckApi from '../api/spell';
 import {
   type SpellCheckParams,
   type SpellCheckResponse,
