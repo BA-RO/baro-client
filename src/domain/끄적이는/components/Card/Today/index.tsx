@@ -8,7 +8,7 @@ import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useModal from '@hooks/useModal';
-import { usePostSpellCheck } from '@queries/useSpellCheck';
+import usePostSpellCheck from '@queries/usePostSpellCheck';
 import { useToastStore } from '@stores/toast';
 
 import SpellCheckCard from '../../Today/components/SpellCheckCard';

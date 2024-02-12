@@ -10,7 +10,7 @@ import {
   type SpellCheckResponse,
 } from '../api/spell/types';
 
-export const usePostSpellCheck = (
+const usePostSpellCheck = (
   options?: UseMutationOptions<
     SpellCheckResponse,
     AxiosError,
@@ -30,3 +30,5 @@ export const usePostSpellCheck = (
     },
   });
 };
+
+export default usePostSpellCheck;
