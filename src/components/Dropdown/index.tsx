@@ -1,53 +1,83 @@
-import { createContext, type PropsWithChildren } from 'react';
-import { useEffect, useRef } from 'react';
+import {
+  createContext,
+  type HTMLAttributes,
+  type PropsWithChildren,
+  type RefObject,
+} from 'react';
 import clsx from 'clsx';
 
-import DropdownButton from '@components/Dropdown/components/DropdownButton';
-import DropdownTitle from '@components/Dropdown/components/DropdownTitle';
-import * as styles from '@components/Dropdown/style.css';
+import useClickAway from '@hooks/useClickAway';
+import useDisclosure from '@hooks/useDisclosure';
+import usePosition from '@hooks/usePosition';
+
+import DropdownMenuItem from './components/DropdownMenuItem';
+import DropdownMenuList from './components/DropdownMenuList';
+import DropdownTitle from './components/DropdownTitle';
+import DropdownTrigger from './components/DropdownTrigger';
+import * as styles from './style.css';
+
+const INIT_POSITION = { top: 0, left: 0 };
 
 interface DropdownContextProps {
-  type: 'small' | 'medium';
+  /** dropdown menulist 크기 */
+  size?: 'small' | 'medium';
+  /** dropdown menulist 위치 */
+  placement?: 'bottom-left' | 'bottom-center' | 'bottom-right';
+  /** dropdown menulist {top, left} 위치 */
+  position: typeof INIT_POSITION;
+  /** dropdown menulist 요소의 ref 객체  */
+  targetRef: RefObject<HTMLUListElement>;
+  /** dropdown menulist css position fixed 적용 여부 */
+  fixed?: boolean;
+  /** dropdown menulist 열림, 닫힘 상태 */
+  isOpen: boolean;
+  /** dropdown trigger toggle 함수 */
+  onToggle: () => void;
 }
 
-interface DropdownProps {
-  className?: string;
-  onClose: () => void;
+interface DropdownRootProps
+  extends HTMLAttributes<HTMLDivElement>,
+    Pick<DropdownContextProps, 'size' | 'placement' | 'fixed'> {
+  className?: HTMLAttributes<HTMLDivElement>['className'];
 }
-
-type DropdownRootProps = DropdownContextProps &
-  PropsWithChildren<DropdownProps>;
 
 export const DropdownContext = createContext<DropdownContextProps | null>(null);
 
 const DropdownRoot = ({
   children,
-  type,
-  className,
-  onClose,
-}: DropdownRootProps) => {
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const isClickOutside =
-        dropdownRef.current && !dropdownRef.current?.contains(e.target as Node);
-      isClickOutside && onClose();
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [onClose]);
+  size = 'small',
+  placement = 'bottom-left',
+  fixed = false,
+  ...props
+}: PropsWithChildren<DropdownRootProps>) => {
+  const { isOpen, onClose, onToggle } = useDisclosure();
+  const dropdownRef = useClickAway({
+    onClickAway: onClose,
+  });
+  const { targetRef, position } = usePosition<HTMLDivElement, HTMLUListElement>(
+    {
+      defaultTriggerRef: dropdownRef,
+      isOpen,
+      placement,
+      fixed,
+    },
+  );
 
   return (
     <DropdownContext.Provider
       value={{
-        type,
+        size,
+        placement,
+        position,
+        targetRef,
+        fixed,
+        isOpen,
+        onToggle,
       }}
     >
       <div
-        className={clsx(styles.dropdownRoot({ type }), className)}
+        {...props}
+        className={clsx(styles.wrapper, props.className)}
         ref={dropdownRef}
       >
         {children}
@@ -57,8 +87,10 @@ const DropdownRoot = ({
 };
 
 const Dropdown = Object.assign(DropdownRoot, {
+  Trigger: DropdownTrigger,
   Title: DropdownTitle,
-  Button: DropdownButton,
+  List: DropdownMenuList,
+  Item: DropdownMenuItem,
 });
 
 export default Dropdown;

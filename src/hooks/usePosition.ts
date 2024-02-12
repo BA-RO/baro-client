@@ -1,4 +1,4 @@
-import { type RefObject, useLayoutEffect, useRef, useState } from 'react';
+import { type RefObject, useEffect, useRef, useState } from 'react';
 
 const POSITION = { top: 0, left: 0 };
 
@@ -10,6 +10,7 @@ interface UsePositionProps {
   defaultTriggerRef?: RefObject<HTMLDivElement>;
   isOpen: boolean;
   placement: Placement;
+  fixed?: boolean;
 }
 
 const usePosition = <
@@ -19,13 +20,14 @@ const usePosition = <
   defaultTriggerRef,
   isOpen,
   placement,
+  fixed = false,
 }: UsePositionProps) => {
   const ref = useRef<T>(null);
   const triggerRef = defaultTriggerRef || ref;
   const targetRef = useRef<U>(null);
   const [position, setPosition] = useState(POSITION);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!triggerRef.current || !targetRef.current || !isOpen) {
       return;
     }
@@ -33,6 +35,7 @@ const usePosition = <
     const {
       x,
       y,
+      bottom: triggerBottom,
       width: triggerWidth,
       height: triggerHeight,
     } = triggerRef.current.getBoundingClientRect();
@@ -41,7 +44,7 @@ const usePosition = <
     const { scrollX, scrollY } = window;
 
     const top = y + scrollY - triggerHeight;
-    const bottom = y + scrollY + triggerHeight;
+    const bottom = !fixed ? y + scrollY + triggerHeight : triggerBottom;
 
     const left = x + scrollX;
     const center = left + triggerWidth / 2 - targetWidth / 2;
@@ -57,7 +60,7 @@ const usePosition = <
     };
 
     setPosition(CALCULATED_POSITION[placement]);
-  }, [triggerRef, placement, isOpen]);
+  }, [triggerRef, placement, isOpen, fixed]);
 
   return { triggerRef, targetRef, position };
 };
