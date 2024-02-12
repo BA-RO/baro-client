@@ -1,9 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { getLoginURL } from '@api/auth/auth';
+import { getLoginURL } from '@api/auth';
 import { type OAuthType } from '@api/auth/types';
 
-export const useLogin = () =>
+const useLogin = () =>
   useMutation({
     mutationFn: async (authType: OAuthType) => await getLoginURL(authType),
   });
+
+export default useLogin;

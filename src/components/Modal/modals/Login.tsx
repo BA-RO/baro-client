@@ -5,7 +5,7 @@ import Hello from '@assets/images/Hello.svg';
 import Button from '@components/Button';
 import Icon from '@components/Icon';
 import ModalContainer from '@components/Modal/components/ModalContainer';
-import { useLogin } from '@queries/auth';
+import useLogin from '@queries/useLogin';
 
 import * as styles from '../style.css';
 

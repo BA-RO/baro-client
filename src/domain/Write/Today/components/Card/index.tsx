@@ -5,7 +5,7 @@ import Button from '@components/Button';
 import Card from '@components/Card';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
-import { usePostSpellCheck } from '@queries/useSpellCheck';
+import usePostSpellCheck from '@queries/usePostSpellCheck';
 
 import SpellCheckCard from '../SpellCheckCard';
 import * as styles from './style.css';
