@@ -10,12 +10,15 @@ import Close from '@assets/icons/close.svg';
 import Complete from '@assets/icons/complete.svg';
 import Copy from '@assets/icons/copy.svg';
 import Google from '@assets/icons/google.svg';
+import Google2 from '@assets/icons/google2.svg';
 import Instagram from '@assets/icons/instagram.svg';
 import Kakao from '@assets/icons/kakao.svg';
+import Kakao2 from '@assets/icons/kakao2.svg';
 import Logo32 from '@assets/icons/logo32.svg';
 import Logout from '@assets/icons/logout.svg';
 import Menu from '@assets/icons/menu.svg';
 import Naver from '@assets/icons/naver.svg';
+import Naver2 from '@assets/icons/naver2.svg';
 import PencilActive from '@assets/icons/pencil-active.svg';
 import PencilDefault from '@assets/icons/pencil-default.svg';
 import Picture from '@assets/icons/picture.svg';
@@ -41,12 +44,15 @@ export const iconFactory = {
   complete: Complete,
   copy: Copy,
   google: Google,
+  google2: Google2,
   instagram: Instagram,
   kakao: Kakao,
+  kakao2: Kakao2,
   logo32: Logo32,
   logout: Logout,
   menu: Menu,
   naver: Naver,
+  naver2: Naver2,
   pencilActive: PencilActive,
   pencilDefault: PencilDefault,
   profile: Profle,

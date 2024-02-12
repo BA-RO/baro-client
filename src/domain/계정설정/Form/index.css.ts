@@ -13,6 +13,23 @@ export const container = style({
   backgroundColor: COLORS['Grey/100'],
 });
 
+export const authContainer = style({
+  backgroundColor: 'white',
+  padding: '12px 16px',
+  height: '54px',
+  borderRadius: '8px',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+});
+
+export const authTypeEmail = style({
+  fontSize: '17px',
+  fontWeight: '500',
+  lineHeight: '27px',
+  letterSpacing: '-0.3px',
+});
+
 export const submitButton = style({
   backgroundColor: COLORS['Blue/Default'],
   borderRadius: '8px',

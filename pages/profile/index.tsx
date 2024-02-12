@@ -4,11 +4,11 @@ import Icon from '@components/Icon';
 import Layout from '@components/Layout';
 import ProfileForm from '@domain/계정설정/Form';
 import * as styles from '@domain/계정설정/index.css';
+import useGetProfile from '@domain/계정설정/queries/useGetProfile';
 
 const ProfilePage = () => {
+  const my = useGetProfile();
   const [isProfileHovered, setIsProfileHovered] = useState(false);
-
-  console.log(isProfileHovered);
 
   return (
     <Layout isShowFooter>
@@ -33,7 +33,12 @@ const ProfilePage = () => {
             </div>
           )}
         </div>
-        <ProfileForm />
+        <ProfileForm
+          name={my.name}
+          nickname={my.nickname}
+          authType={my.oAuthServiceType}
+          email={my.email}
+        />
         <div className={styles.textButtonWrapper}>
           <button className={styles.textButton}>로그아웃</button>
           <button className={styles.textButton}>회원탈퇴</button>
