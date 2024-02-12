@@ -63,7 +63,7 @@ export const bottomArrow = style({
   marginBottom: '8px',
 
   '::before': {
-    bottom: '-11.5px',
+    bottom: '-11px',
     borderTopColor: COLORS['Dim/70'],
   },
 });
