@@ -5,11 +5,23 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Dropdown from '.';
 import * as styles from './style.css';
 
+const COMPONENT_DESCRIPTION = `
+  - \`<Dropdown />\`: 모든 컴포넌트에 대한 컨텍스트와 상태를 제공합니다.
+  - \`<Dropdown.Trigger />\`: \`<Dropdown.List />\` 컴포넌트를 활성화하는 컴포넌트입니다. 사용자가 이 컴포넌트를 클릭할 때 Dropdown이 나타납니다.
+  - \`<Dropdown.List />\`: Dropdown이 활성화되었을 때 보이는 컴포넌트입니다.
+  - \`<Dropdown.Item />\`: Dropdown 항목들을 포함하는 컴포넌트입니다.
+`;
+
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
     componentSubtitle: '다양한 액션을 제공하는 컴포넌트',
+    docs: {
+      description: {
+        component: COMPONENT_DESCRIPTION,
+      },
+    },
   },
   decorators: [
     (Story) => (
