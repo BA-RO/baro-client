@@ -1,10 +1,7 @@
-import {
-  createContext,
-  type PropsWithChildren,
-  useContext,
-  useState,
-} from 'react';
+import { createContext, type PropsWithChildren, useContext } from 'react';
 import clsx from 'clsx';
+
+import useDisclosure from '@hooks/useDisclosure';
 
 import * as styles from './style.css';
 
@@ -34,22 +31,18 @@ const CardRoot = ({
   className,
   color = 'white',
 }: PropsWithChildren<CardProps>) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handleMenuShow = () => {
-    setIsVisible(true);
-  };
-
-  const handleMenuHide = () => {
-    setIsVisible(false);
-  };
+  const {
+    isOpen: isVisible,
+    onOpen: onShow,
+    onClose: onHide,
+  } = useDisclosure();
 
   return (
     <CardContext.Provider value={{ isVisibleMenu: isVisible }}>
       <li
         className={clsx(styles.wrapper({ color }), className)}
-        onMouseEnter={handleMenuShow}
-        onMouseLeave={handleMenuHide}
+        onMouseEnter={onShow}
+        onMouseLeave={onHide}
       >
         {children}
       </li>
