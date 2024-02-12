@@ -3,7 +3,8 @@ import clsx from 'clsx';
 
 import Button from '@components/Button';
 import * as styles from '@components/Dropdown/style.css';
-import { useDropdownContext } from '@hooks/useDropdownContext';
+
+import { useDropdownContext } from '..';
 
 interface DropdownMenuItemProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {}

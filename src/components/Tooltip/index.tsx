@@ -1,5 +1,5 @@
 import type { PropsWithChildren, RefObject } from 'react';
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 import useDisclosure from '@hooks/useDisclosure';
 import usePosition from '@hooks/usePosition';
@@ -54,6 +54,18 @@ const TooltipRoot = ({
       <div ref={triggerRef}>{children}</div>
     </TooltipContext.Provider>
   );
+};
+
+export const useTooltipContext = () => {
+  const ctx = useContext(TooltipContext);
+
+  if (!ctx) {
+    throw new Error(
+      'useTooltipContext hook must be used within a Tooltip component',
+    );
+  }
+
+  return ctx;
 };
 
 const Tooltip = Object.assign(TooltipRoot, {

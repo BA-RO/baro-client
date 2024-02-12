@@ -1,4 +1,4 @@
-import { createContext, type PropsWithChildren } from 'react';
+import { createContext, type PropsWithChildren, useContext } from 'react';
 
 import TabsContent from './components/TabsContent';
 import TabsList from './components/TabsList';
@@ -33,6 +33,16 @@ const TabsRoot = ({
       {children}
     </TabsContext.Provider>
   );
+};
+
+export const useTabsContext = () => {
+  const ctx = useContext(TabsContext);
+
+  if (!ctx) {
+    throw new Error('useTabsContext hook must be used within a Tabs component');
+  }
+
+  return ctx;
 };
 
 const Tabs = Object.assign(TabsRoot, {

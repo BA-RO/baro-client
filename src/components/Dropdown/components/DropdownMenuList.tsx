@@ -3,8 +3,8 @@ import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import Portal from '@components/Portal';
 import { PORTAL_ID } from '@constants/portal';
-import { useDropdownContext } from '@hooks/useDropdownContext';
 
+import { useDropdownContext } from '..';
 import * as styles from '../style.css';
 
 const DropdownMenuList = ({ children }: PropsWithChildren) => {

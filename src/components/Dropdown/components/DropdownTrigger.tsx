@@ -5,8 +5,8 @@ import {
 } from 'react';
 
 import Button from '@components/Button';
-import { useDropdownContext } from '@hooks/useDropdownContext';
 
+import { useDropdownContext } from '..';
 import * as styles from '../style.css';
 
 interface DropdownTriggerProps

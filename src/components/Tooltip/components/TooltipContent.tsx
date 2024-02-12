@@ -3,9 +3,9 @@ import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
 
 import { PORTAL_ID } from '@constants/portal';
-import { useTooltipContext } from '@hooks/useTooltipContext';
 
 import Portal from '../../Portal';
+import { useTooltipContext } from '..';
 import * as styles from '../style.css';
 
 const ARROW_STYLE = {

@@ -3,6 +3,7 @@ import {
   type HTMLAttributes,
   type PropsWithChildren,
   type RefObject,
+  useContext,
 } from 'react';
 import clsx from 'clsx';
 
@@ -84,6 +85,18 @@ const DropdownRoot = ({
       </div>
     </DropdownContext.Provider>
   );
+};
+
+export const useDropdownContext = () => {
+  const ctx = useContext(DropdownContext);
+
+  if (!ctx) {
+    throw new Error(
+      'useDropdownContext hook must be used within a Dropdown component',
+    );
+  }
+
+  return ctx;
 };
 
 const Dropdown = Object.assign(DropdownRoot, {
