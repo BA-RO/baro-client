@@ -12,6 +12,7 @@ import Close from '@assets/icons/close.svg';
 import Comfort from '@assets/icons/comfort.svg';
 import Complete from '@assets/icons/complete.svg';
 import Copy from '@assets/icons/copy.svg';
+import Error from '@assets/icons/error.svg';
 import Google from '@assets/icons/google.svg';
 import Instagram from '@assets/icons/instagram.svg';
 import Kakao from '@assets/icons/kakao.svg';
@@ -48,6 +49,7 @@ export const iconFactory = {
   comfort: Comfort,
   complete: Complete,
   copy: Copy,
+  error: Error,
   google: Google,
   instagram: Instagram,
   kakao: Kakao,
