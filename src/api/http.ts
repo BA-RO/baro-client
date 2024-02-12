@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { ROUTES } from '@constants/routes';
 import { saveToken } from '@utils/token';
 
-import { getRenewToken } from './auth/auth';
+import { getRenewToken } from './auth';
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
