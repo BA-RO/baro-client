@@ -85,10 +85,10 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
       return false;
     }
 
-    if (value.length > 30) {
+    if (value.length > 10) {
       setErrors({
         ...errors,
-        nickname: '30자 내로 적어주세요!',
+        nickname: '10자 내로 적어주세요!',
       });
 
       return false;

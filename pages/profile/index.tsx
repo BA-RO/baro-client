@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useMemo } from 'react';
+import { type ChangeEvent, useMemo, useState } from 'react';
 
 import Icon from '@components/Icon';
 import Layout from '@components/Layout';
@@ -11,6 +11,20 @@ import useGetProfile from '@domain/계정설정/queries/useGetProfile';
 const ProfilePage = () => {
   const my = useGetProfile();
   const { mutate: exitAccount } = useExitAccount();
+  const [profileImg, setProfileImage] = useState<string>();
+
+  const handleProfileImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const file = e.target.files[0];
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      //TODO
+      setProfileImage(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const profileImage = useMemo(() => {
     if (!my.profileImageUrl) {
@@ -26,6 +40,12 @@ const ProfilePage = () => {
       );
     }
 
+    if (profileImg) {
+      return (
+        <Image src={profileImg} alt="프로필 이미지" width={96} height={96} />
+      );
+    }
+
     return (
       <Image
         src={my.profileImageUrl}
@@ -34,14 +54,20 @@ const ProfilePage = () => {
         height={96}
       />
     );
-  }, [my.profileImageUrl]);
+  }, [my.profileImageUrl, profileImg]);
 
   return (
     <Layout isShowFooter>
       <div className={styles.container}>
-        <input type="file" id="profile-input" style={{ display: 'none' }} />
         <div className={styles.profileWrapper}>
           <label htmlFor="profile-input">{profileImage}</label>
+          <input
+            type="file"
+            id="profile-input"
+            accept="image/*"
+            onChange={handleProfileImageChange}
+            style={{ display: 'none' }}
+          />
         </div>
         <ProfileForm
           name={my.name}
