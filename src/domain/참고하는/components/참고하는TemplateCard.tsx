@@ -22,7 +22,14 @@ const 참고하는TemplateCard = ({
   data,
   memoFolders,
 }: 참고하는TemplateCardProps) => {
-  const { category, subCategory, content, copiedCount, savedCount } = data;
+  const {
+    templateId,
+    category,
+    subCategory,
+    content,
+    copiedCount,
+    savedCount,
+  } = data;
 
   const { showToast } = useToastStore();
 
@@ -45,7 +52,7 @@ const 참고하는TemplateCard = ({
             color={COLORS['Grey/300']}
           />
         </Button>
-        <FolderDialog memoFolders={memoFolders} />
+        <FolderDialog templateId={templateId} memoFolders={memoFolders} />
       </Card.Menu>
       <Card.Header>
         <Badge color={CATEGORY_COLOR[categoryNameKr]}>{categoryNameKr}</Badge>

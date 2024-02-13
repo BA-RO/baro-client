@@ -1,39 +1,43 @@
 import { type Folder } from '@api/memoFolder/types';
-import Button from '@components/Button';
 import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
 import * as styles from '@domain/참고하는/components/FolderDialog.css';
 import { useModalStore } from '@stores/modal';
 import { COLORS } from '@styles/tokens';
 
+import useSaveTemplate from '../queries/useSaveTemplate';
+
 interface FolderDialogProps {
+  templateId: number;
   memoFolders: Folder[];
 }
 
-const FolderDialog = ({ memoFolders }: FolderDialogProps) => {
+const FolderDialog = ({ templateId, memoFolders }: FolderDialogProps) => {
   const { openModal } = useModalStore();
+  const { mutateAsync } = useSaveTemplate();
+
+  const handleFolderClick = (memoFolderId: number) => async () =>
+    await mutateAsync({ templateId, memoFolderId });
 
   return (
     <Dropdown size="medium" placement="bottom-center">
       <Dropdown.Trigger>
-        <Button>
-          <Icon
-            icon="bookmarkRefer"
-            className={styles.hover}
-            color={COLORS['Grey/300']}
-          />
-        </Button>
+        <Icon
+          icon="bookmarkRefer"
+          className={styles.hover}
+          color={COLORS['Grey/300']}
+        />
       </Dropdown.Trigger>
       <Dropdown.List>
         {memoFolders.map(({ id, name }) => {
           if (name === '기본')
             return (
-              <Dropdown.Item key={id} onClick={() => {}}>
+              <Dropdown.Item key={id} onClick={handleFolderClick(id)}>
                 OOO님의 폴더<span className={styles.badge}>기본</span>
               </Dropdown.Item>
             );
           return (
-            <Dropdown.Item key={id} onClick={() => {}}>
+            <Dropdown.Item key={id} onClick={handleFolderClick(id)}>
               {name}
             </Dropdown.Item>
           );
