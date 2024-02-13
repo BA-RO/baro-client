@@ -11,18 +11,15 @@ import useGetProfile from '@domain/계정설정/queries/useGetProfile';
 const ProfilePage = () => {
   const my = useGetProfile();
   const { mutate: exitAccount } = useExitAccount();
-  const [profileImg, setProfileImage] = useState<string>();
+  const [profileImg, setProfileImg] = useState<string>();
 
   const handleProfileImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-    const file = e.target.files[0];
 
+    const file = e.target.files[0];
     const reader = new FileReader();
 
-    reader.onloadend = () => {
-      //TODO
-      setProfileImage(reader.result as string);
-    };
+    reader.onloadend = () => setProfileImg(`${reader.result}`);
     reader.readAsDataURL(file);
   };
 
@@ -40,12 +37,6 @@ const ProfilePage = () => {
       );
     }
 
-    if (profileImg) {
-      return (
-        <Image src={profileImg} alt="프로필 이미지" width={96} height={96} />
-      );
-    }
-
     return (
       <Image
         src={my.profileImageUrl}
@@ -54,20 +45,38 @@ const ProfilePage = () => {
         height={96}
       />
     );
-  }, [my.profileImageUrl, profileImg]);
+  }, [my.profileImageUrl]);
 
   return (
     <Layout isShowFooter>
       <div className={styles.container}>
         <div className={styles.profileWrapper}>
-          <label htmlFor="profile-input">{profileImage}</label>
-          <input
-            type="file"
-            id="profile-input"
-            accept="image/*"
-            onChange={handleProfileImageChange}
-            style={{ display: 'none' }}
-          />
+          {profileImg ? (
+            <div style={{ position: 'relative' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={profileImg}
+                alt="업로드 된 프로필 이미지"
+                width={96}
+                height={96}
+                className={styles.uploadPostImg}
+              />
+              <div className={styles.profileDim}>
+                <Icon icon={'closeActive'} width={32} height={32} />
+              </div>
+            </div>
+          ) : (
+            <label htmlFor="profile-input">
+              {profileImage}
+              <input
+                type="file"
+                id="profile-input"
+                accept="image/*"
+                onChange={handleProfileImageChange}
+                style={{ display: 'none' }}
+              />
+            </label>
+          )}
         </div>
         <ProfileForm
           name={my.name}

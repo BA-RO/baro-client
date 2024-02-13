@@ -10,6 +10,13 @@ export const container = style({
   alignContent: 'center',
 });
 
+export const uploadPostImg = style({
+  width: '96px',
+  height: '96px',
+  borderRadius: '50%',
+  objectFit: 'contain',
+});
+
 export const profileWrapper = style({
   marginTop: '32px',
   display: 'flex',
@@ -22,6 +29,7 @@ export const profileDim = style({
   borderRadius: '50%',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
   position: 'absolute',
+  top: '0',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
