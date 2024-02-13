@@ -4,6 +4,8 @@ import ArrowDown from '@assets/icons/arrowDown.svg';
 import Bookmark from '@assets/icons/bookmark.svg';
 import BookmarkHeader from '@assets/icons/bookmarkHeader.svg';
 import BookmarkRefer from '@assets/icons/bookmarkRefer.svg';
+import CheckBox from '@assets/icons/check-box.svg';
+import CheckBoxActive from '@assets/icons/check-box-active.svg';
 import Clock from '@assets/icons/clock.svg';
 import ClickActive from '@assets/icons/clock-active.svg';
 import Close from '@assets/icons/close.svg';
@@ -46,6 +48,8 @@ export const iconFactory = {
   closeActive: CloseActive,
   complete: Complete,
   copy: Copy,
+  checkBox: CheckBox,
+  checkBoxActive: CheckBoxActive,
   error: Error,
   google: Google,
   google2: Google2,

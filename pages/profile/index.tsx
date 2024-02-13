@@ -14,6 +14,7 @@ const ProfilePage = () => {
   const { mutate: exitAccount } = useExitAccount();
   const [profileImg, setProfileImg] = useState<string>();
   const [isHover, setIsHover] = useState(false);
+  const [exitCause, setExitCause] = useState<string | null>(null);
 
   const profileImage = useMemo(() => {
     if (!my.profileImageUrl) {
@@ -107,7 +108,10 @@ const ProfilePage = () => {
           </button>
         </div>
       </div>
-      <ExitModal />
+      <ExitModal
+        selectCause={exitCause}
+        onContentClick={(cause: string) => setExitCause(cause)}
+      />
     </Layout>
   );
 };
