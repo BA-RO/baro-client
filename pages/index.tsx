@@ -1,7 +1,7 @@
 import Layout from '@components/Layout';
 
 const Intro = () => {
-  return <Layout headerType="intro" isFooter></Layout>;
+  return <Layout isFooter></Layout>;
 };
 
 export default Intro;
