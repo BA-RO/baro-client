@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import Image from 'next/image';
+import { useMemo } from 'react';
 
 import Icon from '@components/Icon';
 import Layout from '@components/Layout';
@@ -10,30 +11,37 @@ import useGetProfile from '@domain/계정설정/queries/useGetProfile';
 const ProfilePage = () => {
   const my = useGetProfile();
   const { mutate: exitAccount } = useExitAccount();
-  const [isProfileHovered, setIsProfileHovered] = useState(false);
+
+  const profileImage = useMemo(() => {
+    if (!my.profileImageUrl) {
+      return (
+        <Icon
+          icon={'profile'}
+          width={96}
+          height={96}
+          wrapperClassName={styles.profileImageWrapper}
+          postfix={<Icon icon={'picture'} width={32} height={32} />}
+          postfixClassName={styles.profileImagePostfix}
+        />
+      );
+    }
+
+    return (
+      <Image
+        src={my.profileImageUrl}
+        alt="프로필 이미지"
+        width={96}
+        height={96}
+      />
+    );
+  }, [my.profileImageUrl]);
 
   return (
     <Layout isShowFooter>
       <div className={styles.container}>
+        <input type="file" id="profile-input" style={{ display: 'none' }} />
         <div className={styles.profileWrapper}>
-          <Icon
-            icon={'profile'}
-            width={96}
-            height={96}
-            wrapperClassName={styles.profileImageWrapper}
-            postfix={<Icon icon={'picture'} width={32} height={32} />}
-            postfixClassName={styles.profileImagePostfix}
-            onHover={() => setIsProfileHovered(true)}
-          />
-
-          {isProfileHovered && (
-            <div
-              className={styles.profileDim}
-              onMouseLeave={() => setIsProfileHovered(false)}
-            >
-              <Icon icon={'close'} color="white" width={32} height={32} />
-            </div>
-          )}
+          <label htmlFor="profile-input">{profileImage}</label>
         </div>
         <ProfileForm
           name={my.name}
