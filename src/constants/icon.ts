@@ -9,6 +9,7 @@ import ClickActive from '@assets/icons/clock-active.svg';
 import Close from '@assets/icons/close.svg';
 import Complete from '@assets/icons/complete.svg';
 import Copy from '@assets/icons/copy.svg';
+import Error from '@assets/icons/error.svg';
 import Google from '@assets/icons/google.svg';
 import Google2 from '@assets/icons/google2.svg';
 import Instagram from '@assets/icons/instagram.svg';
@@ -43,6 +44,7 @@ export const iconFactory = {
   close: Close,
   complete: Complete,
   copy: Copy,
+  error: Error,
   google: Google,
   google2: Google2,
   instagram: Instagram,

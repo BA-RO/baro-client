@@ -26,6 +26,15 @@ const Icon = ({
   onHover,
 }: IconProps) => {
   const SvgIcon = iconFactory[icon];
+  if (!wrapperClassName && !postfix)
+    return (
+      <SvgIcon
+        className={className}
+        color={color}
+        width={width}
+        height={height}
+      />
+    );
 
   return (
     <div className={wrapperClassName} onMouseEnter={onHover}>
@@ -35,7 +44,7 @@ const Icon = ({
         width={width}
         height={height}
       />
-      <div className={postfixClassName}>{postfix}</div>
+      {postfix && <div className={postfixClassName}>{postfix}</div>}
     </div>
   );
 };

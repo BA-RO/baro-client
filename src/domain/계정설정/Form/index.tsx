@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { type FormEvent, useMemo, useState } from 'react';
 
 import Icon from '@components/Icon';
 import { useInput } from '@hooks/useInput';
@@ -20,6 +20,14 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
     defaultValue: nickname,
   });
 
+  const [errors, setErrors] = useState<{
+    name: string | null;
+    nickname: string | null;
+  }>({
+    name: null,
+    nickname: null,
+  });
+
   const authTypeIcon = useMemo(() => {
     switch (authType) {
       case 'kakao':
@@ -33,19 +41,90 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
     }
   }, [authType]);
 
+  const hasAlreadyNickname = (value: string) => {
+    // TODO: 이미 존재하는지 확인하는 API 요청
+    console.log(value);
+
+    return false;
+  };
+
+  const nameValidator = (value: string) => {
+    if (value.length > 30) {
+      setErrors({
+        ...errors,
+        name: '한글, 영문, 밑줄(_)조합으로 30자 내로 적어주세요!',
+      });
+
+      return false;
+    }
+
+    setErrors({ ...errors, name: null });
+
+    return true;
+  };
+
+  const nicknameValidator = (value: string) => {
+    if (value.length > 30) {
+      setErrors({
+        ...errors,
+        nickname: '30자 내로 적어주세요!',
+      });
+
+      return false;
+    }
+
+    if (hasAlreadyNickname(value)) {
+      setErrors({
+        ...errors,
+        nickname: '이미 사용 중인 폴더 이름이에요!',
+      });
+
+      return false;
+    }
+
+    setErrors({ ...errors, nickname: null });
+
+    return true;
+  };
+
+  const validator = (type: 'name' | 'nickname', value: string) => {
+    if (type === 'name') {
+      return nameValidator(value);
+    }
+
+    if (type === 'nickname') {
+      return nicknameValidator(value);
+    }
+
+    return false;
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (
+      validator('name', nameInputProps.value) &&
+      validator('nickname', nicknameInputProps.value)
+    ) {
+      console.log('성공', errors.nickname);
+    } else {
+      console.log('실패', errors);
+    }
+  };
+
   return (
-    <form className={styles.container}>
+    <form className={styles.container} onSubmit={handleSubmit}>
       <ProfileFormInput
         inputProps={nameInputProps}
         title={'이름'}
         placeholder={'이름을 입력해주세요'}
-        errorMsg={null}
+        errorMsg={errors ? errors.name : null}
       />
       <ProfileFormInput
         inputProps={nicknameInputProps}
         title={'별명'}
         placeholder={'별명을 입력해주세요'}
-        errorMsg={null}
+        errorMsg={errors ? errors.nickname : null}
       />
       <div className={styles.authContainer}>
         {authTypeIcon}

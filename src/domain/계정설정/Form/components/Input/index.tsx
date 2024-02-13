@@ -1,5 +1,6 @@
-import { type FC } from 'react';
+import { type FC, type HTMLProps } from 'react';
 
+import Icon from '@components/Icon';
 import { type UseInputReturn } from '@hooks/useInput';
 
 import * as styles from './index.css';
@@ -11,12 +12,10 @@ interface ProfileFormInputProps {
   errorMsg: string | null;
 }
 
-const ProfileFormInput: FC<ProfileFormInputProps> = ({
-  inputProps,
-  title,
-  placeholder,
-  errorMsg,
-}) => {
+const ProfileFormInput: FC<
+  Omit<HTMLProps<HTMLInputElement>, keyof ProfileFormInputProps> &
+    ProfileFormInputProps
+> = ({ inputProps, title, placeholder, errorMsg, onBlur }) => {
   return (
     <label htmlFor={inputProps.id}>
       <p className={styles.inputTitle}>{title}</p>
@@ -24,8 +23,14 @@ const ProfileFormInput: FC<ProfileFormInputProps> = ({
         {...inputProps}
         className={styles.input}
         placeholder={placeholder}
+        onBlur={onBlur}
       />
-      {errorMsg !== null && <p>{errorMsg}</p>}
+      {errorMsg && errorMsg.length > 0 ? (
+        <div className={styles.errorMsg}>
+          <Icon icon={'error'} width={20} height={20} />
+          <p>{errorMsg}</p>
+        </div>
+      ) : null}
     </label>
   );
 };

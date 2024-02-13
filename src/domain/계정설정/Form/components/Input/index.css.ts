@@ -30,3 +30,14 @@ export const input = style({
     letterSpacing: '-0.3px',
   },
 });
+
+export const errorMsg = style({
+  marginTop: '13.5px',
+  fontSize: '13px',
+  fontWeight: '600',
+  lineHeight: '17px',
+  letterSpacing: '-0.5px',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '6px',
+});
