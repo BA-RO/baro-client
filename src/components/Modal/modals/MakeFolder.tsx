@@ -29,18 +29,23 @@ const MakeFolder = () => {
   const handle만들기Click = async () => {
     if (value.length > 10) return setErrorMessage('10자 내로 입력해주세요!');
 
-    try {
-      await mutateAsync(value);
-      await queryClient.invalidateQueries({
-        queryKey: ['memo-folders'],
-      });
-      closeModal();
-    } catch (e) {
-      if (!(e instanceof AxiosError) || !e.response) throw e;
-      if (e.response.data.errorCode === 'MF01')
-        return setErrorMessage('이미 사용 중인 폴더 이름이에요!');
-      throw e;
-    }
+    await mutateAsync(value, {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
+          queryKey: ['memo-folders'],
+        });
+        closeModal();
+      },
+      onError: (e) => {
+        if (!(e instanceof AxiosError) || !e.response) throw e;
+        if (
+          (e.response.data as { errorCode: string; message: string })
+            .errorCode === 'MF01'
+        )
+          return setErrorMessage('이미 사용 중인 폴더 이름이에요!');
+        throw e;
+      },
+    });
   };
 
   return (
