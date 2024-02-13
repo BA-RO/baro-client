@@ -32,8 +32,11 @@
     "js-cookie": "^3.0.5",
     "ko": "link:dayjs/locale/ko",
     "next": "14.0.3",
+    "notion-client": "^6.16.0",
+    "notion-types": "^6.16.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-notion-x": "^6.16.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
