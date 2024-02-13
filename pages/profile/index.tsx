@@ -8,9 +8,11 @@ import ProfileForm from '@domain/계정설정/components/Form';
 import * as styles from '@domain/계정설정/index.css';
 import useExitAccount from '@domain/계정설정/mutations/useExitAccount';
 import useGetProfile from '@domain/계정설정/queries/useGetProfile';
+import useModal from '@hooks/useModal';
 
 const ProfilePage = () => {
   const my = useGetProfile();
+  const exitModalProps = useModal();
   const { mutate: exitAccount } = useExitAccount();
   const [profileImg, setProfileImg] = useState<string>();
   const [isHover, setIsHover] = useState(false);
@@ -103,15 +105,23 @@ const ProfilePage = () => {
         <div className={styles.textButtonWrapper}>
           {/* TODO: 로그아웃 연결 */}
           <button className={styles.textButton}>로그아웃</button>
-          <button className={styles.textButton} onClick={() => exitAccount()}>
+          <button
+            className={styles.textButton}
+            onClick={exitModalProps.handleOpen}
+          >
             회원탈퇴
           </button>
         </div>
       </div>
-      <ExitModal
-        selectCause={exitCause}
-        onContentClick={(cause: string) => setExitCause(cause)}
-      />
+
+      {exitModalProps.isOpen && (
+        <ExitModal
+          selectCause={exitCause}
+          exitMutate={exitAccount}
+          onContentClick={(cause: string) => setExitCause(cause)}
+          onModalCloseClick={exitModalProps.handleClose}
+        />
+      )}
     </Layout>
   );
 };

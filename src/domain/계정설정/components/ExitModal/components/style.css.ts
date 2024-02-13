@@ -9,6 +9,20 @@ export const listItem = recipe({
     alignItems: 'center',
     gap: '8px',
     cursor: 'pointer',
+    height: '48px',
+    padding: '0px 12px',
+    borderRadius: '8px',
+  },
+  variants: {
+    selected: {
+      true: {
+        border: `1.5px solid ${COLORS['Blue/Default']}`,
+        backgroundColor: 'white',
+      },
+      false: {
+        backgroundColor: COLORS['Grey/100'],
+      },
+    },
   },
 });
 

@@ -16,7 +16,10 @@ const ExitModalListItem = ({
   onContentClick,
 }: ExitModalListItemProps) => {
   return (
-    <li className={styles.listItem()} onClick={() => onContentClick(content)}>
+    <li
+      className={styles.listItem({ selected: isChecked })}
+      onClick={() => onContentClick(content)}
+    >
       <Icon icon={isChecked ? 'checkBoxActive' : 'checkBox'} />
       <p className={styles.listItemText}>{content}</p>
     </li>
