@@ -3,7 +3,7 @@ import { type FormEvent, useMemo, useState } from 'react';
 import Icon from '@components/Icon';
 import { useInput } from '@hooks/useInput';
 
-import useUpdateProfile from '../mutations/useUpdateProfile';
+import useUpdateProfile from '../../mutations/useUpdateProfile';
 import ProfileFormInput from './components/Input';
 import * as styles from './index.css';
 

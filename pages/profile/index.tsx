@@ -3,7 +3,8 @@ import { type ChangeEvent, useMemo, useState } from 'react';
 
 import Icon from '@components/Icon';
 import Layout from '@components/Layout';
-import ProfileForm from '@domain/계정설정/Form';
+import ExitModal from '@domain/계정설정/components/ExitModal';
+import ProfileForm from '@domain/계정설정/components/Form';
 import * as styles from '@domain/계정설정/index.css';
 import useExitAccount from '@domain/계정설정/mutations/useExitAccount';
 import useGetProfile from '@domain/계정설정/queries/useGetProfile';
@@ -106,6 +107,7 @@ const ProfilePage = () => {
           </button>
         </div>
       </div>
+      <ExitModal />
     </Layout>
   );
 };
