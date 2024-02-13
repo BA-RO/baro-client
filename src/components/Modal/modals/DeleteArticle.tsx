@@ -15,7 +15,7 @@ const DeleteArticle = () => {
       <p className={styles.body}>
         {'삭제한 글은 복구할 수 없어요!\n삭제하시겠어요'}
       </p>
-      <div>
+      <div className={styles.buttonWrapper}>
         <button
           type="button"
           className={styles.button}

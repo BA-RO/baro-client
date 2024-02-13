@@ -9,6 +9,7 @@ import {
   type FilterButton,
   type Refer,
 } from '@domain/참고하는/types';
+import useGetMemoFolders from '@queries/useGetMemoFolders';
 
 // - `ASK`  (부탁하기)
 // - `REPORT`  (보고하기)
@@ -129,6 +130,8 @@ const datas: Refer[] = [
 ];
 
 const 참고하는TabContent = () => {
+  const { data: memoFoldersData } = useGetMemoFolders();
+
   const [selectedFilterHeader, setSelectedFilterHeader] =
     useState<Category>('ask');
   const [selectedFilterButton, setSelectedFilterButton] =
@@ -152,7 +155,11 @@ const 참고하는TabContent = () => {
       />
       <ul className={styles.referCardsWrapper}>
         {datas.map((data) => (
-          <참고하는TemplateCard key={data.templateId} data={data} />
+          <참고하는TemplateCard
+            key={data.templateId}
+            data={data}
+            memoFolders={memoFoldersData}
+          />
         ))}
       </ul>
     </div>
