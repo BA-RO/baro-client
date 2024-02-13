@@ -131,11 +131,6 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
         name: nameInputProps.value,
         nickname: nicknameInputProps.value,
       });
-
-      //TODO: queryClient.invalidateQueries('profile');
-      nameInputProps.reset();
-      nicknameInputProps.reset();
-      return;
     }
   };
 

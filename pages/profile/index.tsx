@@ -7,6 +7,7 @@ import ExitModal from '@domain/계정설정/components/ExitModal';
 import ProfileForm from '@domain/계정설정/components/Form';
 import * as styles from '@domain/계정설정/index.css';
 import useExitAccount from '@domain/계정설정/mutations/useExitAccount';
+import useUpdateProfileImage from '@domain/계정설정/mutations/useUpdateProfileImage';
 import useGetProfile from '@domain/계정설정/queries/useGetProfile';
 import useModal from '@hooks/useModal';
 
@@ -14,6 +15,8 @@ const ProfilePage = () => {
   const my = useGetProfile();
   const exitModalProps = useModal();
   const { mutate: exitAccount } = useExitAccount();
+  const { updateImage: updateProfileImage, deleteImage: deleteProfileImage } =
+    useUpdateProfileImage();
   const [profileImg, setProfileImg] = useState<string>();
   const [isHover, setIsHover] = useState(false);
   const [exitCause, setExitCause] = useState<string | null>(null);
@@ -50,9 +53,16 @@ const ProfilePage = () => {
 
     reader.onloadend = () => setProfileImg(`${reader.result}`);
     reader.readAsDataURL(file);
+
+    setTimeout(() => {
+      updateProfileImage.mutate(`${reader.result}`);
+    }, 10);
   };
 
-  const handleDeleteUploadedImage = () => setProfileImg(undefined);
+  const handleDeleteUploadedImage = () => {
+    setProfileImg(undefined);
+    deleteProfileImage.mutate();
+  };
 
   return (
     <Layout isShowFooter>
