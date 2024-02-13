@@ -128,7 +128,7 @@ export const footerButton = style([footerText, dot]);
 
 export const footerLink = style([footerText, dot]);
 
-export const instagramButton = style([
+export const instagramLink = style([
   sprinkles({
     typography: '14/Body/Regular',
   }),

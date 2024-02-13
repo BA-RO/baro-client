@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import Logo from '@assets/images/logo.svg';
+import { ROUTES } from '@constants/routes';
 import { type HeaderType } from '@models/layout';
 
 import * as styles from '../style.css';
@@ -17,7 +18,7 @@ const Header = ({ type }: HeaderProps) => {
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logo}>
+      <Link href={ROUTES.LANDING} className={styles.logo}>
         <Logo />
       </Link>
       <HeaderButtonGroup />

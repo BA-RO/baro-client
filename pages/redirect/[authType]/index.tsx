@@ -22,7 +22,7 @@ const Bridge = () => {
         (await getToken(authType, code)) || {};
 
       if (!accessToken || !refreshToken) {
-        router.push(ROUTES.INTRO);
+        router.push(ROUTES.LANDING);
         return;
       }
 

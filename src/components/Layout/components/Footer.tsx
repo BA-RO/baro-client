@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import Button from '@components/Button';
 import Icon from '@components/Icon';
+import { ROUTES } from '@constants/routes';
 
 import * as styles from '../style.css';
 
@@ -10,20 +10,26 @@ const Footer = () => {
     <footer className={styles.footerWrapper}>
       <div>
         <div>
-          <Button className={styles.footerButton}>서비스메일</Button>
-          <Link href="/" className={styles.footerLink}>
+          <Link href="mailto:help@ba-ro.co.kr" className={styles.footerButton}>
+            서비스메일
+          </Link>
+          <Link href={ROUTES.USE} className={styles.footerLink}>
             이용약관
           </Link>
-          <Link href="/" className={styles.footerLink}>
+          <Link href={ROUTES.PRIVACY} className={styles.footerLink}>
             개인정보보호방침
           </Link>
         </div>
-        <Button className={styles.instagramButton}>
+        <Link
+          href="https://www.instagram.com/ba_ro.official"
+          target="_blank"
+          className={styles.instagramLink}
+        >
           <div className={styles.instagramIcon}>
             <Icon icon="instagram" />
           </div>
           <span className={styles.instagramText}>인스타그램</span>
-        </Button>
+        </Link>
       </div>
       <div>
         <div className={styles.baroIcon}>
