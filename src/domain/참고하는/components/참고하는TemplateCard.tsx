@@ -1,5 +1,3 @@
-import { useRef, useState } from 'react';
-
 import { type Folder } from '@api/memoFolder/types';
 import Badge from '@components/Badge';
 import Button from '@components/Button';
@@ -10,6 +8,7 @@ import * as styles from '@domain/참고하는/components/참고하는TemplateCar
 import { CATEGORY } from '@domain/참고하는/models';
 import { type Refer } from '@domain/참고하는/types';
 import { getNumToK } from '@domain/참고하는/utils';
+import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
 import FolderDialog from './FolderDialog';
@@ -25,32 +24,28 @@ const 참고하는TemplateCard = ({
 }: 참고하는TemplateCardProps) => {
   const { category, subCategory, content, copiedCount, savedCount } = data;
 
-  const bookmarkRef = useRef<HTMLButtonElement>(null);
-  const [isShowDialog, setIsShowDialog] = useState(false);
-
-  const closeDialog = () => setIsShowDialog(false);
+  const { showToast } = useToastStore();
 
   const categoryNameKr = CATEGORY[category];
 
-  const handleBookmarkClick = () => setIsShowDialog(!isShowDialog);
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(content);
+    showToast({
+      message: '글이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
+    });
+  };
 
   return (
     <Card className={styles.wrapper}>
       <Card.Menu>
-        <Button>
+        <Button onClick={handleCopyClick}>
           <Icon
             icon="copy"
             className={styles.hover}
             color={COLORS['Grey/300']}
           />
         </Button>
-        <Button onClick={handleBookmarkClick} ref={bookmarkRef}>
-          <Icon
-            icon="bookmarkRefer"
-            className={styles.hover}
-            color={COLORS['Grey/300']}
-          />
-        </Button>
+        <FolderDialog memoFolders={memoFolders} />
       </Card.Menu>
       <Card.Header>
         <Badge color={CATEGORY_COLOR[categoryNameKr]}>{categoryNameKr}</Badge>
@@ -61,13 +56,6 @@ const 참고하는TemplateCard = ({
         복사 <span>{getNumToK(copiedCount)}</span> • 저장{' '}
         <span>{getNumToK(savedCount)}</span>
       </Card.Footer>
-      {isShowDialog && (
-        <FolderDialog
-          closeDialog={closeDialog}
-          memoFolders={memoFolders}
-          ref={bookmarkRef}
-        />
-      )}
     </Card>
   );
 };

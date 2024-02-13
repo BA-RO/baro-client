@@ -168,6 +168,7 @@ export const loginButton = style([
     typography: '15/Title/Medium',
   }),
   {
+    margin: '12px 0',
     borderRadius: '100px',
     backgroundColor: COLORS['Blue/Dark'],
     padding: '0 18px',
@@ -190,4 +191,12 @@ export const tab = style({
   left: '50%',
   transform: 'translate(-50%, 0)',
   zIndex: 50,
+});
+
+export const profileButton = style({
+  selectors: {
+    '& + &': {
+      marginTop: '8px',
+    },
+  },
 });
