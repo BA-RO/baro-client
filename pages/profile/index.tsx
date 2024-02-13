@@ -12,16 +12,7 @@ const ProfilePage = () => {
   const my = useGetProfile();
   const { mutate: exitAccount } = useExitAccount();
   const [profileImg, setProfileImg] = useState<string>();
-
-  const handleProfileImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => setProfileImg(`${reader.result}`);
-    reader.readAsDataURL(file);
-  };
+  const [isHover, setIsHover] = useState(false);
 
   const profileImage = useMemo(() => {
     if (!my.profileImageUrl) {
@@ -47,23 +38,46 @@ const ProfilePage = () => {
     );
   }, [my.profileImageUrl]);
 
+  const handleProfileImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => setProfileImg(`${reader.result}`);
+    reader.readAsDataURL(file);
+  };
+
+  const handleDeleteUploadedImage = () => setProfileImg(undefined);
+
   return (
     <Layout isShowFooter>
       <div className={styles.container}>
         <div className={styles.profileWrapper}>
           {profileImg ? (
-            <div style={{ position: 'relative' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div
+              style={{ position: 'relative' }}
+              onBlur={() => setIsHover(false)}
+            >
               <img
                 src={profileImg}
                 alt="업로드 된 프로필 이미지"
                 width={96}
                 height={96}
                 className={styles.uploadPostImg}
+                onMouseEnter={() => setIsHover(true)}
               />
-              <div className={styles.profileDim}>
-                <Icon icon={'closeActive'} width={32} height={32} />
-              </div>
+
+              {isHover ? (
+                <div
+                  className={styles.profileDim}
+                  onMouseLeave={() => setIsHover(false)}
+                >
+                  <button onClick={handleDeleteUploadedImage}>
+                    <Icon icon={'closeActive'} width={32} height={32} />
+                  </button>
+                </div>
+              ) : null}
             </div>
           ) : (
             <label htmlFor="profile-input">
