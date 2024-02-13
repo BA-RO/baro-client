@@ -8,6 +8,7 @@ import WriteHistory from '@domain/Write/History';
 import { type WriteHisotry } from '@domain/Write/types';
 import 참고하는TabContent from '@domain/참고하는/components';
 import { useInput } from '@hooks/useInput';
+import useGetMyProfile from '@queries/useGetMyProfile';
 import { COLORS } from '@styles/tokens';
 
 const MOCK: WriteHisotry[] = [
@@ -46,6 +47,8 @@ const MOCK: WriteHisotry[] = [
 ];
 
 const MainPage = () => {
+  useGetMyProfile();
+
   const writeInput = useInput({ id: 'write-input' });
 
   const [selectedTab, setSelectedTab] = useState('끄적이는');
