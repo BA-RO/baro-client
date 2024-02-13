@@ -13,7 +13,9 @@ export const useInput = ({ id, defaultValue = '' }: UseInputArgs) => {
     setValue(e.currentTarget.value);
   };
 
-  return { id, value, onChange };
+  const reset = () => setValue('');
+
+  return { id, value, onChange, reset };
 };
 
 export type UseInputReturn = ReturnType<typeof useInput>;

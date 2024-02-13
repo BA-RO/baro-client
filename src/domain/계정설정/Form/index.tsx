@@ -3,6 +3,7 @@ import { type FormEvent, useMemo, useState } from 'react';
 import Icon from '@components/Icon';
 import { useInput } from '@hooks/useInput';
 
+import useUpdateProfile from '../mutations/useUpdateProfile';
 import ProfileFormInput from './components/Input';
 import * as styles from './index.css';
 
@@ -14,6 +15,8 @@ interface ProfileFormProps {
 }
 
 const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
+  const { mutate: updateProfile } = useUpdateProfile();
+
   const nameInputProps = useInput({ id: 'name', defaultValue: name });
   const nicknameInputProps = useInput({
     id: 'nickname',
@@ -49,6 +52,15 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
   };
 
   const nameValidator = (value: string) => {
+    if (value.length === 0) {
+      setErrors({
+        ...errors,
+        name: '값을 입력해주세요!',
+      });
+
+      return false;
+    }
+
     if (value.length > 30) {
       setErrors({
         ...errors,
@@ -64,6 +76,15 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
   };
 
   const nicknameValidator = (value: string) => {
+    if (value.length === 0) {
+      setErrors({
+        ...errors,
+        nickname: '값을 입력해주세요!',
+      });
+
+      return false;
+    }
+
     if (value.length > 30) {
       setErrors({
         ...errors,
@@ -106,9 +127,15 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
       validator('name', nameInputProps.value) &&
       validator('nickname', nicknameInputProps.value)
     ) {
-      console.log('성공', errors.nickname);
-    } else {
-      console.log('실패', errors);
+      updateProfile({
+        name: nameInputProps.value,
+        nickname: nicknameInputProps.value,
+      });
+
+      //TODO: queryClient.invalidateQueries('profile');
+      nameInputProps.reset();
+      nicknameInputProps.reset();
+      return;
     }
   };
 
