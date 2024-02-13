@@ -9,7 +9,7 @@ export const CATEGORY = {
 } as const;
 
 export const FILTER_BUTTONS = {
-  NEW: '최신순',
-  COPY: '복사순',
-  SAVE: '저장순',
+  new: '최신순',
+  copy: '복사순',
+  save: '저장순',
 } as const;

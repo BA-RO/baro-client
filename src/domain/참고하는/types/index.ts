@@ -12,3 +12,16 @@ export interface Refer {
 }
 
 export type FilterButton = keyof typeof FILTER_BUTTONS;
+
+export interface Content {
+  templateId: number;
+  category: Category;
+  subCategory: string;
+  content: string;
+  savedCount: number;
+  copiedCount: number;
+}
+
+export interface Templates {
+  content: Content[];
+}
