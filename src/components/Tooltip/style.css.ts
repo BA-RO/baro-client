@@ -25,7 +25,6 @@ export const content = recipe({
       backgroundColor: COLORS['Dim/70'],
       borderRadius: '8px',
       whiteSpace: 'nowrap',
-      transform: 'translateX(-50%)',
       zIndex: Z_INDEX['tooltip'],
     },
   ],
@@ -52,19 +51,27 @@ export const content = recipe({
 });
 
 export const topArrow = style({
-  marginTop: '6px',
+  marginTop: '10px',
 
   '::before': {
-    top: '-12px',
+    top: '-11.5px',
     borderBottomColor: COLORS['Dim/70'],
   },
 });
 
 export const bottomArrow = style({
-  marginBottom: '6px',
+  marginBottom: '8px',
 
   '::before': {
-    bottom: '-12px',
+    bottom: '-11px',
     borderTopColor: COLORS['Dim/70'],
   },
+});
+
+export const minimalTooltipMargin = style({
+  marginTop: '-8px',
+});
+
+export const highlightTooltipMargin = style({
+  marginTop: '-36px',
 });
