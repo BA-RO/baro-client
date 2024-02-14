@@ -93,7 +93,6 @@ const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
         <SettingDialog
           onEditClick={() => {}}
           onDeleteClick={() => deleteTemporalMemo(id)}
-          onOutsideClick={hideSettingModal}
         />
       )}
     </Card>

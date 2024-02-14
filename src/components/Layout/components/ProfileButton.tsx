@@ -1,27 +1,34 @@
-import Link from 'next/link';
-import { type MouseEvent } from 'react';
-
-import Button from '@components/Button';
+import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
 
 import * as styles from '../style.css';
 
-interface NormalHeaderButtonProps {
-  handleProfileClick: (e: MouseEvent<HTMLButtonElement>) => void;
-}
-
-const ProfileButton = ({ handleProfileClick }: NormalHeaderButtonProps) => {
+const ProfileButton = () => {
   return (
-    <>
-      <Link href="/" className={styles.bookmark}>
-        <Icon icon="bookmarkHeader" />
-      </Link>
-      <Button className={styles.profile} onClick={handleProfileClick}>
-        <div className={styles.circle28}>
-          <Icon icon="profileHeader" width={16} height={16} />
-        </div>
-      </Button>
-    </>
+    <Dropdown
+      className={styles.dialogWrapper}
+      size="medium"
+      placement="bottom-right"
+      fixed
+    >
+      <Dropdown.Trigger className={styles.profile}>
+        <Icon icon="profileHeader" width={28} height={28} />
+      </Dropdown.Trigger>
+      <Dropdown.List>
+        <Dropdown.Title>
+          <Icon icon="profileDialog" width={40} height={40} />
+          <span className={styles.profileName}>바로님</span>
+        </Dropdown.Title>
+        <Dropdown.Item onClick={() => {}}>
+          <Icon icon="setting" width={20} height={20} />
+          <span className={styles.buttonText}>계정 설정</span>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => {}}>
+          <Icon icon="logout" width={20} height={20} />
+          <span className={styles.buttonText}>로그아웃</span>
+        </Dropdown.Item>
+      </Dropdown.List>
+    </Dropdown>
   );
 };
 

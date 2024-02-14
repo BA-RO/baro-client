@@ -68,7 +68,6 @@ const WriteHistoryCard = ({ id, createdAt, content }: TemporalMemo) => {
         <SettingDialog
           onEditClick={() => {}}
           onDeleteClick={() => deleteTemporalMemo(id)}
-          onOutsideClick={hideSettingModal}
         />
       )}
     </li>

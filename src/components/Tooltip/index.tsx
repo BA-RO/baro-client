@@ -1,7 +1,8 @@
-import type { PropsWithChildren, Ref } from 'react';
-import { createContext, useEffect, useRef, useState } from 'react';
+import type { PropsWithChildren, RefObject } from 'react';
+import { createContext, useContext } from 'react';
 
-import { getPosition } from '@utils/getPosition';
+import useDisclosure from '@hooks/useDisclosure';
+import usePosition from '@hooks/usePosition';
 
 import TooltipContent from './components/TooltipContent';
 import TooltipTrigger from './components/TooltipTrigger';
@@ -10,15 +11,16 @@ const INIT_POSITION = { top: 0, left: 0 };
 
 export interface TooltipShape {
   hasArrow?: boolean;
-  placement?: 'top' | 'bottom';
+  placement?: 'top-center' | 'bottom-center';
 }
 
 interface TooltipContextProps extends TooltipShape {
-  tooltipRef: Ref<HTMLDivElement>;
-  isVisible: boolean;
+  triggerRef: RefObject<HTMLDivElement>;
+  targetRef: RefObject<HTMLDivElement>;
+  isOpen: boolean;
   position: typeof INIT_POSITION;
-  onOpenTooltip: () => void;
-  onCloseTooltip: () => void;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
 interface TooltipProps extends TooltipShape {}
@@ -28,46 +30,42 @@ export const TooltipContext = createContext<TooltipContextProps | null>(null);
 const TooltipRoot = ({
   children,
   hasArrow = false,
-  placement = 'bottom',
+  placement = 'bottom-center',
 }: PropsWithChildren<TooltipProps>) => {
-  const tooltipRef = useRef<HTMLDivElement>(null);
-
-  const [isVisible, setIsVisible] = useState(false);
-  const [position, setPosition] = useState(INIT_POSITION);
-
-  useEffect(() => {
-    if (!tooltipRef.current || !isVisible) {
-      return;
-    }
-
-    const { top, left } = getPosition(tooltipRef.current, hasArrow, placement);
-
-    setPosition({ top, left });
-  }, [isVisible, hasArrow, placement]);
-
-  const handleTooltipOpen = () => {
-    setIsVisible(true);
-  };
-
-  const handleTooltipClose = () => {
-    setIsVisible(false);
-  };
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { triggerRef, targetRef, position } = usePosition({
+    isOpen,
+    placement,
+  });
 
   return (
     <TooltipContext.Provider
       value={{
-        tooltipRef,
-        isVisible,
+        triggerRef,
+        targetRef,
+        isOpen,
+        position,
         hasArrow,
         placement,
-        position,
-        onOpenTooltip: handleTooltipOpen,
-        onCloseTooltip: handleTooltipClose,
+        onOpen,
+        onClose,
       }}
     >
-      {children}
+      <div ref={triggerRef}>{children}</div>
     </TooltipContext.Provider>
   );
+};
+
+export const useTooltipContext = () => {
+  const ctx = useContext(TooltipContext);
+
+  if (!ctx) {
+    throw new Error(
+      'useTooltipContext hook must be used within a Tooltip component',
+    );
+  }
+
+  return ctx;
 };
 
 const Tooltip = Object.assign(TooltipRoot, {
