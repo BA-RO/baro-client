@@ -13,67 +13,6 @@ import 참고하는TabContent from '@domain/참고하는/components';
 import { useInput } from '@hooks/useInput';
 import { COLORS } from '@styles/tokens';
 
-const DUMMY = [
-  {
-    createdAt: '2024-01-23',
-    temporalMemos: [
-      {
-        id: 4,
-        content: '끄적이는 메모 컨텐츠',
-        correctionContent: null,
-        isCorrected: false,
-        isArchived: false,
-        createdAt: '2024-01-23T15:15:18.678231',
-      },
-      {
-        id: 5,
-        content: '끄적이는 메모 컨텐츠',
-        correctionContent: null,
-        isCorrected: false,
-        isArchived: false,
-        createdAt: '2024-01-23T15:15:18.695559',
-      },
-      {
-        id: 6,
-        content: '끄적이는 메모 컨텐츠',
-        correctionContent: null,
-        isCorrected: false,
-        isArchived: false,
-        createdAt: '2024-01-23T15:15:18.715172',
-      },
-    ],
-  },
-  {
-    createdAt: '2024-01-20',
-    temporalMemos: [
-      {
-        id: 1,
-        content: '끄적이는 메모 컨텐츠',
-        correctionContent: null,
-        isCorrected: false,
-        isArchived: false,
-        createdAt: '2024-01-20T15:15:18.678231',
-      },
-      {
-        id: 2,
-        content: '끄적이는 메모 컨텐츠',
-        correctionContent: null,
-        isCorrected: false,
-        isArchived: false,
-        createdAt: '2024-01-20T15:15:18.695559',
-      },
-      {
-        id: 3,
-        content: '끄적이는 메모 컨텐츠',
-        correctionContent: null,
-        isCorrected: false,
-        isArchived: false,
-        createdAt: '2024-01-20T15:15:18.715172',
-      },
-    ],
-  },
-];
-
 const MainPage = () => {
   const { todayMemos, history } = useGetWriteHistory();
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
@@ -95,7 +34,7 @@ const MainPage = () => {
           <div className={styles.container}>
             <div className={styles.content}>
               <WriteGuide />
-              <TemporalMemoHistoryTable data={[...DUMMY, ...history]} />
+              <TemporalMemoHistoryTable data={history} />
               <TodayTemoralMemos memos={todayMemos[0]?.temporalMemos} />
               <div className={styles.inputWrapper}>
                 <WriteInput
