@@ -40,7 +40,7 @@ const MainPageTab = ({
         </Tabs.List>
       </div>
 
-      <section>
+      <section className={styles.tabWrapper}>
         <Tabs.Content value="끄적이는">{write}</Tabs.Content>
         <Tabs.Content value="참고하는">{refer}</Tabs.Content>
       </section>

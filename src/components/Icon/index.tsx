@@ -36,6 +36,7 @@ const Icon = ({
         color={color}
         width={width}
         height={height}
+        style={style}
       />
     );
 
@@ -46,7 +47,6 @@ const Icon = ({
         color={color}
         width={width}
         height={height}
-        style={style}
       />
       {postfix && <div className={postfixClassName}>{postfix}</div>}
     </div>

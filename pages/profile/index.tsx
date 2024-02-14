@@ -73,7 +73,7 @@ const ProfilePage = () => {
               style={{ position: 'relative' }}
               onBlur={() => setIsHover(false)}
             >
-              <img
+              <Image
                 src={profileImg}
                 alt="업로드 된 프로필 이미지"
                 width={96}

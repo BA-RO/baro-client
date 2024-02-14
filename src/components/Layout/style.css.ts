@@ -181,8 +181,6 @@ export const backgroundColorMain = createVar();
 export const mainWrapper = style({
   backgroundColor: backgroundColorMain,
   paddingTop: '64px',
-  maxWidth: '1200px',
-  margin: '0 auto',
 });
 
 export const tab = style({
@@ -199,4 +197,9 @@ export const profileButton = style({
       marginTop: '8px',
     },
   },
+});
+
+export const tabWrapper = style({
+  maxWidth: '1200px',
+  margin: '0 auto',
 });
