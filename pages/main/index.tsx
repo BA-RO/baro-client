@@ -11,13 +11,16 @@ import useGetWriteHistory from '@domain/끄적이는/queries/useGetHistory';
 import * as styles from '@domain/끄적이는/style.css';
 import 참고하는TabContent from '@domain/참고하는/components';
 import { useInput } from '@hooks/useInput';
+import useGetMyProfile from '@queries/useGetMyProfile';
 import { COLORS } from '@styles/tokens';
 
 const MainPage = () => {
+  useGetMyProfile();
+
+  const writeInput = useInput({ id: 'write-input' });
   const { todayMemos, history } = useGetWriteHistory();
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
 
-  const writeInput = useInput({ id: 'write-input' });
   const [selectedTab, setSelectedTab] = useState('끄적이는');
 
   const handleTabSelect = (selectedTab: string) => {

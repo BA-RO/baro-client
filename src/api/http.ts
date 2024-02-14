@@ -39,7 +39,7 @@ instance.interceptors.response.use(
     }
 
     if (error.config.url.startsWith('/auth/reissue')) {
-      Router.push(ROUTES.INTRO);
+      Router.push(ROUTES.LANDING);
       return;
     }
 
@@ -52,7 +52,7 @@ instance.interceptors.response.use(
         (await getRenewToken(prevRefreshToken)) || {};
 
       if (!accessToken || !refreshToken) {
-        Router.push(ROUTES.INTRO);
+        Router.push(ROUTES.LANDING);
         return;
       }
 

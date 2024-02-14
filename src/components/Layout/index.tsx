@@ -1,4 +1,4 @@
-import { type PropsWithChildren } from 'react';
+import { type PropsWithChildren, useEffect, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import { type HeaderType } from '@models/layout';
@@ -9,22 +9,28 @@ import Header from './components/Header';
 import * as styles from './style.css';
 
 interface LayoutProps {
-  isShowHeader?: boolean;
-  headerType?: HeaderType;
-  isShowFooter?: boolean;
+  isHeader?: boolean;
+  isFooter?: boolean;
   backgroundColor?: string;
 }
 
 const Layout = ({
   children,
-  isShowHeader = true,
-  headerType = 'normal',
-  isShowFooter = false,
+  isHeader = true,
+  isFooter = false,
   backgroundColor = COLORS['Grey/White'],
 }: PropsWithChildren<LayoutProps>) => {
+  const [type, setType] = useState<HeaderType>('intro');
+
+  useEffect(() => {
+    const accessToken = localStorage?.getItem('accessToken');
+    const headerType = accessToken ? 'normal' : 'intro';
+    setType(headerType);
+  }, []);
+
   return (
     <>
-      {isShowHeader && <Header type={headerType} />}
+      {isHeader && <Header type={type} />}
       <main
         className={styles.mainWrapper}
         style={assignInlineVars({
@@ -33,7 +39,7 @@ const Layout = ({
       >
         {children}
       </main>
-      {isShowFooter && <Footer />}
+      {isFooter && <Footer />}
     </>
   );
 };

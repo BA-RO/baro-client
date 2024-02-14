@@ -65,7 +65,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <Layout isShowFooter>
+    <Layout isFooter>
       <div className={styles.container}>
         <div className={styles.profileWrapper}>
           {profileImg ? (

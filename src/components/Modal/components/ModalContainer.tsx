@@ -1,3 +1,4 @@
+import { usePathname } from 'next/navigation';
 import { type PropsWithChildren, useCallback, useEffect, useRef } from 'react';
 
 import Button from '@components/Button';
@@ -19,6 +20,9 @@ const ModalContainer = ({
   type = 'common',
 }: PropsWithChildren<ModalContainerProps>) => {
   const dimmedRef = useRef<HTMLDivElement>(null);
+
+  const pathname = usePathname();
+
   const { closeModal } = useModalStore();
 
   const handleDimmedClick = useCallback(
@@ -47,6 +51,8 @@ const ModalContainer = ({
       dimmedRefCurr?.removeEventListener('keydown', handleEscKeydown);
     };
   }, [handleDimmedClick, handleEscKeydown]);
+
+  useEffect(() => closeModal, [closeModal, pathname]);
 
   const closeIconSize = type === 'login' ? 32 : 24;
 

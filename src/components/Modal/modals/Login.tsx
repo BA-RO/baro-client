@@ -5,7 +5,8 @@ import Hello from '@assets/images/Hello.svg';
 import Button from '@components/Button';
 import Icon from '@components/Icon';
 import ModalContainer from '@components/Modal/components/ModalContainer';
-import { useLogin } from '@queries/auth';
+import { ROUTES } from '@constants/routes';
+import useLogin from '@queries/useLogin';
 
 import * as styles from '../style.css';
 
@@ -63,11 +64,11 @@ const Login = () => {
       </div>
       <div className={styles.agreeDescription}>
         로그인은&nbsp;
-        <Link className={styles.agreeLink} href="/">
+        <Link href={ROUTES.PRIVACY} className={styles.agreeLink}>
           개인정보처리방침
         </Link>
         과&nbsp;
-        <Link className={styles.agreeLink} href="/">
+        <Link href={ROUTES.USE} className={styles.agreeLink}>
           이용약관
         </Link>
         에 동의하는 것을 의미합니다.

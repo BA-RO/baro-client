@@ -10,7 +10,7 @@ import { COLORS } from '@styles/tokens';
 import * as style from './style.css';
 
 interface WriteInputProps extends HTMLAttributes<HTMLTextAreaElement> {
-  inputProps: UseInputReturn;
+  inputProps: Omit<UseInputReturn, 'reset'>;
   placeholder?: string;
   maxLength?: number;
   onSubmit: VoidFunction;
