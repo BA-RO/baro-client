@@ -11,6 +11,13 @@ export const container = style({
   position: 'relative',
 });
 
+export const editInput = style({
+  backgroundColor: 'white',
+  width: '100%',
+  padding: '12px 16px',
+  borderRadius: '8px',
+});
+
 export const header = style({
   display: 'flex',
   justifyContent: 'space-between',
