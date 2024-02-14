@@ -5,6 +5,7 @@ import Bookmark from '@assets/icons/bookmark.svg';
 import BookmarkHeader from '@assets/icons/bookmarkHeader.svg';
 import BookmarkRefer from '@assets/icons/bookmarkRefer.svg';
 import Clock from '@assets/icons/clock.svg';
+import ClickActive from '@assets/icons/clock-active.svg';
 import Close from '@assets/icons/close.svg';
 import Complete from '@assets/icons/complete.svg';
 import Copy from '@assets/icons/copy.svg';
@@ -34,6 +35,7 @@ export const iconFactory = {
   bookmarkHeader: BookmarkHeader,
   bookmarkRefer: BookmarkRefer,
   clock: Clock,
+  clockActive: ClickActive,
   close: Close,
   complete: Complete,
   copy: Copy,
