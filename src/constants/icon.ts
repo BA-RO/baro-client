@@ -7,7 +7,7 @@ import BookmarkRefer from '@assets/icons/bookmarkRefer.svg';
 import CheckBox from '@assets/icons/check-box.svg';
 import CheckBoxActive from '@assets/icons/check-box-active.svg';
 import Clock from '@assets/icons/clock.svg';
-import ClickActive from '@assets/icons/clock-active.svg';
+import ClockActive from '@assets/icons/clock-active.svg';
 import Close from '@assets/icons/close.svg';
 import CloseActive from '@assets/icons/close-active.svg';
 import Complete from '@assets/icons/complete.svg';
@@ -43,7 +43,7 @@ export const iconFactory = {
   bookmarkHeader: BookmarkHeader,
   bookmarkRefer: BookmarkRefer,
   clock: Clock,
-  clockActive: ClickActive,
+  clockActive: ClockActive,
   close: Close,
   closeActive: CloseActive,
   complete: Complete,
