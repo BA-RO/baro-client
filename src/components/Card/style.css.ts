@@ -60,6 +60,7 @@ export const header = style([
     gap: '8px',
     color: COLORS['Grey/400'],
     wordBreak: 'keep-all',
+    position: 'relative',
   },
 ]);
 

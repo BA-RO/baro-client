@@ -69,24 +69,6 @@ const WriteHistoryCard = ({
           </button>
         </div>
         <EditInput inputProps={editedInputProps} />
-        {/* <div className={styles.editContainer}>
-          <textarea
-            {...editedInputProps}
-            ref={inputRef}
-            className={styles.editInput}
-            autoComplete="off"
-            rows={textareaHeight.row}
-            maxLength={500}
-            onInput={handleResize}
-            onKeyDown={handleKeydownEnter}
-          />
-          <p className={styles.editInputTextCount}>
-            <span className={styles.editTextCurrentCount}>
-              {editedInputProps.value.length}
-            </span>
-            / 500
-          </p>
-        </div> */}
       </li>
     );
   }

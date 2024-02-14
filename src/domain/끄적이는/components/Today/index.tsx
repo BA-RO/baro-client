@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Icon from '@components/Icon';
 
 import { type TemporalMemo } from '../../types';
@@ -9,6 +11,8 @@ interface TodayTemoralMemosProps {
 }
 
 const TodayTemoralMemos = ({ memos }: TodayTemoralMemosProps) => {
+  const [editModeCardId, setEditModeCardId] = useState<number | null>(null);
+
   if (!memos || memos.length === 0) {
     return null;
   }
@@ -28,6 +32,9 @@ const TodayTemoralMemos = ({ memos }: TodayTemoralMemosProps) => {
             id={memo.id}
             createAt={memo.createdAt}
             content={memo.content}
+            isEditMode={editModeCardId === memo.id}
+            onEditClick={(id: number) => setEditModeCardId(id)}
+            onEditCompleteClick={() => setEditModeCardId(null)}
           />
         ))}
       </ul>
