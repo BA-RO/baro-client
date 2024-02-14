@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 
 import Icon from '@components/Icon';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
+import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
 import { type TemporalMemo } from '@domain/끄적이는/types';
 import { useInput } from '@hooks/useInput';
 import useModal from '@hooks/useModal';
@@ -27,6 +28,7 @@ const WriteHistoryCard = ({
   onEditCompleteClick,
 }: WriteHistoryCardProps) => {
   const { showToast } = useToastStore();
+  const { mutate: updateTemporalMemo } = useEditTemporalMemo();
   const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
   const editedInputProps = useInput({
     id: 'edit-input',
@@ -93,7 +95,8 @@ const WriteHistoryCard = ({
 
   // TODO 밸리데이션 추가
   const handleEditCompleteClick = () => {
-    onEditCompleteClick();
+    updateTemporalMemo({ id: id, content: editedInputProps.value });
+    setTimeout(() => onEditCompleteClick(), 0);
   };
 
   if (isEditMode) {
