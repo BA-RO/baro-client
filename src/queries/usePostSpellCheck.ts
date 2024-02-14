@@ -4,13 +4,13 @@ import { type AxiosError } from 'axios';
 import { SPELLCHECK_STATE_MESSAGE } from '@constants/spellCheck';
 import { useToastStore } from '@stores/toast';
 
-import spellCheckApi from '../api/spell/spellCheck';
+import spellCheckApi from '../api/spell';
 import {
   type SpellCheckParams,
   type SpellCheckResponse,
 } from '../api/spell/types';
 
-export const usePostSpellCheck = (
+const usePostSpellCheck = (
   options?: UseMutationOptions<
     SpellCheckResponse,
     AxiosError,
@@ -30,3 +30,5 @@ export const usePostSpellCheck = (
     },
   });
 };
+
+export default usePostSpellCheck;

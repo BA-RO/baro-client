@@ -12,13 +12,13 @@ export const wrapper = style([
     },
   }),
   {
+    position: 'relative',
     padding: '28px 32px 20px',
   },
 ]);
 
 export const hover = style({
   transition: 'fill 100ms ease-in-out',
-  fill: COLORS['Grey/300'],
   ':hover': {
     fill: COLORS['Grey/600'],
   },

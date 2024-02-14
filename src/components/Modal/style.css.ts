@@ -79,7 +79,6 @@ export const button = style([
     backgroundColor: buttonBackgroundColor,
     padding: '16px 40px',
     borderRadius: '8px',
-    marginTop: '24px',
     selectors: {
       '& + &': {
         marginLeft: '8px',
@@ -87,6 +86,14 @@ export const button = style([
     },
   },
 ]);
+
+export const buttonWrapper = style({
+  marginTop: '24px',
+});
+
+export const buttonDisabled = style({
+  opacity: '0.5',
+});
 
 export const helloImage = style({
   textAlign: 'center',
@@ -202,4 +209,57 @@ export const agreeDescription = style([
 
 export const agreeLink = style({
   textDecorationLine: 'underline',
+});
+
+export const makeFolderTitle = style([
+  title,
+  {
+    marginBottom: '28px',
+  },
+]);
+
+export const makeFolderDescription = style([
+  sprinkles({
+    typography: '15/Body/Regular',
+  }),
+  {
+    color: COLORS['Grey/700'],
+  },
+]);
+
+export const makeFolderInputWrapper = style({
+  margin: '12px 0',
+});
+
+export const makeFolderInput = style({
+  padding: '12px 16px',
+  color: COLORS['Grey/600'],
+  backgroundColor: '#f0f0f0',
+  borderRadius: '8px',
+  height: '48px',
+  width: '100%',
+});
+
+export const errorInput = style({
+  border: `1.5px solid ${COLORS['Red']}`,
+});
+export const makeFolderButtonWrapper = style({
+  paddingTop: '16px',
+});
+
+export const errorMessage = style([
+  sprinkles({
+    typography: '13/Title/Semibold',
+  }),
+  {
+    display: 'block',
+    marginBottom: '8px',
+    color: COLORS['Red'],
+  },
+]);
+
+export const errorIcon = style({
+  display: 'inline-block',
+  verticalAlign: '-5px',
+  marginRight: '6px',
 });

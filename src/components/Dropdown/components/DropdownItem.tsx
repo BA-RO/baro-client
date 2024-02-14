@@ -16,8 +16,8 @@ const DropdownItem = ({
   const { size } = useDropdownContext();
 
   return (
-    <li>
-      <Button {...props} className={clsx(styles.menuItem({ size }), className)}>
+    <li className={className}>
+      <Button {...props} className={clsx(styles.menuItem({ size }))}>
         {children}
       </Button>
     </li>

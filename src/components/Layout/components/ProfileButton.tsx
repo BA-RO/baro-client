@@ -36,11 +36,17 @@ const ProfileButton = () => {
           <Icon icon="profileDialog" width={40} height={40} />
           <span className={styles.profileName}>{data?.nickname}님</span>
         </Dropdown.Title>
-        <Dropdown.Item onClick={() => {}}>
+        <Dropdown.Item
+          onClick={() => router.push('/profile')}
+          className={styles.profileButton}
+        >
           <Icon icon="setting" width={20} height={20} />
           <span className={styles.buttonText}>계정 설정</span>
         </Dropdown.Item>
-        <Dropdown.Item onClick={handleLogoutClick}>
+        <Dropdown.Item
+          onClick={handleLogoutClick}
+          className={styles.profileButton}
+        >
           <Icon icon="logout" width={20} height={20} />
           <span className={styles.buttonText}>로그아웃</span>
         </Dropdown.Item>

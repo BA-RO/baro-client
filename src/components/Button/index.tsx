@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, PropsWithChildren } from 'react';
+import { type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 import clsx from 'clsx';
 
@@ -12,14 +12,14 @@ const Button = ({
   className,
   size,
   state,
-  onClick,
   type = 'button',
+  ...props
 }: ButtonProps) => {
   return (
     <button
+      {...props}
       className={clsx(styles.button({ state, size }), className)}
       type={type}
-      onClick={onClick}
     >
       {children}
     </button>

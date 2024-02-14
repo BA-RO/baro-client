@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { getToken } from '@api/auth/auth';
+import { getToken } from '@api/auth';
 import { type OAuthType } from '@api/auth/types';
 import { ROUTES } from '@constants/routes';
 import { saveToken } from '@utils/token';

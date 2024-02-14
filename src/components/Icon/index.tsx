@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import { type CSSProperties } from '@vanilla-extract/css';
 
 import { iconFactory, type Icons } from '../../constants/icon';
 
@@ -12,6 +13,7 @@ interface IconProps {
   height?: number;
   postfix?: ReactNode;
   onHover?: VoidFunction;
+  style?: CSSProperties;
 }
 
 const Icon = ({
@@ -24,6 +26,7 @@ const Icon = ({
   height = 24,
   postfix,
   onHover,
+  style,
 }: IconProps) => {
   const SvgIcon = iconFactory[icon];
   if (!wrapperClassName && !postfix)
@@ -33,6 +36,7 @@ const Icon = ({
         color={color}
         width={width}
         height={height}
+        style={style}
       />
     );
 

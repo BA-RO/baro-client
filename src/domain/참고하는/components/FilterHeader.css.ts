@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, style } from '@vanilla-extract/css';
 
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
@@ -29,3 +29,17 @@ export const filterButton = style([
     },
   },
 ]);
+
+export const active = style({
+  fontWeight: 700,
+  color: COLORS['Grey/900'],
+});
+
+export const positionX = createVar();
+export const positionY = createVar();
+
+export const filterButtonIcon = style({
+  position: 'fixed',
+  left: positionX,
+  top: positionY,
+});
