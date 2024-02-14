@@ -21,7 +21,9 @@ const ProfileFormInput: FC<
       <p className={styles.inputTitle}>{title}</p>
       <input
         {...inputProps}
-        className={styles.input}
+        className={styles.input({
+          hasError: errorMsg !== null && errorMsg.length > 0,
+        })}
         placeholder={placeholder}
         onBlur={onBlur}
       />

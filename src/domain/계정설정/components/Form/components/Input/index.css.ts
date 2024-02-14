@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { COLORS } from '@styles/tokens';
 
@@ -10,24 +11,33 @@ export const inputTitle = style({
   letterSpacing: '-0.5px',
 });
 
-export const input = style({
-  backgroundColor: 'white',
-  width: '100%',
-  height: '54px',
-  padding: '12px 16px',
-  borderRadius: '8px',
-  color: COLORS['Grey/900'],
-  fontSize: '17px',
-  fontWeight: '500',
-  lineHeight: '27px',
-  letterSpacing: '-0.3px',
-
-  '::placeholder': {
-    color: COLORS['Grey/250'],
+export const input = recipe({
+  base: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: '54px',
+    padding: '12px 16px',
+    borderRadius: '8px',
+    color: COLORS['Grey/900'],
     fontSize: '17px',
     fontWeight: '500',
     lineHeight: '27px',
     letterSpacing: '-0.3px',
+
+    '::placeholder': {
+      color: COLORS['Grey/250'],
+      fontSize: '17px',
+      fontWeight: '500',
+      lineHeight: '27px',
+      letterSpacing: '-0.3px',
+    },
+  },
+  variants: {
+    hasError: {
+      true: {
+        border: `1.5px solid ${COLORS['Red']}`,
+      },
+    },
   },
 });
 
