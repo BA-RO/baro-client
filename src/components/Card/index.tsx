@@ -16,6 +16,7 @@ interface CardProps {
     | 'grey'
     | 'white';
   className?: string;
+  onBlur?: VoidFunction;
 }
 
 interface CardContextProps {

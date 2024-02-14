@@ -21,6 +21,7 @@ const TanstackQueryProvider = ({
         defaultOptions: {
           queries: {
             refetchOnWindowFocus: false,
+            retry: 0,
           },
         },
       }),
