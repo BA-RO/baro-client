@@ -18,15 +18,15 @@ import Complete from '@assets/icons/complete.svg';
 import Copy from '@assets/icons/copy.svg';
 import Error from '@assets/icons/error.svg';
 import Google from '@assets/icons/google.svg';
-import Google2 from '@assets/icons/google2.svg';
+import GoogleProfile from '@assets/icons/googleProfile.svg';
 import Instagram from '@assets/icons/instagram.svg';
 import Kakao from '@assets/icons/kakao.svg';
-import Kakao2 from '@assets/icons/kakao2.svg';
+import KakaoProfile from '@assets/icons/kakaoProfile.svg';
 import Logo32 from '@assets/icons/logo32.svg';
 import Logout from '@assets/icons/logout.svg';
 import Menu from '@assets/icons/menu.svg';
 import Naver from '@assets/icons/naver.svg';
-import Naver2 from '@assets/icons/naver2.svg';
+import NaverProfile from '@assets/icons/naverProfile.svg';
 import PencilActive from '@assets/icons/pencil-active.svg';
 import PencilDefault from '@assets/icons/pencil-default.svg';
 import Picture from '@assets/icons/picture.svg';
@@ -63,15 +63,15 @@ export const iconFactory = {
   checkBoxActive: CheckBoxActive,
   error: Error,
   google: Google,
-  google2: Google2,
+  googleProfile: GoogleProfile,
   instagram: Instagram,
   kakao: Kakao,
-  kakao2: Kakao2,
+  kakaoProfile: KakaoProfile,
   logo32: Logo32,
   logout: Logout,
   menu: Menu,
   naver: Naver,
-  naver2: Naver2,
+  naverProfile: NaverProfile,
   pencilActive: PencilActive,
   pencilDefault: PencilDefault,
   profile: Profle,
