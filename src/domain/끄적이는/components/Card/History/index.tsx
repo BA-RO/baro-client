@@ -1,4 +1,3 @@
-import { type ChangeEvent, type KeyboardEvent, useRef, useState } from 'react';
 import dayjs from 'dayjs';
 
 import Icon from '@components/Icon';
@@ -10,6 +9,7 @@ import useModal from '@hooks/useModal';
 import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
+import EditInput from '../../EditInput';
 import SettingDialog from '../components/SettingDialog';
 import * as styles from './style.css';
 
@@ -41,51 +41,6 @@ const WriteHistoryCard = ({
     handleClose: hideSettingModal,
   } = useModal();
 
-  const inputRef = useRef<HTMLTextAreaElement | null>(null);
-
-  const [textareaHeight, setTextareaHeight] = useState<{
-    row: number;
-    lineBreak: Record<number, boolean>;
-  }>({
-    row: 1,
-    lineBreak: {},
-  });
-
-  const handleResize = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const { scrollHeight, clientHeight, value } = e.target;
-
-    if (value.length === 0) {
-      setTextareaHeight((prev) => ({
-        row: 1,
-        lineBreak: { ...prev.lineBreak, [e.target.value.length]: false },
-      }));
-    }
-
-    if (scrollHeight > clientHeight) {
-      setTextareaHeight((prev) => ({
-        row: prev.row + 1,
-        lineBreak: { ...prev.lineBreak, [value.length - 1]: true },
-      }));
-    }
-
-    if (textareaHeight.lineBreak[value.length]) {
-      setTextareaHeight((prev) => ({
-        row: prev.row - 1,
-        lineBreak: { ...prev.lineBreak, [value.length]: false },
-      }));
-    }
-  };
-
-  const handleKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.code === 'Enter') {
-      setTextareaHeight((prev) => ({
-        row: prev.row + 1,
-        lineBreak: { ...prev.lineBreak, [editedInputProps.value.length]: true },
-      }));
-      return;
-    }
-  };
-
   const handleCopyClick = () => {
     navigator.clipboard.writeText(content);
     showToast({
@@ -113,7 +68,8 @@ const WriteHistoryCard = ({
             완료
           </button>
         </div>
-        <div className={styles.editContainer}>
+        <EditInput inputProps={editedInputProps} />
+        {/* <div className={styles.editContainer}>
           <textarea
             {...editedInputProps}
             ref={inputRef}
@@ -130,7 +86,7 @@ const WriteHistoryCard = ({
             </span>
             / 500
           </p>
-        </div>
+        </div> */}
       </li>
     );
   }
