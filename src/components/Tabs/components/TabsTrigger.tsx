@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 import Icon from '@components/Icon';
 import { type Icons } from '@constants/icon';
-import { useTabsContext } from '@hooks/useTabsContext';
 
+import { useTabsContext } from '..';
 import * as styles from '../style.css';
 
 export interface TabsTriggerProps {

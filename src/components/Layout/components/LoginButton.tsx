@@ -6,10 +6,10 @@ import * as styles from '../style.css';
 const LoginButton = () => {
   const { openModal } = useModalStore();
 
-  const onClick바로시작하기 = () => openModal('login');
+  const handleLoginButtonClick = () => openModal('login');
 
   return (
-    <Button className={styles.startButton} onClick={onClick바로시작하기}>
+    <Button className={styles.loginButton} onClick={handleLoginButtonClick}>
       바로 시작하기
     </Button>
   );

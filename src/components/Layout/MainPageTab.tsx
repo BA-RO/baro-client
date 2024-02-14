@@ -23,7 +23,7 @@ const MainPageTab = ({
       selectedTab={selectedTab}
       handleTabSelect={handleTabSelect}
     >
-      <div className={styles.header}>
+      <div className={styles.tab}>
         <Tabs.List>
           <Tabs.Trigger
             value="끄적이는"

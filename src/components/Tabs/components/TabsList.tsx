@@ -1,7 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import { useTabsContext } from '@hooks/useTabsContext';
-
+import { useTabsContext } from '..';
 import * as styles from '../style.css';
 
 const TabsList = ({ children }: PropsWithChildren) => {
