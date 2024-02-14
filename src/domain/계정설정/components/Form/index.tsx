@@ -34,11 +34,11 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
   const authTypeIcon = useMemo(() => {
     switch (authType) {
       case 'kakao':
-        return <Icon icon="kakao2" width={32} height={32} />;
+        return <Icon icon="kakaoProfile" width={32} height={32} />;
       case 'naver':
-        return <Icon icon="naver2" width={32} height={32} />;
+        return <Icon icon="naverProfile" width={32} height={32} />;
       case 'google':
-        return <Icon icon="google2" width={32} height={32} />;
+        return <Icon icon="googleProfile" width={32} height={32} />;
       default:
         return null;
     }
