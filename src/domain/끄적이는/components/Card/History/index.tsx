@@ -1,3 +1,4 @@
+import { type ChangeEvent, type KeyboardEvent, useRef, useState } from 'react';
 import dayjs from 'dayjs';
 
 import Icon from '@components/Icon';
@@ -38,6 +39,51 @@ const WriteHistoryCard = ({
     handleClose: hideSettingModal,
   } = useModal();
 
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const [textareaHeight, setTextareaHeight] = useState<{
+    row: number;
+    lineBreak: Record<number, boolean>;
+  }>({
+    row: 1,
+    lineBreak: {},
+  });
+
+  const handleResize = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const { scrollHeight, clientHeight, value } = e.target;
+
+    if (value.length === 0) {
+      setTextareaHeight((prev) => ({
+        row: 1,
+        lineBreak: { ...prev.lineBreak, [e.target.value.length]: false },
+      }));
+    }
+
+    if (scrollHeight > clientHeight) {
+      setTextareaHeight((prev) => ({
+        row: prev.row + 1,
+        lineBreak: { ...prev.lineBreak, [value.length - 1]: true },
+      }));
+    }
+
+    if (textareaHeight.lineBreak[value.length]) {
+      setTextareaHeight((prev) => ({
+        row: prev.row - 1,
+        lineBreak: { ...prev.lineBreak, [value.length]: false },
+      }));
+    }
+  };
+
+  const handleKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.code === 'Enter') {
+      setTextareaHeight((prev) => ({
+        row: prev.row + 1,
+        lineBreak: { ...prev.lineBreak, [editedInputProps.value.length]: true },
+      }));
+      return;
+    }
+  };
+
   const handleCopyClick = () => {
     navigator.clipboard.writeText(content);
     showToast({
@@ -57,9 +103,31 @@ const WriteHistoryCard = ({
           <p className={styles.date}>
             {dayjs(createdAt).locale('ko').format('a h:mm')}
           </p>
-          <button onClick={handleEditCompleteClick}>완료</button>
+          <button
+            onClick={handleEditCompleteClick}
+            className={styles.editCompleteBtn}
+          >
+            완료
+          </button>
         </div>
-        <input {...editedInputProps} className={styles.editInput} />
+        <div className={styles.editContainer}>
+          <textarea
+            {...editedInputProps}
+            ref={inputRef}
+            className={styles.editInput}
+            autoComplete="off"
+            rows={textareaHeight.row}
+            maxLength={500}
+            onInput={handleResize}
+            onKeyDown={handleKeydownEnter}
+          />
+          <p className={styles.editInputTextCount}>
+            <span className={styles.editTextCurrentCount}>
+              {editedInputProps.value.length}
+            </span>
+            / 500
+          </p>
+        </div>
       </li>
     );
   }
