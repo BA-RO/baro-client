@@ -4,11 +4,18 @@ import { recipe } from '@vanilla-extract/recipes';
 import { COLORS } from '@styles/tokens';
 import * as utils from '@styles/utils.css';
 
+export const tab = style({
+  width: '100%',
+});
+
 export const tabsList = recipe({
-  base: [utils.flexCenter],
+  base: {
+    display: 'flex',
+  },
   variants: {
     type: {
       switcher: {
+        justifyContent: 'center',
         borderRadius: '100px',
         backgroundColor: COLORS['Grey/200'],
       },
@@ -62,6 +69,17 @@ export const tabsTrigger = recipe({
           borderBottom: '2px solid transparent',
         },
       ],
+    },
+  },
+});
+
+export const tabContent = recipe({
+  variants: {
+    type: {
+      switcher: {},
+      filter: {
+        marginTop: '24px',
+      },
     },
   },
 });
