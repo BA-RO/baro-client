@@ -13,5 +13,5 @@ export const CATEGORY_COLOR = {
   위로하기: 'purple',
   '감사 전하기': 'red',
   '안부 전하기': 'yellow',
-  기타: 'black',
+  기타: 'grey',
 } as const;
