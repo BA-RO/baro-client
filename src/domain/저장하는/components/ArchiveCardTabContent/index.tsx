@@ -8,6 +8,7 @@ import Spinner from '@components/Loading/Spinner';
 import Tabs from '@components/Tabs';
 import { CATEGORY_COLOR } from '@constants/config';
 import { useGetArchives } from '@domain/저장하는/queries/useGetArchives';
+import { getNumToK } from '@domain/참고하는/utils';
 import { COLORS } from '@styles/tokens';
 import parserColumn from '@utils/parserColumn';
 
@@ -42,6 +43,7 @@ const ArchiveCardTabContent = ({
               return (
                 <Card
                   key={archive.archiveId}
+                  className={styles.card}
                   color={
                     archive.categoryName
                       ? CATEGORY_COLOR[archive.categoryName]
@@ -72,6 +74,12 @@ const ArchiveCardTabContent = ({
                     )}
                   </Card.Header>
                   <Card.Body>{archive.content}</Card.Body>
+                  {archive.categoryName && (
+                    <Card.Footer>
+                      복사 <span>{getNumToK(archive.copiedCount)}</span> • 저장{' '}
+                      <span>{getNumToK(archive.savedCount)}</span>
+                    </Card.Footer>
+                  )}
                 </Card>
               );
             })}
