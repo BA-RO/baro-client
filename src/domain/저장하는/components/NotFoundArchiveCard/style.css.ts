@@ -4,6 +4,7 @@ import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
 export const notFound = style({
+  width: '100%',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
