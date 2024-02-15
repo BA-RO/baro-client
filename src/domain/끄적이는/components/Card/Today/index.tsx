@@ -4,15 +4,14 @@ import dayjs from 'dayjs';
 import { type SpellCheckResponse } from '@api/spell/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
+import MenuButton from '@components/Dropdown/MenuButton';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
-import useModal from '@hooks/useModal';
 import usePostSpellCheck from '@queries/usePostSpellCheck';
 import { useToastStore } from '@stores/toast';
 
 import SpellCheckCard from '../../Today/components/SpellCheckCard';
-import SettingDialog from '../components/SettingDialog';
 import * as styles from './style.css';
 
 interface WriteTodayCardProps {
@@ -24,11 +23,6 @@ interface WriteTodayCardProps {
 const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
   const { showToast } = useToastStore();
   const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
-  const {
-    isOpen: settingModalOpen,
-    handleOpen: showSettingModal,
-    handleClose: hideSettingModal,
-  } = useModal();
 
   const [spellCheckResult, setSpellCheckResult] =
     useState<SpellCheckResponse>();
@@ -54,7 +48,7 @@ const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
   };
 
   return (
-    <Card color="blue" onBlur={hideSettingModal}>
+    <Card color="blue">
       {!isSuccessSpellCheck && (
         <Card.Menu>
           <Button onClick={handleSpellCheck}>
@@ -66,11 +60,10 @@ const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
           <Button>
             <Icon icon="bookmark" className={styles.icon} />
           </Button>
-          <Button
-            onClick={settingModalOpen ? hideSettingModal : showSettingModal}
-          >
-            <Icon icon="menu" className={styles.icon} />
-          </Button>
+          <MenuButton
+            onEdit={() => {}}
+            onDelete={() => deleteTemporalMemo(id)}
+          />
         </Card.Menu>
       )}
       <Card.Header>{dayjs(createAt).locale('ko').format('a h:mm')}</Card.Header>
@@ -88,13 +81,6 @@ const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
           <SpellCheckCard spellCheckResult={spellCheckResult.result} />
         )}
       </Card.Body>
-
-      {settingModalOpen && (
-        <SettingDialog
-          onEditClick={() => {}}
-          onDeleteClick={() => deleteTemporalMemo(id)}
-        />
-      )}
     </Card>
   );
 };
