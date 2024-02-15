@@ -67,6 +67,7 @@ export const body = style([
   sprinkles({ typography: '15/Body/Regular' }),
   {
     wordBreak: 'keep-all',
+    whiteSpace: 'pre-line',
   },
 ]);
 
