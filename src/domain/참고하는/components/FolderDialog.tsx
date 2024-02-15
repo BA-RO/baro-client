@@ -1,23 +1,68 @@
+import { useQueryClient } from '@tanstack/react-query';
+
 import { type Folder } from '@api/memoFolder/types';
+import Button from '@components/Button';
 import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
 import * as styles from '@domain/참고하는/components/FolderDialog.css';
 import { useModalStore } from '@stores/modal';
+import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
+import useDeleteTemplate from '../queries/useDeleteTemplate';
 import useSaveTemplate from '../queries/useSaveTemplate';
 
 interface FolderDialogProps {
   templateId: number;
+  isArchived: boolean;
   memoFolders: Folder[];
 }
 
-const FolderDialog = ({ templateId, memoFolders }: FolderDialogProps) => {
+const FolderDialog = ({
+  templateId,
+  isArchived,
+  memoFolders,
+}: FolderDialogProps) => {
   const { openModal } = useModalStore();
-  const { mutateAsync } = useSaveTemplate();
+  const { mutateAsync: saveTemplate } = useSaveTemplate();
+  const { mutateAsync: deleteTemplate } = useDeleteTemplate();
+
+  const queryClient = useQueryClient();
+  const { showToast } = useToastStore();
 
   const handleFolderClick = (memoFolderId: number) => async () =>
-    await mutateAsync({ templateId, memoFolderId });
+    await saveTemplate(
+      { templateId, memoFolderId },
+      {
+        onSuccess: async () => {
+          await queryClient.invalidateQueries({
+            queryKey: ['templates'],
+          });
+          showToast({ message: '글이 저장됐어요.' });
+        },
+      },
+    );
+
+  const handleDeleteTemplateClick = async () => {
+    await deleteTemplate(templateId, {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
+          queryKey: ['templates'],
+        });
+      },
+    });
+  };
+
+  if (isArchived)
+    return (
+      <Button onClick={handleDeleteTemplateClick}>
+        <Icon
+          icon="bookmarkRefer"
+          className={styles.hoverBlue}
+          color={COLORS['Grey/300']}
+        />
+      </Button>
+    );
 
   return (
     <Dropdown size="medium" placement="bottom-center">

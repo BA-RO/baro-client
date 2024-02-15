@@ -15,3 +15,6 @@ export const postSaveTemplate = ({
   memoFolderId,
 }: PostSaveTemplateParams) =>
   http.post(`/templates/${templateId}/archive`, { memoFolderId });
+
+export const deleteTemplate = (templateId: number) =>
+  http.delete(`/templates/${templateId}/archive`);

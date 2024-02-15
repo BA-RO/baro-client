@@ -6,7 +6,7 @@ import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
 import * as styles from '@domain/참고하는/components/참고하는TemplateCard.css';
 import { CATEGORY } from '@domain/참고하는/models';
-import { type Refer } from '@domain/참고하는/types';
+import { type ReferContent } from '@domain/참고하는/types';
 import { getNumToK } from '@domain/참고하는/utils';
 import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
@@ -14,7 +14,7 @@ import { COLORS } from '@styles/tokens';
 import FolderDialog from './FolderDialog';
 
 interface 참고하는TemplateCardProps {
-  data: Refer;
+  data: ReferContent;
   memoFolders: Folder[];
 }
 
@@ -29,6 +29,7 @@ const 참고하는TemplateCard = ({
     content,
     copiedCount,
     savedCount,
+    isArchived,
   } = data;
 
   const { showToast } = useToastStore();
@@ -52,7 +53,11 @@ const 참고하는TemplateCard = ({
             color={COLORS['Grey/300']}
           />
         </Button>
-        <FolderDialog templateId={templateId} memoFolders={memoFolders} />
+        <FolderDialog
+          templateId={templateId}
+          isArchived={isArchived}
+          memoFolders={memoFolders}
+        />
       </Card.Menu>
       <Card.Header>
         <Badge color={CATEGORY_COLOR[categoryNameKr]}>{categoryNameKr}</Badge>
