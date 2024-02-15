@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 import FilterButtons from '@domain/참고하는/components/FilterButtons';
 import FilterHeader from '@domain/참고하는/components/FilterHeader';
@@ -28,6 +29,8 @@ const 참고하는TabContent = () => {
   const handleFilterButtonSelect = (type: FilterButton) => () =>
     setSelectedFilterButton(type);
 
+  if (!data) return null;
+
   return (
     <div className={styles.referPageTabWrapper}>
       <FilterHeader
@@ -38,15 +41,17 @@ const 참고하는TabContent = () => {
         selectedFilterButton={selectedFilterButton}
         handleFilterButtonSelect={handleFilterButtonSelect}
       />
-      <ul className={styles.referCardsWrapper}>
-        {data?.content.map((data) => (
-          <참고하는TemplateCard
-            key={data.templateId}
-            data={data}
-            memoFolders={memoFoldersData}
-          />
-        ))}
-      </ul>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 1080: 3 }}>
+        <Masonry className={styles.referCardsWrapper} gutter="16px">
+          {data.content.map((data) => (
+            <참고하는TemplateCard
+              key={data.templateId}
+              data={data}
+              memoFolders={memoFoldersData}
+            />
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
     </div>
   );
 };

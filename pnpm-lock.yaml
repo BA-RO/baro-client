@@ -17,6 +17,9 @@ dependencies:
   '@types/js-cookie':
     specifier: ^3.0.6
     version: 3.0.6
+  '@types/react-responsive-masonry':
+    specifier: ^2.1.3
+    version: 2.1.3
   '@vanilla-extract/css':
     specifier: ^1.14.0
     version: 1.14.0
@@ -68,6 +71,9 @@ dependencies:
   react-notion-x:
     specifier: ^6.16.0
     version: 6.16.0(@babel/runtime@7.23.5)(@types/react@18.2.43)(react-dom@18.2.0)(react@18.2.0)(webpack@5.89.0)
+  react-responsive-masonry:
+    specifier: ^2.1.7
+    version: 2.1.7
   zustand:
     specifier: ^4.4.7
     version: 4.4.7(@types/react@18.2.43)(react@18.2.0)
@@ -4536,6 +4542,12 @@ packages:
     dependencies:
       '@types/react': 18.2.43
     dev: true
+
+  /@types/react-responsive-masonry@2.1.3:
+    resolution: {integrity: sha512-aOFUtv3QwNMmy0BgpQpvivQ/+vivMTB6ARrzf9eTSXsLzXpVnfEtjpHpSknYDnr8KaQmlgeauAj8E7wo/qMOTg==}
+    dependencies:
+      '@types/react': 18.2.43
+    dev: false
 
   /@types/react@18.2.43:
     resolution: {integrity: sha512-nvOV01ZdBdd/KW6FahSbcNplt2jCJfyWdTos61RYHV+FVv5L/g9AOX1bmbVcWcLFL8+KHQfh1zVIQrud6ihyQA==}
@@ -11485,6 +11497,10 @@ packages:
       use-callback-ref: 1.3.0(@types/react@18.2.43)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.2.43)(react@18.2.0)
     dev: true
+
+  /react-responsive-masonry@2.1.7:
+    resolution: {integrity: sha512-/jOqnTVNtO8zRJMTl6ZXBex7EFYEIFBLVlkIFjiCT7omfm0CgNF2z4ST8RIr0v2ut15NWAQs7Q3kJJPhMoe3Ew==}
+    dev: false
 
   /react-style-singleton@2.2.1(@types/react@18.2.43)(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
