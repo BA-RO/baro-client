@@ -10,7 +10,7 @@ import ProfileButton from './ProfileButton';
 const UserButton = () => {
   return (
     <div className={styles.userButton}>
-      <Link href={ROUTES.BOOKMARK} className={styles.bookmark}>
+      <Link href={ROUTES.ARCHIVE} className={styles.archive}>
         <Icon icon="bookmark" color={COLORS['Grey/400']} />
       </Link>
       <ProfileButton />
