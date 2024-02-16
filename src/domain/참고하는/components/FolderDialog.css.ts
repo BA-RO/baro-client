@@ -42,3 +42,10 @@ export const hover = style({
     fill: COLORS['Grey/600'],
   },
 });
+
+export const hoverBlue = style({
+  transition: 'fill 100ms ease-in-out',
+  ':hover': {
+    fill: COLORS['Blue/Default'],
+  },
+});

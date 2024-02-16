@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Responsive from '@components/Responsive';
 import FilterButtons from '@domain/참고하는/components/FilterButtons';
 import FilterHeader from '@domain/참고하는/components/FilterHeader';
 import * as styles from '@domain/참고하는/components/ReferTab.css';
@@ -17,7 +18,7 @@ const 참고하는TabContent = () => {
   const [selectedFilterButton, setSelectedFilterButton] =
     useState<FilterButton>('new');
 
-  const { data } = useTemplate({
+  const { data: templates } = useTemplate({
     category: selectedFilterHeader,
     sort: selectedFilterButton,
   });
@@ -27,6 +28,8 @@ const 참고하는TabContent = () => {
 
   const handleFilterButtonSelect = (type: FilterButton) => () =>
     setSelectedFilterButton(type);
+
+  if (!templates) return null;
 
   return (
     <div className={styles.referPageTabWrapper}>
@@ -38,15 +41,15 @@ const 참고하는TabContent = () => {
         selectedFilterButton={selectedFilterButton}
         handleFilterButtonSelect={handleFilterButtonSelect}
       />
-      <ul className={styles.referCardsWrapper}>
-        {data?.content.map((data) => (
+      <Responsive className={styles.referCardsWrapper}>
+        {templates?.content.map((template) => (
           <참고하는TemplateCard
-            key={data.templateId}
-            data={data}
+            key={template.templateId}
+            data={template}
             memoFolders={memoFoldersData}
           />
         ))}
-      </ul>
+      </Responsive>
     </div>
   );
 };

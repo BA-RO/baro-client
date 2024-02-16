@@ -1,23 +1,46 @@
 import { type Folder } from '@api/memoFolder/types';
+import Button from '@components/Button';
 import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
 import * as styles from '@domain/참고하는/components/FolderDialog.css';
 import { useModalStore } from '@stores/modal';
 import { COLORS } from '@styles/tokens';
 
+import useDeleteTemplate from '../queries/useDeleteTemplate';
 import useSaveTemplate from '../queries/useSaveTemplate';
+import { type ReferContent } from '../types';
 
-interface FolderDialogProps {
-  templateId: number;
+interface FolderDialogProps
+  extends Pick<ReferContent, 'templateId' | 'isArchived'> {
   memoFolders: Folder[];
 }
 
-const FolderDialog = ({ templateId, memoFolders }: FolderDialogProps) => {
+const FolderDialog = ({
+  templateId,
+  isArchived,
+  memoFolders,
+}: FolderDialogProps) => {
   const { openModal } = useModalStore();
-  const { mutateAsync } = useSaveTemplate();
+  const { mutateAsync: saveTemplate } = useSaveTemplate();
+  const { mutateAsync: deleteTemplate } = useDeleteTemplate();
 
   const handleFolderClick = (memoFolderId: number) => async () =>
-    await mutateAsync({ templateId, memoFolderId });
+    await saveTemplate({ templateId, memoFolderId });
+
+  const handleDeleteTemplateClick = async () => {
+    await deleteTemplate(templateId);
+  };
+
+  if (isArchived)
+    return (
+      <Button onClick={handleDeleteTemplateClick}>
+        <Icon
+          icon="bookmarkRefer"
+          className={styles.hoverBlue}
+          color={COLORS['Grey/300']}
+        />
+      </Button>
+    );
 
   return (
     <Dropdown size="medium" placement="bottom-center">

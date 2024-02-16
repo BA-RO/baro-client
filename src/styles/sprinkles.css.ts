@@ -27,7 +27,7 @@ const width = {
 const responsiveProperties = defineProperties({
   conditions: {
     small: { '@media': 'screen and (min-width: 768px)' },
-    middle: { '@media': 'screen and (min-width: 1024px)' },
+    middle: { '@media': 'screen and (min-width: 1080px)' },
     large: { '@media': 'screen and (min-width: 1440px)' },
   },
   defaultCondition: 'large',

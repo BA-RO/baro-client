@@ -67,6 +67,7 @@ export const header = style([
 export const body = style([
   sprinkles({ typography: '15/Body/Regular' }),
   {
+    whiteSpace: 'pre-wrap',
     wordBreak: 'keep-all',
   },
 ]);
