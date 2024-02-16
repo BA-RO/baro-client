@@ -18,7 +18,7 @@ const 참고하는TabContent = () => {
   const [selectedFilterButton, setSelectedFilterButton] =
     useState<FilterButton>('new');
 
-  const { data } = useTemplate({
+  const { data: templates } = useTemplate({
     category: selectedFilterHeader,
     sort: selectedFilterButton,
   });
@@ -29,7 +29,7 @@ const 참고하는TabContent = () => {
   const handleFilterButtonSelect = (type: FilterButton) => () =>
     setSelectedFilterButton(type);
 
-  if (!data) return null;
+  if (!templates) return null;
 
   return (
     <div className={styles.referPageTabWrapper}>
@@ -43,10 +43,10 @@ const 참고하는TabContent = () => {
       />
       <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 1080: 3 }}>
         <Masonry className={styles.referCardsWrapper} gutter="16px">
-          {data.content.map((data) => (
+          {templates?.content.map((template) => (
             <참고하는TemplateCard
-              key={data.templateId}
-              data={data}
+              key={template.templateId}
+              data={template}
               memoFolders={memoFoldersData}
             />
           ))}

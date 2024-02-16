@@ -1,20 +1,17 @@
-import { useQueryClient } from '@tanstack/react-query';
-
 import { type Folder } from '@api/memoFolder/types';
 import Button from '@components/Button';
 import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
 import * as styles from '@domain/참고하는/components/FolderDialog.css';
 import { useModalStore } from '@stores/modal';
-import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
 import useDeleteTemplate from '../queries/useDeleteTemplate';
 import useSaveTemplate from '../queries/useSaveTemplate';
+import { type ReferContent } from '../types';
 
-interface FolderDialogProps {
-  templateId: number;
-  isArchived: boolean;
+interface FolderDialogProps
+  extends Pick<ReferContent, 'templateId' | 'isArchived'> {
   memoFolders: Folder[];
 }
 
@@ -27,30 +24,11 @@ const FolderDialog = ({
   const { mutateAsync: saveTemplate } = useSaveTemplate();
   const { mutateAsync: deleteTemplate } = useDeleteTemplate();
 
-  const queryClient = useQueryClient();
-  const { showToast } = useToastStore();
-
   const handleFolderClick = (memoFolderId: number) => async () =>
-    await saveTemplate(
-      { templateId, memoFolderId },
-      {
-        onSuccess: async () => {
-          await queryClient.invalidateQueries({
-            queryKey: ['templates'],
-          });
-          showToast({ message: '글이 저장됐어요.' });
-        },
-      },
-    );
+    await saveTemplate({ templateId, memoFolderId });
 
   const handleDeleteTemplateClick = async () => {
-    await deleteTemplate(templateId, {
-      onSuccess: async () => {
-        await queryClient.invalidateQueries({
-          queryKey: ['templates'],
-        });
-      },
-    });
+    await deleteTemplate(templateId);
   };
 
   if (isArchived)
