@@ -25,6 +25,7 @@ const usePosition = <
   const ref = useRef<T>(null);
   const triggerRef = defaultTriggerRef || ref;
   const targetRef = useRef<U>(null);
+
   const [position, setPosition] = useState(POSITION);
 
   useEffect(() => {
@@ -32,23 +33,16 @@ const usePosition = <
       return;
     }
 
-    const {
-      x,
-      y,
-      bottom: triggerBottom,
-      width: triggerWidth,
-      height: triggerHeight,
-    } = triggerRef.current.getBoundingClientRect();
+    const { width: triggerWidth, height: triggerHeight } =
+      triggerRef.current.getBoundingClientRect();
     const { width: targetWidth } = targetRef.current.getBoundingClientRect();
 
-    const { scrollX, scrollY } = window;
+    const top = -triggerHeight;
+    const bottom = triggerHeight;
 
-    const top = y + scrollY - triggerHeight;
-    const bottom = !fixed ? y + scrollY + triggerHeight : triggerBottom;
-
-    const left = x + scrollX;
-    const center = left + triggerWidth / 2 - targetWidth / 2;
-    const right = left + triggerWidth - targetWidth;
+    const left = 0;
+    const center = triggerWidth / 2 - targetWidth / 2;
+    const right = triggerWidth - targetWidth;
 
     const CALCULATED_POSITION: Record<Placement, typeof POSITION> = {
       'top-left': { top, left },
