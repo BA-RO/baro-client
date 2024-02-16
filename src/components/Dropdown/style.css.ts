@@ -14,13 +14,12 @@ export const trigger = style({
   width: 'fit-content',
 });
 
-export const position = createVar();
 export const top = createVar();
 export const left = createVar();
 
 export const menuList = recipe({
   base: {
-    position,
+    position: 'absolute',
     top,
     left,
     marginTop: '4px',

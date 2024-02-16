@@ -26,7 +26,6 @@ const ProfileButton = () => {
       className={styles.dialogWrapper}
       size="medium"
       placement="bottom-right"
-      fixed
     >
       <Dropdown.Trigger className={styles.profile}>
         <Icon icon="profileHeader" width={28} height={28} />

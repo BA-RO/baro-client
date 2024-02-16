@@ -28,8 +28,6 @@ interface DropdownContextProps {
   position: typeof INIT_POSITION;
   /** dropdown menulist 요소의 ref 객체  */
   targetRef: RefObject<HTMLUListElement>;
-  /** dropdown menulist css position fixed 적용 여부 */
-  fixed?: boolean;
   /** dropdown menulist 열림, 닫힘 상태 */
   isOpen: boolean;
   /** dropdown trigger toggle 함수 */
@@ -38,7 +36,7 @@ interface DropdownContextProps {
 
 interface DropdownRootProps
   extends HTMLAttributes<HTMLDivElement>,
-    Pick<DropdownContextProps, 'size' | 'placement' | 'fixed'> {
+    Pick<DropdownContextProps, 'size' | 'placement'> {
   className?: HTMLAttributes<HTMLDivElement>['className'];
 }
 
@@ -48,19 +46,17 @@ const DropdownRoot = ({
   children,
   size = 'small',
   placement = 'bottom-left',
-  fixed = false,
   ...props
 }: PropsWithChildren<DropdownRootProps>) => {
   const { isOpen, onClose, onToggle } = useDisclosure();
   const dropdownRef = useClickAway({
     onClickAway: onClose,
-  });
+  })!;
   const { targetRef, position } = usePosition<HTMLDivElement, HTMLUListElement>(
     {
       defaultTriggerRef: dropdownRef,
       isOpen,
       placement,
-      fixed,
     },
   );
 
@@ -71,7 +67,6 @@ const DropdownRoot = ({
         placement,
         position,
         targetRef,
-        fixed,
         isOpen,
         onToggle,
       }}
