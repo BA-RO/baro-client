@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import dayjs from 'dayjs';
 
 import 'dayjs/locale/ko';
@@ -32,6 +33,8 @@ const parser = (arr: TemporalMemo[]): TemporalMemo[][] => {
 };
 
 const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
+  const [editModeCardId, setEditModeCardId] = useState<number | null>(null);
+
   return (
     <article className={styles.container}>
       {data.map((hisotry, i) => {
@@ -50,7 +53,17 @@ const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
 
             <section className={styles.contentWrapper}>
               {parser(temporalMemos).map((list, i) => {
-                return <Column key={i} list={list} />;
+                return (
+                  <Column
+                    key={i}
+                    list={list}
+                    editModeCardId={editModeCardId}
+                    onEditClick={(id: number) => {
+                      setEditModeCardId(id);
+                    }}
+                    resetEditModeCardId={() => setEditModeCardId(null)}
+                  />
+                );
               })}
             </section>
           </section>

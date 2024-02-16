@@ -5,9 +5,17 @@ import * as styles from './style.css';
 
 interface ColumnProps {
   list: TemporalMemo[] | undefined;
+  editModeCardId: number | null;
+  resetEditModeCardId: VoidFunction;
+  onEditClick: (id: number) => void;
 }
 
-const Column = ({ list }: ColumnProps) => {
+const Column = ({
+  list,
+  editModeCardId,
+  resetEditModeCardId,
+  onEditClick,
+}: ColumnProps) => {
   if (!list) {
     return null;
   }
@@ -15,7 +23,13 @@ const Column = ({ list }: ColumnProps) => {
   return (
     <ol className={styles.container}>
       {list.map((el) => (
-        <WriteHistoryCard key={el.id} {...el} />
+        <WriteHistoryCard
+          key={el.id}
+          {...el}
+          isEditMode={editModeCardId === el.id}
+          onEditClick={() => onEditClick(el.id)}
+          onEditCompleteClick={resetEditModeCardId}
+        />
       ))}
     </ol>
   );
