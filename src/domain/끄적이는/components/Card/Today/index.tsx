@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { type SpellCheckResponse } from '@api/spell/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
-import MenuButton from '@components/Dropdown/MenuButton';
+import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
@@ -101,7 +101,7 @@ const WriteTodayCard = ({
           <Button>
             <Icon icon="bookmark" className={styles.icon} />
           </Button>
-          <MenuButton
+          <MenuDropdown
             onEdit={() => onEditClick(id)}
             onDelete={() => deleteTemporalMemo(id)}
           />

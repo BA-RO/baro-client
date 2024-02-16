@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import MenuButton from '@components/Dropdown/MenuButton';
+import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
@@ -89,7 +89,7 @@ const WriteHistoryCard = ({
               className={styles.icon}
             />
           </button>
-          <MenuButton
+          <MenuDropdown
             onEdit={onEditClick}
             onDelete={() => deleteTemporalMemo(id)}
           />

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import Button from '@components/Button';
-import MenuButton from '@components/Dropdown/MenuButton';
+import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import { ROUTES } from '@constants/routes';
 import { type Folder } from '@domain/저장하는/types';
@@ -31,7 +31,7 @@ const ArchiveFolder = ({ folders }: FolderProps) => {
               >
                 {folder.name}
               </Link>
-              <MenuButton
+              <MenuDropdown
                 onEdit={() => console.log('수정')}
                 onDelete={() => console.log('삭제')}
               />
