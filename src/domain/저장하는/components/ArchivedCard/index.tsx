@@ -79,7 +79,9 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
       <Card className={styles.card} color="grey">
         <Card.Header>
           <Badge color="black">{card.tabName}</Badge>
-          <button onClick={handleEditClick}>완료</button>
+          <Button className={styles.editButton} onClick={handleEditClick}>
+            완료
+          </Button>
         </Card.Header>
         <Card.Body>
           <EditInput inputProps={editedInputProps} />
