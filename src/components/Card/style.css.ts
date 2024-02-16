@@ -70,7 +70,6 @@ export const body = style([
   {
     whiteSpace: 'pre-wrap',
     wordBreak: 'keep-all',
-    whiteSpace: 'pre-line',
   },
 ]);
 
