@@ -18,3 +18,6 @@ export const postSaveTemplate = ({
 
 export const deleteTemplate = (templateId: number) =>
   http.delete(`/templates/${templateId}/archive`);
+
+export const patchTemplateCopyCount = (templateId: number) =>
+  http.patch(`/templates/${templateId}/copy`);

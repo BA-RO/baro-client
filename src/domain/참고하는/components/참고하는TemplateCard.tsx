@@ -1,3 +1,5 @@
+import { useQueryClient } from '@tanstack/react-query';
+
 import { type Folder } from '@api/memoFolder/types';
 import Badge from '@components/Badge';
 import Button from '@components/Button';
@@ -11,6 +13,7 @@ import { getNumToK } from '@domain/참고하는/utils';
 import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
+import useCopyTemplate from '../queries/useCopyTemplate';
 import FolderDialog from './FolderDialog';
 
 interface 참고하는TemplateCardProps {
@@ -33,13 +36,23 @@ const 참고하는TemplateCard = ({
   } = data;
 
   const { showToast } = useToastStore();
+  const queryClient = useQueryClient();
+  const { mutateAsync: copyTemplate } = useCopyTemplate();
 
   const categoryNameKr = CATEGORY[category];
 
-  const handleCopyClick = () => {
-    navigator.clipboard.writeText(content);
-    showToast({
-      message: '글이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
+  const handleCopyClick = async () => {
+    await copyTemplate(templateId, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: ['templates'],
+        }),
+          navigator.clipboard.writeText(content);
+        showToast({
+          message:
+            '글이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
+        });
+      },
     });
   };
 
