@@ -2,9 +2,6 @@ import type { PropsWithChildren } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 import clsx from 'clsx';
 
-import { PORTAL_ID } from '@constants/portal';
-
-import Portal from '../../Portal';
 import { useTooltipContext } from '..';
 import * as styles from '../style.css';
 
@@ -28,23 +25,21 @@ const TooltipContent = ({ children }: PropsWithChildren) => {
   return (
     <>
       {isOpen && (
-        <Portal id={PORTAL_ID['TOOLTIP']}>
-          <div
-            ref={targetRef}
-            className={clsx(
-              styles.content({ hasArrow }),
-              hasArrow && placement && ARROW_STYLE[placement],
-              isTopMinimalTooltip && MARGIN_STYLE.MINIMAL,
-              isTopHighlightTooltip && MARGIN_STYLE.HIGHLIGHT,
-            )}
-            style={assignInlineVars({
-              [styles.top]: `${position.top}px`,
-              [styles.left]: `${position.left}px`,
-            })}
-          >
-            {children}
-          </div>
-        </Portal>
+        <div
+          ref={targetRef}
+          className={clsx(
+            styles.content({ hasArrow }),
+            hasArrow && placement && ARROW_STYLE[placement],
+            isTopMinimalTooltip && MARGIN_STYLE.MINIMAL,
+            isTopHighlightTooltip && MARGIN_STYLE.HIGHLIGHT,
+          )}
+          style={assignInlineVars({
+            [styles.top]: `${position.top}px`,
+            [styles.left]: `${position.left}px`,
+          })}
+        >
+          {children}
+        </div>
       )}
     </>
   );
