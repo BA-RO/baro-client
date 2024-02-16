@@ -1,16 +1,15 @@
 import dayjs from 'dayjs';
 
+import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
 import { type TemporalMemo } from '@domain/끄적이는/types';
 import { useInput } from '@hooks/useInput';
-import useModal from '@hooks/useModal';
 import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
 import EditInput from '../../EditInput';
-import SettingDialog from '../components/SettingDialog';
 import * as styles from './style.css';
 
 interface WriteHistoryCardProps extends TemporalMemo {
@@ -34,12 +33,6 @@ const WriteHistoryCard = ({
     id: 'edit-input',
     defaultValue: content,
   });
-
-  const {
-    isOpen: settingModalOpen,
-    handleOpen: showSettingModal,
-    handleClose: hideSettingModal,
-  } = useModal();
 
   const handleCopyClick = () => {
     navigator.clipboard.writeText(content);
@@ -96,26 +89,13 @@ const WriteHistoryCard = ({
               className={styles.icon}
             />
           </button>
-          <button
-            onClick={settingModalOpen ? hideSettingModal : showSettingModal}
-          >
-            <Icon
-              icon="menu"
-              color={COLORS['Grey/300']}
-              className={styles.icon}
-            />
-          </button>
+          <MenuDropdown
+            onEdit={onEditClick}
+            onDelete={() => deleteTemporalMemo(id)}
+          />
         </div>
       </div>
-
       <p className={styles.value}>{content}</p>
-
-      {settingModalOpen && (
-        <SettingDialog
-          onEditClick={onEditClick}
-          onDeleteClick={() => deleteTemporalMemo(id)}
-        />
-      )}
     </li>
   );
 };

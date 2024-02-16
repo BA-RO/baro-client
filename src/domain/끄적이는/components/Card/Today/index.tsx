@@ -4,18 +4,17 @@ import dayjs from 'dayjs';
 import { type SpellCheckResponse } from '@api/spell/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
+import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
 import { useInput } from '@hooks/useInput';
-import useModal from '@hooks/useModal';
 import usePostSpellCheck from '@queries/usePostSpellCheck';
 import { useToastStore } from '@stores/toast';
 
 import EditInput from '../../EditInput';
 import SpellCheckCard from '../../Today/components/SpellCheckCard';
-import SettingDialog from '../components/SettingDialog';
 import * as styles from './style.css';
 
 interface WriteTodayCardProps {
@@ -38,11 +37,6 @@ const WriteTodayCard = ({
   const { showToast } = useToastStore();
   const { mutate: updateTemporalMemo } = useEditTemporalMemo();
   const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
-  const {
-    isOpen: settingModalOpen,
-    handleOpen: showSettingModal,
-    handleClose: hideSettingModal,
-  } = useModal();
 
   const editInputProps = useInput({
     id: 'edit-today-input',
@@ -80,7 +74,7 @@ const WriteTodayCard = ({
 
   if (isEditMode) {
     return (
-      <Card color="blue" onBlur={hideSettingModal}>
+      <Card color="blue">
         <Card.Header>
           {dayjs(createAt).locale('ko').format('a h:mm')}
           <button className={styles.editCompleteBtn} onClick={handleUpdate}>
@@ -95,7 +89,7 @@ const WriteTodayCard = ({
   }
 
   return (
-    <Card color="blue" onBlur={hideSettingModal}>
+    <Card color="blue">
       {!isSuccessSpellCheck && (
         <Card.Menu>
           <Button onClick={handleSpellCheck}>
@@ -107,11 +101,10 @@ const WriteTodayCard = ({
           <Button>
             <Icon icon="bookmark" className={styles.icon} />
           </Button>
-          <Button
-            onClick={settingModalOpen ? hideSettingModal : showSettingModal}
-          >
-            <Icon icon="menu" className={styles.icon} />
-          </Button>
+          <MenuDropdown
+            onEdit={() => onEditClick(id)}
+            onDelete={() => deleteTemporalMemo(id)}
+          />
         </Card.Menu>
       )}
       <Card.Header>{dayjs(createAt).locale('ko').format('a h:mm')}</Card.Header>
@@ -129,13 +122,6 @@ const WriteTodayCard = ({
           <SpellCheckCard spellCheckResult={spellCheckResult.result} />
         )}
       </Card.Body>
-
-      {settingModalOpen && (
-        <SettingDialog
-          onEditClick={() => onEditClick(id)}
-          onDeleteClick={() => deleteTemporalMemo(id)}
-        />
-      )}
     </Card>
   );
 };

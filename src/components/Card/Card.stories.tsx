@@ -7,12 +7,9 @@ import { COLORS } from '@styles/tokens';
 
 import Card from '.';
 
-const CARD_CONTENT = `
-  안녕하세요. 리더님!
-  어제 줌 회의로 가볍게 인사드렸는데
-  메신저로는 처음 인사 드립니다 :)
-  다름이 아니라 업무 진행을 위해 JIRA
-  권한을 받고자 하는데 시간 괜찮으실 때 권한 추가해주실 수 있을까요?
+const CARD_CONTENT = `안녕하세요. 리더님!
+  어제 줌 회의로 가볍게 인사드렸는데 메신저로는 처음 인사 드립니다 :)
+  다름이 아니라 업무 진행을 위해 JIRA 권한을 받고자 하는데 시간 괜찮으실 때 권한 추가해주실 수 있을까요?
 `;
 
 const CARD_COUNT_STYLE = {

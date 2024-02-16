@@ -54,7 +54,7 @@ export const buttonsWrapper = recipe({
   },
 });
 
-export const bookmark = style({
+export const archive = style({
   display: 'inline-block',
   padding: '12px',
 });

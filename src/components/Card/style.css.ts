@@ -51,6 +51,7 @@ export const menu = style({
   top: '16px',
   right: '16px',
   padding: '8px',
+  zIndex: 10,
 });
 
 export const header = style([
@@ -69,6 +70,7 @@ export const body = style([
   {
     whiteSpace: 'pre-wrap',
     wordBreak: 'keep-all',
+    whiteSpace: 'pre-line',
   },
 ]);
 

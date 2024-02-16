@@ -3,6 +3,7 @@ import { createContext, type PropsWithChildren, useContext } from 'react';
 import TabsContent from './components/TabsContent';
 import TabsList from './components/TabsList';
 import TabsTrigger from './components/TabsTrigger';
+import * as styles from './style.css';
 
 type TabsType = 'filter' | 'switcher';
 
@@ -30,7 +31,7 @@ const TabsRoot = ({
     <TabsContext.Provider
       value={{ type, selectedTab, onSelectTab: handleTabSelect }}
     >
-      {children}
+      <div className={styles.tab}>{children}</div>
     </TabsContext.Provider>
   );
 };

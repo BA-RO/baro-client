@@ -9,13 +9,11 @@ import Toast from '@components/Toast';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
-      <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
-        <Component {...pageProps} />
-        <Toast />
-        <Modal />
-      </TanstackQueryProvider>
-    </>
+    <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
+      <Component {...pageProps} />
+      <Toast />
+      <Modal />
+    </TanstackQueryProvider>
   );
 };
 

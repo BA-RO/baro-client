@@ -1,7 +1,7 @@
 export const ROUTES = {
   LANDING: '/',
   MAIN: '/main',
-  BOOKMARK: '/bookmark',
+  ARCHIVE: '/archive',
   PRIVACY: '/terms/privacy',
   USE: '/terms/use',
 } as const;
