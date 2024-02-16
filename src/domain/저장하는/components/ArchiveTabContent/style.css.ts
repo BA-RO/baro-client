@@ -5,7 +5,3 @@ export const tabContent = style({
   justifyContent: 'space-between',
   gap: '16px',
 });
-
-export const card = style({
-  padding: '28px 32px 20px',
-});

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 
 import Layout from '@components/Layout';
-import ArchiveCardTab from '@domain/저장하는/components/ArchiveCardTab';
 import ArchiveFolder from '@domain/저장하는/components/ArchiveFolder';
+import ArchiveTab from '@domain/저장하는/components/ArchiveTab';
 import useGetMemoFolders from '@queries/useGetMemoFolders';
 
 import * as styles from './style.css';
@@ -20,7 +20,7 @@ const Page = () => {
     <Layout>
       <div className={styles.archive}>
         <ArchiveFolder folders={userFolders} />
-        <ArchiveCardTab folderId={Number(router.query.folder || folderId)} />
+        <ArchiveTab folderId={Number(router.query.folder || folderId)} />
       </div>
     </Layout>
   );

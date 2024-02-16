@@ -3,16 +3,16 @@ import { useState } from 'react';
 import Tabs from '@components/Tabs';
 import { type Folder } from '@domain/저장하는/types';
 
-import ArchiveCardTabContent from '../ArchiveCardTabContent';
+import ArchiveTabContent from '../ArchiveTabContent';
 
-const 저장하는_TAB_LIST = ['전체', '끄적이는', '참고하는'];
+const ARCHIVE_TAB_LIST = ['전체', '끄적이는', '참고하는'];
 
-interface ArchiveCardProps {
+interface ArchiveTabProps {
   folderId: Folder['id'];
 }
 
-const ArchiveCardTab = ({ folderId }: ArchiveCardProps) => {
-  const [selectedTab, setSelectedTab] = useState(저장하는_TAB_LIST[0]);
+const ArchiveTab = ({ folderId }: ArchiveTabProps) => {
+  const [selectedTab, setSelectedTab] = useState(ARCHIVE_TAB_LIST[0]);
 
   const handleTabSelect = (selectedTab: string) => {
     setSelectedTab(selectedTab);
@@ -21,15 +21,15 @@ const ArchiveCardTab = ({ folderId }: ArchiveCardProps) => {
   return (
     <Tabs selectedTab={selectedTab} handleTabSelect={handleTabSelect}>
       <Tabs.List>
-        {저장하는_TAB_LIST.map((tabItem) => (
+        {ARCHIVE_TAB_LIST.map((tabItem) => (
           <Tabs.Trigger key={tabItem} value={tabItem}>
             {tabItem}
           </Tabs.Trigger>
         ))}
       </Tabs.List>
-      <ArchiveCardTabContent selectedTab={selectedTab} folderId={folderId} />
+      <ArchiveTabContent selectedTab={selectedTab} folderId={folderId} />
     </Tabs>
   );
 };
 
-export default ArchiveCardTab;
+export default ArchiveTab;

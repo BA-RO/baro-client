@@ -8,15 +8,15 @@ import ArchivedCard from '../ArchivedCard';
 import NotFoundArchiveCard from '../NotFoundArchiveCard';
 import * as styles from './style.css';
 
-interface ArchiveCardTabContentProps {
+interface ArchiveTabContentProps {
   selectedTab: string;
   folderId: number;
 }
 
-const ArchiveCardTabContent = ({
+const ArchiveTabContent = ({
   selectedTab,
   folderId,
-}: ArchiveCardTabContentProps) => {
+}: ArchiveTabContentProps) => {
   const { data: archiveCards } = useGetArchives(folderId, selectedTab);
 
   if (!archiveCards) {
@@ -44,4 +44,4 @@ const ArchiveCardTabContent = ({
   );
 };
 
-export default ArchiveCardTabContent;
+export default ArchiveTabContent;
