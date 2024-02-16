@@ -27,7 +27,7 @@ const ArchiveCardTab = ({ folderId }: ArchiveCardProps) => {
           </Tabs.Trigger>
         ))}
       </Tabs.List>
-      <ArchiveCardTabContent tabValue={selectedTab} folderId={folderId} />
+      <ArchiveCardTabContent selectedTab={selectedTab} folderId={folderId} />
     </Tabs>
   );
 };
