@@ -7,7 +7,7 @@ import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
 import EditInput from '@domain/끄적이는/components/EditInput';
-import useEditArchives from '@domain/저장하는/mutations/useEditArchives';
+import useUpdateArchives from '@domain/저장하는/mutations/useUpdateArchives';
 import { getNumToK } from '@domain/참고하는/utils';
 import { useInput } from '@hooks/useInput';
 import { useToastStore } from '@stores/toast';
@@ -26,14 +26,14 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const { mutate: editArchivedCardContent } = useEditArchives(folderId);
+  const { mutate: updateArchivedCardContent } = useUpdateArchives(folderId);
   const editedInputProps = useInput({
     id: 'edit-input',
     defaultValue: card.content,
   });
 
   const handleEditClick = () => {
-    editArchivedCardContent({
+    updateArchivedCardContent({
       archiveId: card.archiveId,
       content: editedInputProps.value,
     });

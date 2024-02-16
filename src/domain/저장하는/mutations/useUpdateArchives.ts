@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import archiveApi from '../api';
 import { ARCHIVES_QUERY_KEY } from '../constants/queryKeys';
 
-const useEditArchives = (folderId: number) => {
+const useUpdateArchives = (folderId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -16,4 +16,4 @@ const useEditArchives = (folderId: number) => {
   });
 };
 
-export default useEditArchives;
+export default useUpdateArchives;
