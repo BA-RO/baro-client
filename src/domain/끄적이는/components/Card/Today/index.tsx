@@ -8,9 +8,12 @@ import MenuButton from '@components/Dropdown/MenuButton';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
+import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
+import { useInput } from '@hooks/useInput';
 import usePostSpellCheck from '@queries/usePostSpellCheck';
 import { useToastStore } from '@stores/toast';
 
+import EditInput from '../../EditInput';
 import SpellCheckCard from '../../Today/components/SpellCheckCard';
 import * as styles from './style.css';
 
@@ -18,11 +21,27 @@ interface WriteTodayCardProps {
   id: number;
   createAt: string;
   content: string;
+  isEditMode: boolean;
+  onEditClick: (id: number) => void;
+  onEditCompleteClick: VoidFunction;
 }
 
-const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
+const WriteTodayCard = ({
+  id,
+  createAt,
+  content,
+  isEditMode,
+  onEditClick,
+  onEditCompleteClick,
+}: WriteTodayCardProps) => {
   const { showToast } = useToastStore();
+  const { mutate: updateTemporalMemo } = useEditTemporalMemo();
   const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
+
+  const editInputProps = useInput({
+    id: 'edit-today-input',
+    defaultValue: content,
+  });
 
   const [spellCheckResult, setSpellCheckResult] =
     useState<SpellCheckResponse>();
@@ -47,6 +66,28 @@ const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
     });
   };
 
+  //TODO: 밸리데이션 추가
+  const handleUpdate = () => {
+    updateTemporalMemo({ id: id, content: editInputProps.value });
+    setTimeout(() => onEditCompleteClick(), 0);
+  };
+
+  if (isEditMode) {
+    return (
+      <Card color="blue">
+        <Card.Header>
+          {dayjs(createAt).locale('ko').format('a h:mm')}
+          <button className={styles.editCompleteBtn} onClick={handleUpdate}>
+            완료
+          </button>
+        </Card.Header>
+        <Card.Body>
+          <EditInput inputProps={editInputProps} />
+        </Card.Body>
+      </Card>
+    );
+  }
+
   return (
     <Card color="blue">
       {!isSuccessSpellCheck && (
@@ -61,7 +102,7 @@ const WriteTodayCard = ({ id, createAt, content }: WriteTodayCardProps) => {
             <Icon icon="bookmark" className={styles.icon} />
           </Button>
           <MenuButton
-            onEdit={() => {}}
+            onEdit={() => onEditClick(id)}
             onDelete={() => deleteTemporalMemo(id)}
           />
         </Card.Menu>

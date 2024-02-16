@@ -51,6 +51,7 @@ export const menu = style({
   top: '16px',
   right: '16px',
   padding: '8px',
+  zIndex: 10,
 });
 
 export const header = style([
@@ -60,6 +61,7 @@ export const header = style([
     gap: '8px',
     color: COLORS['Grey/400'],
     wordBreak: 'keep-all',
+    position: 'relative',
   },
 ]);
 

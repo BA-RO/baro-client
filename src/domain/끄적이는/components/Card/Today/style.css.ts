@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
+import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
 export const icon = style({
@@ -21,3 +22,13 @@ export const skeletonSuggestion = style({
   borderRadius: '12px',
   backgroundColor: COLORS['Grey/White'],
 });
+
+export const editCompleteBtn = style([
+  sprinkles({ typography: '16/Body/Medium' }),
+  {
+    position: 'absolute',
+    top: '-2px',
+    right: '0',
+    color: COLORS['Grey/700'],
+  },
+]);
