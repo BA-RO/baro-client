@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
+import Responsive from '@components/Responsive';
 import FilterButtons from '@domain/참고하는/components/FilterButtons';
 import FilterHeader from '@domain/참고하는/components/FilterHeader';
 import * as styles from '@domain/참고하는/components/ReferTab.css';
@@ -41,17 +41,15 @@ const 참고하는TabContent = () => {
         selectedFilterButton={selectedFilterButton}
         handleFilterButtonSelect={handleFilterButtonSelect}
       />
-      <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 1080: 3 }}>
-        <Masonry className={styles.referCardsWrapper} gutter="16px">
-          {templates?.content.map((template) => (
-            <참고하는TemplateCard
-              key={template.templateId}
-              data={template}
-              memoFolders={memoFoldersData}
-            />
-          ))}
-        </Masonry>
-      </ResponsiveMasonry>
+      <Responsive className={styles.referCardsWrapper}>
+        {templates?.content.map((template) => (
+          <참고하는TemplateCard
+            key={template.templateId}
+            data={template}
+            memoFolders={memoFoldersData}
+          />
+        ))}
+      </Responsive>
     </div>
   );
 };
