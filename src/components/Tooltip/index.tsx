@@ -6,6 +6,7 @@ import usePosition from '@hooks/usePosition';
 
 import TooltipContent from './components/TooltipContent';
 import TooltipTrigger from './components/TooltipTrigger';
+import * as styles from './style.css';
 
 const INIT_POSITION = { top: 0, left: 0 };
 
@@ -51,7 +52,9 @@ const TooltipRoot = ({
         onClose,
       }}
     >
-      <div ref={triggerRef}>{children}</div>
+      <div ref={triggerRef} className={styles.wrapper}>
+        {children}
+      </div>
     </TooltipContext.Provider>
   );
 };

@@ -4,6 +4,10 @@ import { recipe } from '@vanilla-extract/recipes';
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS, Z_INDEX } from '@styles/tokens';
 
+export const wrapper = style({
+  position: 'relative',
+});
+
 export const trigger = style({
   width: 'fit-content',
   height: 'fit-content',
