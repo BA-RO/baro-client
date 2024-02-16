@@ -33,7 +33,11 @@ const ArchiveTabContent = ({
         parserColumn(archiveCards).map((archives, index) => (
           <Column key={index}>
             {archives.map((archive) => (
-              <ArchivedCard key={archive.archiveId} card={archive} />
+              <ArchivedCard
+                key={archive.archiveId}
+                folderId={folderId}
+                card={archive}
+              />
             ))}
           </Column>
         ))
