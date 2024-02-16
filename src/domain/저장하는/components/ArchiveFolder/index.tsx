@@ -10,7 +10,7 @@ import useGetMyProfile from '@queries/useGetMyProfile';
 import * as styles from './style.css';
 
 interface FolderProps {
-  folders?: Folder[];
+  folders: Folder[];
 }
 
 const ArchiveFolder = ({ folders }: FolderProps) => {
@@ -22,22 +22,20 @@ const ArchiveFolder = ({ folders }: FolderProps) => {
         <span>{data?.nickname}님의 폴더</span>
         <span className={styles.tag}>기본</span>
       </div>
-      {folders
-        ? folders.map((folder) => (
-            <div key={folder.id} className={styles.folderButton}>
-              <Link
-                href={`${ROUTES.ARCHIVE}?folder=${folder.id}`}
-                className={styles.folderName}
-              >
-                {folder.name}
-              </Link>
-              <MenuDropdown
-                onEdit={() => console.log('수정')}
-                onDelete={() => console.log('삭제')}
-              />
-            </div>
-          ))
-        : null}
+      {folders.map((folder) => (
+        <div key={folder.id} className={styles.folderButton}>
+          <Link
+            href={`${ROUTES.ARCHIVE}?folder=${folder.id}`}
+            className={styles.folderName}
+          >
+            {folder.name}
+          </Link>
+          <MenuDropdown
+            onEdit={() => console.log('수정')}
+            onDelete={() => console.log('삭제')}
+          />
+        </div>
+      ))}
       {}
       <Button className={styles.createFolderButton}>
         <Icon icon="add" width={20} height={20} />
