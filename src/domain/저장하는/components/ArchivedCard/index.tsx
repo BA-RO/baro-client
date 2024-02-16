@@ -7,6 +7,7 @@ import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
 import EditInput from '@domain/끄적이는/components/EditInput';
+import useDeleteArchives from '@domain/저장하는/mutations/useDeleteArchives';
 import useUpdateArchives from '@domain/저장하는/mutations/useUpdateArchives';
 import { getNumToK } from '@domain/참고하는/utils';
 import { useInput } from '@hooks/useInput';
@@ -27,10 +28,19 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const { mutate: updateArchivedCardContent } = useUpdateArchives(folderId);
+  const { mutate: deleteArchivedCard } = useDeleteArchives(folderId);
+
   const editedInputProps = useInput({
     id: 'edit-input',
     defaultValue: card.content,
   });
+
+  const handleCopyClick = (content: ArchiveCard['content']) => {
+    navigator.clipboard.writeText(content);
+    showToast({
+      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
+    });
+  };
 
   const handleEditClick = () => {
     updateArchivedCardContent({
@@ -41,11 +51,8 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
     setIsEditMode(false);
   };
 
-  const handleCopyClick = (content: ArchiveCard['content']) => {
-    navigator.clipboard.writeText(content);
-    showToast({
-      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
-    });
+  const handleDeleteClick = () => {
+    deleteArchivedCard({ archiveId: card.archiveId });
   };
 
   // 참고하는 카드(템플릿)인 경우
@@ -56,7 +63,7 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
           <Button onClick={() => handleCopyClick(card.content)}>
             <Icon icon="copy" color={COLORS['Grey/300']} />
           </Button>
-          <MenuDropdown onDelete={() => console.log('삭제')} />
+          <MenuDropdown onDelete={handleDeleteClick} />
         </Card.Menu>
         <Card.Header>
           <Badge color="black">{card.tabName}</Badge>
@@ -99,7 +106,7 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
         </Button>
         <MenuDropdown
           onEdit={() => setIsEditMode(true)}
-          onDelete={() => console.log('삭제')}
+          onDelete={handleDeleteClick}
         />
       </Card.Menu>
       <Card.Header>
