@@ -93,6 +93,8 @@ export const http = {
     param?: ParamType,
     options?: AxiosRequestConfig,
   ): Promise<ResponseType> => instance.put(url, param, options),
-  delete: <ResponseType>(url: string): Promise<ResponseType> =>
-    instance.delete(url),
+  delete: <ParamType, ResponseType>(
+    url: string,
+    param?: ParamType,
+  ): Promise<ResponseType> => instance.delete(url, param && param),
 };

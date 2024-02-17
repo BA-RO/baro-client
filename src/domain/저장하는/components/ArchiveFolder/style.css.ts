@@ -38,22 +38,6 @@ export const icon = style({
   fill: COLORS['Grey/250'],
 });
 
-export const folderButton = style([
-  sprinkles({ typography: '16/Title/Medium' }),
-  utils.flexAlignCenter,
-  {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '8px 12px 8px 20px',
-  },
-]);
-
-export const folderName = style({
-  display: 'inline-block',
-  width: '100%',
-});
-
 export const createFolderButton = style([
   sprinkles({ typography: '16/Title/Medium' }),
   utils.flexAlignCenter,

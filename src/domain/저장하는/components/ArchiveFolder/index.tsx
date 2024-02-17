@@ -1,19 +1,18 @@
-import Link from 'next/link';
-
 import Button from '@components/Button';
-import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
-import { ROUTES } from '@constants/routes';
 import { type Folder } from '@domain/저장하는/types';
 import useGetMyProfile from '@queries/useGetMyProfile';
+import { useModalStore } from '@stores/modal';
 
+import FolderItem from '../Folder';
 import * as styles from './style.css';
 
-interface FolderProps {
+interface ArchiveFolderProps {
   folders: Folder[];
 }
 
-const ArchiveFolder = ({ folders }: FolderProps) => {
+const ArchiveFolder = ({ folders }: ArchiveFolderProps) => {
+  const { openModal } = useModalStore();
   const { data } = useGetMyProfile();
 
   return (
@@ -23,21 +22,12 @@ const ArchiveFolder = ({ folders }: FolderProps) => {
         <span className={styles.tag}>기본</span>
       </div>
       {folders.map((folder) => (
-        <div key={folder.id} className={styles.folderButton}>
-          <Link
-            href={`${ROUTES.ARCHIVE}?folder=${folder.id}`}
-            className={styles.folderName}
-          >
-            {folder.name}
-          </Link>
-          <MenuDropdown
-            onEdit={() => console.log('수정')}
-            onDelete={() => console.log('삭제')}
-          />
-        </div>
+        <FolderItem key={folder.id} folder={folder} />
       ))}
-      {}
-      <Button className={styles.createFolderButton}>
+      <Button
+        className={styles.createFolderButton}
+        onClick={() => openModal('makeFolder')}
+      >
         <Icon icon="add" width={20} height={20} />
         <span>새 폴더 만들기</span>
       </Button>
