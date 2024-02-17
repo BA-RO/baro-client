@@ -104,7 +104,7 @@ const WriteInput = ({
                 &nbsp;/&nbsp;500자
               </span>
             )}
-            <button disabled={!isValid} onClick={onSubmit}>
+            <button type="button" disabled={!isValid} onClick={onSubmit}>
               <Icon
                 icon="submit"
                 width={48}
