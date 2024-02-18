@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 
 import Tabs from '@components/Tabs';
+import Tooltip from '@components/Tooltip';
 
 import * as styles from './style.css';
 
@@ -25,18 +26,28 @@ const MainPageTab = ({
     >
       <div className={styles.tab}>
         <Tabs.List>
-          <Tabs.Trigger
-            value="끄적이는"
-            icon={{ default: 'pencilDefault', active: 'pencilActive' }}
-          >
-            끄적이는
-          </Tabs.Trigger>
-          <Tabs.Trigger
-            value="참고하는"
-            icon={{ default: 'templateDefault', active: 'templateActive' }}
-          >
-            참고하는
-          </Tabs.Trigger>
+          <Tooltip hasArrow>
+            <Tooltip.Trigger>
+              <Tabs.Trigger
+                value="끄적이는"
+                icon={{ default: 'pencilDefault', active: 'pencilActive' }}
+              >
+                끄적이는
+              </Tabs.Trigger>
+            </Tooltip.Trigger>
+            <Tooltip.Content>문장을 끄적이고 검사해봐요</Tooltip.Content>
+          </Tooltip>
+          <Tooltip hasArrow>
+            <Tooltip.Trigger>
+              <Tabs.Trigger
+                value="참고하는"
+                icon={{ default: 'templateDefault', active: 'templateActive' }}
+              >
+                참고하는
+              </Tabs.Trigger>
+            </Tooltip.Trigger>
+            <Tooltip.Content>문장 템플릿을 찾아봐요</Tooltip.Content>
+          </Tooltip>
         </Tabs.List>
       </div>
 

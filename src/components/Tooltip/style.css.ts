@@ -55,7 +55,7 @@ export const content = recipe({
 });
 
 export const topArrow = style({
-  marginTop: '10px',
+  marginTop: '13px',
 
   '::before': {
     top: '-11.5px',
