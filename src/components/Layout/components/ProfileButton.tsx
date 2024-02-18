@@ -6,6 +6,7 @@ import { type MyProfile } from '@api/members/types';
 import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
 import { ROUTES } from '@constants/routes';
+import { STORAGE_KEY } from '@models/storage';
 
 import * as styles from '../style.css';
 
@@ -16,8 +17,8 @@ const ProfileButton = () => {
   const data = queryClient.getQueryData<MyProfile>(['my-profile']);
 
   const handleLogoutClick = () => {
-    localStorage.removeItem('accessToken');
-    Cookies.remove('refreshToken');
+    localStorage.removeItem(STORAGE_KEY.ACCESS_TOKEN);
+    Cookies.remove(STORAGE_KEY.REFRESH_TOKEN);
     router.push(ROUTES.LANDING);
   };
 

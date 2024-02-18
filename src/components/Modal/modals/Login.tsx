@@ -6,6 +6,7 @@ import Button from '@components/Button';
 import Icon from '@components/Icon';
 import ModalContainer from '@components/Modal/components/ModalContainer';
 import { ROUTES } from '@constants/routes';
+import { STORAGE_KEY } from '@models/storage';
 import useLogin from '@queries/useLogin';
 
 import * as styles from '../style.css';
@@ -47,7 +48,7 @@ const Login = () => {
     window.location.href = data.url;
   };
 
-  const recentLoginType = localStorage.getItem('recentLoginType');
+  const recentLoginType = localStorage.getItem(STORAGE_KEY.RECENT_LOGIN_TYPE);
 
   return (
     <ModalContainer type="login">

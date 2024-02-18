@@ -2,6 +2,7 @@ import { type PropsWithChildren, useEffect, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import { type HeaderType } from '@models/layout';
+import { STORAGE_KEY } from '@models/storage';
 import { COLORS } from '@styles/tokens';
 
 import Footer from './components/Footer';
@@ -23,7 +24,7 @@ const Layout = ({
   const [type, setType] = useState<HeaderType>('intro');
 
   useEffect(() => {
-    const accessToken = localStorage?.getItem('accessToken');
+    const accessToken = localStorage?.getItem(STORAGE_KEY.ACCESS_TOKEN);
     const headerType = accessToken ? 'normal' : 'intro';
     setType(headerType);
   }, []);

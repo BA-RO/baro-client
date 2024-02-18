@@ -3,6 +3,7 @@ import axios, { type AxiosRequestConfig } from 'axios';
 import Cookies from 'js-cookie';
 
 import { ROUTES } from '@constants/routes';
+import { STORAGE_KEY } from '@models/storage';
 import { saveToken } from '@utils/token';
 
 import { getRenewToken } from './auth';
@@ -22,7 +23,7 @@ interface BaroErrorType {
 }
 
 instance.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem(STORAGE_KEY.ACCESS_TOKEN);
   config.headers.Authorization = `Bearer ${accessToken}`;
   return config;
 });
@@ -48,7 +49,7 @@ instance.interceptors.response.use(
     const tokenRefreshCondition = ['JW01', 'JW02'];
 
     if (tokenRefreshCondition.includes(error.response.data.errorCode)) {
-      const prevRefreshToken = Cookies.get('refreshToken') as string;
+      const prevRefreshToken = Cookies.get(STORAGE_KEY.REFRESH_TOKEN) as string;
 
       const { accessToken, refreshToken } =
         (await getRenewToken(prevRefreshToken)) || {};
