@@ -2,6 +2,7 @@ import type { ChangeEvent, HTMLAttributes, KeyboardEvent } from 'react';
 import { useMemo, useRef, useState } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
+import Button from '@components/Button';
 import Icon from '@components/Icon';
 import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
 import type { UseInputReturn } from '@hooks/useInput';
@@ -104,14 +105,14 @@ const WriteInput = ({
                 &nbsp;/&nbsp;500자
               </span>
             )}
-            <button type="button" disabled={!isValid} onClick={onSubmit}>
+            <Button type="button" disabled={!isValid} onClick={onSubmit}>
               <Icon
                 icon="submit"
                 width={48}
                 height={48}
                 color={isValid ? COLORS['Blue/Default'] : undefined}
               />
-            </button>
+            </Button>
           </div>
         </div>
       </div>
