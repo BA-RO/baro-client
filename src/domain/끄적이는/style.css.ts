@@ -6,6 +6,7 @@ export const container = style({
   flexDirection: 'column',
   justifyContent: 'flex-end',
   marginBottom: '56px',
+  padding: '0 30px',
 });
 
 export const content = style({
@@ -18,7 +19,15 @@ export const content = style({
 
 export const inputWrapper = style({
   position: 'fixed',
+  left: '50%',
   bottom: '56px',
   width: '100%',
-  maxWidth: '1200px',
+  transform: 'translateX(-50%)',
+  maxWidth: '1140px',
+
+  '@media': {
+    'screen and (max-width: 1200px)': {
+      padding: '0 30px',
+    },
+  },
 });
