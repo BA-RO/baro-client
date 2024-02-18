@@ -60,12 +60,12 @@ const ModalRoot = ({
   return (
     <Portal id={PORTAL_ID.MODAL}>
       <div className={styles.dimmed} ref={dimmedRef} />
-      <div className={styles.modalStyle({ type })}>
+      <section className={styles.modalStyle({ type })}>
         <Button className={styles.closeButton} onClick={closeModal}>
           <Icon icon="close" width={closeIconSize} height={closeIconSize} />
         </Button>
         {children}
-      </div>
+      </section>
     </Portal>
   );
 };
