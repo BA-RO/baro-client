@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { getToken } from '@api/auth';
 import { type OAuthType } from '@api/auth/types';
+import Layout from '@components/Layout';
 import { ROUTES } from '@constants/routes';
 import { STORAGE_KEY } from '@models/storage';
 import { saveToken } from '@utils/token';
@@ -34,7 +35,7 @@ const Bridge = () => {
     })();
   }, [router.query, router]);
 
-  return <></>;
+  return <Layout />;
 };
 
 export default Bridge;
