@@ -22,8 +22,6 @@ const EditFolder = () => {
 
   const { mutateAsync } = useUpdateMemoFolder();
 
-  console.log(folderName);
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('');
     setValue(e.target.value);
