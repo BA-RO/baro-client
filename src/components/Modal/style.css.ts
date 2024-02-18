@@ -156,13 +156,31 @@ const loginButton = style([
   },
 ]);
 
-export const googleLogin = style([
-  loginButton,
+export const recentLoginMessage = style([
+  sprinkles({
+    typography: '11/Caption/Regular',
+  }),
   {
-    color: COLORS['Grey/800'],
-    backgroundColor: COLORS['Grey/100'],
+    marginTop: '-3px',
+    display: 'block',
   },
 ]);
+
+export const googleLogin = recipe({
+  base: [
+    loginButton,
+    {
+      color: COLORS['Grey/800'],
+      backgroundColor: COLORS['Grey/100'],
+    },
+  ],
+  variants: {
+    recent: {
+      true: { padding: '12.5px 40px' },
+      false: { padding: '20px 40px' },
+    },
+  },
+});
 
 export const googleIcon = style({
   display: 'inline-block',
@@ -170,13 +188,21 @@ export const googleIcon = style({
   marginRight: '9px',
 });
 
-export const naverLogin = style([
-  loginButton,
-  {
-    color: COLORS['Grey/White'],
-    backgroundColor: '#03c75a',
+export const naverLogin = recipe({
+  base: [
+    loginButton,
+    {
+      color: COLORS['Grey/White'],
+      backgroundColor: '#03c75a',
+    },
+  ],
+  variants: {
+    recent: {
+      true: { padding: '12.5px 40px' },
+      false: { padding: '20px 40px' },
+    },
   },
-]);
+});
 
 export const naverIcon = style({
   display: 'inline-block',
@@ -184,13 +210,21 @@ export const naverIcon = style({
   marginRight: '6px',
 });
 
-export const kakaoLogin = style([
-  loginButton,
-  {
-    color: COLORS['Grey/800'],
-    backgroundColor: '#fee502',
+export const kakaoLogin = recipe({
+  base: [
+    loginButton,
+    {
+      color: COLORS['Grey/800'],
+      backgroundColor: '#fee502',
+    },
+  ],
+  variants: {
+    recent: {
+      true: { padding: '12.5px 40px' },
+      false: { padding: '20px 40px' },
+    },
   },
-]);
+});
 
 export const kakaoIcon = style({
   display: 'inline-block',

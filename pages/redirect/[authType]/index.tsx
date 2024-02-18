@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getToken } from '@api/auth';
 import { type OAuthType } from '@api/auth/types';
 import { ROUTES } from '@constants/routes';
+import { STORAGE_KEY } from '@models/storage';
 import { saveToken } from '@utils/token';
 
 const Bridge = () => {
@@ -27,6 +28,7 @@ const Bridge = () => {
       }
 
       saveToken({ accessToken, refreshToken });
+      localStorage.setItem(STORAGE_KEY.RECENT_LOGIN_TYPE, authType);
 
       router.replace(ROUTES.MAIN);
     })();

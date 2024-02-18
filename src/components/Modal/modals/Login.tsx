@@ -6,9 +6,37 @@ import Button from '@components/Button';
 import Icon from '@components/Icon';
 import ModalContainer from '@components/Modal/components/ModalContainer';
 import { ROUTES } from '@constants/routes';
+import { STORAGE_KEY } from '@models/storage';
 import useLogin from '@queries/useLogin';
 
 import * as styles from '../style.css';
+
+const buttons = [
+  {
+    type: 'google',
+    name: '구글',
+    wrapperClassName: styles.googleLogin,
+    iconClassName: styles.googleIcon,
+    iconWidth: 18,
+    iconHeight: 18,
+  },
+  {
+    type: 'naver',
+    name: '네이버',
+    wrapperClassName: styles.naverLogin,
+    iconClassName: styles.naverIcon,
+    iconWidth: 15,
+    iconHeight: 14,
+  },
+  {
+    type: 'kakao',
+    name: '카카오',
+    wrapperClassName: styles.kakaoLogin,
+    iconClassName: styles.kakaoIcon,
+    iconWidth: 19,
+    iconHeight: 18,
+  },
+] as const;
 
 const Login = () => {
   const { mutateAsync } = useLogin();
@@ -19,6 +47,8 @@ const Login = () => {
     if (!data.url) return;
     window.location.href = data.url;
   };
+
+  const recentLoginType = localStorage.getItem(STORAGE_KEY.RECENT_LOGIN_TYPE);
 
   return (
     <ModalContainer type="login">
@@ -34,33 +64,32 @@ const Login = () => {
         </span>
       </div>
       <div className={styles.loginButtonsWrapper}>
-        <Button
-          className={styles.googleLogin}
-          onClick={handleSocialLoginClick('google')}
-        >
-          <div className={styles.googleIcon}>
-            <Icon icon="google" width={18} height={18} />
-          </div>
-          구글로 로그인하기
-        </Button>
-        <Button
-          className={styles.naverLogin}
-          onClick={handleSocialLoginClick('naver')}
-        >
-          <div className={styles.naverIcon}>
-            <Icon icon="naver" width={15} height={14} />
-          </div>
-          네이버로 로그인하기
-        </Button>
-        <Button
-          className={styles.kakaoLogin}
-          onClick={handleSocialLoginClick('kakao')}
-        >
-          <div className={styles.kakaoIcon}>
-            <Icon icon="kakao" width={19} height={18} />
-          </div>
-          카카오로 로그인하기
-        </Button>
+        {buttons.map(
+          ({
+            type,
+            name,
+            wrapperClassName,
+            iconClassName,
+            iconWidth,
+            iconHeight,
+          }) => (
+            <Button
+              key={type}
+              className={wrapperClassName({ recent: recentLoginType === type })}
+              onClick={handleSocialLoginClick(type)}
+            >
+              <div className={iconClassName}>
+                <Icon icon={type} width={iconWidth} height={iconHeight} />
+              </div>
+              {name}로 로그인하기
+              {recentLoginType === type && (
+                <span className={styles.recentLoginMessage}>
+                  마지막으로 로그인했어요!
+                </span>
+              )}
+            </Button>
+          ),
+        )}
       </div>
       <div className={styles.agreeDescription}>
         로그인은&nbsp;
