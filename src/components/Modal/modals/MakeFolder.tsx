@@ -19,7 +19,7 @@ const MakeFolder = () => {
   const [value, setValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { mutateAsync } = usePostMemoFolders();
+  const { mutate } = usePostMemoFolders();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('');
@@ -29,9 +29,9 @@ const MakeFolder = () => {
   const handle만들기Click = async () => {
     if (value.length > 10) return setErrorMessage('10자 내로 입력해주세요!');
 
-    await mutateAsync(value, {
-      onSuccess: async () => {
-        await queryClient.invalidateQueries({
+    mutate(value, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({
           queryKey: ['memo-folders'],
         });
         closeModal();
