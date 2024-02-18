@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import DeleteFolderModal from '@domain/저장하는/components/DeleteFolderModal';
 import { useModalStore } from '@stores/modal';
 
@@ -8,6 +10,16 @@ import MakeFolder from './modals/MakeFolder';
 
 const Modal = () => {
   const { type } = useModalStore();
+
+  useEffect(() => {
+    if (!type) return;
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, [type]);
 
   if (type === 'deleteArticle') return <DeleteArticle />;
 
