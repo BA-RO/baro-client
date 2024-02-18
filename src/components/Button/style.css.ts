@@ -4,6 +4,9 @@ import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
 export const button = recipe({
+  base: {
+    whiteSpace: 'nowrap',
+  },
   variants: {
     state: {
       default: {
@@ -24,7 +27,7 @@ export const button = recipe({
       M: [
         sprinkles({ typography: '15/Title/Medium' }),
         {
-          padding: '15px 24px',
+          padding: '15px 20px',
           borderRadius: '8px',
         },
       ],

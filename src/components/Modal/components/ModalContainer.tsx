@@ -8,17 +8,18 @@ import { useModalStore } from '@stores/modal';
 
 import Portal from '../../Portal';
 import * as styles from '../style.css';
+import { ModalBody, ModalFooter, ModalHeader } from './ModalLayout';
 
 type ModalSizeType = 'login' | 'common';
 
-interface ModalContainerProps {
+interface ModalRootProps {
   type?: ModalSizeType;
 }
 
-const ModalContainer = ({
+const ModalRoot = ({
   children,
   type = 'common',
-}: PropsWithChildren<ModalContainerProps>) => {
+}: PropsWithChildren<ModalRootProps>) => {
   const dimmedRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
@@ -59,14 +60,20 @@ const ModalContainer = ({
   return (
     <Portal id={PORTAL_ID.MODAL}>
       <div className={styles.dimmed} ref={dimmedRef} />
-      <div className={styles.modalStyle({ type })}>
+      <section className={styles.modalStyle({ type })}>
         <Button className={styles.closeButton} onClick={closeModal}>
           <Icon icon="close" width={closeIconSize} height={closeIconSize} />
         </Button>
         {children}
-      </div>
+      </section>
     </Portal>
   );
 };
+
+const ModalContainer = Object.assign(ModalRoot, {
+  Header: ModalHeader,
+  Body: ModalBody,
+  Footer: ModalFooter,
+});
 
 export default ModalContainer;

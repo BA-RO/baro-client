@@ -26,7 +26,7 @@ export const menuList = recipe({
     borderRadius: '12px',
     boxShadow: '0px 8px 15px 0px rgba(28, 28, 28, 0.08)',
     backgroundColor: COLORS['Grey/White'],
-    zIndex: 100,
+    zIndex: 50,
   },
   variants: {
     size: {

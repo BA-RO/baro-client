@@ -3,13 +3,16 @@ import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
-import { middleLayer, positionCenter, topLayer } from '@styles/utils.css';
+import { fullScreen, middleLayer, topLayer } from '@styles/utils.css';
 
 export const modalStyle = recipe({
   base: [
-    positionCenter,
     topLayer,
     {
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
       borderRadius: '16px',
       backgroundColor: COLORS['Grey/White'],
     },
@@ -29,14 +32,13 @@ export const modalStyle = recipe({
 });
 
 export const dimmed = style([
+  fullScreen,
   middleLayer,
   {
     backgroundColor: COLORS['Dim/50'],
     position: 'fixed',
-    left: '0',
-    top: '0',
-    right: '0',
-    bottom: '0',
+    left: 0,
+    top: 0,
   },
 ]);
 
@@ -263,3 +265,19 @@ export const errorIcon = style({
   verticalAlign: '-5px',
   marginRight: '6px',
 });
+
+export const modalHeader = style([
+  sprinkles({ typography: '20/Title/Semibold' }),
+  {
+    marginBottom: '18px',
+    color: COLORS['Grey/900'],
+  },
+]);
+
+export const modalBody = style([
+  sprinkles({ typography: '15/Body/Regular' }),
+  {
+    marginBottom: '24px',
+    color: COLORS['Grey/700'],
+  },
+]);
