@@ -20,7 +20,7 @@ const EditFolder = () => {
   const [value, setValue] = useState(folderName);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { mutateAsync } = useUpdateMemoFolder();
+  const { mutate } = useUpdateMemoFolder();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('');
@@ -30,11 +30,11 @@ const EditFolder = () => {
   const handleFolderNameEdit = async () => {
     if (value.length > 10) return setErrorMessage('10자 내로 입력해주세요!');
 
-    await mutateAsync(
+    mutate(
       { memoFolderId, folderName: value },
       {
-        onSuccess: async () => {
-          await queryClient.invalidateQueries({
+        onSuccess: () => {
+          queryClient.invalidateQueries({
             queryKey: ['memo-folders'],
           });
           closeModal();
