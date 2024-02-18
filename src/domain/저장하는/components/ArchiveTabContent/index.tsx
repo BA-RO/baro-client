@@ -1,12 +1,10 @@
-import Column from '@components/Column';
 import Spinner from '@components/Loading/Spinner';
+import Responsive from '@components/Responsive';
 import Tabs from '@components/Tabs';
 import { useGetArchives } from '@domain/저장하는/queries/useGetArchives';
-import parserColumn from '@utils/parserColumn';
 
 import ArchivedCard from '../ArchivedCard';
 import NotFoundArchiveCard from '../NotFoundArchiveCard';
-import * as styles from './style.css';
 
 interface ArchiveTabContentProps {
   selectedTab: string;
@@ -28,19 +26,17 @@ const ArchiveTabContent = ({
   }
 
   return (
-    <Tabs.Content value={selectedTab} className={styles.tabContent}>
+    <Tabs.Content value={selectedTab}>
       {archiveCards.length ? (
-        parserColumn(archiveCards).map((archives, index) => (
-          <Column key={index}>
-            {archives.map((archive) => (
-              <ArchivedCard
-                key={archive.archiveId}
-                folderId={folderId}
-                card={archive}
-              />
-            ))}
-          </Column>
-        ))
+        <Responsive columnsCountBreakPoints={{ 0: 1, 768: 2, 1080: 3 }}>
+          {archiveCards.map((archive) => (
+            <ArchivedCard
+              key={archive.archiveId}
+              folderId={folderId}
+              card={archive}
+            />
+          ))}
+        </Responsive>
       ) : (
         <NotFoundArchiveCard />
       )}

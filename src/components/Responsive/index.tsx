@@ -1,16 +1,23 @@
 import { type PropsWithChildren } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
+import * as styles from './style.css';
+
 interface ResponsiveProps {
   className?: string;
+  columnsCountBreakPoints?: Record<number, number>;
 }
 const Responsive = ({
   children,
   className,
+  columnsCountBreakPoints = { 768: 2, 1080: 3 },
 }: PropsWithChildren<ResponsiveProps>) => {
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 1080: 3 }}>
-      <Masonry className={className} gutter="16px">
+    <ResponsiveMasonry
+      className={className}
+      columnsCountBreakPoints={columnsCountBreakPoints}
+    >
+      <Masonry className={styles.responsive} gutter="16px">
         {children}
       </Masonry>
     </ResponsiveMasonry>
