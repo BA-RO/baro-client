@@ -34,8 +34,3 @@ export const dateLabelText = style({
   lineHeight: '24px',
   letterSpacing: '-0.2px',
 });
-
-export const contentWrapper = style({
-  display: 'flex',
-  gap: '16px',
-});

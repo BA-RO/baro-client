@@ -27,7 +27,7 @@ export const iconMediumText = style([
   }),
   {
     color: COLORS['Grey/400'],
-    marginLeft: '28px',
+    marginLeft: '4px',
   },
 ]);
 
@@ -40,12 +40,5 @@ export const hover = style({
   transition: 'fill 100ms ease-in-out',
   ':hover': {
     fill: COLORS['Grey/600'],
-  },
-});
-
-export const hoverBlue = style({
-  transition: 'fill 100ms ease-in-out',
-  ':hover': {
-    fill: COLORS['Blue/Default'],
   },
 });

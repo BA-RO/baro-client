@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { type Folder } from '@api/memoFolder/types';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
@@ -8,6 +9,8 @@ import { useModalStore } from '@stores/modal';
 import * as styles from './style.css';
 
 const FolderItem = ({ folder }: { folder: Folder }) => {
+  const router = useRouter();
+
   const { openModal, setMemoFolderId, setFolderName } = useModalStore();
 
   const handleEditFolderButtonClick = () => {
@@ -22,7 +25,12 @@ const FolderItem = ({ folder }: { folder: Folder }) => {
   };
 
   return (
-    <div key={folder.id} className={styles.folderButton}>
+    <div
+      key={folder.id}
+      className={styles.folderButton({
+        isActive: router.asPath === `${ROUTES.ARCHIVE}?folder=${folder.id}`,
+      })}
+    >
       <Link
         href={`${ROUTES.ARCHIVE}?folder=${folder.id}`}
         className={styles.folderName}

@@ -8,6 +8,7 @@ export const notice = style([
   utils.flexAlignCenter,
   sprinkles({ typography: '13/Title/Semibold' }),
   {
+    marginTop: '16px',
     color: COLORS['Blue/Dark'],
     gap: '4px',
   },

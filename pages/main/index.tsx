@@ -11,6 +11,7 @@ import useGetWriteHistory from '@domain/끄적이는/queries/useGetHistory';
 import * as styles from '@domain/끄적이는/style.css';
 import 참고하는TabContent from '@domain/참고하는/components';
 import { useInput } from '@hooks/useInput';
+import useGetMemoFolders from '@queries/useGetMemoFolders';
 import useGetMyProfile from '@queries/useGetMyProfile';
 import { COLORS } from '@styles/tokens';
 
@@ -20,11 +21,16 @@ const MainPage = () => {
   const writeInput = useInput({ id: 'write-input' });
   const { todayMemos, history } = useGetWriteHistory();
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
+  const { data: memoFolders } = useGetMemoFolders();
 
   const [selectedTab, setSelectedTab] = useState('끄적이는');
 
   const handleTabSelect = (selectedTab: string) => {
     setSelectedTab(selectedTab);
+  };
+
+  const handleSubmit = () => {
+    submitTemporalMemo(writeInput.value);
   };
 
   const backgroundColor =
@@ -37,13 +43,16 @@ const MainPage = () => {
           <div className={styles.container}>
             <div className={styles.content}>
               <WriteGuide />
-              <TemporalMemoHistoryTable data={history} />
-              <TodayTemoralMemos memos={todayMemos[0]?.temporalMemos} />
+              <TemporalMemoHistoryTable
+                data={history}
+                memoFolders={memoFolders}
+              />
+              <TodayTemoralMemos
+                memos={todayMemos[0]?.temporalMemos}
+                memoFolders={memoFolders}
+              />
               <div className={styles.inputWrapper}>
-                <WriteInput
-                  inputProps={writeInput}
-                  onSubmit={() => submitTemporalMemo(writeInput.value)}
-                />
+                <WriteInput inputProps={writeInput} onSubmit={handleSubmit} />
               </div>
             </div>
           </div>

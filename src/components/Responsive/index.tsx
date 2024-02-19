@@ -10,7 +10,7 @@ interface ResponsiveProps {
 const Responsive = ({
   children,
   className,
-  columnsCountBreakPoints = { 768: 2, 1080: 3 },
+  columnsCountBreakPoints = { 0: 1, 768: 2, 1080: 3 },
 }: PropsWithChildren<ResponsiveProps>) => {
   return (
     <ResponsiveMasonry

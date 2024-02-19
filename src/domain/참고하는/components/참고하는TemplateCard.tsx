@@ -4,6 +4,7 @@ import { type Folder } from '@api/memoFolder/types';
 import Badge from '@components/Badge';
 import Button from '@components/Button';
 import Card from '@components/Card';
+import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
 import * as styles from '@domain/참고하는/components/참고하는TemplateCard.css';
@@ -14,7 +15,8 @@ import { useToastStore } from '@stores/toast';
 import { COLORS } from '@styles/tokens';
 
 import useCopyTemplate from '../queries/useCopyTemplate';
-import FolderDialog from './FolderDialog';
+import useDeleteTemplate from '../queries/useDeleteTemplate';
+import useSaveTemplate from '../queries/useSaveTemplate';
 
 interface 참고하는TemplateCardProps {
   data: ReferContent;
@@ -36,8 +38,11 @@ const 참고하는TemplateCard = ({
   } = data;
 
   const { showToast } = useToastStore();
+
   const queryClient = useQueryClient();
   const { mutateAsync: copyTemplate } = useCopyTemplate();
+  const { mutate: saveTemplate } = useSaveTemplate();
+  const { mutate: deleteTemplate } = useDeleteTemplate();
 
   const categoryNameKr = CATEGORY[category];
 
@@ -56,6 +61,14 @@ const 참고하는TemplateCard = ({
     });
   };
 
+  const handleFolderClick = (memoFolderId: Folder['id']) => {
+    saveTemplate({ templateId, memoFolderId });
+  };
+
+  const handleUnsave = () => {
+    deleteTemplate(templateId);
+  };
+
   return (
     <Card className={styles.wrapper}>
       <Card.Menu>
@@ -66,10 +79,11 @@ const 참고하는TemplateCard = ({
             color={COLORS['Grey/300']}
           />
         </Button>
-        <FolderDialog
-          templateId={templateId}
+        <FolderDropdown
           isArchived={isArchived}
           memoFolders={memoFolders}
+          onClickFolder={handleFolderClick}
+          onClickBookmark={handleUnsave}
         />
       </Card.Menu>
       <Card.Header>

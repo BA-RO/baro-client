@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
@@ -13,16 +14,27 @@ export const folder = style({
   whiteSpace: 'nowrap',
 });
 
-export const userFolder = style([
-  sprinkles({ typography: '16/Title/Bold' }),
-  utils.flexAlignCenter,
-  {
-    gap: '5px',
-    padding: '8px 20px',
-    borderRadius: '8px',
-    backgroundColor: COLORS['Grey/100'],
+export const userFolder = recipe({
+  base: [
+    sprinkles({ typography: '16/Title/Bold' }),
+    utils.flexAlignCenter,
+    {
+      gap: '5px',
+      padding: '8px 20px',
+      borderRadius: '8px',
+    },
+  ],
+  variants: {
+    isActive: {
+      true: {
+        backgroundColor: COLORS['Grey/100'],
+      },
+      false: {
+        backgroundColor: COLORS['Grey/White'],
+      },
+    },
   },
-]);
+});
 
 export const tag = style([
   sprinkles({ typography: '11/Caption/Medium' }),

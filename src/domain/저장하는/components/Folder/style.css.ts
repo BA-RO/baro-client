@@ -1,18 +1,38 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { sprinkles } from '@styles/sprinkles.css';
+import { COLORS } from '@styles/tokens';
 import * as utils from '@styles/utils.css';
 
-export const folderButton = style([
-  sprinkles({ typography: '16/Title/Medium' }),
-  utils.flexAlignCenter,
-  {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '8px 12px 8px 20px',
+export const folderButton = recipe({
+  base: [
+    sprinkles({ typography: '16/Title/Medium' }),
+    utils.flexAlignCenter,
+    {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'space-between',
+      padding: '8px 12px 8px 20px',
+      borderRadius: '8px',
+      transition: 'all 100ms ease-in-out',
+
+      ':hover': {
+        backgroundColor: COLORS['Grey/100'],
+      },
+    },
+  ],
+  variants: {
+    isActive: {
+      true: {
+        backgroundColor: COLORS['Grey/100'],
+      },
+      false: {
+        backgroundColor: COLORS['Grey/White'],
+      },
+    },
   },
-]);
+});
 
 export const folderName = style({
   display: 'inline-block',

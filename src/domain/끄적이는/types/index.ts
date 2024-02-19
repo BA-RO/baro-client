@@ -1,7 +1,7 @@
 export interface TemporalMemo {
   id: number;
   content: string;
-  correctionContent: string | null;
+  correctionContent?: string;
   isCorrected: boolean;
   isArchived: boolean;
   createdAt: string;

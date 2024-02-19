@@ -28,7 +28,7 @@ const ArchiveTabContent = ({
   return (
     <Tabs.Content value={selectedTab}>
       {archiveCards.length ? (
-        <Responsive columnsCountBreakPoints={{ 0: 1, 768: 2, 1080: 3 }}>
+        <Responsive>
           {archiveCards.map((archive) => (
             <ArchivedCard
               key={archive.archiveId}

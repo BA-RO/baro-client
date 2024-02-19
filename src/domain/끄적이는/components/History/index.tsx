@@ -3,36 +3,23 @@ import dayjs from 'dayjs';
 
 import 'dayjs/locale/ko';
 
+import { type Folder } from '@api/memoFolder/types';
 import Icon from '@components/Icon';
+import Responsive from '@components/Responsive';
 
-import { type TemporalMemo, type TemporalMemoHistory } from '../../types';
-import Column from './Column';
+import { type TemporalMemoHistory } from '../../types';
+import WriteHistoryCard from '../Card/History';
 import * as styles from './index.css';
 
 interface TemporalMemoHistoryTableProps {
   data: TemporalMemoHistory[];
+  memoFolders: Folder[];
 }
 
-const parser = (arr: TemporalMemo[]): TemporalMemo[][] => {
-  let queue1: TemporalMemo[] = [];
-  let queue2: TemporalMemo[] = [];
-  let queue3: TemporalMemo[] = [];
-
-  arr.forEach((history, i) => {
-    const extra = i % 3;
-    if (extra === 0) {
-      queue1.push(history);
-    } else if (extra === 1) {
-      queue2.push(history);
-    } else {
-      queue3.push(history);
-    }
-  });
-
-  return [queue1, queue2, queue3];
-};
-
-const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
+const TemporalMemoHistoryTable = ({
+  data,
+  memoFolders,
+}: TemporalMemoHistoryTableProps) => {
   const [editModeCardId, setEditModeCardId] = useState<number | null>(null);
 
   return (
@@ -50,22 +37,18 @@ const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
                 </span>
               </div>
             </div>
-
-            <section className={styles.contentWrapper}>
-              {parser(temporalMemos).map((list, i) => {
-                return (
-                  <Column
-                    key={i}
-                    list={list}
-                    editModeCardId={editModeCardId}
-                    onEditClick={(id: number) => {
-                      setEditModeCardId(id);
-                    }}
-                    resetEditModeCardId={() => setEditModeCardId(null)}
-                  />
-                );
-              })}
-            </section>
+            <Responsive>
+              {temporalMemos.map((temporalMemo) => (
+                <WriteHistoryCard
+                  key={temporalMemo.id}
+                  {...temporalMemo}
+                  memoFolders={memoFolders}
+                  isEditMode={editModeCardId === temporalMemo.id}
+                  onEditClick={() => setEditModeCardId(temporalMemo.id)}
+                  onEditCompleteClick={() => setEditModeCardId(null)}
+                />
+              ))}
+            </Responsive>
           </section>
         );
       })}
