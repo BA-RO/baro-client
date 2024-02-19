@@ -12,23 +12,15 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
         <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/images/apple-touch-icon.png"
+          rel="icon"
+          href="/favicon-light.ico"
+          media="(prefers-color-scheme: light)"
         />
         <link
           rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/images/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/images/favicon-16x16.png"
+          href="/favicon-dark.ico"
+          media="(prefers-color-scheme: dark)"
         />
         <meta name="description" content="baro 설명" />
         <meta name="keyword" content="baro 바로" />
