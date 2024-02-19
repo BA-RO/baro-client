@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
       <Head>
-        <link rel="shortcut icon" href="/images/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -31,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           href="/images/favicon-16x16.png"
         />
         <meta name="description" content="baro 설명" />
-        <meta name="keyword" content="baro" />
+        <meta name="keyword" content="baro 바로" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://ba-ro.co.kr" />
         <meta property="og:title" content="바로 잡아 바로 쓰는, 바로" />
