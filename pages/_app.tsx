@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import 'react-notion-x/src/styles.css';
 import '@styles/global.css';
-import '../public/opengraph-image.png';
 
 import Modal from '@components/Modal';
 import TanstackQueryProvider from '@components/Providers/TanstackQueryProvider';
