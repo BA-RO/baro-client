@@ -43,6 +43,10 @@ globalStyle('ol, ul', {
   listStyle: 'none',
 });
 
+globalStyle('li', {
+  listStyle: 'none',
+});
+
 globalStyle('button, select, input, textarea', {
   border: 0,
   outline: 0,

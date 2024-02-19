@@ -1,9 +1,12 @@
 import dayjs from 'dayjs';
 
+import { type Folder } from '@api/memoFolder/types';
+import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
+import useSaveTemporalMemo from '@domain/끄적이는/mutations/useSaveTemporalMemo';
 import { type TemporalMemo } from '@domain/끄적이는/types';
 import { useInput } from '@hooks/useInput';
 import { useToastStore } from '@stores/toast';
@@ -14,6 +17,7 @@ import * as styles from './style.css';
 
 interface WriteHistoryCardProps extends TemporalMemo {
   isEditMode: boolean;
+  memoFolders: Folder[];
   onEditClick: VoidFunction;
   onEditCompleteClick: VoidFunction;
 }
@@ -22,13 +26,18 @@ const WriteHistoryCard = ({
   id,
   createdAt,
   content,
+  isArchived,
   isEditMode,
+  memoFolders,
   onEditClick,
   onEditCompleteClick,
 }: WriteHistoryCardProps) => {
   const { showToast } = useToastStore();
+
   const { mutate: updateTemporalMemo } = useEditTemporalMemo();
   const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
+  const { mutate: saveTemporalMemo } = useSaveTemporalMemo();
+
   const editedInputProps = useInput({
     id: 'edit-input',
     defaultValue: content,
@@ -46,6 +55,12 @@ const WriteHistoryCard = ({
     updateTemporalMemo({ id: id, content: editedInputProps.value });
     setTimeout(() => onEditCompleteClick(), 0);
   };
+
+  const handleFolderClick = (memoFolderId: Folder['id']) => {
+    saveTemporalMemo({ temporalMemoId: id, memoFolderId });
+  };
+
+  const handleBookmarkClick = () => {};
 
   if (isEditMode) {
     return (
@@ -82,13 +97,12 @@ const WriteHistoryCard = ({
               className={styles.icon}
             />
           </button>
-          <button>
-            <Icon
-              icon="bookmark"
-              color={COLORS['Grey/300']}
-              className={styles.icon}
-            />
-          </button>
+          <FolderDropdown
+            isArchived={isArchived}
+            memoFolders={memoFolders}
+            onClickFolder={handleFolderClick}
+            onClickBookmark={handleBookmarkClick}
+          />
           <MenuDropdown
             onEdit={onEditClick}
             onDelete={() => deleteTemporalMemo(id)}
