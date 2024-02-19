@@ -6,15 +6,16 @@ export const container = style({
   flexDirection: 'column',
   justifyContent: 'flex-end',
   marginBottom: '56px',
-  padding: '0 30px',
+  padding: '0 40px',
 });
 
 export const content = style({
   overflow: 'scroll',
+  paddingBottom: '48px',
+
   '::-webkit-scrollbar': {
     display: 'none',
   },
-  paddingBottom: '48px',
 });
 
 export const inputWrapper = style({
@@ -27,7 +28,7 @@ export const inputWrapper = style({
 
   '@media': {
     'screen and (max-width: 1200px)': {
-      padding: '0 30px',
+      padding: '0 40px',
     },
   },
 });

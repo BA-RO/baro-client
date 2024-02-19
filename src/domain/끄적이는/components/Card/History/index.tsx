@@ -1,6 +1,8 @@
 import dayjs from 'dayjs';
 
 import { type Folder } from '@api/memoFolder/types';
+import Button from '@components/Button';
+import Card from '@components/Card';
 import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
@@ -82,35 +84,27 @@ const WriteHistoryCard = ({
   }
 
   return (
-    <li className={styles.container}>
-      <div className={styles.header}>
-        <p className={styles.date}>
-          {dayjs(createdAt).locale('ko').format('a h:mm')}
-        </p>
-        <div className={styles.ctaWrapper}>
-          <button onClick={handleCopyClick}>
-            <Icon
-              icon={'copy'}
-              width={24}
-              height={24}
-              color={COLORS['Grey/300']}
-              className={styles.icon}
-            />
-          </button>
-          <FolderDropdown
-            isArchived={isArchived}
-            memoFolders={memoFolders}
-            onClickFolder={handleFolderClick}
-            onClickBookmark={handleBookmarkClick}
-          />
-          <MenuDropdown
-            onEdit={onEditClick}
-            onDelete={() => deleteTemporalMemo(id)}
-          />
-        </div>
-      </div>
-      <p className={styles.value}>{content}</p>
-    </li>
+    <Card color="grey">
+      <Card.Header>
+        {dayjs(createdAt).locale('ko').format('a h:mm')}
+      </Card.Header>
+      <Card.Menu>
+        <Button onClick={handleCopyClick}>
+          <Icon icon="copy" color={COLORS['Grey/300']} />
+        </Button>
+        <FolderDropdown
+          isArchived={isArchived}
+          memoFolders={memoFolders}
+          onClickFolder={handleFolderClick}
+          onClickBookmark={handleBookmarkClick}
+        />
+        <MenuDropdown
+          onEdit={onEditClick}
+          onDelete={() => deleteTemporalMemo(id)}
+        />
+      </Card.Menu>
+      <Card.Body>{content}</Card.Body>
+    </Card>
   );
 };
 
