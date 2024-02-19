@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import dayjs from 'dayjs';
 
+import { type Folder } from '@api/memoFolder/types';
 import { type SpellCheckResponse } from '@api/spell/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
+import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
+import useSaveTemporalMemo from '@domain/끄적이는/mutations/useSaveTemporalMemo';
+import { type TemporalMemo } from '@domain/끄적이는/types';
 import { useInput } from '@hooks/useInput';
 import usePostSpellCheck from '@queries/usePostSpellCheck';
 import { useToastStore } from '@stores/toast';
@@ -18,18 +22,16 @@ import SpellCheckCard from '../../Today/components/SpellCheckCard';
 import * as styles from './style.css';
 
 interface WriteTodayCardProps {
-  id: number;
-  createAt: string;
-  content: string;
+  memo: TemporalMemo;
+  memoFolders: Folder[];
   isEditMode: boolean;
   onEditClick: (id: number) => void;
   onEditCompleteClick: VoidFunction;
 }
 
 const WriteTodayCard = ({
-  id,
-  createAt,
-  content,
+  memo,
+  memoFolders,
   isEditMode,
   onEditClick,
   onEditCompleteClick,
@@ -37,10 +39,11 @@ const WriteTodayCard = ({
   const { showToast } = useToastStore();
   const { mutate: updateTemporalMemo } = useEditTemporalMemo();
   const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
+  const { mutate: saveTemporalMemo } = useSaveTemporalMemo();
 
   const editInputProps = useInput({
     id: 'edit-today-input',
-    defaultValue: content,
+    defaultValue: memo.content,
   });
 
   const [spellCheckResult, setSpellCheckResult] =
@@ -53,14 +56,14 @@ const WriteTodayCard = ({
 
   const handleSpellCheck = async () => {
     const spellCheckResult = await spellCheck({
-      sentence: content,
+      sentence: memo.content,
     });
 
     setSpellCheckResult(spellCheckResult);
   };
 
   const handleCopyClick = () => {
-    navigator.clipboard.writeText(content);
+    navigator.clipboard.writeText(memo.content);
     showToast({
       message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
     });
@@ -68,15 +71,19 @@ const WriteTodayCard = ({
 
   //TODO: 밸리데이션 추가
   const handleUpdate = () => {
-    updateTemporalMemo({ id: id, content: editInputProps.value });
+    updateTemporalMemo({ id: memo.id, content: editInputProps.value });
     setTimeout(() => onEditCompleteClick(), 0);
+  };
+
+  const handleFolderClick = (memoFolderId: Folder['id']) => {
+    saveTemporalMemo({ temporalMemoId: memo.id, memoFolderId });
   };
 
   if (isEditMode) {
     return (
       <Card color="blue">
         <Card.Header>
-          {dayjs(createAt).locale('ko').format('a h:mm')}
+          {dayjs(memo.createdAt).locale('ko').format('a h:mm')}
           <button className={styles.editCompleteBtn} onClick={handleUpdate}>
             완료
           </button>
@@ -98,18 +105,23 @@ const WriteTodayCard = ({
           <Button onClick={handleCopyClick}>
             <Icon icon="copy" className={styles.icon} />
           </Button>
-          <Button>
-            <Icon icon="bookmark" className={styles.icon} />
-          </Button>
+          <FolderDropdown
+            isArchived={memo.isArchived}
+            memoFolders={memoFolders}
+            onClickFolder={handleFolderClick}
+            onClickBookmark={() => {}}
+          />
           <MenuDropdown
-            onEdit={() => onEditClick(id)}
-            onDelete={() => deleteTemporalMemo(id)}
+            onEdit={() => onEditClick(memo.id)}
+            onDelete={() => deleteTemporalMemo(memo.id)}
           />
         </Card.Menu>
       )}
-      <Card.Header>{dayjs(createAt).locale('ko').format('a h:mm')}</Card.Header>
+      <Card.Header>
+        {dayjs(memo.createdAt).locale('ko').format('a h:mm')}
+      </Card.Header>
       <Card.Body>
-        <p>{content}</p>
+        <p>{memo.content}</p>
         {isPendingSpellCheck && (
           <div className={styles.skeletonCard}>
             <SkeletonContent ratios={[16]} />

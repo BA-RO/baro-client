@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { type Folder } from '@api/memoFolder/types';
 import Icon from '@components/Icon';
 
 import { type TemporalMemo } from '../../types';
@@ -8,9 +9,10 @@ import * as styles from './index.css';
 
 interface TodayTemoralMemosProps {
   memos: TemporalMemo[];
+  memoFolders: Folder[];
 }
 
-const TodayTemoralMemos = ({ memos }: TodayTemoralMemosProps) => {
+const TodayTemoralMemos = ({ memos, memoFolders }: TodayTemoralMemosProps) => {
   const [editModeCardId, setEditModeCardId] = useState<number | null>(null);
 
   if (!memos || memos.length === 0) {
@@ -29,9 +31,8 @@ const TodayTemoralMemos = ({ memos }: TodayTemoralMemosProps) => {
         {memos.map((memo) => (
           <WriteTodayCard
             key={memo.id}
-            id={memo.id}
-            createAt={memo.createdAt}
-            content={memo.content}
+            memo={memo}
+            memoFolders={memoFolders}
             isEditMode={editModeCardId === memo.id}
             onEditClick={(id: number) => setEditModeCardId(id)}
             onEditCompleteClick={() => setEditModeCardId(null)}

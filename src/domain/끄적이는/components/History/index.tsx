@@ -3,9 +3,9 @@ import dayjs from 'dayjs';
 
 import 'dayjs/locale/ko';
 
+import { type Folder } from '@api/memoFolder/types';
 import Icon from '@components/Icon';
 import Responsive from '@components/Responsive';
-import useGetMemoFolders from '@queries/useGetMemoFolders';
 
 import { type TemporalMemoHistory } from '../../types';
 import WriteHistoryCard from '../Card/History';
@@ -13,11 +13,13 @@ import * as styles from './index.css';
 
 interface TemporalMemoHistoryTableProps {
   data: TemporalMemoHistory[];
+  memoFolders: Folder[];
 }
 
-const TemporalMemoHistoryTable = ({ data }: TemporalMemoHistoryTableProps) => {
-  const { data: memoFolders } = useGetMemoFolders();
-
+const TemporalMemoHistoryTable = ({
+  data,
+  memoFolders,
+}: TemporalMemoHistoryTableProps) => {
   const [editModeCardId, setEditModeCardId] = useState<number | null>(null);
 
   return (
