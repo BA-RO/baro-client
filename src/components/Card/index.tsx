@@ -61,8 +61,11 @@ const CardHeader = ({ children }: PropsWithChildren) => {
   return <div className={styles.header}>{children}</div>;
 };
 
-const CardBody = ({ children }: PropsWithChildren) => {
-  return <div className={styles.body}>{children}</div>;
+const CardBody = ({
+  children,
+  className,
+}: PropsWithChildren<{ className?: string }>) => {
+  return <div className={clsx(styles.body, className)}>{children}</div>;
 };
 
 const CardFooter = ({ children }: PropsWithChildren) => {

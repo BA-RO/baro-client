@@ -1,7 +1,7 @@
-import Layout from '@components/Layout';
+import Landing from '@domain/landing';
 
 const Intro = () => {
-  return <Layout isFooter></Layout>;
+  return <Landing />;
 };
 
 export default Intro;
