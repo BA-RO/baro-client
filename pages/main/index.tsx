@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import WriteInput from '@components/Input/WriteInput';
 import Layout from '@components/Layout';
@@ -18,6 +18,7 @@ import { COLORS } from '@styles/tokens';
 const MainPage = () => {
   useGetMyProfile();
 
+  const writeContentRef = useRef<HTMLDivElement>(null);
   const writeInput = useInput({ id: 'write-input' });
   const { todayMemos, history } = useGetWriteHistory();
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
@@ -25,12 +26,25 @@ const MainPage = () => {
 
   const [selectedTab, setSelectedTab] = useState('끄적이는');
 
+  useEffect(() => {
+    handleScroll();
+  }, [todayMemos]);
+
+  const handleScroll = () => {
+    if (writeContentRef.current) {
+      writeContentRef.current.scrollTop = writeContentRef.current.scrollHeight;
+    }
+  };
+
   const handleTabSelect = (selectedTab: string) => {
     setSelectedTab(selectedTab);
   };
 
   const handleSubmit = () => {
     submitTemporalMemo(writeInput.value);
+    writeInput.reset();
+
+    handleScroll();
   };
 
   const backgroundColor =
@@ -41,7 +55,7 @@ const MainPage = () => {
       <MainPageTab
         write={
           <div className={styles.container}>
-            <div className={styles.content}>
+            <div ref={writeContentRef} className={styles.content}>
               <WriteGuide />
               <TemporalMemoHistoryTable
                 data={history}
