@@ -1,11 +1,19 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
+import Button from '@components/Button';
 import Icon from '@components/Icon';
 import { ROUTES } from '@constants/routes';
+import { useModalStore } from '@stores/modal';
 
 import * as styles from '../style.css';
 
 const Footer = () => {
+  const pathname = usePathname();
+  const { openModal } = useModalStore();
+
+  const handleLoginButtonClick = () => openModal('login');
+
   return (
     <footer className={styles.footerWrapper}>
       <div>
@@ -31,6 +39,14 @@ const Footer = () => {
           <span className={styles.instagramText}>인스타그램</span>
         </Link>
       </div>
+      {pathname === '/' && (
+        <Button
+          className={styles.footerStartButton}
+          onClick={handleLoginButtonClick}
+        >
+          바로 시작하기
+        </Button>
+      )}
       <div>
         <div className={styles.baroIcon}>
           <Icon icon="logo32" width={32} height={36} />

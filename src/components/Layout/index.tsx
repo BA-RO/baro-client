@@ -36,6 +36,7 @@ const Layout = ({
         className={styles.mainWrapper}
         style={assignInlineVars({
           [styles.backgroundColorMain]: backgroundColor,
+          [styles.footerPaddingBottom]: isFooter ? '144px' : '0px',
         })}
       >
         {children}
