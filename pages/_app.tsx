@@ -18,7 +18,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://ba-ro.co.kr" />
         <meta property="og:title" content="바로" />
-        <meta property="og:image" content="/opengraph-image.png" />
+        <meta
+          property="og:image"
+          content="https://image.ba-ro.co.kr/ba-ro.png"
+        />
         <meta property="og:description" content="바로 잡아 바로 쓰는, 바로" />
         <meta property="og:site_name" content="baro" />
         <title>바로 잡아 바로 쓰는, 바로</title>
