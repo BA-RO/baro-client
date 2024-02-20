@@ -30,6 +30,7 @@ const ArchiveFolder = ({ folders }: ArchiveFolderProps) => {
             href={`${ROUTES.ARCHIVE}?folder=${folder.id}`}
             className={styles.userFolder({
               isActive:
+                router.asPath === `${ROUTES.ARCHIVE}` ||
                 router.asPath === `${ROUTES.ARCHIVE}?folder=${folder.id}`,
             })}
           >

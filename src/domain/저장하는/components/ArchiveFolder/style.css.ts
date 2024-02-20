@@ -22,6 +22,11 @@ export const userFolder = recipe({
       gap: '5px',
       padding: '8px 20px',
       borderRadius: '8px',
+      transition: 'all 100ms ease-in-out',
+
+      ':hover': {
+        backgroundColor: COLORS['Grey/100'],
+      },
     },
   ],
   variants: {
