@@ -176,11 +176,14 @@ export const loginButton = style([
     color: COLORS['Grey/White'],
   },
 ]);
+
 export const backgroundColorMain = createVar();
+export const footerPaddingBottom = createVar();
 
 export const mainWrapper = style({
   backgroundColor: backgroundColorMain,
   paddingTop: '64px',
+  paddingBottom: footerPaddingBottom,
 });
 
 export const tab = style({
@@ -202,4 +205,16 @@ export const profileButton = style({
 export const tabWrapper = style({
   maxWidth: '1200px',
   margin: '0 auto',
+});
+
+export const footerStartButton = style({
+  color: COLORS['Grey/White'],
+  textAlign: 'center',
+  fontSize: '18px',
+  fontWeight: 700,
+  letterSpacing: '-0.3px',
+  padding: '20px 48px',
+  height: '62px',
+  borderRadius: '100px',
+  background: `var(--Blue-Gradient, ${COLORS['Blue/Gradient']})`,
 });

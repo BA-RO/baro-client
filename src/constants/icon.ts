@@ -23,6 +23,7 @@ import Instagram from '@assets/icons/instagram.svg';
 import Kakao from '@assets/icons/kakao.svg';
 import KakaoProfile from '@assets/icons/kakaoProfile.svg';
 import Logo32 from '@assets/icons/logo32.svg';
+import Logo235 from '@assets/icons/logo235.svg';
 import Logout from '@assets/icons/logout.svg';
 import Menu from '@assets/icons/menu.svg';
 import Naver from '@assets/icons/naver.svg';
@@ -35,7 +36,9 @@ import ProfileDialog from '@assets/icons/profileDialog.svg';
 import ProfileHeader from '@assets/icons/profileHeader.svg';
 import Regard from '@assets/icons/regard.svg';
 import Report from '@assets/icons/report.svg';
+import SadFace from '@assets/icons/sadFace.svg';
 import Setting from '@assets/icons/setting.svg';
+import SmileFace from '@assets/icons/smileFace.svg';
 import Spelling from '@assets/icons/spelling.svg';
 import Submit from '@assets/icons/submit.svg';
 import TemplateActive from '@assets/icons/template-active.svg';
@@ -68,6 +71,7 @@ export const iconFactory = {
   kakao: Kakao,
   kakaoProfile: KakaoProfile,
   logo32: Logo32,
+  logo235: Logo235,
   logout: Logout,
   menu: Menu,
   naver: Naver,
@@ -79,7 +83,9 @@ export const iconFactory = {
   profileHeader: ProfileHeader,
   regard: Regard,
   report: Report,
+  sadFace: SadFace,
   setting: Setting,
+  smileFace: SmileFace,
   spelling: Spelling,
   submit: Submit,
   templateActive: TemplateActive,
