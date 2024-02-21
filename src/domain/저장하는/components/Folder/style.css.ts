@@ -13,9 +13,9 @@ export const folderButton = recipe({
       width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
-      padding: '8px 12px 8px 20px',
       borderRadius: '8px',
       transition: 'all 100ms ease-in-out',
+      paddingRight: '8px',
 
       ':hover': {
         backgroundColor: COLORS['Grey/100'],
@@ -37,4 +37,5 @@ export const folderButton = recipe({
 export const folderName = style({
   display: 'inline-block',
   width: '100%',
+  padding: '11px 0 11px 20px',
 });
