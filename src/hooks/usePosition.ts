@@ -1,4 +1,4 @@
-import { type RefObject, useEffect, useRef, useState } from 'react';
+import { type RefObject, useLayoutEffect, useRef, useState } from 'react';
 
 const POSITION = { top: 0, left: 0 };
 
@@ -28,7 +28,7 @@ const usePosition = <
 
   const [position, setPosition] = useState(POSITION);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!triggerRef.current || !targetRef.current || !isOpen) {
       return;
     }
