@@ -22,8 +22,6 @@ export const menuList = recipe({
     position: 'absolute',
     top,
     left,
-    maxHeight: '136px',
-    overflowY: 'scroll',
     marginTop: '4px',
     borderRadius: '12px',
     boxShadow: '0px 8px 15px 0px rgba(28, 28, 28, 0.08)',
