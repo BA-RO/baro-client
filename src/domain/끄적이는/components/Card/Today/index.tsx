@@ -4,10 +4,10 @@ import dayjs from 'dayjs';
 import { type Folder } from '@api/memoFolder/types';
 import { type SpellCheckResponse } from '@api/spell/types';
 import Button from '@components/Button';
+import TooltipButton from '@components/Button/components/TooltipButton';
 import Card from '@components/Card';
 import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
-import Icon from '@components/Icon';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
@@ -84,9 +84,9 @@ const WriteTodayCard = ({
       <Card color="blue">
         <Card.Header>
           {dayjs(memo.createdAt).locale('ko').format('a h:mm')}
-          <button className={styles.editCompleteBtn} onClick={handleUpdate}>
+          <Button className={styles.editCompleteButton} onClick={handleUpdate}>
             완료
-          </button>
+          </Button>
         </Card.Header>
         <Card.Body>
           <EditInput inputProps={editInputProps} />
@@ -99,17 +99,16 @@ const WriteTodayCard = ({
     <Card color="blue">
       {!isSuccessSpellCheck && (
         <Card.Menu>
-          <Button onClick={handleSpellCheck}>
-            <Icon icon="spelling" className={styles.icon} />
-          </Button>
-          <Button onClick={handleCopyClick}>
-            <Icon icon="copy" className={styles.icon} />
-          </Button>
+          <TooltipButton
+            icon="spelling"
+            content="맞춤법 검사"
+            onClick={handleSpellCheck}
+          />
+          <TooltipButton icon="copy" content="복사" onClick={handleCopyClick} />
           <FolderDropdown
             isArchived={memo.isArchived}
             memoFolders={memoFolders}
             onClickFolder={handleFolderClick}
-            onClickBookmark={() => {}}
           />
           <MenuDropdown
             onEdit={() => onEditClick(memo.id)}
@@ -131,7 +130,12 @@ const WriteTodayCard = ({
           </div>
         )}
         {spellCheckResult && (
-          <SpellCheckCard spellCheckResult={spellCheckResult.result} />
+          <SpellCheckCard
+            spellCheckResult={spellCheckResult.result}
+            isArchived={memo.isArchived}
+            memoFolders={memoFolders}
+            onClickFolder={handleFolderClick}
+          />
         )}
       </Card.Body>
     </Card>

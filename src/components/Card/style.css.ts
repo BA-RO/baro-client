@@ -57,11 +57,11 @@ export const menu = style({
 export const header = style([
   sprinkles({ typography: '15/Title/Medium' }),
   {
+    position: 'relative',
     display: 'flex',
     gap: '8px',
     color: COLORS['Grey/400'],
     wordBreak: 'keep-all',
-    position: 'relative',
   },
 ]);
 

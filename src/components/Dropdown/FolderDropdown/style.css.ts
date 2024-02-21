@@ -35,10 +35,3 @@ export const icon = style({
   position: 'absolute',
   marginTop: '2px',
 });
-
-export const hover = style({
-  transition: 'fill 100ms ease-in-out',
-  ':hover': {
-    fill: COLORS['Grey/600'],
-  },
-});

@@ -2,17 +2,16 @@ import dayjs from 'dayjs';
 
 import { type Folder } from '@api/memoFolder/types';
 import Button from '@components/Button';
+import TooltipButton from '@components/Button/components/TooltipButton';
 import Card from '@components/Card';
 import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
-import Icon from '@components/Icon';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
 import useSaveTemporalMemo from '@domain/끄적이는/mutations/useSaveTemporalMemo';
 import { type TemporalMemo } from '@domain/끄적이는/types';
 import { useInput } from '@hooks/useInput';
 import { useToastStore } from '@stores/toast';
-import { COLORS } from '@styles/tokens';
 
 import EditInput from '../../EditInput';
 import * as styles from './style.css';
@@ -52,9 +51,8 @@ const WriteHistoryCard = ({
     });
   };
 
-  // TODO 밸리데이션 추가
   const handleEditCompleteClick = () => {
-    updateTemporalMemo({ id: id, content: editedInputProps.value });
+    updateTemporalMemo({ id, content: editedInputProps.value });
     setTimeout(() => onEditCompleteClick(), 0);
   };
 
@@ -62,24 +60,22 @@ const WriteHistoryCard = ({
     saveTemporalMemo({ temporalMemoId: id, memoFolderId });
   };
 
-  const handleBookmarkClick = () => {};
-
   if (isEditMode) {
     return (
-      <li className={styles.container}>
-        <div className={styles.header}>
-          <p className={styles.date}>
-            {dayjs(createdAt).locale('ko').format('a h:mm')}
-          </p>
-          <button
+      <Card color="grey">
+        <Card.Header>
+          {dayjs(createdAt).locale('ko').format('a h:mm')}
+          <Button
+            className={styles.editCompleteButton}
             onClick={handleEditCompleteClick}
-            className={styles.editCompleteBtn}
           >
             완료
-          </button>
-        </div>
-        <EditInput inputProps={editedInputProps} />
-      </li>
+          </Button>
+        </Card.Header>
+        <Card.Body>
+          <EditInput inputProps={editedInputProps} />
+        </Card.Body>
+      </Card>
     );
   }
 
@@ -89,14 +85,11 @@ const WriteHistoryCard = ({
         {dayjs(createdAt).locale('ko').format('a h:mm')}
       </Card.Header>
       <Card.Menu>
-        <Button onClick={handleCopyClick}>
-          <Icon icon="copy" color={COLORS['Grey/300']} />
-        </Button>
+        <TooltipButton icon="copy" content="복사" onClick={handleCopyClick} />
         <FolderDropdown
           isArchived={isArchived}
           memoFolders={memoFolders}
           onClickFolder={handleFolderClick}
-          onClickBookmark={handleBookmarkClick}
         />
         <MenuDropdown
           onEdit={onEditClick}
