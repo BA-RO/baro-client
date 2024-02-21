@@ -11,7 +11,6 @@ export const wrapper = style({
 export const trigger = style({
   width: 'fit-content',
   height: 'fit-content',
-  padding: '4px',
 });
 
 export const top = createVar();
@@ -47,7 +46,7 @@ export const content = recipe({
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
-          border: `6px solid ${COLORS['Grey/White']}`,
+          border: `6px solid transparent`,
         },
       },
     },
