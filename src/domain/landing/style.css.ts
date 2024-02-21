@@ -1,5 +1,6 @@
 import { keyframes, style } from '@vanilla-extract/css';
 
+import * as medias from '@styles/medias.css';
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
@@ -59,11 +60,15 @@ export const firstImageWrapper = style({
   backgroundColor: COLORS['Blue/Light'],
 });
 
-export const titleWrapper = style({
-  padding: '72px 152px 0',
-  display: 'flex',
-  justifyContent: 'space-between',
-});
+export const titleWrapper = style([
+  medias.large({ padding: '72px 60px 0' }),
+  medias.extraLarge({ padding: '72px 152px 0' }),
+  {
+    padding: '72px 60px 0',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+]);
 
 export const leftTitle = style({
   color: COLORS['Grey/700'],
@@ -122,4 +127,50 @@ export const cardBody = style({
   fontWeight: 400,
   lineHeight: '20.736px',
   letterSpacing: '-0.173px',
+  height: '146px',
+});
+
+const rotateGradient = keyframes({
+  to: {
+    transform: 'rotate(360deg)',
+  },
+});
+
+export const startButton = style({
+  color: COLORS['Grey/White'],
+  textAlign: 'center',
+  fontSize: '18px',
+  fontWeight: 700,
+  letterSpacing: '-0.3px',
+  height: '62px',
+  borderRadius: '100px',
+  position: 'fixed',
+  bottom: '40px',
+  width: '192px',
+  zIndex: 100,
+  left: '50%',
+  transform: 'translate(-50%, 0)',
+  overflow: 'hidden',
+
+  '::after': {
+    content: '',
+    display: 'block',
+    zIndex: '-1',
+    position: 'absolute',
+    top: '-65px',
+    right: 0,
+    bottom: '-65px',
+    left: 0,
+    backgroundImage: 'linear-gradient(#ffffff 0%, #297FFF 100%)',
+    animation: `${rotateGradient} linear 1s infinite`,
+  },
+});
+
+export const buttonText = style({
+  backgroundColor: COLORS['Blue/Default'],
+  margin: '0 auto',
+  borderRadius: '100px',
+  width: '188px',
+  height: '58px',
+  paddingTop: '17px',
 });
