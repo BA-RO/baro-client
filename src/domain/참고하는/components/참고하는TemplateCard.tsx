@@ -2,17 +2,15 @@ import { useQueryClient } from '@tanstack/react-query';
 
 import { type Folder } from '@api/memoFolder/types';
 import Badge from '@components/Badge';
-import Button from '@components/Button';
+import TooltipButton from '@components/Button/components/TooltipButton';
 import Card from '@components/Card';
 import FolderDropdown from '@components/Dropdown/FolderDropdown';
-import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
 import * as styles from '@domain/참고하는/components/참고하는TemplateCard.css';
 import { CATEGORY } from '@domain/참고하는/models';
 import { type ReferContent } from '@domain/참고하는/types';
 import { getNumToK } from '@domain/참고하는/utils';
 import { useToastStore } from '@stores/toast';
-import { COLORS } from '@styles/tokens';
 
 import useCopyTemplate from '../queries/useCopyTemplate';
 import useDeleteTemplate from '../queries/useDeleteTemplate';
@@ -72,13 +70,7 @@ const 참고하는TemplateCard = ({
   return (
     <Card className={styles.wrapper}>
       <Card.Menu>
-        <Button onClick={handleCopyClick}>
-          <Icon
-            icon="copy"
-            className={styles.hover}
-            color={COLORS['Grey/300']}
-          />
-        </Button>
+        <TooltipButton icon="copy" content="복사" onClick={handleCopyClick} />
         <FolderDropdown
           isArchived={isArchived}
           memoFolders={memoFolders}

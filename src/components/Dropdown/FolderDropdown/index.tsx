@@ -1,5 +1,5 @@
 import { type Folder } from '@api/memoFolder/types';
-import Button from '@components/Button';
+import TooltipButton from '@components/Button/components/TooltipButton';
 import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
 import useGetMyProfile from '@queries/useGetMyProfile';
@@ -12,7 +12,7 @@ interface FolderDropdownProps {
   isArchived: boolean;
   memoFolders: Folder[];
   onClickFolder: (id: Folder['id']) => void;
-  onClickBookmark: () => void;
+  onClickBookmark?: () => void;
 }
 
 const FolderDropdown = ({
@@ -27,20 +27,25 @@ const FolderDropdown = ({
 
   if (isArchived) {
     return (
-      <Button onClick={onClickBookmark}>
-        <Icon icon="bookmark" color={COLORS['Blue/Default']} />
-      </Button>
+      <>
+        {onClickBookmark ? (
+          <TooltipButton
+            isActive
+            icon="bookmark"
+            content="저장 해제"
+            onClick={onClickBookmark}
+          />
+        ) : (
+          <Icon icon="bookmark" color={COLORS['Blue/Default']} />
+        )}
+      </>
     );
   }
 
   return (
     <Dropdown size="medium" placement="bottom-center">
       <Dropdown.Trigger>
-        <Icon
-          icon="bookmark"
-          className={styles.hover}
-          color={COLORS['Grey/300']}
-        />
+        <TooltipButton icon="bookmark" content="저장" />
       </Dropdown.Trigger>
       <Dropdown.List>
         {memoFolders.map(({ id, name }) => (
@@ -65,3 +70,5 @@ const FolderDropdown = ({
 };
 
 export default FolderDropdown;
+
+export type FolderDropdownType = Parameters<typeof FolderDropdown>[0];

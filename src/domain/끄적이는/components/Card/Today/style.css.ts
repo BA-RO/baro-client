@@ -3,15 +3,6 @@ import { style } from '@vanilla-extract/css';
 import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
-export const icon = style({
-  transition: 'fill 100ms ease-in-out',
-  fill: COLORS['Grey/300'],
-
-  ':hover': {
-    fill: COLORS['Grey/900'],
-  },
-});
-
 export const skeletonCard = style({
   marginTop: '18px',
 });
@@ -23,12 +14,19 @@ export const skeletonSuggestion = style({
   backgroundColor: COLORS['Grey/White'],
 });
 
-export const editCompleteBtn = style([
-  sprinkles({ typography: '16/Body/Medium' }),
+export const editCompleteButton = style([
+  sprinkles({ typography: '13/Title/Semibold' }),
   {
-    position: 'absolute',
-    top: '-2px',
-    right: '0',
     color: COLORS['Grey/700'],
+    marginLeft: 'auto',
+    position: 'absolute',
+    top: '-6px',
+    right: 0,
+    padding: '6px 12px',
+    borderRadius: '6px',
+
+    ':hover': {
+      backgroundColor: COLORS['Grey/200'],
+    },
   },
 ]);

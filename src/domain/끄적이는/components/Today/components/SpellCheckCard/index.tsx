@@ -1,9 +1,12 @@
 import { type PropsWithChildren } from 'react';
 
 import { type SpellCheckResult } from '@api/spell/types';
-import Button from '@components/Button';
-import Icon from '@components/Icon';
+import TooltipButton from '@components/Button/components/TooltipButton';
+import FolderDropdown, {
+  type FolderDropdownType,
+} from '@components/Dropdown/FolderDropdown';
 import { type SPELLCHECK_TYPE } from '@constants/spellCheck';
+import { useToastStore } from '@stores/toast';
 
 import SpellCheckNotice from '../SpellCheckNotice';
 import SpellTypeBox from '../SpellTypeBox';
@@ -40,7 +43,7 @@ interface StyledSuggestionProps {
   type: keyof typeof SPELLCHECK_TYPE;
 }
 
-interface SpellCheckCardProps {
+interface SpellCheckCardProps extends FolderDropdownType {
   spellCheckResult: SpellCheckResult;
 }
 
@@ -51,7 +54,21 @@ const StyledSuggestion = ({
   return <span className={styles[type]}>{children}</span>;
 };
 
-const SpellCheckCard = ({ spellCheckResult }: SpellCheckCardProps) => {
+const SpellCheckCard = ({
+  spellCheckResult,
+  isArchived,
+  memoFolders,
+  onClickFolder,
+}: SpellCheckCardProps) => {
+  const { showToast } = useToastStore();
+
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(spellCheckResult.correction);
+    showToast({
+      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
+    });
+  };
+
   return (
     <>
       {spellCheckResult.suggestions.length > 0 ? (
@@ -65,15 +82,16 @@ const SpellCheckCard = ({ spellCheckResult }: SpellCheckCardProps) => {
               <SpellTypeBox />
             </div>
             <div className={styles.buttonGroup}>
-              <Button>
-                <Icon icon="copy" className={styles.icon} />
-              </Button>
-              <Button>
-                <Icon icon="bookmark" className={styles.icon} />
-              </Button>
-              <Button>
-                <Icon icon="menu" className={styles.icon} />
-              </Button>
+              <TooltipButton
+                icon="copy"
+                content="복사"
+                onClick={handleCopyClick}
+              />
+              <FolderDropdown
+                isArchived={isArchived}
+                memoFolders={memoFolders}
+                onClickFolder={onClickFolder}
+              />
             </div>
           </div>
         </div>

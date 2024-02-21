@@ -45,15 +45,20 @@ export const editTextCurrentCount = style({
   fontWeight: '700',
 });
 
-export const editCompleteBtn = style([
-  sprinkles({
-    typography: '15/Body/Medium',
-  }),
+export const editCompleteButton = style([
+  sprinkles({ typography: '13/Title/Semibold' }),
   {
-    position: 'absolute',
-    top: '20px',
-    right: '32px',
     color: COLORS['Grey/700'],
+    marginLeft: 'auto',
+    position: 'absolute',
+    top: '-6px',
+    right: 0,
+    padding: '6px 12px',
+    borderRadius: '6px',
+
+    ':hover': {
+      backgroundColor: COLORS['Grey/200'],
+    },
   },
 ]);
 
@@ -90,12 +95,3 @@ export const value = style([
     letterSpacing: '-0.2px',
   },
 ]);
-
-export const icon = style({
-  transition: 'fill 100ms ease-in-out',
-  fill: COLORS['Grey/300'],
-
-  ':hover': {
-    fill: COLORS['Grey/900'],
-  },
-});

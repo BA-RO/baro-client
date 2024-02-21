@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import Badge from '@components/Badge';
 import Button from '@components/Button';
+import TooltipButton from '@components/Button/components/TooltipButton';
 import Card from '@components/Card';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
-import Icon from '@components/Icon';
 import { CATEGORY_COLOR } from '@constants/config';
 import EditInput from '@domain/끄적이는/components/EditInput';
 import useDeleteArchives from '@domain/저장하는/mutations/useDeleteArchives';
@@ -12,7 +12,6 @@ import useUpdateArchives from '@domain/저장하는/mutations/useUpdateArchives'
 import { getNumToK } from '@domain/참고하는/utils';
 import { useInput } from '@hooks/useInput';
 import { useToastStore } from '@stores/toast';
-import { COLORS } from '@styles/tokens';
 
 import { type ArchiveCard, type Folder } from '../../types';
 import * as styles from './style.css';
@@ -60,9 +59,11 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
     return (
       <Card className={styles.card} color={CATEGORY_COLOR[card.categoryName]}>
         <Card.Menu>
-          <Button onClick={() => handleCopyClick(card.content)}>
-            <Icon icon="copy" color={COLORS['Grey/300']} />
-          </Button>
+          <TooltipButton
+            icon="copy"
+            content="복사"
+            onClick={() => handleCopyClick(card.content)}
+          />
           <MenuDropdown onDelete={handleDeleteClick} />
         </Card.Menu>
         <Card.Header>
@@ -101,9 +102,11 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
   return (
     <Card className={styles.card} color="grey">
       <Card.Menu>
-        <Button onClick={() => handleCopyClick(card.content)}>
-          <Icon icon="copy" color={COLORS['Grey/300']} />
-        </Button>
+        <TooltipButton
+          icon="copy"
+          content="복사"
+          onClick={() => handleCopyClick(card.content)}
+        />
         <MenuDropdown
           onEdit={() => setIsEditMode(true)}
           onDelete={handleDeleteClick}

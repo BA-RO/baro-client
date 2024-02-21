@@ -1,7 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
 import { sprinkles } from '@styles/sprinkles.css';
-import { COLORS } from '@styles/tokens';
 
 export const wrapper = style([
   sprinkles({
@@ -16,10 +15,3 @@ export const wrapper = style([
     padding: '28px 32px 20px',
   },
 ]);
-
-export const hover = style({
-  transition: 'fill 100ms ease-in-out',
-  ':hover': {
-    fill: COLORS['Grey/600'],
-  },
-});

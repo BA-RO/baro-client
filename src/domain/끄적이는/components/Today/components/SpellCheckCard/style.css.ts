@@ -39,12 +39,3 @@ export const buttonGroup = style({
   display: 'flex',
   gap: '16px',
 });
-
-export const icon = style({
-  transition: 'fill 100ms ease-in-out',
-  fill: COLORS['Grey/300'],
-
-  ':hover': {
-    fill: COLORS['Grey/900'],
-  },
-});
