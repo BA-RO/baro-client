@@ -1,6 +1,5 @@
 import { type HTMLAttributes, type PropsWithChildren } from 'react';
 
-import Button from '@components/Button';
 import Icon from '@components/Icon';
 import Tooltip from '@components/Tooltip';
 import { type Icons } from '@constants/icon';
@@ -23,18 +22,16 @@ const TooltipButton = ({
 }: PropsWithChildren<TooltipButtonProps>) => {
   return (
     <Tooltip placement="top-center">
-      <Tooltip.Trigger>
-        <Button {...props}>
-          {icon ? (
-            <Icon
-              icon={icon}
-              className={styles.hover}
-              color={isActive ? COLORS['Blue/Default'] : COLORS['Grey/300']}
-            />
-          ) : (
-            <>{children}</>
-          )}
-        </Button>
+      <Tooltip.Trigger {...props}>
+        {icon ? (
+          <Icon
+            icon={icon}
+            className={styles.hover}
+            color={isActive ? COLORS['Blue/Default'] : COLORS['Grey/300']}
+          />
+        ) : (
+          <>{children}</>
+        )}
       </Tooltip.Trigger>
       <Tooltip.Content>{content}</Tooltip.Content>
     </Tooltip>
