@@ -5,8 +5,8 @@ export const container = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',
-  marginBottom: '56px',
   padding: '0 40px',
+  marginBottom: '64px',
 });
 
 export const content = style({
@@ -24,7 +24,7 @@ export const inputWrapper = style({
   bottom: '56px',
   width: '100%',
   transform: 'translateX(-50%)',
-  maxWidth: '1140px',
+  maxWidth: '1120px',
 
   '@media': {
     'screen and (max-width: 1200px)': {
