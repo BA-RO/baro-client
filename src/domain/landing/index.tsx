@@ -5,15 +5,21 @@ import FifthLanding from '@assets/images/fifthLanding.png';
 import FourthLanding from '@assets/images/fourthLanding.png';
 import SecondLanding from '@assets/images/secondLanding.png';
 import ThirdLanding from '@assets/images/thirdLanding.png';
+import Button from '@components/Button';
 import Icon from '@components/Icon';
 import Layout from '@components/Layout';
 import { landingFirstRow, landingSecondRow } from '@domain/landing/constants';
+import { useModalStore } from '@stores/modal';
 import { gmarket } from '@styles/font';
 
 import LandingCard from './components/LandingCard';
 import * as styles from './style.css';
 
 const Landing = () => {
+  const { openModal } = useModalStore();
+
+  const handleLoginButtonClick = () => openModal('login');
+
   return (
     <Layout isFooter>
       <div className={styles.firstImageWrapper}>
@@ -72,6 +78,9 @@ const Landing = () => {
       <Image src={ThirdLanding} alt="" className={styles.ladingImage} />
       <Image src={FourthLanding} alt="" className={styles.ladingImage} />
       <Image src={FifthLanding} alt="" className={styles.ladingImage} />
+      <Button className={styles.startButton} onClick={handleLoginButtonClick}>
+        <div className={styles.buttonText}>바로 시작하기</div>
+      </Button>
     </Layout>
   );
 };
