@@ -23,7 +23,7 @@ export const firstRowTrack = style({
   display: 'flex',
   gap: '16px',
   width: '5038px',
-  animation: `${firstRowSlide} 20s linear infinite`,
+  animation: `${firstRowSlide} 30s linear infinite`,
 });
 
 export const secondRowWrapper = style({
@@ -45,7 +45,7 @@ export const seconRowTrack = style({
   display: 'flex',
   gap: '16px',
   width: '5038px',
-  animation: `${secondRowSlide} 20s linear infinite`,
+  animation: `${secondRowSlide} 30s linear infinite`,
 });
 
 export const ladingImage = style({
@@ -118,6 +118,10 @@ export const landingCardwrapper = style([
     height: '270px',
     flexShrink: 0,
     fontSize: '14px',
+    WebkitUserSelect: 'none',
+    MozUserSelect: 'none',
+    msUserSelect: 'none',
+    userSelect: 'none',
   },
 ]);
 
@@ -162,7 +166,7 @@ export const startButton = style({
     bottom: '-65px',
     left: 0,
     backgroundImage: 'linear-gradient(#ffffff 0%, #297FFF 100%)',
-    animation: `${rotateGradient} linear 1s infinite`,
+    animation: `${rotateGradient} linear 3s infinite`,
   },
 });
 
