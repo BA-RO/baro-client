@@ -14,16 +14,11 @@ const DeleteFolderModal = () => {
   const { closeModal, memoFolderId } = useModalStore();
   const { mutate: deleteFolder } = useDeleteMemoFolder();
 
-  const handleAllFolderDelete = () => {
-    deleteFolder({ memoFolderId, deleteAllMemo: true });
-    closeModal();
-  };
-
-  const handleCardMove = () => {
-    deleteFolder({ memoFolderId, deleteAllMemo: false });
+  const handleFolderDelete = (deleteAllMemo: boolean) => {
+    deleteFolder({ memoFolderId, deleteAllMemo });
     closeModal();
 
-    router.push(ROUTES.ARCHIVE);
+    router.replace(ROUTES.ARCHIVE);
   };
 
   return (
@@ -41,11 +36,15 @@ const DeleteFolderModal = () => {
           state="default"
           size="M"
           className={styles.button}
-          onClick={handleAllFolderDelete}
+          onClick={() => handleFolderDelete(true)}
         >
           모두 삭제하기
         </Button>
-        <Button state="enabled" size="M" onClick={handleCardMove}>
+        <Button
+          state="enabled"
+          size="M"
+          onClick={() => handleFolderDelete(false)}
+        >
           기본 폴더로 이동하기
         </Button>
       </ModalContainer.Footer>

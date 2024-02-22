@@ -13,8 +13,12 @@ const useDeleteMemoFolder = () => {
 
   return useMutation({
     mutationFn: deleteMemoFolders,
-    onSuccess: () => {
-      showToast({ message: TOAST_MESSAGE.MEMOFOLDER.DELETE });
+    onSuccess: (data, variables) => {
+      showToast({
+        message: variables.deleteAllMemo
+          ? TOAST_MESSAGE.MEMOFOLDER.DELETE
+          : TOAST_MESSAGE.MEMOFOLDER.MOVE_TO_DEFAULT_FOLDER,
+      });
 
       queryClient.invalidateQueries({
         queryKey: MEMO_FOLDERS_KEY.all,

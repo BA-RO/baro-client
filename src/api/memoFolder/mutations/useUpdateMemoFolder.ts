@@ -14,7 +14,7 @@ const useUpdateMemoFolder = () => {
   return useMutation({
     mutationFn: patchMemoFolders,
     onSuccess: () => {
-      showToast({ message: TOAST_MESSAGE.MEMOFOLDER.UPDATE });
+      showToast({ message: TOAST_MESSAGE.MEMOFOLDER.EDIT });
 
       queryClient.invalidateQueries({
         queryKey: MEMO_FOLDERS_KEY.all,
