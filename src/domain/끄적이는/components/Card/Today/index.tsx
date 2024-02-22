@@ -81,7 +81,7 @@ const WriteTodayCard = ({
 
   if (isEditMode) {
     return (
-      <Card isHoverMenu={false} color="blue">
+      <Card color="blue" defaultIsVisibleMenu>
         <Card.Header>
           {dayjs(memo.createdAt).locale('ko').format('a h:mm')}
           <Button className={styles.editCompleteButton} onClick={handleUpdate}>
@@ -96,7 +96,7 @@ const WriteTodayCard = ({
   }
 
   return (
-    <Card isHoverMenu={false} color="blue">
+    <Card color="blue" defaultIsVisibleMenu>
       {!isSuccessSpellCheck && (
         <Card.Menu>
           <TooltipButton
