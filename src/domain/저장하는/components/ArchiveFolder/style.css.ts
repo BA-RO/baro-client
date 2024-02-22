@@ -16,15 +16,17 @@ export const folder = style({
 
 export const userFolder = recipe({
   base: [
-    sprinkles({ typography: '16/Title/Bold' }),
+    sprinkles({ typography: '16/Title/Medium' }),
     utils.flexAlignCenter,
     {
       gap: '5px',
-      padding: '8px 20px',
+      padding: '14px 20px',
       borderRadius: '8px',
       transition: 'all 100ms ease-in-out',
 
       ':hover': {
+        fontWeight: 700,
+        color: COLORS['Grey/900'],
         backgroundColor: COLORS['Grey/100'],
       },
     },
@@ -32,7 +34,9 @@ export const userFolder = recipe({
   variants: {
     isActive: {
       true: {
-        backgroundColor: COLORS['Grey/100'],
+        fontWeight: 700,
+        color: COLORS['Blue/Default'],
+        backgroundColor: COLORS['Grey/White'],
       },
       false: {
         backgroundColor: COLORS['Grey/White'],
@@ -61,7 +65,12 @@ export const createFolderButton = style([
   {
     width: '100%',
     gap: '4px',
-    padding: '8px 20px',
+    padding: '10px 20px',
+    borderRadius: '8px',
     color: COLORS['Grey/400'],
+
+    ':hover': {
+      backgroundColor: COLORS['Grey/100'],
+    },
   },
 ]);

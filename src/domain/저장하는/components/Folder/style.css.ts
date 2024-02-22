@@ -15,9 +15,11 @@ export const folderButton = recipe({
       justifyContent: 'space-between',
       borderRadius: '8px',
       transition: 'all 100ms ease-in-out',
-      paddingRight: '8px',
+      paddingRight: '12px',
 
       ':hover': {
+        fontWeight: 700,
+        color: COLORS['Grey/900'],
         backgroundColor: COLORS['Grey/100'],
       },
     },
@@ -25,7 +27,9 @@ export const folderButton = recipe({
   variants: {
     isActive: {
       true: {
-        backgroundColor: COLORS['Grey/100'],
+        fontWeight: 700,
+        color: COLORS['Blue/Default'],
+        backgroundColor: COLORS['Grey/White'],
       },
       false: {
         backgroundColor: COLORS['Grey/White'],
@@ -37,5 +41,5 @@ export const folderButton = recipe({
 export const folderName = style({
   display: 'inline-block',
   width: '100%',
-  padding: '11px 0 11px 20px',
+  padding: '14px 0 14px 20px',
 });
