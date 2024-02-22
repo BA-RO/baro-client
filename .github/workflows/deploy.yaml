@@ -3,7 +3,7 @@ name: Create and publish a Docker image to AWS ECR ans deploy to EC2
 on:
   push:
     branches:
-      - bug/BAR-248
+      - main
 
 env:
   REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
