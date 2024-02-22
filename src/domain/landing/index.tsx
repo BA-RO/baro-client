@@ -1,10 +1,9 @@
-import Image from 'next/image';
 import clsx from 'clsx';
 
-import FifthLanding from '@assets/images/fifthLanding.png';
-import FourthLanding from '@assets/images/fourthLanding.png';
-import SecondLanding from '@assets/images/secondLanding.png';
-import ThirdLanding from '@assets/images/thirdLanding.png';
+import FifthLanding from '@assets/images/fifthLanding.svg';
+import FourthLanding from '@assets/images/fourthLanding.svg';
+import SecondLanding from '@assets/images/secondLanding.svg';
+import ThirdLanding from '@assets/images/thirdLanding.svg';
 import Button from '@components/Button';
 import Icon from '@components/Icon';
 import Layout from '@components/Layout';
@@ -74,10 +73,12 @@ const Landing = () => {
           </ul>
         </div>
       </div>
-      <Image src={SecondLanding} alt="" className={styles.ladingImage} />
-      <Image src={ThirdLanding} alt="" className={styles.ladingImage} />
-      <Image src={FourthLanding} alt="" className={styles.ladingImage} />
-      <Image src={FifthLanding} alt="" className={styles.ladingImage} />
+      <SecondLanding className={styles.ladingImage} />
+      <ThirdLanding className={styles.ladingImage} />
+      <FourthLanding className={styles.ladingImage} />
+      <FifthLanding
+        className={clsx(styles.ladingImage, styles.lastLandingImage)}
+      />
       <Button className={styles.startButton} onClick={handleLoginButtonClick}>
         <div className={styles.buttonText}>바로 시작하기</div>
       </Button>
