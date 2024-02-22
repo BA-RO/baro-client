@@ -45,7 +45,7 @@ const FolderDropdown = ({
   return (
     <Dropdown size="medium" placement="bottom-center">
       <Dropdown.Trigger>
-        <TooltipButton icon="bookmark" content="저장" />
+        <TooltipButton icon="bookmark" content="저장" isDropdown />
       </Dropdown.Trigger>
       <Dropdown.List>
         {memoFolders.map(({ id, name }) => (

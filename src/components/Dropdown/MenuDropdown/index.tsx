@@ -11,7 +11,7 @@ const MenuDropdown = ({ onEdit, onDelete }: MenuDropdownProps) => {
   return (
     <Dropdown size="small" placement="bottom-right">
       <Dropdown.Trigger>
-        <TooltipButton icon="menu" content="더보기" />
+        <TooltipButton icon="menu" content="더보기" isDropdown />
       </Dropdown.Trigger>
       <Dropdown.List>
         {onEdit && <Dropdown.Item onClick={onEdit}>수정하기</Dropdown.Item>}
