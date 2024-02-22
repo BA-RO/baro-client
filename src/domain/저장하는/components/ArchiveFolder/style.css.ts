@@ -41,10 +41,10 @@ export const userFolder = recipe({
   },
 });
 
-export const tag = style([
+export const badge = style([
   sprinkles({ typography: '11/Caption/Medium' }),
   {
-    padding: '6px',
+    padding: '3px 6px',
     borderRadius: '100px',
     color: COLORS['Blue/Default'],
     backgroundColor: COLORS['Blue/Light'],
