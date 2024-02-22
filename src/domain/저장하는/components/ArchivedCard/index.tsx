@@ -73,8 +73,14 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
         </Card.Header>
         <Card.Body>{card.content}</Card.Body>
         <Card.Footer>
-          복사 <span>{formatNumberToCompact(card.copiedCount)}</span> • 저장{' '}
-          <span>{formatNumberToCompact(card.savedCount)}</span>
+          복사&nbsp;
+          <span className={styles.count}>
+            {formatNumberToCompact(card.copiedCount)}
+          </span>
+          &nbsp; • 저장&nbsp;
+          <span className={styles.count}>
+            {formatNumberToCompact(card.savedCount)}
+          </span>
         </Card.Footer>
       </Card>
     );

@@ -24,8 +24,14 @@ const LandingCard = ({ data }: LandingCardProps) => {
       </Card.Header>
       <Card.Body className={styles.cardBody}>{content}</Card.Body>
       <Card.Footer>
-        복사 <span>{formatNumberToCompact(copiedCount)}</span> • 저장{' '}
-        <span>{formatNumberToCompact(savedCount)}</span>
+        복사&nbsp;
+        <span className={styles.count}>
+          {formatNumberToCompact(copiedCount)}
+        </span>
+        &nbsp; • 저장&nbsp;
+        <span className={styles.count}>
+          {formatNumberToCompact(savedCount)}
+        </span>
       </Card.Footer>
     </Card>
   );
