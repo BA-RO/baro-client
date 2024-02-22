@@ -1,7 +1,7 @@
 import { useMutation, type UseMutationOptions } from '@tanstack/react-query';
 import { type AxiosError } from 'axios';
 
-import { SPELLCHECK_STATE_MESSAGE } from '@constants/spellCheck';
+import { TOAST_MESSAGE } from '@constants/toast';
 import { useToastStore } from '@stores/toast';
 
 import spellCheckApi from '../api/spell';
@@ -23,10 +23,10 @@ const usePostSpellCheck = (
     ...options,
     mutationFn: (payload) => spellCheckApi.post({ ...payload }),
     onSuccess: () => {
-      showToast({ message: SPELLCHECK_STATE_MESSAGE.SUCCESS });
+      showToast({ message: TOAST_MESSAGE.SPELLCHECK.SUCCESS });
     },
     onError: () => {
-      showToast({ message: SPELLCHECK_STATE_MESSAGE.ERROR });
+      showToast({ message: TOAST_MESSAGE.SPELLCHECK.ERROR });
     },
   });
 };

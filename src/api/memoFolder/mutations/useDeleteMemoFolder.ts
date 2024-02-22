@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import { TOAST_MESSAGE } from '@constants/toast';
 import { useToastStore } from '@stores/toast';
 
 import { deleteMemoFolders } from '..';
@@ -13,7 +14,7 @@ const useDeleteMemoFolder = () => {
   return useMutation({
     mutationFn: deleteMemoFolders,
     onSuccess: () => {
-      showToast({ message: '선택한 폴더가 삭제되었어요' });
+      showToast({ message: TOAST_MESSAGE.MEMOFOLDER.DELETE });
 
       queryClient.invalidateQueries({
         queryKey: MEMO_FOLDERS_KEY.all,

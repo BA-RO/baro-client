@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { http } from '@api/http';
+import { TOAST_MESSAGE } from '@constants/toast';
 import { useToastStore } from '@stores/toast';
 
 import { TemporalMemoQueryKeys } from '../constants/queryKeys';
@@ -26,7 +27,7 @@ const useSaveTemporalMemo = () => {
     mutationFn: saveTemporalMemo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TemporalMemoQueryKeys.all });
-      showToast({ message: '글이 저장됐어요.' });
+      showToast({ message: TOAST_MESSAGE.CARD.SAVE });
     },
   });
 };

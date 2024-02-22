@@ -9,6 +9,7 @@ import Card from '@components/Card';
 import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
+import { TOAST_MESSAGE } from '@constants/toast';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
 import useSaveTemporalMemo from '@domain/끄적이는/mutations/useSaveTemporalMemo';
@@ -64,9 +65,8 @@ const WriteTodayCard = ({
 
   const handleCopyClick = () => {
     navigator.clipboard.writeText(memo.content);
-    showToast({
-      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
-    });
+
+    showToast({ message: TOAST_MESSAGE.CARD.COPY });
   };
 
   //TODO: 밸리데이션 추가
@@ -81,7 +81,7 @@ const WriteTodayCard = ({
 
   if (isEditMode) {
     return (
-      <Card color="blue">
+      <Card isHoverMenu={false} color="blue">
         <Card.Header>
           {dayjs(memo.createdAt).locale('ko').format('a h:mm')}
           <Button className={styles.editCompleteButton} onClick={handleUpdate}>
@@ -96,7 +96,7 @@ const WriteTodayCard = ({
   }
 
   return (
-    <Card color="blue">
+    <Card isHoverMenu={false} color="blue">
       {!isSuccessSpellCheck && (
         <Card.Menu>
           <TooltipButton
