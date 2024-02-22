@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 import Logo from '@assets/images/logo.svg';
 import { ROUTES } from '@constants/routes';
 import { type HeaderType } from '@models/layout';
+import { STORAGE_KEY } from '@models/storage';
 
 import * as styles from '../style.css';
 import LoginButton from './LoginButton';
@@ -13,12 +15,17 @@ interface HeaderProps {
 }
 
 const Header = ({ type }: HeaderProps) => {
+  const refreshToken = Cookies.get(STORAGE_KEY.REFRESH_TOKEN);
+
   const HeaderButtonGroup = () =>
     type === 'intro' ? <LoginButton /> : <UserButton />;
 
   return (
     <header className={styles.header}>
-      <Link href={ROUTES.LANDING} className={styles.logo}>
+      <Link
+        href={refreshToken ? ROUTES.MAIN : ROUTES.LANDING}
+        className={styles.logo}
+      >
         <Logo />
       </Link>
       <HeaderButtonGroup />
