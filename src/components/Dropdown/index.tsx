@@ -8,7 +8,7 @@ import {
 import clsx from 'clsx';
 
 import useClickAway from '@hooks/useClickAway';
-import useDisclosure from '@hooks/useDisclosure';
+import useDisclosure, { type UseDisclosure } from '@hooks/useDisclosure';
 import usePosition from '@hooks/usePosition';
 
 import DropdownItem from './components/DropdownItem';
@@ -19,7 +19,8 @@ import * as styles from './style.css';
 
 const INIT_POSITION = { top: 0, left: 0 };
 
-interface DropdownContextProps {
+interface DropdownContextProps
+  extends Pick<UseDisclosure, 'isOpen' | 'onClose' | 'onToggle'> {
   /** dropdown menulist 크기 */
   size?: 'small' | 'medium';
   /** dropdown menulist 위치 */
@@ -28,10 +29,6 @@ interface DropdownContextProps {
   position: typeof INIT_POSITION;
   /** dropdown menulist 요소의 ref 객체  */
   targetRef: RefObject<HTMLUListElement>;
-  /** dropdown menulist 열림, 닫힘 상태 */
-  isOpen: boolean;
-  /** dropdown trigger toggle 함수 */
-  onToggle: () => void;
 }
 
 interface DropdownRootProps
@@ -68,6 +65,7 @@ const DropdownRoot = ({
         position,
         targetRef,
         isOpen,
+        onClose,
         onToggle,
       }}
     >
