@@ -27,8 +27,4 @@ export const deleteMemoFolders = ({
 }: {
   memoFolderId: number;
   deleteAllMemo: boolean;
-}) =>
-  http.delete(API_URL, {
-    memoFolderId,
-    deleteAllMemo,
-  });
+}) => http.delete(`${API_URL}/${memoFolderId}?deleteAllMemo=${deleteAllMemo}`);

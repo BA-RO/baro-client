@@ -1,11 +1,16 @@
+import { useRouter } from 'next/router';
+
 import useDeleteMemoFolder from '@api/memoFolder/mutations/useDeleteMemoFolder';
 import Button from '@components/Button';
 import ModalContainer from '@components/Modal/components/ModalContainer';
+import { ROUTES } from '@constants/routes';
 import { useModalStore } from '@stores/modal';
 
 import * as styles from './style.css';
 
 const DeleteFolderModal = () => {
+  const router = useRouter();
+
   const { closeModal, memoFolderId } = useModalStore();
   const { mutate: deleteFolder } = useDeleteMemoFolder();
 
@@ -17,6 +22,8 @@ const DeleteFolderModal = () => {
   const handleCardMove = () => {
     deleteFolder({ memoFolderId, deleteAllMemo: false });
     closeModal();
+
+    router.push(ROUTES.ARCHIVE);
   };
 
   return (
