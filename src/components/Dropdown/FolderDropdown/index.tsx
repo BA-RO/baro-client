@@ -1,4 +1,5 @@
 import { type Folder } from '@api/memoFolder/types';
+import Button from '@components/Button';
 import TooltipButton from '@components/Button/components/TooltipButton';
 import Dropdown from '@components/Dropdown';
 import Icon from '@components/Icon';
@@ -29,12 +30,9 @@ const FolderDropdown = ({
     return (
       <>
         {onClickBookmark ? (
-          <TooltipButton
-            isActive
-            icon="bookmark"
-            content="저장 해제"
-            onClick={onClickBookmark}
-          />
+          <Button onClick={onClickBookmark}>
+            <Icon icon="bookmark" color={COLORS['Blue/Default']} />
+          </Button>
         ) : (
           <Icon icon="bookmark" color={COLORS['Blue/Default']} />
         )}
