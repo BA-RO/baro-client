@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { type Folder } from '@api/memoFolder/types';
-import Icon from '@components/Icon';
+import DayMessage from '@components/DayMessage';
 
 import { type TemporalMemo } from '../../types';
 import WriteTodayCard from '../Card/Today';
@@ -21,12 +21,7 @@ const TodayTemoralMemos = ({ memos, memoFolders }: TodayTemoralMemosProps) => {
 
   return (
     <section>
-      <div className={styles.dateLabelWrapper}>
-        <div className={styles.dateLabel}>
-          <Icon icon={'clockActive'} width={20} height={20} />
-          <p className={styles.dateLabelText}>오늘 끄적인 문장</p>
-        </div>
-      </div>
+      <DayMessage icon="clockActive">오늘 끄적인 문장</DayMessage>
       <ul className={styles.container}>
         {memos.map((memo) => (
           <WriteTodayCard

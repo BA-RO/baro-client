@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 
 import { type Folder } from '@api/memoFolder/types';
-import Icon from '@components/Icon';
+import DayMessage from '@components/DayMessage';
 import Responsive from '@components/Responsive';
 
 import { type TemporalMemoHistory } from '../../types';
@@ -23,36 +23,31 @@ const TemporalMemoHistoryTable = ({
   const [editModeCardId, setEditModeCardId] = useState<number | null>(null);
 
   return (
-    <article className={styles.container}>
-      {data.map((hisotry, i) => {
-        const { createdAt: createAt, temporalMemos } = hisotry;
-
-        return (
-          <section key={`${createAt}-${i}`}>
-            <div className={styles.dateLabelWrapper}>
-              <div className={styles.dateLabel}>
-                <Icon icon={'clock'} width={20} height={20} />
-                <span className={styles.dateLabelText}>
-                  {dayjs(createAt).locale('ko').format('YYYY.MM.DD (dd)')}
-                </span>
-              </div>
-            </div>
-            <Responsive>
-              {temporalMemos.map((temporalMemo) => (
-                <WriteHistoryCard
-                  key={temporalMemo.id}
-                  {...temporalMemo}
-                  memoFolders={memoFolders}
-                  isEditMode={editModeCardId === temporalMemo.id}
-                  onEditClick={() => setEditModeCardId(temporalMemo.id)}
-                  onEditCompleteClick={() => setEditModeCardId(null)}
-                />
-              ))}
-            </Responsive>
-          </section>
-        );
-      })}
-    </article>
+    <>
+      {!!data.length && (
+        <article className={styles.container}>
+          {data.map(({ createdAt, temporalMemos }, i) => (
+            <section key={`${createdAt}-${i}`}>
+              <DayMessage icon="clock">
+                {dayjs(createdAt).locale('ko').format('YYYY.MM.DD (dd)')}
+              </DayMessage>
+              <Responsive>
+                {temporalMemos.map((temporalMemo) => (
+                  <WriteHistoryCard
+                    key={temporalMemo.id}
+                    {...temporalMemo}
+                    memoFolders={memoFolders}
+                    isEditMode={editModeCardId === temporalMemo.id}
+                    onEditClick={() => setEditModeCardId(temporalMemo.id)}
+                    onEditCompleteClick={() => setEditModeCardId(null)}
+                  />
+                ))}
+              </Responsive>
+            </section>
+          ))}
+        </article>
+      )}
+    </>
   );
 };
 
