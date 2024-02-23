@@ -21,11 +21,11 @@ const Layout = ({
   isFooter = false,
   backgroundColor = COLORS['Grey/White'],
 }: PropsWithChildren<LayoutProps>) => {
-  const [type, setType] = useState<HeaderType>('intro');
+  const [type, setType] = useState<HeaderType>('landing');
 
   useEffect(() => {
     const accessToken = localStorage?.getItem(STORAGE_KEY.ACCESS_TOKEN);
-    const headerType = accessToken ? 'normal' : 'intro';
+    const headerType = accessToken ? 'normal' : 'landing';
     setType(headerType);
   }, []);
 

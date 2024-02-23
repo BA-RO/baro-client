@@ -18,7 +18,7 @@ const Header = ({ type }: HeaderProps) => {
   const refreshToken = Cookies.get(STORAGE_KEY.REFRESH_TOKEN);
 
   const HeaderButtonGroup = () =>
-    type === 'intro' ? <LoginButton /> : <UserButton />;
+    type === 'landing' ? <LoginButton /> : <UserButton />;
 
   return (
     <header className={styles.header}>
