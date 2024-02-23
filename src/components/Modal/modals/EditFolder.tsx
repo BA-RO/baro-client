@@ -89,8 +89,8 @@ const EditFolder = () => {
           취소
         </Button>
         <Button
-          className={clsx(styles.button, !value && styles.buttonDisabled)}
-          disabled={!value}
+          className={styles.button}
+          disabled={!value || value === folderName}
           style={assignInlineVars({
             [styles.buttonColor]: COLORS['Grey/White'],
             [styles.buttonBackgroundColor]: COLORS['Blue/Default'],

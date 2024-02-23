@@ -85,7 +85,7 @@ const MakeFolder = () => {
           취소
         </Button>
         <Button
-          className={clsx(styles.button, !value && styles.buttonDisabled)}
+          className={styles.button}
           disabled={!value}
           style={assignInlineVars({
             [styles.buttonColor]: COLORS['Grey/White'],
