@@ -3,6 +3,8 @@ import hanspell from 'hanspell';
 
 import { type SpellCheckResponse, type Suggestion } from '@api/spell/types';
 
+// eslint-disable-next-line no-useless-escape
+const REGEX = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 const HTTP_TIMEOUT = 6000;
 
 /**
@@ -41,6 +43,8 @@ export default function handler(
 ) {
   const { sentence } = req.body;
 
+  const sentenceWithoutSymbol = sentence.replace(REGEX, '');
+
   const error = (error: Error) => {
     console.error(error);
 
@@ -65,7 +69,7 @@ export default function handler(
   };
 
   hanspell.spellCheckByDAUM(
-    sentence,
+    sentenceWithoutSymbol,
     HTTP_TIMEOUT,
     spellCheckByDAUM,
     () => {},
