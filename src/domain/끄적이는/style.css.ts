@@ -25,7 +25,7 @@ export const inputWrapper = style({
   width: '100%',
   transform: 'translateX(-50%)',
   maxWidth: '1120px',
-
+  zIndex: 10,
   '@media': {
     'screen and (max-width: 1200px)': {
       padding: '0 40px',
