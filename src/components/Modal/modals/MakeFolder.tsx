@@ -22,7 +22,6 @@ const MakeFolder = () => {
   const { mutate } = usePostMemoFolders();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setErrorMessage('');
     setValue(e.target.value);
   };
 
