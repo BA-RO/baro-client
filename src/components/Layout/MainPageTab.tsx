@@ -29,7 +29,7 @@ const MainPageTab = ({
           <Tooltip hasArrow>
             <Tooltip.Trigger>
               <Tabs.Trigger
-                value="끄적이는"
+                value="write"
                 icon={{ default: 'pencilDefault', active: 'pencilActive' }}
               >
                 끄적이는
@@ -40,7 +40,7 @@ const MainPageTab = ({
           <Tooltip hasArrow>
             <Tooltip.Trigger>
               <Tabs.Trigger
-                value="참고하는"
+                value="refer"
                 icon={{ default: 'templateDefault', active: 'templateActive' }}
               >
                 참고하는
@@ -52,8 +52,8 @@ const MainPageTab = ({
       </div>
 
       <section className={styles.tabWrapper}>
-        <Tabs.Content value="끄적이는">{write}</Tabs.Content>
-        <Tabs.Content value="참고하는">{refer}</Tabs.Content>
+        <Tabs.Content value="write">{write}</Tabs.Content>
+        <Tabs.Content value="refer">{refer}</Tabs.Content>
       </section>
     </Tabs>
   );

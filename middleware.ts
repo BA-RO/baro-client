@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
+import { ROUTES } from '@constants/routes';
 import { STORAGE_KEY } from '@models/storage';
 
 export const middleware = async (request: NextRequest) => {
@@ -9,7 +10,9 @@ export const middleware = async (request: NextRequest) => {
   if (request.nextUrl.pathname.startsWith('/terms')) return;
 
   if (refreshToken?.value && request.nextUrl.pathname === '/') {
-    return NextResponse.redirect(new URL('/main', request.url));
+    return NextResponse.redirect(
+      new URL(`${ROUTES.MAIN}?tab=write`, request.url),
+    );
   }
 
   if (
@@ -17,7 +20,7 @@ export const middleware = async (request: NextRequest) => {
     request.nextUrl.pathname !== '/' &&
     !request.nextUrl.pathname.startsWith('/redirect')
   ) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(new URL(ROUTES.LANDING, request.url));
   }
 };
 
