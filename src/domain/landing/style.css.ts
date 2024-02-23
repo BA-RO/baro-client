@@ -54,10 +54,6 @@ export const ladingImage = style({
   display: 'block',
 });
 
-export const lastLandingImage = style({
-  marginBottom: '-2px',
-});
-
 export const firstImageWrapper = style({
   position: 'relative',
   height: '880px',
