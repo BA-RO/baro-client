@@ -7,6 +7,7 @@ import '@styles/global.css';
 import Modal from '@components/Modal';
 import TanstackQueryProvider from '@components/Providers/TanstackQueryProvider';
 import Toast from '@components/Toast';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -29,6 +30,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Component {...pageProps} />
       <Toast />
       <Modal />
+      <GoogleAnalytics gaId="G-FE8WVNGY6S" />
     </TanstackQueryProvider>
   );
 };
