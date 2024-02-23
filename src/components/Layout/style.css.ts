@@ -14,6 +14,7 @@ export const header = style({
   padding: '0 24px',
   backgroundColor: COLORS['Grey/900'],
   zIndex: 100,
+  minWidth: '768px',
 });
 
 export const logo = style({
@@ -94,6 +95,15 @@ export const footerWrapper = style({
   backgroundColor: COLORS['Grey/700'],
   display: 'flex',
   justifyContent: 'space-between',
+  minWidth: '768px',
+});
+
+export const footerContent = style({
+  height: '80px',
+});
+
+export const footerLinks = style({
+  marginBottom: '8px',
 });
 
 const dot = style({
@@ -130,7 +140,6 @@ export const instagramLink = style([
   }),
   {
     color: COLORS['Grey/400'],
-    marginTop: '8px',
   },
 ]);
 
@@ -156,6 +165,7 @@ export const copyright = style([
   }),
   {
     color: COLORS['Grey/400'],
+    whiteSpace: 'nowrap',
   },
 ]);
 
@@ -178,6 +188,8 @@ export const backgroundColorMain = createVar();
 export const mainWrapper = style({
   backgroundColor: backgroundColorMain,
   paddingTop: '64px',
+  minWidth: '768px',
+  minHeight: 'calc(100vh - 160px)',
 });
 
 export const tab = style({
