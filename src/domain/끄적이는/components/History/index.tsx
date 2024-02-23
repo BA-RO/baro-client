@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 
 import { type Folder } from '@api/memoFolder/types';
-import Icon from '@components/Icon';
+import DayMessage from '@components/DayMessage';
 import Responsive from '@components/Responsive';
 
 import { type TemporalMemoHistory } from '../../types';
@@ -29,14 +29,9 @@ const TemporalMemoHistoryTable = ({
 
         return (
           <section key={`${createAt}-${i}`}>
-            <div className={styles.dateLabelWrapper}>
-              <div className={styles.dateLabel}>
-                <Icon icon={'clock'} width={20} height={20} />
-                <span className={styles.dateLabelText}>
-                  {dayjs(createAt).locale('ko').format('YYYY.MM.DD (dd)')}
-                </span>
-              </div>
-            </div>
+            <DayMessage icon="clock">
+              {dayjs(createAt).locale('ko').format('YYYY.MM.DD (dd)')}
+            </DayMessage>
             <Responsive>
               {temporalMemos.map((temporalMemo) => (
                 <WriteHistoryCard
