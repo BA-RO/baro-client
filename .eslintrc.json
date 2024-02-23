@@ -25,6 +25,7 @@
     ],
     "unused-imports/no-unused-imports": "error",
     "no-else-return": ["error", { "allowElseIf": false }],
+    "jsx-a11y/label-has-associated-control": "off",
     "@typescript-eslint/consistent-type-imports": [
       "error",
       { "fixStyle": "inline-type-imports" }
