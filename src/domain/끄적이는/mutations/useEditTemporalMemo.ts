@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { http } from '@api/http';
+import { TOAST_MESSAGE } from '@constants/toast';
+import { useToastStore } from '@stores/toast';
 
 import { TemporalMemoQueryKeys } from '../constants/queryKeys';
 
@@ -15,12 +17,16 @@ const editTemporalMemo = async ({
 };
 
 const useEditTemporalMemo = () => {
+  const { showToast } = useToastStore();
+
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: editTemporalMemo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TemporalMemoQueryKeys.all });
+
+      showToast({ message: TOAST_MESSAGE.CARD.EDIT });
     },
   });
 };

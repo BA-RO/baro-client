@@ -19,14 +19,15 @@ const saveTemporalMemo = async ({
 };
 
 const useSaveTemporalMemo = () => {
-  const queryClient = useQueryClient();
-
   const { showToast } = useToastStore();
+
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: saveTemporalMemo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TemporalMemoQueryKeys.all });
+
       showToast({ message: TOAST_MESSAGE.CARD.SAVE });
     },
   });
