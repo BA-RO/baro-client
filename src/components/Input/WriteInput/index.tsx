@@ -62,12 +62,15 @@ const WriteInput = ({
   };
 
   const handleKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.code === 'Enter') {
-      setTextareaHeight((prev) => ({
-        row: prev.row + 1,
-        lineBreak: { ...prev.lineBreak, [value.length]: true },
-      }));
-      return;
+    if (e.nativeEvent.isComposing) return;
+
+    if (e.code === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      setTextareaHeight({
+        row: 1,
+        lineBreak: {},
+      });
+      onSubmit();
     }
   };
 
@@ -81,7 +84,8 @@ const WriteInput = ({
       >
         <label htmlFor={id} className={style.label}>
           <textarea
-            {...inputProps}
+            id={id}
+            value={value}
             ref={inputRef}
             autoComplete="off"
             rows={textareaHeight.row}
