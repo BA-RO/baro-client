@@ -23,31 +23,31 @@ const TemporalMemoHistoryTable = ({
   const [editModeCardId, setEditModeCardId] = useState<number | null>(null);
 
   return (
-    <article className={styles.container}>
-      {data.map((hisotry, i) => {
-        const { createdAt: createAt, temporalMemos } = hisotry;
-
-        return (
-          <section key={`${createAt}-${i}`}>
-            <DayMessage icon="clock">
-              {dayjs(createAt).locale('ko').format('YYYY.MM.DD (dd)')}
-            </DayMessage>
-            <Responsive>
-              {temporalMemos.map((temporalMemo) => (
-                <WriteHistoryCard
-                  key={temporalMemo.id}
-                  {...temporalMemo}
-                  memoFolders={memoFolders}
-                  isEditMode={editModeCardId === temporalMemo.id}
-                  onEditClick={() => setEditModeCardId(temporalMemo.id)}
-                  onEditCompleteClick={() => setEditModeCardId(null)}
-                />
-              ))}
-            </Responsive>
-          </section>
-        );
-      })}
-    </article>
+    <>
+      {!!data.length && (
+        <article className={styles.container}>
+          {data.map(({ createdAt, temporalMemos }, i) => (
+            <section key={`${createdAt}-${i}`}>
+              <DayMessage icon="clock">
+                {dayjs(createdAt).locale('ko').format('YYYY.MM.DD (dd)')}
+              </DayMessage>
+              <Responsive>
+                {temporalMemos.map((temporalMemo) => (
+                  <WriteHistoryCard
+                    key={temporalMemo.id}
+                    {...temporalMemo}
+                    memoFolders={memoFolders}
+                    isEditMode={editModeCardId === temporalMemo.id}
+                    onEditClick={() => setEditModeCardId(temporalMemo.id)}
+                    onEditCompleteClick={() => setEditModeCardId(null)}
+                  />
+                ))}
+              </Responsive>
+            </section>
+          ))}
+        </article>
+      )}
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import useGetWriteHistory from '@domain/끄적이는/queries/useGetHistory';
 import { useInput } from '@hooks/useInput';
 import useGetMemoFolders from '@queries/useGetMemoFolders';
 
-import WriteGuide from '../Guide';
+import Guide from '../Guide';
 import TemporalMemoHistoryTable from '../History';
 import TodayTemoralMemos from '../Today';
 import * as styles from './style.css';
@@ -15,7 +15,10 @@ const WriteTabContent = () => {
   const writeContentRef = useRef<HTMLDivElement>(null);
   const writeInput = useInput({ id: 'write-input' });
 
-  const { todayMemos, history } = useGetWriteHistory();
+  const {
+    data: { history, todayMemos },
+    isLoading: isLoadingWriteHistory,
+  } = useGetWriteHistory();
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
   const { data: memoFolders } = useGetMemoFolders();
 
@@ -39,7 +42,9 @@ const WriteTabContent = () => {
   return (
     <div className={styles.container}>
       <div ref={writeContentRef} className={styles.content}>
-        <WriteGuide />
+        {!isLoadingWriteHistory && (
+          <Guide hasMemo={!!history.length || !!todayMemos.length} />
+        )}
         <TemporalMemoHistoryTable data={history} memoFolders={memoFolders} />
         <TodayTemoralMemos
           memos={todayMemos[0]?.temporalMemos}
