@@ -19,3 +19,5 @@ const useDisclosure = () => {
 };
 
 export default useDisclosure;
+
+export type UseDisclosure = ReturnType<typeof useDisclosure>;

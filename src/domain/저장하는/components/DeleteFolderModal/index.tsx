@@ -1,22 +1,24 @@
+import { useRouter } from 'next/router';
+
 import useDeleteMemoFolder from '@api/memoFolder/mutations/useDeleteMemoFolder';
 import Button from '@components/Button';
 import ModalContainer from '@components/Modal/components/ModalContainer';
+import { ROUTES } from '@constants/routes';
 import { useModalStore } from '@stores/modal';
 
 import * as styles from './style.css';
 
 const DeleteFolderModal = () => {
+  const router = useRouter();
+
   const { closeModal, memoFolderId } = useModalStore();
   const { mutate: deleteFolder } = useDeleteMemoFolder();
 
-  const handleAllFolderDelete = () => {
-    deleteFolder({ memoFolderId, deleteAllMemo: true });
+  const handleFolderDelete = (deleteAllMemo: boolean) => {
+    deleteFolder({ memoFolderId, deleteAllMemo });
     closeModal();
-  };
 
-  const handleCardMove = () => {
-    deleteFolder({ memoFolderId, deleteAllMemo: false });
-    closeModal();
+    router.replace(ROUTES.ARCHIVE);
   };
 
   return (
@@ -34,11 +36,15 @@ const DeleteFolderModal = () => {
           state="default"
           size="M"
           className={styles.button}
-          onClick={handleAllFolderDelete}
+          onClick={() => handleFolderDelete(true)}
         >
           모두 삭제하기
         </Button>
-        <Button state="enabled" size="M" onClick={handleCardMove}>
+        <Button
+          state="enabled"
+          size="M"
+          onClick={() => handleFolderDelete(false)}
+        >
           기본 폴더로 이동하기
         </Button>
       </ModalContainer.Footer>

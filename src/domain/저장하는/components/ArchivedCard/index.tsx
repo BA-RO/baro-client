@@ -6,10 +6,11 @@ import TooltipButton from '@components/Button/components/TooltipButton';
 import Card from '@components/Card';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import { CATEGORY_COLOR } from '@constants/config';
+import { TOAST_MESSAGE } from '@constants/toast';
 import EditInput from '@domain/끄적이는/components/EditInput';
 import useDeleteArchives from '@domain/저장하는/mutations/useDeleteArchives';
 import useUpdateArchives from '@domain/저장하는/mutations/useUpdateArchives';
-import { getNumToK } from '@domain/참고하는/utils';
+import { formatNumberToCompact } from '@domain/참고하는/utils';
 import { useInput } from '@hooks/useInput';
 import { useToastStore } from '@stores/toast';
 
@@ -25,20 +26,18 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
   const { showToast } = useToastStore();
 
   const [isEditMode, setIsEditMode] = useState(false);
-
-  const { mutate: updateArchivedCardContent } = useUpdateArchives(folderId);
-  const { mutate: deleteArchivedCard } = useDeleteArchives(folderId);
-
   const editedInputProps = useInput({
     id: 'edit-input',
     defaultValue: card.content,
   });
 
+  const { mutate: updateArchivedCardContent } = useUpdateArchives(folderId);
+  const { mutate: deleteArchivedCard } = useDeleteArchives(folderId);
+
   const handleCopyClick = (content: ArchiveCard['content']) => {
     navigator.clipboard.writeText(content);
-    showToast({
-      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
-    });
+
+    showToast({ message: TOAST_MESSAGE.CARD.COPY });
   };
 
   const handleEditClick = () => {
@@ -74,8 +73,14 @@ const ArchivedCard = ({ folderId, card }: ArchivedCardProps) => {
         </Card.Header>
         <Card.Body>{card.content}</Card.Body>
         <Card.Footer>
-          복사 <span>{getNumToK(card.copiedCount)}</span> • 저장{' '}
-          <span>{getNumToK(card.savedCount)}</span>
+          복사&nbsp;
+          <span className={styles.count}>
+            {formatNumberToCompact(card.copiedCount)}
+          </span>
+          &nbsp; • 저장&nbsp;
+          <span className={styles.count}>
+            {formatNumberToCompact(card.savedCount)}
+          </span>
         </Card.Footer>
       </Card>
     );

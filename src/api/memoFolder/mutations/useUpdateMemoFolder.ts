@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import { TOAST_MESSAGE } from '@constants/toast';
 import { useToastStore } from '@stores/toast';
 
 import { patchMemoFolders } from '..';
@@ -13,7 +14,7 @@ const useUpdateMemoFolder = () => {
   return useMutation({
     mutationFn: patchMemoFolders,
     onSuccess: () => {
-      showToast({ message: '폴더 이름이 수정되었어요' });
+      showToast({ message: TOAST_MESSAGE.MEMOFOLDER.EDIT });
 
       queryClient.invalidateQueries({
         queryKey: MEMO_FOLDERS_KEY.all,

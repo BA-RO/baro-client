@@ -16,10 +16,11 @@ interface CardProps {
     | 'grey'
     | 'white';
   className?: string;
+  defaultIsVisibleMenu?: boolean;
   onBlur?: VoidFunction;
 }
 
-interface CardContextProps {
+interface CardContextProps extends Pick<CardProps, 'defaultIsVisibleMenu'> {
   isVisibleMenu: boolean;
 }
 
@@ -30,6 +31,7 @@ export const CardContext = createContext<CardContextProps>({
 const CardRoot = ({
   children,
   className,
+  defaultIsVisibleMenu = false,
   color = 'white',
 }: PropsWithChildren<CardProps>) => {
   const {
@@ -39,11 +41,17 @@ const CardRoot = ({
   } = useDisclosure();
 
   return (
-    <CardContext.Provider value={{ isVisibleMenu: isVisible }}>
+    <CardContext.Provider
+      value={{ isVisibleMenu: isVisible, defaultIsVisibleMenu }}
+    >
       <li
         className={clsx(styles.wrapper({ color }), className)}
-        onMouseEnter={onShow}
-        onMouseLeave={onHide}
+        onMouseEnter={() => {
+          !defaultIsVisibleMenu && onShow();
+        }}
+        onMouseLeave={() => {
+          !defaultIsVisibleMenu && onHide();
+        }}
       >
         {children}
       </li>
@@ -52,9 +60,15 @@ const CardRoot = ({
 };
 
 const CardMenu = ({ children }: PropsWithChildren) => {
-  const { isVisibleMenu } = useContext(CardContext);
+  const { isVisibleMenu, defaultIsVisibleMenu } = useContext(CardContext);
 
-  return <>{isVisibleMenu && <div className={styles.menu}>{children}</div>}</>;
+  return (
+    <>
+      {(defaultIsVisibleMenu || isVisibleMenu) && (
+        <div className={styles.menu}>{children}</div>
+      )}
+    </>
+  );
 };
 
 const CardHeader = ({ children }: PropsWithChildren) => {

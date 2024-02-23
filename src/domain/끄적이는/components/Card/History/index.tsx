@@ -6,6 +6,7 @@ import TooltipButton from '@components/Button/components/TooltipButton';
 import Card from '@components/Card';
 import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
+import { TOAST_MESSAGE } from '@constants/toast';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
 import useSaveTemporalMemo from '@domain/끄적이는/mutations/useSaveTemporalMemo';
@@ -46,9 +47,8 @@ const WriteHistoryCard = ({
 
   const handleCopyClick = () => {
     navigator.clipboard.writeText(content);
-    showToast({
-      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
-    });
+
+    showToast({ message: TOAST_MESSAGE.CARD.COPY });
   };
 
   const handleEditCompleteClick = () => {

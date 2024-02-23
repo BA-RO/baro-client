@@ -182,3 +182,9 @@ export const buttonText = style({
   height: '58px',
   paddingTop: '17px',
 });
+
+export const count = style({
+  fontWeight: 500,
+  fontSize: '14px',
+  color: COLORS['Grey/500'],
+});

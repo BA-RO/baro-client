@@ -6,6 +6,7 @@ import FolderDropdown, {
   type FolderDropdownType,
 } from '@components/Dropdown/FolderDropdown';
 import { type SPELLCHECK_TYPE } from '@constants/spellCheck';
+import { TOAST_MESSAGE } from '@constants/toast';
 import { useToastStore } from '@stores/toast';
 
 import SpellCheckNotice from '../SpellCheckNotice';
@@ -64,9 +65,8 @@ const SpellCheckCard = ({
 
   const handleCopyClick = () => {
     navigator.clipboard.writeText(spellCheckResult.correction);
-    showToast({
-      message: '문장이 복사되었어요. 원하는 곳에 붙여넣기(Ctrl+V)를 해주세요!',
-    });
+
+    showToast({ message: TOAST_MESSAGE.CARD.COPY });
   };
 
   return (

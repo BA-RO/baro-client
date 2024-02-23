@@ -26,7 +26,7 @@ const MakeFolder = () => {
     setValue(e.target.value);
   };
 
-  const handle만들기Click = async () => {
+  const handleMakeFolderButtonClick = async () => {
     if (value.length > 10) return setErrorMessage('10자 내로 입력해주세요!');
 
     mutate(value, {
@@ -91,7 +91,7 @@ const MakeFolder = () => {
             [styles.buttonColor]: COLORS['Grey/White'],
             [styles.buttonBackgroundColor]: COLORS['Blue/Default'],
           })}
-          onClick={handle만들기Click}
+          onClick={handleMakeFolderButtonClick}
         >
           만들기
         </Button>

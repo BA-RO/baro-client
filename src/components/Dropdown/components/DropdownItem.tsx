@@ -13,11 +13,18 @@ const DropdownItem = ({
   className,
   ...props
 }: PropsWithChildren<DropdownItemProps>) => {
-  const { size } = useDropdownContext();
+  const { size, onClose } = useDropdownContext();
 
   return (
     <li className={className}>
-      <Button {...props} className={clsx(styles.menuItem({ size }))}>
+      <Button
+        {...props}
+        onClick={(e) => {
+          props.onClick && props.onClick(e);
+          onClose();
+        }}
+        className={clsx(styles.menuItem({ size }))}
+      >
         {children}
       </Button>
     </li>

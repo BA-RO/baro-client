@@ -35,7 +35,7 @@ const ArchiveFolder = ({ folders }: ArchiveFolderProps) => {
             })}
           >
             <span>{data?.nickname}님의 폴더</span>
-            <span className={styles.tag}>기본</span>
+            <span className={styles.badge}>기본</span>
           </Link>
         ) : (
           <FolderItem key={folder.id} folder={folder} />

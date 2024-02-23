@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import { TOAST_MESSAGE } from '@constants/toast';
 import { useToastStore } from '@stores/toast';
 
 import { postSaveTemplate } from '../api';
@@ -15,7 +16,7 @@ const useSaveTemplate = () => {
       queryClient.invalidateQueries({
         queryKey: ['templates'],
       });
-      showToast({ message: '글이 저장됐어요.' });
+      showToast({ message: TOAST_MESSAGE.CARD.SAVE });
     },
   });
 };

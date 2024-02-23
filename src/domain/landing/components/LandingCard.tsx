@@ -3,7 +3,7 @@ import Card from '@components/Card';
 import { CATEGORY_COLOR } from '@constants/config';
 import { CATEGORY } from '@domain/참고하는/models';
 import { type ReferContent } from '@domain/참고하는/types';
-import { getNumToK } from '@domain/참고하는/utils';
+import { formatNumberToCompact } from '@domain/참고하는/utils';
 
 import * as styles from '../style.css';
 
@@ -24,8 +24,14 @@ const LandingCard = ({ data }: LandingCardProps) => {
       </Card.Header>
       <Card.Body className={styles.cardBody}>{content}</Card.Body>
       <Card.Footer>
-        복사 <span>{getNumToK(copiedCount)}</span> • 저장{' '}
-        <span>{getNumToK(savedCount)}</span>
+        복사&nbsp;
+        <span className={styles.count}>
+          {formatNumberToCompact(copiedCount)}
+        </span>
+        &nbsp; • 저장&nbsp;
+        <span className={styles.count}>
+          {formatNumberToCompact(savedCount)}
+        </span>
       </Card.Footer>
     </Card>
   );

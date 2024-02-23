@@ -268,17 +268,18 @@ export const makeFolderInputWrapper = style({
 });
 
 export const makeFolderInput = style({
+  width: '100%',
+  height: '48px',
   padding: '12px 16px',
   color: COLORS['Grey/600'],
-  backgroundColor: '#f0f0f0',
+  backgroundColor: COLORS['Grey/100'],
   borderRadius: '8px',
-  height: '48px',
-  width: '100%',
 });
 
 export const errorInput = style({
   border: `1.5px solid ${COLORS['Red']}`,
 });
+
 export const makeFolderButtonWrapper = style({
   paddingTop: '16px',
 });
