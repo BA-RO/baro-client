@@ -64,9 +64,7 @@ const CardMenu = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      {!defaultIsVisibleMenu ? (
-        isVisibleMenu && <div className={styles.menu}>{children}</div>
-      ) : (
+      {(defaultIsVisibleMenu || isVisibleMenu) && (
         <div className={styles.menu}>{children}</div>
       )}
     </>
