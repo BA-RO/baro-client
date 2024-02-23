@@ -6,10 +6,6 @@ import { COLORS } from '@styles/tokens';
 export const button = recipe({
   base: {
     whiteSpace: 'nowrap',
-
-    ':disabled': {
-      cursor: 'not-allowed',
-    },
   },
   variants: {
     state: {
