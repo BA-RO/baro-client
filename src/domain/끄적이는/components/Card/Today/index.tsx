@@ -49,11 +49,8 @@ const WriteTodayCard = ({
 
   const [spellCheckResult, setSpellCheckResult] =
     useState<SpellCheckResponse>();
-  const {
-    mutateAsync: spellCheck,
-    isPending: isPendingSpellCheck,
-    isSuccess: isSuccessSpellCheck,
-  } = usePostSpellCheck();
+  const { mutateAsync: spellCheck, isPending: isPendingSpellCheck } =
+    usePostSpellCheck();
 
   const handleSpellCheck = async () => {
     const spellCheckResult = await spellCheck({
@@ -97,7 +94,7 @@ const WriteTodayCard = ({
 
   return (
     <Card color="blue" defaultIsVisibleMenu>
-      {!isSuccessSpellCheck && (
+      {!spellCheckResult?.result.suggestions.length && (
         <Card.Menu>
           <TooltipButton
             icon="spelling"
