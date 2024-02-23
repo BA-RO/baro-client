@@ -14,6 +14,7 @@ export const header = style({
   padding: '0 24px',
   backgroundColor: COLORS['Grey/900'],
   zIndex: 100,
+  minWidth: '768px',
 });
 
 export const logo = style({
@@ -94,6 +95,7 @@ export const footerWrapper = style({
   backgroundColor: COLORS['Grey/700'],
   display: 'flex',
   justifyContent: 'space-between',
+  minWidth: '768px',
 });
 
 export const footerContent = style({
@@ -186,6 +188,7 @@ export const backgroundColorMain = createVar();
 export const mainWrapper = style({
   backgroundColor: backgroundColorMain,
   paddingTop: '64px',
+  minWidth: '768px',
   minHeight: 'calc(100vh - 160px)',
 });
 
