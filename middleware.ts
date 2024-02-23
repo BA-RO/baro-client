@@ -1,14 +1,17 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
+import { STORAGE_KEY } from '@models/storage';
+
 export const middleware = async (request: NextRequest) => {
-  const refreshToken = request.cookies.get('refreshToken');
+  const refreshToken = request.cookies.get(STORAGE_KEY.REFRESH_TOKEN);
 
   if (request.nextUrl.pathname.startsWith('/terms')) return;
 
-  if (refreshToken && request.nextUrl.pathname === '/') {
+  if (refreshToken?.value && request.nextUrl.pathname === '/') {
     return NextResponse.redirect(new URL('/main', request.url));
   }
+
   if (
     !refreshToken &&
     request.nextUrl.pathname !== '/' &&

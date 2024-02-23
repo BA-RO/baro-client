@@ -1,1 +1,1 @@
-export type HeaderType = 'intro' | 'normal';
+export type HeaderType = 'landing' | 'normal';
