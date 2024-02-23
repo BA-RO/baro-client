@@ -76,9 +76,7 @@ const Landing = () => {
       <SecondLanding className={styles.ladingImage} />
       <ThirdLanding className={styles.ladingImage} />
       <FourthLanding className={styles.ladingImage} />
-      <FifthLanding
-        className={clsx(styles.ladingImage, styles.lastLandingImage)}
-      />
+      <FifthLanding className={styles.ladingImage} />
       <Button className={styles.startButton} onClick={handleLoginButtonClick}>
         <div className={styles.buttonText}>바로 시작하기</div>
       </Button>

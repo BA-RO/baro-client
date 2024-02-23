@@ -8,8 +8,8 @@ import * as styles from '../style.css';
 const Footer = () => {
   return (
     <footer className={styles.footerWrapper}>
-      <div>
-        <div>
+      <div className={styles.footerContent}>
+        <div className={styles.footerLinks}>
           <Link href="mailto:help@ba-ro.co.kr" className={styles.footerButton}>
             서비스메일
           </Link>
@@ -31,7 +31,7 @@ const Footer = () => {
           <span className={styles.instagramText}>인스타그램</span>
         </Link>
       </div>
-      <div>
+      <div className={styles.footerContent}>
         <div className={styles.baroIcon}>
           <Icon icon="logo32" width={32} height={36} />
         </div>
