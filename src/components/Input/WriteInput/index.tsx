@@ -23,7 +23,7 @@ const WriteInput = ({
   maxLength = MAIN_INPUT_MAX_LENGTH,
   onSubmit,
 }: WriteInputProps) => {
-  const { id, value } = inputProps;
+  const { id, value, onChange } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   const [textareaHeight, setTextareaHeight] = useState<{
@@ -70,7 +70,7 @@ const WriteInput = ({
         row: 1,
         lineBreak: {},
       });
-      onSubmit();
+      value.trim() && onSubmit();
     }
   };
 
@@ -92,6 +92,7 @@ const WriteInput = ({
             className={style.input}
             placeholder={placeholder}
             maxLength={maxLength}
+            onChange={onChange}
             onInput={handleResize}
             onKeyDown={handleKeydownEnter}
           />
