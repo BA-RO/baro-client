@@ -21,7 +21,7 @@ const NotFoundArchiveCard = () => {
       <Button
         state="enabled"
         size="M"
-        onClick={() => router.push(`${ROUTES.MAIN}?type=refer`)}
+        onClick={() => router.push(`${ROUTES.MAIN}?tab=refer`)}
       >
         문장 템플릿 보러가기
       </Button>

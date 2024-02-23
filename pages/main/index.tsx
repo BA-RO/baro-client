@@ -29,7 +29,7 @@ const MainPage = () => {
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
   const { data: memoFolders } = useGetMemoFolders();
 
-  const selectedTab = searchParams.get('type') || 'write';
+  const selectedTab = searchParams.get('tab') || 'write';
 
   useEffect(() => {
     handleScroll();
@@ -42,7 +42,7 @@ const MainPage = () => {
   };
 
   const handleTabSelect = (selectedTab: string) => {
-    router.push(`${ROUTES.MAIN}?type=${selectedTab}`);
+    router.push(`${ROUTES.MAIN}?tab=${selectedTab}`);
   };
 
   const handleSubmit = () => {
