@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
 import WriteInput from '@components/Input/WriteInput';
 import Layout from '@components/Layout';
 import MainPageTab from '@components/Layout/MainPageTab';
+import { ROUTES } from '@constants/routes';
 import WriteGuide from '@domain/끄적이는/components/Guide';
 import TemporalMemoHistoryTable from '@domain/끄적이는/components/History';
 import TodayTemoralMemos from '@domain/끄적이는/components/Today';
@@ -16,6 +18,9 @@ import useGetMyProfile from '@queries/useGetMyProfile';
 import { COLORS } from '@styles/tokens';
 
 const MainPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   useGetMyProfile();
 
   const writeContentRef = useRef<HTMLDivElement>(null);
@@ -24,7 +29,7 @@ const MainPage = () => {
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
   const { data: memoFolders } = useGetMemoFolders();
 
-  const [selectedTab, setSelectedTab] = useState('끄적이는');
+  const selectedTab = searchParams.get('type') || 'write';
 
   useEffect(() => {
     handleScroll();
@@ -37,7 +42,7 @@ const MainPage = () => {
   };
 
   const handleTabSelect = (selectedTab: string) => {
-    setSelectedTab(selectedTab);
+    router.push(`${ROUTES.MAIN}?type=${selectedTab}`);
   };
 
   const handleSubmit = () => {
@@ -48,7 +53,7 @@ const MainPage = () => {
   };
 
   const backgroundColor =
-    selectedTab === '참고하는' ? COLORS['Grey/100'] : undefined;
+    selectedTab === 'refer' ? COLORS['Grey/100'] : undefined;
 
   return (
     <Layout backgroundColor={backgroundColor}>

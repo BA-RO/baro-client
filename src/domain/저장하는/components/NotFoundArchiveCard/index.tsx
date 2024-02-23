@@ -18,7 +18,11 @@ const NotFoundArchiveCard = () => {
           자주 사용하는 글과 템플릿을 저장해보세요.
         </span>
       </div>
-      <Button state="enabled" size="M" onClick={() => router.push(ROUTES.MAIN)}>
+      <Button
+        state="enabled"
+        size="M"
+        onClick={() => router.push(`${ROUTES.MAIN}?type=refer`)}
+      >
         문장 템플릿 보러가기
       </Button>
     </div>

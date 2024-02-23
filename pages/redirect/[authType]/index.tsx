@@ -31,7 +31,7 @@ const Bridge = () => {
       saveToken({ accessToken, refreshToken });
       localStorage.setItem(STORAGE_KEY.RECENT_LOGIN_TYPE, authType);
 
-      router.replace(ROUTES.MAIN);
+      router.replace(`${ROUTES.MAIN}?type=write`);
     })();
   }, [router.query, router]);
 

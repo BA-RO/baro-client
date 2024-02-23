@@ -23,7 +23,7 @@ const Header = ({ type }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <Link
-        href={refreshToken ? ROUTES.MAIN : ROUTES.LANDING}
+        href={refreshToken ? `${ROUTES.MAIN}?type=write` : ROUTES.LANDING}
         className={styles.logo}
       >
         <Logo />
