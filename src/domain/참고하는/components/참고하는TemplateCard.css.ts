@@ -22,3 +22,8 @@ export const count = style({
   fontSize: '14px',
   color: COLORS['Grey/500'],
 });
+
+export const tooltipButton = style({
+  position: 'relative',
+  zIndex: 1,
+});

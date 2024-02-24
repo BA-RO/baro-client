@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import WriteInput from '@components/Input/WriteInput';
 import useCreateTemporalMemo from '@domain/끄적이는/mutations/useCreateTemporalMemo';
@@ -12,6 +13,9 @@ import TodayTemoralMemos from '../Today';
 import * as styles from './style.css';
 
 const WriteTabContent = () => {
+  const [inputWrapperHeight, setInputWrapperHeight] = useState(0);
+
+  const inputWrapperRef = useRef<HTMLDivElement>(null);
   const writeContentRef = useRef<HTMLDivElement>(null);
   const writeInput = useInput({ id: 'write-input' });
 
@@ -22,26 +26,33 @@ const WriteTabContent = () => {
   const { mutate: submitTemporalMemo } = useCreateTemporalMemo();
   const { data: memoFolders } = useGetMemoFolders();
 
-  useEffect(() => {
-    handleScroll();
-  }, [todayMemos]);
-
-  const handleScroll = () => {
-    if (writeContentRef.current) {
-      writeContentRef.current.scrollTop = writeContentRef.current.scrollHeight;
-    }
-  };
-
   const handleSubmit = () => {
-    submitTemporalMemo(writeInput.value);
+    writeInput.value.trim() && submitTemporalMemo(writeInput.value);
     writeInput.reset();
-
-    handleScroll();
   };
+
+  useEffect(() => {
+    if (!inputWrapperRef.current) return;
+    setInputWrapperHeight(inputWrapperRef.current.offsetHeight);
+  }, [writeInput.value]);
+
+  useEffect(() => {
+    writeContentRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+  }, [todayMemos, inputWrapperHeight, writeContentRef.current?.scrollHeight]);
 
   return (
-    <div className={styles.container}>
-      <div ref={writeContentRef} className={styles.content}>
+    <>
+      <div
+        className={styles.container}
+        style={assignInlineVars({
+          [styles.marginBottom]: `${inputWrapperHeight + 48}px`,
+          [styles.scrollMarginBottom]: `${inputWrapperHeight + 48}px`,
+        })}
+        ref={writeContentRef}
+      >
         {!isLoadingWriteHistory && (
           <Guide hasMemo={!!history.length || !!todayMemos.length} />
         )}
@@ -50,11 +61,11 @@ const WriteTabContent = () => {
           memos={todayMemos[0]?.temporalMemos}
           memoFolders={memoFolders}
         />
-        <div className={styles.inputWrapper}>
-          <WriteInput inputProps={writeInput} onSubmit={handleSubmit} />
-        </div>
       </div>
-    </div>
+      <div className={styles.inputWrapper} ref={inputWrapperRef}>
+        <WriteInput inputProps={writeInput} onSubmit={handleSubmit} />
+      </div>
+    </>
   );
 };
 

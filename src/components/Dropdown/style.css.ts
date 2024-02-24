@@ -12,6 +12,8 @@ export const wrapper = style({
 
 export const trigger = style({
   width: 'fit-content',
+  position: 'relative',
+  zIndex: 1,
 });
 
 export const top = createVar();

@@ -30,3 +30,8 @@ export const editCompleteButton = style([
     },
   },
 ]);
+
+export const tooltipButton = style({
+  position: 'relative',
+  zIndex: 1,
+});

@@ -1,5 +1,4 @@
-import { createVar, style } from '@vanilla-extract/css';
-import { recipe } from '@vanilla-extract/recipes';
+import { style } from '@vanilla-extract/css';
 
 import { COLORS } from '@styles/tokens';
 
@@ -13,14 +12,10 @@ export const conatiner = style({
   backgroundColor: 'white',
 });
 
-export const inputHeight = createVar();
 export const contentWrapper = style({
   display: 'flex',
   alignItems: 'center',
   width: '100%',
-  height: inputHeight,
-  minHeight: '27px',
-  maxHeight: '260px',
 });
 
 export const label = style({
@@ -30,8 +25,8 @@ export const label = style({
 export const input = style({
   padding: '0',
   width: '100%',
-  maxHeight: '216px',
   resize: 'none',
+  height: '27px',
   color: COLORS['Grey/900'],
   fontSize: '17px',
   lineHeight: '27px',
@@ -41,19 +36,11 @@ export const input = style({
   },
 });
 
-export const submitWrapper = recipe({
-  base: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    paddingLeft: '20px',
-  },
-  variants: {
-    multirow: {
-      true: {
-        height: '100%',
-      },
-    },
-  },
+export const submitWrapper = style({
+  display: 'flex',
+  alignItems: 'flex-end',
+  paddingLeft: '20px',
+  height: '100%',
 });
 
 export const submit = style({
