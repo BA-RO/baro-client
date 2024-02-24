@@ -51,10 +51,12 @@ const MainPageTab = ({
         </Tabs.List>
       </div>
 
-      <section className={styles.tabWrapper}>
-        <Tabs.Content value="write">{write}</Tabs.Content>
-        <Tabs.Content value="refer">{refer}</Tabs.Content>
-      </section>
+      <Tabs.Content className={styles.tabWrapper} value="write">
+        {write}
+      </Tabs.Content>
+      <Tabs.Content className={styles.tabWrapper} value="refer">
+        {refer}
+      </Tabs.Content>
     </Tabs>
   );
 };

@@ -20,7 +20,7 @@ const TodayTemoralMemos = ({ memos, memoFolders }: TodayTemoralMemosProps) => {
   }
 
   return (
-    <section>
+    <>
       <DayMessage icon="clockActive">오늘 끄적인 문장</DayMessage>
       <ul className={styles.container}>
         {memos.map((memo) => (
@@ -34,7 +34,7 @@ const TodayTemoralMemos = ({ memos, memoFolders }: TodayTemoralMemosProps) => {
           />
         ))}
       </ul>
-    </section>
+    </>
   );
 };
 
