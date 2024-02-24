@@ -1,8 +1,6 @@
-import { type PropsWithChildren, useEffect, useState } from 'react';
+import { type PropsWithChildren } from 'react';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
-import { type HeaderType } from '@models/layout';
-import { STORAGE_KEY } from '@models/storage';
 import { COLORS } from '@styles/tokens';
 
 import Footer from './components/Footer';
@@ -21,17 +19,9 @@ const Layout = ({
   isFooter = false,
   backgroundColor = COLORS['Grey/White'],
 }: PropsWithChildren<LayoutProps>) => {
-  const [type, setType] = useState<HeaderType>('landing');
-
-  useEffect(() => {
-    const accessToken = localStorage?.getItem(STORAGE_KEY.ACCESS_TOKEN);
-    const headerType = accessToken ? 'normal' : 'landing';
-    setType(headerType);
-  }, []);
-
   return (
     <>
-      {isHeader && <Header type={type} />}
+      {isHeader && <Header />}
       <main
         className={styles.mainWrapper}
         style={assignInlineVars({

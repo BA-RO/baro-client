@@ -1,24 +1,22 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 
 import Logo from '@assets/images/logo.svg';
 import { ROUTES } from '@constants/routes';
-import { type HeaderType } from '@models/layout';
 import { STORAGE_KEY } from '@models/storage';
 
 import * as styles from '../style.css';
 import LoginButton from './LoginButton';
 import UserButton from './UserButton';
 
-interface HeaderProps {
-  type: HeaderType;
-}
-
-const Header = ({ type }: HeaderProps) => {
+const Header = () => {
   const refreshToken = Cookies.get(STORAGE_KEY.REFRESH_TOKEN);
 
+  const pathname = usePathname();
+
   const HeaderButtonGroup = () =>
-    type === 'landing' ? <LoginButton /> : <UserButton />;
+    pathname === ROUTES.LANDING ? <LoginButton /> : <UserButton />;
 
   return (
     <header className={styles.header}>
