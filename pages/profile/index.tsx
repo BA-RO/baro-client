@@ -118,7 +118,6 @@ const ProfilePage = () => {
           email={my.email}
         />
         <div className={styles.textButtonWrapper}>
-          {/* TODO: 로그아웃 연결 */}
           <button
             className={styles.textButton}
             onClick={() => {
