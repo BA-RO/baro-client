@@ -15,8 +15,13 @@ const Header = () => {
 
   const pathname = usePathname();
 
-  const HeaderButtonGroup = () =>
-    pathname === ROUTES.LANDING ? <LoginButton /> : <UserButton />;
+  const HeaderButtonGroup = () => {
+    if (!pathname) return <LoginButton />;
+    if (pathname === ROUTES.LANDING) return <LoginButton />;
+    if (pathname.startsWith('/terms'))
+      return refreshToken ? <UserButton /> : <LoginButton />;
+    return <UserButton />;
+  };
 
   return (
     <header className={styles.header}>
