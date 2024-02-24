@@ -60,7 +60,7 @@ export const header = style([
     display: 'flex',
     gap: '8px',
     color: COLORS['Grey/400'],
-    wordBreak: 'keep-all',
+    wordBreak: 'break-all',
   },
 ]);
 
@@ -68,7 +68,7 @@ export const body = style([
   sprinkles({ typography: '15/Body/Regular' }),
   {
     whiteSpace: 'pre-wrap',
-    wordBreak: 'keep-all',
+    wordBreak: 'break-all',
   },
 ]);
 

@@ -81,20 +81,21 @@ export const button = style([
     backgroundColor: buttonBackgroundColor,
     padding: '16px 40px',
     borderRadius: '8px',
+
     selectors: {
       '& + &': {
         marginLeft: '8px',
       },
+    },
+
+    ':disabled': {
+      opacity: '0.5',
     },
   },
 ]);
 
 export const buttonWrapper = style({
   marginTop: '24px',
-});
-
-export const buttonDisabled = style({
-  opacity: '0.5',
 });
 
 export const helloImage = style({

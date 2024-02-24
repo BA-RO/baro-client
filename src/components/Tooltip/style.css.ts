@@ -35,6 +35,7 @@ export const content = recipe({
     hasArrow: {
       false: {
         padding: '8px 12px',
+        margin: '4px 0',
       },
       true: {
         padding: '16px',
@@ -57,24 +58,22 @@ export const topArrow = style({
   marginTop: '13px',
 
   '::before': {
-    top: '-11.5px',
+    top: '-12px',
     borderBottomColor: COLORS['Dim/70'],
   },
 });
 
 export const bottomArrow = style({
-  marginBottom: '8px',
-
   '::before': {
-    bottom: '-11px',
+    bottom: '-12px',
     borderTopColor: COLORS['Dim/70'],
   },
 });
 
 export const minimalTooltipMargin = style({
-  marginTop: '-8px',
+  marginTop: '-20px',
 });
 
 export const highlightTooltipMargin = style({
-  marginTop: '-36px',
+  marginTop: '-46px',
 });

@@ -91,7 +91,7 @@ export const rightText = style([
     display: 'inline-block',
     width: '270px',
     color: COLORS['Grey/800'],
-    wordBreak: 'keep-all',
+    wordBreak: 'break-all',
   },
 ]);
 
