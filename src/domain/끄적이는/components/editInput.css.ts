@@ -16,10 +16,10 @@ export const editInput = style([
   }),
   {
     width: '100%',
+    height: '100%',
     marginBottom: '8px',
     resize: 'none',
     overflowWrap: 'break-word',
-    maxHeight: '217px',
   },
 ]);
 

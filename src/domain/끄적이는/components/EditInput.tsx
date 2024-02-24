@@ -14,7 +14,7 @@ const EditInput = ({ inputProps }: EditInputProps) => {
     row: number;
     lineBreak: Record<number, boolean>;
   }>({
-    row: 1,
+    row: inputProps.value.split(/\r\n|\r|\n/).length,
     lineBreak: {},
   });
 
