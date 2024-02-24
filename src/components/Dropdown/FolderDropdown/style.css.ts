@@ -35,3 +35,8 @@ export const icon = style({
   position: 'absolute',
   marginTop: '2px',
 });
+
+export const deleteBookmark = style({
+  position: 'relative',
+  zIndex: 1,
+});

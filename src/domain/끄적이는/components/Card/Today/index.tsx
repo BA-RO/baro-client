@@ -10,6 +10,7 @@ import FolderDropdown from '@components/Dropdown/FolderDropdown';
 import MenuDropdown from '@components/Dropdown/MenuDropdown';
 import SkeletonContent from '@components/Loading/Skeleton/SkeletonContent';
 import { TOAST_MESSAGE } from '@constants/toast';
+import useDeleteArchive from '@domain/끄적이는/mutations/useDeleteArchive';
 import useDeleteTemporalMemo from '@domain/끄적이는/mutations/useDeleteTemporalMemo';
 import useEditTemporalMemo from '@domain/끄적이는/mutations/useEditTemporalMemo';
 import useSaveTemporalMemo from '@domain/끄적이는/mutations/useSaveTemporalMemo';
@@ -41,6 +42,7 @@ const WriteTodayCard = ({
   const { mutate: updateTemporalMemo } = useEditTemporalMemo();
   const { mutate: deleteTemporalMemo } = useDeleteTemporalMemo();
   const { mutate: saveTemporalMemo } = useSaveTemporalMemo();
+  const { mutate: deleteArchive } = useDeleteArchive();
 
   const editInputProps = useInput({
     id: 'edit-today-input',
@@ -74,6 +76,10 @@ const WriteTodayCard = ({
 
   const handleFolderClick = (memoFolderId: Folder['id']) => {
     saveTemporalMemo({ temporalMemoId: memo.id, memoFolderId });
+  };
+
+  const handleBookmark = () => {
+    deleteArchive(memo.id);
   };
 
   if (isEditMode) {
@@ -112,6 +118,7 @@ const WriteTodayCard = ({
             isArchived={memo.isArchived}
             memoFolders={memoFolders}
             onClickFolder={handleFolderClick}
+            onClickBookmark={handleBookmark}
           />
           <MenuDropdown
             onEdit={() => onEditClick(memo.id)}
