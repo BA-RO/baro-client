@@ -55,7 +55,12 @@ const 참고하는TemplateCard = ({
   return (
     <Card className={styles.wrapper}>
       <Card.Menu>
-        <TooltipButton icon="copy" content="복사" onClick={handleCopyClick} />
+        <TooltipButton
+          icon="copy"
+          content="복사"
+          onClick={handleCopyClick}
+          className={styles.tooltipButton}
+        />
         <FolderDropdown
           isArchived={isArchived}
           memoFolders={memoFolders}

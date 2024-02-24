@@ -100,8 +100,14 @@ const WriteTodayCard = ({
             icon="spelling"
             content="맞춤법 검사"
             onClick={handleSpellCheck}
+            className={styles.tooltipButton}
           />
-          <TooltipButton icon="copy" content="복사" onClick={handleCopyClick} />
+          <TooltipButton
+            icon="copy"
+            content="복사"
+            onClick={handleCopyClick}
+            className={styles.tooltipButton}
+          />
           <FolderDropdown
             isArchived={memo.isArchived}
             memoFolders={memoFolders}

@@ -51,7 +51,6 @@ export const menu = style({
   top: '16px',
   right: '16px',
   padding: '8px',
-  zIndex: 10,
 });
 
 export const header = style([
