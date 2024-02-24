@@ -30,7 +30,7 @@ const FolderDropdown = ({
     return (
       <>
         {onClickBookmark ? (
-          <Button onClick={onClickBookmark}>
+          <Button onClick={onClickBookmark} className={styles.deleteBookmark}>
             <Icon icon="bookmark" color={COLORS['Blue/Default']} />
           </Button>
         ) : (
