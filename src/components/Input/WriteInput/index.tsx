@@ -1,6 +1,5 @@
-import type { ChangeEvent, HTMLAttributes, KeyboardEvent } from 'react';
-import { useMemo, useRef, useState } from 'react';
-import { assignInlineVars } from '@vanilla-extract/dynamic';
+import type { HTMLAttributes, KeyboardEvent } from 'react';
+import { useMemo, useRef } from 'react';
 
 import Button from '@components/Button';
 import Icon from '@components/Icon';
@@ -8,7 +7,7 @@ import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
 import type { UseInputReturn } from '@hooks/useInput';
 import { COLORS } from '@styles/tokens';
 
-import * as style from './style.css';
+import * as styles from './style.css';
 
 interface WriteInputProps extends HTMLAttributes<HTMLTextAreaElement> {
   inputProps: Omit<UseInputReturn, 'reset'>;
@@ -26,70 +25,37 @@ const WriteInput = ({
   const { id, value, onChange } = inputProps;
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
-  const [textareaHeight, setTextareaHeight] = useState<{
-    row: number;
-    lineBreak: Record<number, boolean>;
-  }>({
-    row: 1,
-    lineBreak: {},
-  });
-
   const isValid = useMemo(() => value.length > 0, [value.length]);
 
-  const handleResize = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const { scrollHeight, clientHeight, value } = e.target;
-
-    if (value.length === 0) {
-      setTextareaHeight((prev) => ({
-        row: 1,
-        lineBreak: { ...prev.lineBreak, [e.target.value.length]: false },
-      }));
-    }
-
-    if (scrollHeight > clientHeight) {
-      setTextareaHeight((prev) => ({
-        row: prev.row + 1,
-        lineBreak: { ...prev.lineBreak, [value.length - 1]: true },
-      }));
-    }
-
-    if (textareaHeight.lineBreak[value.length]) {
-      setTextareaHeight((prev) => ({
-        row: prev.row - 1,
-        lineBreak: { ...prev.lineBreak, [value.length]: false },
-      }));
-    }
+  const handleResize = () => {
+    if (!inputRef.current) return;
+    inputRef.current.setAttribute('style', 'height: 0px');
+    inputRef.current.setAttribute(
+      'style',
+      `height: ${inputRef.current.scrollHeight}px`,
+    );
   };
 
   const handleKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.nativeEvent.isComposing) return;
+    if (e.nativeEvent.isComposing || !inputRef.current) return;
 
     if (e.code === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      setTextareaHeight({
-        row: 1,
-        lineBreak: {},
-      });
-      value.trim() && onSubmit();
+      inputRef.current.setAttribute('style', 'height: 27px');
+      onSubmit();
     }
   };
 
   return (
-    <form className={style.conatiner}>
-      <div
-        className={style.contentWrapper}
-        style={assignInlineVars({
-          [style.inputHeight]: `${textareaHeight.row * 27}px`,
-        })}
-      >
-        <label htmlFor={id} className={style.label}>
+    <form className={styles.conatiner}>
+      <div className={styles.contentWrapper}>
+        <label htmlFor={id} className={styles.label}>
           <textarea
             id={id}
             value={value}
             ref={inputRef}
             autoComplete="off"
-            rows={textareaHeight.row}
-            className={style.input}
+            className={styles.input}
             placeholder={placeholder}
             maxLength={maxLength}
             onChange={onChange}
@@ -98,15 +64,11 @@ const WriteInput = ({
           />
         </label>
 
-        <div
-          className={style.submitWrapper({
-            multirow: textareaHeight.row > 1,
-          })}
-        >
-          <div className={style.submit}>
+        <div className={styles.submitWrapper}>
+          <div className={styles.submit}>
             {value.length > 0 && (
-              <span className={style.textCount}>
-                <span className={style.currentTextCount}>{value.length}</span>
+              <span className={styles.textCount}>
+                <span className={styles.currentTextCount}>{value.length}</span>
                 &nbsp;/&nbsp;500자
               </span>
             )}
