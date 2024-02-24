@@ -1,8 +1,11 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useMemo, useState } from 'react';
+import Cookies from 'js-cookie';
 
 import Icon from '@components/Icon';
 import Layout from '@components/Layout';
+import { ROUTES } from '@constants/routes';
 import ExitModal from '@domain/계정설정/components/ExitModal';
 import ProfileForm from '@domain/계정설정/components/Form';
 import * as styles from '@domain/계정설정/index.css';
@@ -10,8 +13,10 @@ import useExitAccount from '@domain/계정설정/mutations/useExitAccount';
 import useUpdateProfileImage from '@domain/계정설정/mutations/useUpdateProfileImage';
 import useGetProfile from '@domain/계정설정/queries/useGetProfile';
 import useModal from '@hooks/useModal';
+import { STORAGE_KEY } from '@models/storage';
 
 const ProfilePage = () => {
+  const router = useRouter();
   const my = useGetProfile();
   const exitModalProps = useModal();
   const { mutate: exitAccount } = useExitAccount();
@@ -113,8 +118,16 @@ const ProfilePage = () => {
           email={my.email}
         />
         <div className={styles.textButtonWrapper}>
-          {/* TODO: 로그아웃 연결 */}
-          <button className={styles.textButton}>로그아웃</button>
+          <button
+            className={styles.textButton}
+            onClick={() => {
+              localStorage.removeItem(STORAGE_KEY.ACCESS_TOKEN);
+              Cookies.remove(STORAGE_KEY.REFRESH_TOKEN);
+              router.push(ROUTES.LANDING);
+            }}
+          >
+            로그아웃
+          </button>
           <button
             className={styles.textButton}
             onClick={exitModalProps.handleOpen}

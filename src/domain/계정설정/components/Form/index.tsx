@@ -1,6 +1,8 @@
+import { useRouter } from 'next/navigation';
 import { type FormEvent, useMemo, useState } from 'react';
 
 import Icon from '@components/Icon';
+import { ROUTES } from '@constants/routes';
 import { useInput } from '@hooks/useInput';
 
 import useUpdateProfile from '../../mutations/useUpdateProfile';
@@ -15,6 +17,7 @@ interface ProfileFormProps {
 }
 
 const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
+  const router = useRouter();
   const { mutate: updateProfile } = useUpdateProfile();
 
   const nameInputProps = useInput({ id: 'name', defaultValue: name });
@@ -131,6 +134,7 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
         name: nameInputProps.value,
         nickname: nicknameInputProps.value,
       });
+      router.push(`${ROUTES.MAIN}?tab=write`);
     }
   };
 
@@ -140,12 +144,14 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
         inputProps={nameInputProps}
         title={'이름'}
         placeholder={'이름을 입력해주세요'}
+        value={name}
         errorMsg={errors ? errors.name : null}
       />
       <ProfileFormInput
         inputProps={nicknameInputProps}
         title={'별명'}
         placeholder={'별명을 입력해주세요'}
+        value={nickname}
         errorMsg={errors ? errors.nickname : null}
       />
       <div className={styles.authContainer}>

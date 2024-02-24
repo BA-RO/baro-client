@@ -1,15 +1,19 @@
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { type UseMutateFunction } from '@tanstack/react-query';
+import Cookies from 'js-cookie';
 
 import Icon from '@components/Icon';
+import { ROUTES } from '@constants/routes';
 import { EXIT_CAUSES } from '@domain/계정설정/constants';
+import { STORAGE_KEY } from '@models/storage';
 
 import ExitModalListItem from './components/ListItem';
 import * as styles from './style.css';
 
 interface ExitModalProps {
   selectCause: string | null;
-  exitMutate: UseMutateFunction<void, Error, void, unknown>;
+  exitMutate: UseMutateFunction<void, Error, { exitCause: string }, unknown>;
   onContentClick: (cause: string) => void;
   onModalCloseClick: VoidFunction;
 }
@@ -20,6 +24,8 @@ const ExitModal = ({
   onContentClick,
   onModalCloseClick,
 }: ExitModalProps) => {
+  const router = useRouter();
+
   const [step, setStep] = useState(0);
 
   const ctaBtnDisable = step === 0 && selectCause === null;
@@ -28,7 +34,11 @@ const ExitModal = ({
     if (step === 0) {
       setStep((prev) => prev + 1);
     } else {
-      exitMutate();
+      if (!selectCause) return;
+      exitMutate({ exitCause: selectCause });
+      localStorage.removeItem(STORAGE_KEY.ACCESS_TOKEN);
+      Cookies.remove(STORAGE_KEY.REFRESH_TOKEN);
+      router.push(ROUTES.LANDING);
     }
   };
 
