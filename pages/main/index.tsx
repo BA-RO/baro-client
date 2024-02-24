@@ -3,6 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Layout from '@components/Layout';
 import MainPageTab from '@components/Layout/MainPageTab';
 import { ROUTES } from '@constants/routes';
+import useGetProfile from '@domain/계정설정/queries/useGetProfile';
 import WriteTabContent from '@domain/끄적이는/components/WriteTabContent';
 import 참고하는TabContent from '@domain/참고하는/components';
 import useGetMyProfile from '@queries/useGetMyProfile';
@@ -15,6 +16,7 @@ const MainPage = () => {
   const selectedTab = searchParams.get('tab') || 'write';
 
   useGetMyProfile();
+  useGetProfile();
 
   const handleTabSelect = (selectedTab: string) => {
     router.push(`${ROUTES.MAIN}?tab=${selectedTab}`);

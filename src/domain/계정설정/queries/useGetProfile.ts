@@ -6,7 +6,7 @@ import { ProfileQueryKeys } from '../constants/queryKeys';
 import { type Me } from '../types';
 
 const getProfile = async () => {
-  const res = await http.get<Me>('/members/my/profile');
+  const res = await http.get<Me>('/members/profile/me');
 
   return res;
 };
