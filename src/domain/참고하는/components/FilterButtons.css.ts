@@ -13,7 +13,10 @@ export const filterButtonWrapper = style([
     borderRadius: '8px',
     color: COLORS['Grey/700'],
     verticalAlign: 'middle',
-    boxShadow: '0px 8px 15px 0px rgba(28, 28, 28, 0.08)',
+
+    ':hover': {
+      boxShadow: '0px 8px 15px 0px rgba(28, 28, 28, 0.08)',
+    },
   },
 ]);
 
@@ -21,6 +24,7 @@ export const activeFilterButtonsWrapper = style([
   filterButtonWrapper,
   {
     zIndex: 10,
+    boxShadow: '0px 8px 15px 0px rgba(28, 28, 28, 0.08)',
   },
 ]);
 
