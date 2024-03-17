@@ -14,6 +14,10 @@ export const wrapper = style([
   {
     position: 'relative',
     padding: '28px 32px 20px',
+
+    ':hover': {
+      boxShadow: '0px 8px 20px 0px rgba(34, 34, 34, 0.08)',
+    },
   },
 ]);
 
