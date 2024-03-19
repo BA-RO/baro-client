@@ -1,5 +1,6 @@
-import { type ChangeEvent, type KeyboardEvent, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
+import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
 import { type UseInputReturn } from '@hooks/useInput';
 
 import * as styles from './editInput.css';
@@ -10,47 +11,19 @@ interface EditInputProps {
 
 const EditInput = ({ inputProps }: EditInputProps) => {
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
-  const [textareaHeight, setTextareaHeight] = useState<{
-    row: number;
-    lineBreak: Record<number, boolean>;
-  }>({
-    row: inputProps.value.split(/\r\n|\r|\n/).length,
-    lineBreak: {},
-  });
 
-  const handleResize = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const { scrollHeight, clientHeight, value } = e.target;
+  useEffect(() => {
+    handleResize();
+  }, []);
 
-    if (value.length === 0) {
-      setTextareaHeight((prev) => ({
-        row: 1,
-        lineBreak: { ...prev.lineBreak, [e.target.value.length]: false },
-      }));
-    }
+  const handleResize = () => {
+    if (!inputRef.current) return;
 
-    if (scrollHeight > clientHeight) {
-      setTextareaHeight((prev) => ({
-        row: prev.row + 1,
-        lineBreak: { ...prev.lineBreak, [value.length - 1]: true },
-      }));
-    }
-
-    if (textareaHeight.lineBreak[value.length]) {
-      setTextareaHeight((prev) => ({
-        row: prev.row - 1,
-        lineBreak: { ...prev.lineBreak, [value.length]: false },
-      }));
-    }
-  };
-
-  const handleKeydownEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.code === 'Enter') {
-      setTextareaHeight((prev) => ({
-        row: prev.row + 1,
-        lineBreak: { ...prev.lineBreak, [inputProps.value.length]: true },
-      }));
-      return;
-    }
+    inputRef.current.setAttribute('style', 'height: 0px');
+    inputRef.current.setAttribute(
+      'style',
+      `height: ${inputRef.current.scrollHeight}px`,
+    );
   };
 
   return (
@@ -60,16 +33,14 @@ const EditInput = ({ inputProps }: EditInputProps) => {
         ref={inputRef}
         className={styles.editInput}
         autoComplete="off"
-        rows={textareaHeight.row}
-        maxLength={500}
+        maxLength={MAIN_INPUT_MAX_LENGTH}
         onInput={handleResize}
-        onKeyDown={handleKeydownEnter}
       />
       <p className={styles.editInputTextCount}>
         <span className={styles.editTextCurrentCount}>
-          {inputProps.value.length}
+          {inputProps.value.length}&nbsp;
         </span>
-        / 500
+        /&nbsp;500
       </p>
     </div>
   );
