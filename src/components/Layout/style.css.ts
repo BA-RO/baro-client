@@ -77,6 +77,10 @@ export const profileName = style([
     verticalAlign: 'middle',
     display: 'inline-block',
     marginLeft: '8px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    maxWidth: '112px',
+    textOverflow: 'ellipsis',
   },
 ]);
 

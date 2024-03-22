@@ -34,7 +34,7 @@ const ProfileButton = () => {
       <Dropdown.List>
         <Dropdown.Title>
           <Icon icon="profileDialog" width={40} height={40} />
-          <span className={styles.profileName}>{data?.nickname}님</span>
+          <span className={styles.profileName}>{data?.nickname}</span>님
         </Dropdown.Title>
         <Dropdown.Item
           onClick={() => router.push('/profile')}
