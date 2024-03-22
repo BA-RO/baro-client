@@ -23,7 +23,8 @@ const useUpdateProfile = () => {
     mutationFn: updateProfile,
     onSuccess: () => {
       showToast({ message: '모든 변경사항이 저장됐어요.' });
-      queryClient.invalidateQueries({ queryKey: ProfileQueryKeys.all });
+      queryClient.refetchQueries({ queryKey: ProfileQueryKeys.getProfile });
+      queryClient.refetchQueries({ queryKey: ['my-profile'] });
     },
   });
 };

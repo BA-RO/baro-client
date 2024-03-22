@@ -1,8 +1,6 @@
-import { useRouter } from 'next/navigation';
 import { type FormEvent, useMemo, useState } from 'react';
 
 import Icon from '@components/Icon';
-import { ROUTES } from '@constants/routes';
 import { useInput } from '@hooks/useInput';
 
 import useUpdateProfile from '../../mutations/useUpdateProfile';
@@ -17,7 +15,6 @@ interface ProfileFormProps {
 }
 
 const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
-  const router = useRouter();
   const { mutate: updateProfile } = useUpdateProfile();
 
   const nameInputProps = useInput({ id: 'name', defaultValue: name });
@@ -134,7 +131,6 @@ const ProfileForm = ({ name, nickname, authType, email }: ProfileFormProps) => {
         name: nameInputProps.value,
         nickname: nicknameInputProps.value,
       });
-      router.push(`${ROUTES.MAIN}?tab=write`);
     }
   };
 
