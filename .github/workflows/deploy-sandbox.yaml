@@ -36,7 +36,7 @@ jobs:
           REPOSITORY: ${{ env.IMAGE_NAME }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg PORT=3001 .
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg PORT=3001 -f Dockerfile.sandbox .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
       - name: Delete old docker image in ECR
