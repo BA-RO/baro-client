@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
+import { sprinkles } from '@styles/sprinkles.css';
 import { COLORS } from '@styles/tokens';
 
 export const container = style({
@@ -56,11 +57,20 @@ export const textButtonWrapper = style({
   justifyContent: 'flex-end',
 });
 
-export const textButton = style({
+export const textButtonTextWrapper = style({
   padding: '16px 24px',
-  color: COLORS['Grey/500'],
-  fontSize: '17px',
-  fontWeight: '500',
-  lineHeight: '27px',
-  letterSpacing: '-0.3px',
 });
+
+export const textButton = style([
+  sprinkles({
+    typography: '17/Body/Medium',
+  }),
+  {
+    color: COLORS['Grey/500'],
+
+    ':hover': {
+      color: COLORS['Grey/700'],
+      borderBottom: `1.5px solid ${COLORS['Grey/700']}`,
+    },
+  },
+]);

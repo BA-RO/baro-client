@@ -119,20 +119,20 @@ const ProfilePage = () => {
         />
         <div className={styles.textButtonWrapper}>
           <button
-            className={styles.textButton}
+            className={styles.textButtonTextWrapper}
             onClick={() => {
               localStorage.removeItem(STORAGE_KEY.ACCESS_TOKEN);
               Cookies.remove(STORAGE_KEY.REFRESH_TOKEN);
               router.push(ROUTES.LANDING);
             }}
           >
-            로그아웃
+            <span className={styles.textButton}>로그아웃</span>
           </button>
           <button
-            className={styles.textButton}
+            className={styles.textButtonTextWrapper}
             onClick={exitModalProps.handleOpen}
           >
-            회원탈퇴
+            <span className={styles.textButton}>회원탈퇴</span>
           </button>
         </div>
       </div>
