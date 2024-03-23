@@ -18,4 +18,4 @@ FROM base
 COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/ .
 EXPOSE ${PORT}
-CMD [ "pnpm", "start", "-p", "3001" ]
+CMD pnpm start -p ${PORT}
