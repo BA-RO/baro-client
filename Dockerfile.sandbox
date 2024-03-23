@@ -2,6 +2,7 @@ FROM node:20-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ARG PORT
+ENV PORT ${PORT}
 
 RUN corepack enable
 COPY . /app
