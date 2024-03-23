@@ -6,7 +6,7 @@ on:
       - feature/BAR-277
 
 env:
-  REGISTRY: ${{ secrets.AWS_ECR_REGISTRY_2 }}
+  REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
   AWS_REGION: ap-northeast-2
   IMAGE_NAME: baro
 
@@ -22,8 +22,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_2 }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_2 }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
@@ -52,9 +52,9 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.EC2_PUBLIC_DOMAIN_2 }}
+          host: ${{ secrets.EC2_PUBLIC_DOMAIN }}
           username: ubuntu
-          key: ${{ secrets.EC2_SSH_PRIVATE_KEY_2 }}
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           envs: REGISTRY,REPOSITORY,IMAGE_TAG,AWS_REGION,IMAGE_NAME
           script: |-
             aws ecr get-login-password --region ${{ env.AWS_REGION }} |
