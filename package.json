@@ -39,6 +39,7 @@
     "react-dom": "^18",
     "react-notion-x": "^6.16.0",
     "react-responsive-masonry": "^2.1.7",
+    "simplebar-react": "^3.2.4",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
