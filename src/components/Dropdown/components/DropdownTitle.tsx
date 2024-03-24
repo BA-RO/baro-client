@@ -1,11 +1,19 @@
 import { type PropsWithChildren } from 'react';
+import clsx from 'clsx';
 
 import * as styles from '@components/Dropdown/style.css';
 
-const DropdownTitle = ({ children }: PropsWithChildren) => {
+interface DropdownTitleProps {
+  className?: string;
+}
+
+const DropdownTitle = ({
+  className,
+  children,
+}: PropsWithChildren<DropdownTitleProps>) => {
   return (
     <>
-      <div className={styles.dropdownTitle}>{children}</div>
+      <div className={clsx(className, styles.dropdownTitle)}>{children}</div>
       <div className={styles.line} />
     </>
   );
