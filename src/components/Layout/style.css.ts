@@ -64,6 +64,10 @@ export const profile = style({
   padding: '10px',
 });
 
+export const profileNameWrapper = style({
+  justifyContent: 'left',
+});
+
 export const dialogWrapper = style({
   padding: '10px',
 });

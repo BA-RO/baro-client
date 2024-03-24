@@ -32,7 +32,7 @@ const ProfileButton = () => {
         <Icon icon="profileHeader" width={28} height={28} />
       </Dropdown.Trigger>
       <Dropdown.List>
-        <Dropdown.Title>
+        <Dropdown.Title className={styles.profileNameWrapper}>
           <Icon icon="profileDialog" width={40} height={40} />
           <span className={styles.profileName}>{data?.nickname}</span>님
         </Dropdown.Title>
