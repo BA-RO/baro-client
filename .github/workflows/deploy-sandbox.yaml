@@ -1,14 +1,14 @@
-name: Create and publish a Docker image to AWS ECR ans deploy to EC2
+name: Create and publish a Docker image to AWS ECR ans deploy to EC2 sandbox
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 env:
   REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
   AWS_REGION: ap-northeast-2
-  IMAGE_NAME: baro
+  IMAGE_NAME: baro-sandbox
 
 jobs:
   build-and-push-image:
@@ -36,7 +36,7 @@ jobs:
           REPOSITORY: ${{ env.IMAGE_NAME }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg PORT=3001 -f Dockerfile .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
       - name: Delete old docker image in ECR
@@ -63,4 +63,4 @@ jobs:
             sudo docker rm ${{ env.IMAGE_NAME }} || true
             sudo docker rmi $(sudo docker images -aq) || true
             sudo docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
-            sudo docker container run --name ${{ env.IMAGE_NAME }} -d -p 3000:3000 $REGISTRY/$REPOSITORY:$IMAGE_TAG
+            sudo docker container run --name ${{ env.IMAGE_NAME }} -d -p 3001:3001 $REGISTRY/$REPOSITORY:$IMAGE_TAG

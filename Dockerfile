@@ -1,6 +1,8 @@
 FROM node:20-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ARG PORT
+ENV PORT ${PORT}
 
 RUN corepack enable
 COPY . /app
@@ -16,5 +18,5 @@ RUN pnpm run build
 FROM base
 COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/ .
-EXPOSE 3000
-CMD [ "pnpm", "start" ]
+EXPOSE ${PORT}
+CMD pnpm start -p ${PORT}

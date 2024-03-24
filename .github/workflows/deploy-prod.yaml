@@ -1,0 +1,66 @@
+name: Create and publish a Docker image to AWS ECR ans deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
+  AWS_REGION: ap-northeast-2
+  IMAGE_NAME: baro
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ env.IMAGE_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --build-arg PORT=3000 .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+      - name: Delete old docker image in ECR
+        uses: LeiaInc/devops-delete-old-aws-ecr-images@v1
+        with:
+          repo-name: ${{ env.IMAGE_NAME }}
+          qtd-images: 5
+
+      - name: Deploy to EC2
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ env.IMAGE_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_PUBLIC_DOMAIN }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          envs: REGISTRY,REPOSITORY,IMAGE_TAG,AWS_REGION,IMAGE_NAME
+          script: |-
+            aws ecr get-login-password --region ${{ env.AWS_REGION }} |
+            sudo docker login --username AWS --password-stdin ${{ env.REGISTRY }}/${{ env.REPOSITORY }}
+            sudo docker stop ${{ env.IMAGE_NAME }} || true
+            sudo docker rm ${{ env.IMAGE_NAME }} || true
+            sudo docker rmi $(sudo docker images -aq) || true
+            sudo docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
+            sudo docker container run --name ${{ env.IMAGE_NAME }} -d -p 3000:3000 $REGISTRY/$REPOSITORY:$IMAGE_TAG
