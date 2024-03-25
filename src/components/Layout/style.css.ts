@@ -202,8 +202,11 @@ export const mainWrapper = style({
 
 export const tab = style({
   position: 'fixed',
-  top: '84px',
+  top: '64px',
   left: '50%',
+  padding: '20px 100%',
+  background:
+    'linear-gradient(180deg, #FFF 36.93%, rgba(255, 255, 255, 0.00) 100%)',
   transform: 'translate(-50%, 0)',
   zIndex: 50,
 });
