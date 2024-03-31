@@ -45,9 +45,7 @@ const TabsTrigger = ({
       {isActiveFilterTab && (
         <motion.div className={styles.underline} layoutId="underline" />
       )}
-      {isActiveSwitcherTab && (
-        <motion.div className={styles.handle} layoutId="handle" />
-      )}
+      {isActiveSwitcherTab && <div className={styles.handle} />}
     </li>
   );
 };
