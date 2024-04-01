@@ -1,8 +1,13 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 import { COLORS } from '@styles/tokens';
 import * as utils from '@styles/utils.css';
+
+const fadeIn = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
 
 export const tab = style({
   width: '100%',
@@ -15,6 +20,7 @@ export const tabsList = recipe({
   variants: {
     type: {
       switcher: {
+        width: 'fit-content',
         justifyContent: 'center',
         borderRadius: '100px',
         backgroundColor: COLORS['Grey/200'],
@@ -111,4 +117,5 @@ export const handle = style({
   borderRadius: '100px',
   backgroundColor: COLORS['Grey/White'],
   border: `1.5px solid ${COLORS['Blue/Default']}`,
+  animation: `${fadeIn} 450ms cubic-bezier(0.4, 0, 0.6, 1)`,
 });
