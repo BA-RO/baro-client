@@ -7,7 +7,7 @@ export const conatiner = style({
   justifyContent: 'space-between',
   borderRadius: '16px',
   width: '100%',
-  padding: '22px 12px 22px 24px',
+  padding: '12px 12px 12px 24px',
   border: `2px solid ${COLORS['Blue/Default']}`,
   backgroundColor: 'white',
 });
