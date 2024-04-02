@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
+import { WRITE_INPUT_MAX_LENGTH } from '@constants/config';
 import { type UseInputReturn } from '@hooks/useInput';
 
 import * as styles from './editInput.css';
@@ -33,7 +33,7 @@ const EditInput = ({ inputProps }: EditInputProps) => {
         ref={inputRef}
         className={styles.editInput}
         autoComplete="off"
-        maxLength={MAIN_INPUT_MAX_LENGTH}
+        maxLength={WRITE_INPUT_MAX_LENGTH}
         onInput={handleResize}
       />
       <p className={styles.editInputTextCount}>

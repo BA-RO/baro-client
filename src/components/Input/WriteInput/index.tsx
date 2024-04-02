@@ -3,7 +3,7 @@ import { useMemo, useRef } from 'react';
 
 import Button from '@components/Button';
 import Icon from '@components/Icon';
-import { MAIN_INPUT_MAX_LENGTH } from '@constants/config';
+import { WRITE_INPUT_MAX_LENGTH } from '@constants/config';
 import type { UseInputReturn } from '@hooks/useInput';
 import { COLORS } from '@styles/tokens';
 
@@ -18,8 +18,8 @@ interface WriteInputProps extends HTMLAttributes<HTMLTextAreaElement> {
 
 const WriteInput = ({
   inputProps,
-  placeholder,
-  maxLength = MAIN_INPUT_MAX_LENGTH,
+  placeholder = '메모를 끄적여보세요',
+  maxLength = WRITE_INPUT_MAX_LENGTH,
   onSubmit,
 }: WriteInputProps) => {
   const { id, value, onChange } = inputProps;
