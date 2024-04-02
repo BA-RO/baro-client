@@ -1,7 +1,7 @@
 /**
- * "끄적이는" 최대 입력 글자 수
+ * "끄적이는" 입력창 최대 입력 글자 수
  */
-export const MAIN_INPUT_MAX_LENGTH = 500;
+export const WRITE_INPUT_MAX_LENGTH = 500;
 
 /**
  * 카테고리별 색상
