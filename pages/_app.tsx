@@ -17,7 +17,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Component {...pageProps} />
         <Toast />
         <Modal />
-        <GoogleAnalytics gaId="G-FE8WVNGY6S" />
+        <GoogleAnalytics gaId="G-ZERTH34CXV" />
         <GoogleTagManager gtmId="GTM-PM2S7Q2N" />
       </TanstackQueryProvider>
     </>
