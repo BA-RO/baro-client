@@ -56,6 +56,7 @@ export const menu = style({
 export const header = style([
   sprinkles({ typography: '15/Title/Medium' }),
   {
+    width: 'fit-content',
     position: 'relative',
     display: 'flex',
     gap: '8px',
